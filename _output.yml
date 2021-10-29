@@ -5,8 +5,8 @@ bookdown::gitbook:
       before: |
         <li><a href="./">Probabilidades</a></li>
       after: |
-        <li><a href="https://oswaldobelloc.github.io/probabilidaes/" target="blank">Published with bookdown</a></li>
-    edit: https://github.com/oswaldobelloc/REPO/edit/BRANCH/%s
+        <li><a href="https://github.com/rstudio/bookdown" target="blank">Publicado con bookdown</a></li>
+    edit: https://github.com/oswaaldobelloc/probabilidades/edit/master/%s
     download: ["pdf", "epub"]
 bookdown::pdf_book:
   includes:
