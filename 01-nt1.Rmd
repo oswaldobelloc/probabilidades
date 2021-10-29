@@ -1,0 +1,718 @@
+
+# Técnicas de Conteo {#nt1}
+
+En este núcleo temático se describen de manera teórica algunos métodos de conteo, tales como:
+
+
+
+1.  ***Principio de la Adición*** (Sección \@ref(nt11))
+2.  ***Principio de la Multiplicación *** (Sección \@ref(nt12))
+    a. *Diagrama de Árbol* (Sección \@ref(nt121))
+3.  ***Permutación*** (Sección \@ref(nt13))
+    a. *Permutación Sin Repetición* (Sección \@ref(nt131))
+    b. *Permutación Con Repetición* (Sección \@ref(nt132))
+4.  ***Combinación*** (Sección \@ref(nt14))
+    a. *Combinación Sin Repetición* (Sección \@ref(nt141))
+    b. *Combinación Con Repetición* (Sección \@ref(nt142))
+5.  ***Variación*** (Sección \@ref(nt15))
+    a. *Variación Sin Repetición* (Sección \@ref(nt151))
+    b. *Variación Con Repetición* (Sección \@ref(nt152))
+
+Una vez descrita estas técnicas de conteo, se procede mediante ejemplos, a la implementación en `r colorize("R", "blue")` de las mismas.
+
+El siguiente bloque de código permite instalar y cargar los paquetes usados para implementar estas pruebas en `r colorize("R", "blue")`. De estos paquetes, los que contiene funciones relacionadas con la teoría de conteo son: `combinat`, `gtools` y `prob`.
+
+```{r cargar-paquetes, class.source = "watch-out"}
+packages <- c(
+  "bookdown", "bookdownplus", "magrittr", "kableExtra",
+  "DT", "devtools", "tidyverse", "htmltools",
+  "htmlwidgets", "utf8", "stringr", "gtools", "prob",
+  "combinat"
+)
+package.check <- lapply(packages, FUN = function(x) {
+  if (!require(x, character.only = TRUE)) {
+    install.packages(x, dependencies = TRUE)
+    library(x, character.only = TRUE)
+  }
+})
+```
+
+## Pricipio de la Adición {#nt11}
+::: {.definition #princadit name="Pricipio de la Adición"}
+Si hay $k$ procedimientos, tal que, el procedimiento 1 puede ocurrir de $n_1$ manera, el procedimiento 2 puede ocurrir de $n_2$ maneras, $\dotsc$, y el procedimiento $k$ puede ocurrir de $n_k$ maneras. Entonces,  el número de maneras como podemos hacer el procedimiento 1, o el procedimiento 2, $\dotsc$, o el procedimiento $k$ es 
+$$
+n{}_1 + n{}_2 + \cdots + n{}_k.
+$$
+Suponiendo que los procedimientos no se pueden realizar en forma conjunta.
+:::
+
+::: {.example #ejemp1-princadit name="Pricipio de la Adición"}
+
+Supongamos que planeamos un viaje y debemos decidir entre transportarnos por autobús, por avión o por tren. Si hay tres rutas para el autobús, dos para el avión y una para el tren, entonces hay $n{}_1 + n{}_2 + n{}_3= 3 + 2 + 1 =6$ rutas disponibles para el viaje.
+
+El resultado anterior puede conseguirse, mediante el siguiente script.
+
+```{r}
+n1 <- 3
+n2 <- 2
+n3 <- 1
+(nm <- n1 + n2 + n3)
+```
+:::
+
+::: {.example #ejemp2-princadit name="Pricipio de la Adición"}
+Suponga que en una biblioteca hay 3 novelas de misterio diferentes, 5 novelas de romance diferentes, 4 novelas de ficción diferentes y 2 novelas de aventura diferentes. Entonces hay
+
+$$n_1 + n_2 + n_3 + n_4= 3 + 5 + 4 + 2 =14$$ 
+
+formas para escoger una de las novelas.
+
+Este resultado se puede obtener con el siguiente bloque de código.
+
+```{r}
+n1 <- 3
+n2 <- 5
+n3 <- 4
+n4 <- 2
+(nm <- n1 + n2 + n3 + n4)
+```
+:::
+
+## Principio de la Multiplicación {#nt12}
+
+::: {.definition #princmult name="Pricipio de la Multiplicación"}
+Si hay $k$ procedimientos, tal que, el procedimiento 1 se puede hacer de $n_1$ manera, el procedimiento 2 se puede hacer de $n_2$ maneras, $\dotsc$, y el procedimiento $k$ se puede hacer de $n_k$ maneras. Entonces, el número de maneras como podemos realizar el procedimiento 1, seguido del procedimiento 2, $\dotsc$ , seguido del procedimiento $k$ es
+
+$$
+n{}_1\,n{}_2\cdots\,n{}_k.
+$$
+:::
+
+::: {.example #ejemp1-princmult name="Pricipio de la Multiplicación"}
+
+un artículo manufacturado debe pasar por tres controles. En cada uno de ellos se inspecciona una característica particular del artículo y se le marca de conformidad. En el primer control hay tres mediciones posibles, mientras que en cada uno de los últimos controles hay cuatro mediciones posibles. Por lo tanto, hay $n_1 \, n_2 \, n_3= 3 · 4 · 4 = 48$ maneras de marcar el artículo.
+
+El resultado anterior puede conseguirse, mediante el siguiente script.
+
+```{r}
+n1 <- 3
+n2 <- 4
+n3 <- 4
+(nm <- n1 * n2 * n3)
+```
+:::
+
+::: {.example #ejemp2-princmult name="Pricipio de la Multiplicación"}
+Juan va a armar una computadora por sí mismo. Tiene la opción de comprar los chips entre dos marcas, un disco duro de cuatro marcas, la memoria de tres marcas y un conjunto de accesorios en cinco tiendas locales. ¿De cuántas formas diferentes puede Juan armar la computadora?
+
+Juan puede armar la computadora de $n{}_1 \, n{}_2 \, n{}_3 \, n{}_4 = 2 \cdot 4 \cdot 3 \cdot 5 = 120$.
+
+
+```{r}
+n1 <- 2
+n2 <- 4
+n3 <- 3
+n4 <- 5
+(nm <- n1 * n2 * n3 * n4)
+```
+:::
+
+::: {.example #ejemp3-princmult name="Pricipio de la Multiplicación"}
+¿Cuántos números pares de cuatro dígitos se pueden formar con los dígitos 0, 1, 2, 5, 6 y 9, si cada dígito se puede usar sólo una vez?
+Como el número es par, tenemos sólo $n_1  = 3$ elecciones para la posición de las unidades. Sin embargo, para un número de cuatro dígitos la posición de las unidades de mil no puede ser cero. Por lo tanto, consideramos la posición de las unidades en dos partes: 0 o diferentes de 0. Si la posición de las unidades es 0 (es decir, $n_1 = 1$), tenemos $n_2 = 5$ elecciones para la posición de las unidades de mil, $n_3 = 4$, para la posición de las centenas y $n_4  = 3$ para la posición de las decenas. Por lo tanto, formamos un total de
+	$$
+	n_1 \: n_2 \: n_3 \: n_4 = 1 \cdot 5 \cdot 4 \cdot 3 = 60
+	$$
+números pares de cuatro dígitos. Por otro lado, si la posición de las unidades no es 0 (es decir, $n_1= 2$), tenemos $n_2 = 4$ elecciones para la posición de los unidades de mil, $n_3 = 4$ para la posición de las centenas y $n_4 = 3$ para la posición de las decenas. En esta situación tenemos un total de
+$$
+n_1 \: n_2 \: n_3 \: n_4 = 2 \cdot 4 \cdot 4 \cdot 3 = 96
+$$
+números pares de cuatro dígitos. 
+
+Como los dos casos no pueden ocurrir al mismo tiempo, por el principio aditivo, el número total de números pares de cuatro dígitos es $60 + 96 = 156$.
+
+El resultado anterior puede obtenerse en`r colorize("R", "blue")` con el siguiente bloque de código.
+
+```{r}
+n11 <- 1
+n12 <- 5
+n13 <- 4
+n14 <- 3
+(nm1 <- n11 * n12 * n13 * n14)
+n21 <- 2
+n22 <- 4
+n23 <- 4
+n24 <- 3
+(nm2 <- n21 * n22 * n23 * n24)
+(nm <- nm1 + nm2)
+```
+:::
+
+### Diagrama de Árbol {#nt121}
+
+::: {.definition #arbol name="Diagrama de Árbol"}
+Un diagrama de árbol es un gráfico utilizado para enumerar todos los resultados posibles de una secuencia de procedimientos donde cada procedimiento puede ocurrir en un número finito de maneras. El diagrama de árbol se construye de izquierda a derecha y el número de ramas en cada punto corresponde al número de manera en que se puede realizar el procedimiento siguiente.
+:::
+
+::: {.example #ejemp1-arbol name="Diagrama de Árbol"}
+Supóngase que un servicio de pruebas de productos evalúa el funcionamiento de una podadora de césped como fácil de operar, de dificultad mediana o difícil; como barata o cara; como de reparación barata, regular o costosa. ¿De cuántas maneras diferentes puede clasificarse una podadora de césped por dicho servicio?
+
+Sea:
+
++ F~1~: la podadora de césped es fácil de operar
++ F~2~: la podadora de césped es medianamente fácil de operar
++ F~3~: la podadora de césped es difícil de operar
++ P~1~: la podadora de césped es barata
++ P~2~: la podadora de césped es cara
++ C~1~: la podadora de césped es barata de reparar
++ C~2~: la podadora de césped es de costo regular de reparación
++ C~3~: la podadora de césped es costosa de reparar
+
+La figura \@ref(fig:arbol1) muestra el diagrama de árbol para las diferentes maneras en que se puede clasificar la podadora de césped.
+
+```{r arbol1, fig.cap="Diagrama de árbol para la clasificación de la podadora de césped", class.source = "watch-out", class.output = "bg-warning"}
+knitr::include_graphics(path = "figuras/diagrama_arbol2.png")
+```
+:::
+
+::: {.example #ejemp2-arbol name="Diagrama de Árbol"}
+Mario y Eduardo van a jugar un torneo de tenis. La primera persona que gane 2 juegos seguidos o quien gane un total de 3 juegos gana el torneo. Encuentre el número de formas como puede desarrollarse el torneo. 
+El diagrama de árbol que muestra los resultados posibles del torneo aparece en la figura \@ref(fig:arbol2).
+
+```{r arbol2, fig.cap="Diagrama de árbol para el número de formas como puede desarrollarse el torneo", class.source = "watch-out", class.output = "bg-warning"}
+knitr::include_graphics(path = "figuras/diagrama_arbol.png")
+```
+:::
+
+## Permutación {#nt13}
+
+::: {.definition #permutacion name="Permutación"}
+Se define como cualquier arreglo, secuencias u ordenamiento de un conjunto de $n$ objetos.
+:::
+
+### Permutación Sin Repetición {#nt131}
+
+::: {.definition #permutacion name="Permutación Sin Repetición"}
+Dados $n$ objetos distintos, el número de permutaciones de éstos viene dado por:
+$$
+\begin{equation}
+P_n=n!=n(n-1)(n-2)\cdots2\cdot1.
+(\#eq:permutacion-sr)
+\end{equation}
+$$
+Por definición $0!=1$.
+$$3!=3\cdot2\cdot1=6$$
+$$5!=5\cdot4\cdot3\cdot2\cdot1=120$$
+:::
+
+::: {.example #ejemp1-psr name="Permutación Sin Repetición"}
+¿Cuántas permutaciones se pueden hacer con las letras $a$, $b$ y $c$?
+
+Los posibles casos son:
+$$
+\begin{Bmatrix}
+ (a,b,c);(a,c,b);(b,a,c);(b,c,a);(c,a,b);(c,b,a) 
+\end{Bmatrix}.
+$$
+Usando la ecuación \@ref(eq:permutacion-sr), el número de permutaciones sin repeticiones que se pueden obtener con las letras $a$, $b$ y $c$ es
+$$
+P_3=3\cdot2\cdot1=6.
+$$
+En `r colorize("R", "blue")`, este resultado se puede mostrar con el siguiente código. Note que en este bloque de código, el resultado anterior se ha calculado de dos manera, la primera, usando la función `factorial` de la distribución base de `r colorize("R", "blue")`, y la otra, usando la función `nsamp` del paquete `prob`. 
+
+```{r ejemp1-psr, class.source = "watch-out", class.output = "bg-warning"}
+factorial(3)
+nsamp(n = 3, k = 3, replace = FALSE, ordered = TRUE) 
+```
+
+La lista de premutaciones sin reemplazo se puede obtener con la función `urnsamples` del paquete `prob`. 
+
+```{r ejemp1-psr-list, class.source = "watch-out", class.output = "bg-warning"}
+urnsamples(
+  c("a", "b", "c"), size = 3, replace = F, 
+  ordered = T
+)
+```
+
+La función `permutations` del paquete `gtools` también lista estas permutaciones, como se muestra en el siguiente código.
+
+```{r}
+gtools::permutations(
+  n = 3, r = 3, 
+  v = c("a", "b", "c"), set = T,
+repeats.allowed = F
+)
+```
+:::
+
+::: {.example #ejemp2-psr name="Permutación Sin repetición"}
+¿Cuántas permutaciones se pueden hacer con las letras $a$, $b$, $c$, $d$?
+
+El número de *permutaciones sin repetición* que se pueden obtener es:
+$$
+\begin{Bmatrix}
+ (a,b,c,d);&(a,b,d,c);&(a,c,b,d);&(a,c,d,b);&(a,d,b,c);\\(a,d,c,b);&(b,a,c,d);&(b,a,d,c);&(b,c,a,d);&
+(b,c,d,a);\\(b,d,a,c);&(b,d,c,a);&(c,a,b,d);&(c,a,d,b);&(c,b,a,d);\\(c,b,d,a);&(c,d,a,b);&(c,d,b,a);&
+(d,a,b,c);&(d,a,c,b);\\(d,b,a,c);&(d,b,c,a);&(d,c,a,b);&(d,c,b,a)
+\end{Bmatrix}.
+$$
+
+Usando la ecuación \@ref(eq:permutacion-sr), el número de permutaciones sin repeticiones que se pueden obtener con las letras $a$, $b$, $c$ y $d$ es:
+$$
+P_4=4\cdot3\cdot2\cdot1=24.
+$$
+
+En `r colorize("R", "blue")`, este resultado se puede mostrar con el siguiente código. Note que en este bloque de código, el resultado anterior se ha calculado de dos manera, la primera, usando la función `factorial` de la distribución base de `r colorize("R", "blue")`, y el otro, usando la función `nsamp` del paquete `prob`. 
+
+```{r ejemp2-psr, class.source = "watch-out", class.output = "bg-warning"}
+factorial(4)   
+nsamp(n = 4, k = 4, replace = FALSE, ordered = TRUE) 
+```
+
+La lista de permutaciones, en este caso, se muestra con el siguiente código.
+
+```{r ejemp2-psr-list, class.source = "watch-out", class.output = "bg-warning"}
+urnsamples(c("a", "b", "c", "d"), size = 4, replace = F, ordered = T)
+```
+:::
+
+::: {.example #ejemp3-psr name="Permutación Sin repetición"}
+En una carrera de caballos en la cual participan 12. ¿De cuántas maneras pueden llegar los caballos a la meta, si no es posible que se den empates?
+
+Usando la ecuación \@ref(eq:permutacion-sr), el número de resultados posibles es::
+$$P_{12}=12!=12\cdot11\cdot10\cdot9\cdot8\cdot7\cdot6\cdot5\cdot4\cdot3\cdot2\cdot1=`r formato(nsamp(n = 12, k = 12, replace = FALSE, ordered = TRUE))`.$$
+
+Usando `r colorize("R", "blue")`, el resultado se muestra como sigue.
+
+```{r ejemp3-psr, class.source = "watch-out", class.output = "bg-warning"}
+factorial(12)   
+nsamp(n = 12, k = 12, replace = FALSE, ordered = TRUE) 
+```
+
+`r colorize("Abvertencia", "red")`: La lista de posibles resultado de la carrera se puede generar con la instrucción `urnsamples(1:12, size = 12, replace = F, ordered = T)`, pero no la ejecute porque la lista es muy grande y es posible que tarde mucho tiempo en generarse, además, consumiría mucho espacio en memoria.
+:::
+
+### Permutación Con Repetición {#nt132}
+
+::: {.definition #permutacion-cr name="Permutación Con Repetición"}
+Dados $n$ objetos, de los cuales $n_1$ son de una clase, $n_2$ de una segunda clase, $\dotsc$ y $n_k$ de una $k$-ésima clase; entonces el número de permutaciones distintas que se pueden formar con éstos n objetos viene dada por:
+
+$$
+\begin{equation}
+PR_{n}^{n_1, n_2, \dotsc, n_k}=\frac{n!}{n_1!\,n_2!\, \cdots \,n_k},\,donde\: n=n_1+n_2+\cdots+n_k.
+(\#eq:permutacion-cr)
+\end{equation}
+$$
+
+Este tipo de permutaciones también se conocen como *Permutaciones de Objetos Indistinguibles*.
+:::
+
+::: {.example #ejemp1-pcr name="Permutación Con repetición"}
+Retomando el ejemplo \@ref(exm:ejemp1-psr), en el cual se calculó el número de permutaciones diferentes que se pueden formar con las letras $a$, $b$ y $c$; supongamos que las letras $b$ y $c$ son iguales a $x$, entonces los arreglos quedan definidos de la siguiente manera:
+$$
+\begin{Bmatrix}
+ (a,x,x); (a,x,x); (x,a,x); (x,x,a); (x,a,x); (x,x,a)
+\end{Bmatrix}.
+$$
+
+Eliminando los casos idénticos, el número de permutaciones diferentes son:
+$$
+\begin{Bmatrix}
+ (a,x,x);(x,a,x);(x,x,a)
+\end{Bmatrix}.
+$$
+Usando la ecuación \@ref(eq:permutacion-cr), el número de *permutaciones con repetciones* en este caso será:
+
+$$
+PR_{3}^{1, 2}=\frac{3!}{1!\,2!}=3.
+$$
+
+En `r colorize("R", "blue")`, este cálculo se consigue con la siguiente instrucción.
+
+```{r ejemp1-pcr, class.source = "watch-out", class.output = "bg-warning"}
+Pr <- factorial(3) / (factorial(1) * factorial(2))
+paste("El número de permutaciones con repeticiones es ", Pr)
+```
+
+La siguiente función facilita el cálculo de las *permutaciones con repeticiones*.
+
+```{r}
+PR <- function(n, k) {
+  if (n == sum(k)) {
+    PR <- factorial(n) / prod(factorial(k))
+  }
+  else {
+    PR <- "NAN"
+  }
+  return(PR)
+}
+paste("El número de permutaciones con repeticiones es ", 
+      PR(n = 3, k = c(1, 2)))
+```
+
+La lista *de premutaciones con repeticiones* se puede obtener con el siguiente script. Note que el script lista todas las *permutaciones sin repeticiones* del vector `c("a", "x", "x")` y luego elimina las que se repiten.
+
+```{r ejemp1-pcr-list, class.source = "watch-out", class.output = "bg-warning"}
+urnsamples(
+  c("a", "x", "x"),
+  size = 3, replace = F, ordered = T
+) %>%
+  distinct()
+```
+:::
+
+::: {.example #ejemp2-pcr name="Permutación Con repetición"}
+Ahora, retomando el ejemplo \@ref(exm:ejemp2-psr), donde calculamos el número de permutaciones diferentes que se pueden formar con las letras $a$, $b$, $c$ y $d$; supongamos que las letras $a$, $b$ son iguales a $x$ y las letras $c$ y $d$ son iguales a $y$. Es decir,
+
+$$
+\begin{Bmatrix}
+ (x,x,y,y);&(x,x,y,y);&(x,y,x,y);&(x,y,x,y);&(x,y,x,y); \\(x,y,y,x);&(x,x,y,y);&(x,x,y,y);&(x,y,x,y);&
+(x,y,y,x); \\(x,y,x,y);&(x,y,y,x);&(y,x,x,y);&(y,x,y,x);&(y,x,x,y); \\(y,x,y,x);&(y,y,x,x);&(y,y,x,x);& (y,x,x,y);&(y,x,y,x); \\(y,x,x,y);&(y,x,y,x);&(y,y,x,x);&(y,y,x,x)
+\end{Bmatrix}.
+$$
+
+Eliminando los casos que se repiten obtenemos el número de permutaciones diferentes, las cuales son:
+
+$$
+\begin{Bmatrix}
+ (x,x,y,y); (x,y,x,y);(x,y,y,x);(y,x,x,y);(y,x,y,x);(y,y,x,x)
+\end{Bmatrix}.
+$$
+
+Usando la ecuación \@ref(eq:permutacion-cr), el número de *permutaciones con repetciones* en este caso será:
+
+$$
+PR_{4}^{2, 2}=\frac{4!}{2!\,2!}=\frac{4(3)(2!)}{2!\,2!}=\frac{12}{2}=`r PR(n = 4, k = c(2, 2))`.
+$$
+
+El cálculo del número de permutaciones, en este ejemplo, se puede conseguir con el siguiente script.
+
+```{r}
+paste("El número de permutaciones con repeticiones es ", 
+      PR(n = 4, k = c(2, 2)))
+```
+
+La lista de premutaciones con repeticiones se puede obtener con el siguiente script. Note que el script lista todas las *permutaciones sin repeticiones* del vector `c("x", "x", "y", "y")` y luego elimina las que se repiten.
+
+```{r ejemp2-pcr-list, class.source = "watch-out", class.output = "bg-warning"}
+urnsamples(
+  c("x", "x", "y", "y"),
+  size = 4, replace = F, ordered = T
+) %>%
+  distinct()
+```
+:::
+
+::: {.example #ejemp3-pcr name="Permutación Con repetición"} 
+Durante un entrenamiento del equipo de fútbol americano de la universidad, el coordinador defensivo necesita tener a 10 jugadores parados en una fila. Entre estos 10 jugadores, hay 1 de primer año, 2 de segundo año, 4 de tercer año y 3 de cuarto año, respectivamente. ¿De cuántas formas diferentes se pueden arreglar en una fila, si sólo se distingue su nivel de clase?
+
+Si sólo se distingue su nivel de clase, la fila se puede arreglar de las siguientes maneraas:
+
+```{r ejemp3-pcr}
+paste("El número de permutaciones con repeticiones es ", 
+      formato(PR(n = 10, k = c(1, 2, 4, 3))))
+```
+:::
+
+## Combinación {#nt14}
+::: {.definition #combinacion name="Combinación"}
+Se define como cualquier selección de $r$ objetos tomados de $n$ objetos distintos, sin importar el orden.
+:::
+
+### Combinación Sin Repetición {#nt141}
+::: {.definition #combinacion-sr name="Conbinación Sin Repetición"}
+Dados $n$ objetos distintos, el número de combinaciones que se pueden formar con $r$ de estos objetos viene dado por:
+
+$$
+\begin{equation}
+C_{n,r}=\binom{n}{r}=\frac{n!}{r!\left ( n-r \right )!}=\frac{n\left ( n-1 \right )\left ( n-2 \right )\,\cdots\,\left ( n-r+1 \right )}{r!}, con \,r\leq n.
+(\#eq:combinacion-sr)
+\end{equation}
+$$
+:::
+
+::: {.example #ejemp1-csr name="Combinación Sin Repetición"}
+Hay 12 estudiantes elegibles para asistir a la reunión anual de la Asociación Nacional de Estudiantes. Encuentre el número de formas como puede conformarse una delegación de 3 estudiantes, de los 12 estudiantes elegibles.
+
+Esto se relaciona con combinación, no con permutaciones, puesto que el orden no cuenta en una delegación. En consecuencia, el número de formas en que puede formarse la delegación, según la ecuación \@ref(eq:combinacion-sr) es:
+
+$$
+C_{12,3}=\binom{12}{3}=\frac{12!}{3!\left ( 12-3 \right )!}=\frac{12\left ( 11 \right )\left ( 10 \right )\left ( 9! \right )}{3!\left ( 9! \right )}=\frac{12\left ( 11 \right )\left ( 10 \right )}{3\left ( 2 \right )\left ( 1 \right )}=`r choose(12, 3)`.
+$$
+
+La función `nsamp` del paquete `prob`, también ejecuta el cálculo anterior. Como se muestra en el siguiente bloque de código.
+
+```{r}
+c1 <- nsamp(n = 12, k = 3, replace = F, ordered = F)
+paste("Se pueden formar", c1,"delegaciones")
+```
+:::
+
+::: {.example #ejemp2-csr name="Conbinación Sin Repetición"}
+¿De cuántas maneras se pueden colocar dos anillos idénticos en la misma mano, de modo que no estén en el mismo dedo?
+
+Los anillos se pueden colocar, según la ecuación \@ref(eq:combinacion-sr), de:
+
+$$
+C_{5,2}=\binom{5}{2}=\frac{5!}{2!\left ( 5-2 \right )!}=\frac{5\left ( 4 \right )\left ( 3! \right )}{2!\left ( 3! \right )}=\frac{5\left ( 4 \right )}{\left ( 2 \right )\left ( 1 \right )}=`r choose(5, 2)`.
+$$
+
+La función `nsamp` del paquete `prob`, también ejecuta el cálculo anterior. Como se muestra en el siguiente bloque de código.
+
+```{r}
+c2 <- nsamp(n = 5, k = 2, replace = F, ordered = F)
+paste("Los anillos se pueden colocar de", c2,"maneras")
+```
+
+El siguiente script lista el número de maneras diferentes en que se pueden colocar los anillos en los dedos de una mano.
+
+```{r ejemp2-csr-list, class.source = "watch-out", class.output = "bg-warning"}
+urnsamples(
+  1:5,
+  size = 2, replace = F, ordered = F
+)
+```
+
+El resultado anterior, también se puede obtener con la función `combinations` del paquete `gtools`.
+
+```{r}
+combinations(n = 5, r = 2, v = 1:5, set = T, 
+             repeats.allowed = F)
+```
+:::
+
+### Conbinación Con Repetición {#nt142}
+::: {.definition #combinacion-cr name="Conbinación Con Repetición"}
+Dados $n$ objetos distintos, el número de combinaciones que se pueden formar con $r$ de estos objetos, pudiendo haber objetos repetidos viene dado por:
+
+$$
+\begin{equation}
+CR_{n,r}=\binom{n+r-1}{n-1}=\binom{n+r-1}{r}=\frac{\left ( n+r-1 \right )!}{r!\left ( n-1 \right )!}=\frac{\left ( n+r-1 \right )\left ( n+r-2 \right )\cdots\left ( n+1 \right )n}{r!}.
+(\#eq:combinacion-cr)
+\end{equation}
+$$
+:::
+
+::: {.example #ejemp1-ccr name="Combinación Con Repetición"}
+En un avión hay argentinos, peruanos, españoles y venezolanos. Se entrevista al azar a 10 de ellos. ¿De cuántas formas diferentes pueden resultar las nacionalidades?
+
+En este ejemplo se tiene $n=4$ nacionalidades distintas y se toma una muestra de $r=10$ personas, note que en la muestra es posible que estén varios pasajeros de la misma nacionalidad. 
+
+De la ecuación \@ref(eq:combinacion-cr), el número de formas diferentes en que puede resultar la nacionalidad es:
+
+$$
+CR_{4,10}=\binom{4+10-1}{4-1}=\binom{13}{3}=\frac{\left ( 13 \right )\left ( 12 \right )\left ( 11 \right )}{3!}=`r nsamp(n = 4, k = 10,replace=T,ordered = F)`.
+$$
+
+La función `nsamp` del paquete `prob`, también ejecuta el cálculo anterior. Como se muestra en el siguiente bloque de código.
+
+```{r}
+c1 <- nsamp(n = 4, k = 10, replace = T, ordered = F)
+paste("Pueden resultar", c1,"nacionalidades distintas")
+```
+:::
+
+::: {.example #ejemp2-ccr name="Combinación Con Repetición"}
+¿Cuántas fichas tiene el juego del dominó?
+
+Una ficha de dominó es un rectángulo en el que hay dos partes, en cada una de ellas hay una serie de puntos que indican la puntuación de esa parte. Estas puntuaciones van de blanca (0 puntos) a 6. Tenemos pares de puntuaciones de 0 a 6.
+
+El total de fichas será  
+
+De la ecuación \@ref(eq:combinacion-cr), el número de formas diferentes en que puede resultar la nacionalidad es:
+
+$$
+CR_{7,2}=\binom{7+2-1}{7-1}=\binom{8}{6}=\binom{8}{2}=\frac{\left ( 8 \right )\left ( 7 \right )}{2!}=`r nsamp(n = 7, k = 2, replace = T, ordered = F)`.
+$$
+
+La función `nsamp` del paquete `prob`, también ejecuta el cálculo anterior. Como se muestra en el siguiente bloque de código.
+
+```{r}
+c1 <- nsamp(n = 7, k = 2, replace = T, ordered = F)
+paste("Pueden resultar", c1,"nacionalidades distintas")
+```
+
+Las piezas se pueden listar con el siguiente script.
+
+```{r}
+combinations(n = 7, r = 2, v = 0:6, set = T, 
+             repeats.allowed = T)
+```
+
+Igual resultado se consigue con el siguiente fragmento de código.
+
+```{r ejemp2-ccr-list, class.source = "watch-out", class.output = "bg-warning"}
+urnsamples(
+  0:6, size = 2, replace = T, ordered = F
+)
+```
+:::
+
+## Variación {#nt15}
+::: {.definition #variacion name="Variación"}
+Se define como cualquier arreglo, secuencias u ordenación de $r$ objetos tomados de $n$ objetos.
+:::
+
+### Variación Sin Repetición {#nt151}
+::: {.definition #variacion-sr name="Variación Sin Repetición"}
+Dados $n$ objetos diferente, el número de arreglos que se pueden formar con $r$ de estos objetos viene dado por:
+
+$$
+\begin{equation}
+V_{n,r}=\frac{n!}{\left( n-r\right)!}=n\,(n-1)\,(n-2)\cdots(n-r+1);con\: r\leq n.
+(\#eq:variacion-sr)
+\end{equation}
+$$
+:::
+
+::: {.example #ejemp1-csr name="Combinación Sin Repetición"}
+En un año se otorgarán tres premios (a la investigación, la enseñanza y el servicio) en un grupo de 25 estudiantes de posgrado del departamento de estadística. Si cada estudiante puede recibir un premio como máximo, ¿cuántas selecciones posibles habría?
+
+Como los premios son distinguibles, se trata de un problema de variación. Por lo tanto, aplicando la ecuación \@ref(eq:variacion-sr), el número total de posibilidades es
+
+$$
+V_{25,3}=\frac{25!}{\left( 25-3\right)!}=25\,(24)\,(23)=`r formato(nsamp(n = 25, k = 3, replace = F, ordered = T))`.
+$$
+La función `nsamp` del paquete `prob`, también ejecuta el cálculo anterior. Como se muestra en el siguiente bloque de código.
+
+```{r}
+c1 <- nsamp(n = 25, k = 3, replace = F, ordered = T)
+paste("Se pueden hacer", formato(c1),"selecciones")
+```
+:::
+
+::: {.example #ejemp2-csr name="Conbinación Sin Repetición"}
+¿De cuántas maneras se pueden colocar dos anillos diferentes en la misma mano, de modo que no estén en el mismo dedo?
+
+Dado que los anillos son diferentes, en contraposición con el ejemplo \@ref(exm:ejemp2-csr), el orden en que se coloquen en los dedo hace diferencia, por lo tanto se trata de un caso de *variación sin repetición*. Por lo tanto, el número de formas diferentes que se pueden colocar los anillos es, según la ecuación \@ref(eq:variacion-sr):
+
+$$
+V_{5,2}=\frac{5!}{\left( 5-3\right)!}=\frac{5!}{ 2!}=5\,(4)=`r formato(nsamp(n = 5, k = 2, replace = F, ordered = T))`.
+$$
+Este resultado, se puede obtener con el siguiente script.
+
+```{r}
+c2 <- nsamp(n = 5, k = 2, replace = F, ordered = T)
+paste("Los anillos se pueden colocar de", c2,"maneras")
+```
+
+La lista de todas las posibles variaciones se puede obtener con el siguiente bloque de código.
+
+```{r ejemp2-vsr-list, class.source = "watch-out", class.output = "bg-warning"}
+urnsamples(
+  1:5,
+  size = 2, replace = F, ordered = T
+)
+```
+
+El resultado anterior, también se puede obtener con la función `permutations` del paquete `gtools`.
+
+```{r}
+permutations(n = 5, r = 2, v = 1:5, set = TRUE,
+             repeats.allowed = FALSE)
+```
+:::
+
+### Variación Con Repetición {#nt152}
+::: {.definition #variacion-cr name="Variación Con Repetición"}
+Dados $n$ objetos diferentes, el número de arreglos que se pueden formar con $r$ de estos objetos, pudiendo ocurrir que un mismo objeto aparezca más de una vez en el arreglo, viene dado por:
+
+$$
+\begin{equation}
+VR_{n,r}=n^r,\:con\: r\leq n.
+(\#eq:variacion-cr)
+\end{equation}
+$$
+:::
+
+::: {.example #ejemp1-vcr name="Variación Con Repetición"}
+¿Cuántos arreglos se pueden formar con las letras $a$, $b$, $c$ y $d$; tomando dos de ellas y suponiendo que las letras se pueden repetir.
+
+El número de arreglos posibles es el siguiente:
+
+$$
+\begin{Bmatrix}
+ (a,a);&(a,b);&(a,c);&(a,d);\\(b,a);&(b,b);&(b,c);&(b,d);\\(c,a);&(c,b);&(c,c);&(c,d);\\(d,a);&(d,b)
+;&(d,c);&(d,d)
+\end{Bmatrix}.
+$$
+
+El número de arreglos diferentes que se pueden formar sin necesidad de listarlos, de acuerdo con la ecuación \@ref(eq:variacion-cr) es:
+
+$$
+VR_{4,2}=4^2=`r 4 ^ 2`.
+$$
+
+La función `nsamp` del paquete `prob`, también ejecuta el cálculo anterior. Como se muestra en el siguiente bloque de código.
+
+```{r}
+c1 <- nsamp(n = 4, k = 2, replace = T, ordered = T)
+paste("Se pueden formar", formato(c1),"arreglos")
+```
+
+La lista de arreglos, usando `r colorize("R", "blue")`, se puede obtener con la siguiente instrucción.
+
+```{r}
+urnsamples(
+  c("a", "b", "c", "d"),
+  size = 2, replace = T, ordered = T
+)
+```
+:::
+
+## Ejercicios de Técnicas de Conteo
+
+1.	Se va a despachar una flotilla de nueve taxis a tres aeropuertos, de modo que tres irán al aeropuerto A, cinco al aeropuerto B y uno al aeropuerto C. ¿De cuántas maneras distintas puede llevarse a cabo la tarea?
+
+2.	¿Cuántos números telefónicos distintos de siete dígitos pueden se pueden formar si el primero no puede ser cero?
+
+3.	Un lujoso restaurante ofrece un menú especial o fixe prix, en el que por el precio de una comida puede elegir entre cuatro clases de aperitivos, tres de ensaladas, cuatro de guisados y cinco de postres. ¿Cuántos tipos de menú se ofrecen si cualquiera de ellos consta de aperitivo, ensalada, guisado y postre?
+
+4.	Una mujer de negocios de Margarita desea prepara un itinerario para visitar seis ciudades importantes de Venezuela. La distancia del viaje y, por consiguiente, su costo depende del orden en que planifique su ruta. ¿Cuántos itinerarios diferentes (y costos de viaje) son posibles?
+
+5.	Se llevó a cavo un estudio en la Universidad de Oriente Núcleo de Nueva Esparta para determinar la efectividad de cierta estrategia pedagógica. Para ello se tomó una muestra de 20 docentes de la institución. Si en la UDONE laboran 200 docentes. 
+    a)	¿Cuántas muestras diferentes pueden seleccionarse?
+    b)	Si de éstos 200 docentes el 40% son mujeres. ¿Cuántas muestras diferentes pueden obtenerse si el 40% de la muestra debe estar conformada por mujeres?
+
+6.	Un grupo de amigos y amigas se encuentran y se dan un beso para saludarse. Si se han dado en total 21 besos. ¿Cuántas personas había?
+
+7.	Lola tiene 25 bolitas (10 rojas, 8 azules y 7 blancas) para hacer un collar. Engarzando las 25 bolitas en un hilo, ¿cuántos collares distintos podrá realizar?
+
+8.	Una fábrica de helados dispone de cinco sabores distintos (vainilla, chocolate, nata, fresa y cola) y quiere hacer helados de dos sabores. ¿cuántos tipos de helados podría fabricar?
+
+9.	¿De cuántas formas pueden cubrirse los cargos de presidente, vicepresidente, secretario y tesorero de un club deportivo sabiendo que hay 14 candidatos?
+
+10.	En una carrera de 500 metros participan doce corredores. ¿De cuántas maneras pueden adjudicarse la medalla de oro, plata y bronce; suponiendo que no es posible de que ocurran empates?
+
+11.	¿Cuántas palabras distintas, con o sin sentido, podremos formar con las letras de la palabra educación? ¿y con la palabra vacaciones?
+
+12.	¿Cuántos números de seis cifras existen que estén formados por cuatro números dos y por dos números tres?
+
+13.	¿cuántos números de tres cifras se pueden formar con los dígitos 0, 1, 2, 3, 4, 5, 6 , 7, 8, 9 si ninguno se puede repetir?
+
+14.	Con los números 1, 2, 3, 4, 5 y 6:
+    a)	¿Cuántos números distintos de siete cifras podríamos formar?
+    b)	¿Podremos numerar a los 3.224.564 habitantes de una ciudad con esos números?
+
+## Información de Sesión {#sesion}
+
+```{r informacion-sesion, class.source = "watch-out"}
+as_tibble(devtools::session_info()$packages) %>%
+  dplyr::select(
+    package, loadedversion, source
+  ) %>%
+  dplyr::filter(
+    package %in% packages
+  ) %>%
+  DT::datatable(
+    rownames = FALSE,
+    colnames = c("Paquete", "Versión", "Fuente"),
+    caption = "Información de sesión",
+    filter = "top",
+    selection = "multiple",
+    class = "cell-border stripe"
+  )
+```
+
+
+

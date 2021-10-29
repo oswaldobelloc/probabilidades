@@ -1,0 +1,26 @@
+delete_merged_file: true
+book_filname: "libro_probabilidad"
+output_dir: "docs"
+language:
+  label:
+    fig: 'Figura '             # Figure
+    tab: 'Tabla '              # Table
+    eq: 'Ecuación '            # Equation
+    thm: 'Teorema '            # Theorem            
+    lem: 'Lema '               # Lema
+    cor: 'Corolario '          # Corollary
+    prp: 'Proposición '        # Proposition
+    cnj: 'Conjectura '         # Conjeture
+    def: 'Definición '         # Definition
+    exm: 'Ejemplo '            # Example  
+    exr: 'Ejercicio '          # exercice
+    hyp: 'Hipótesis '          # Hipótesis
+    proof: 'Demostración. '    # proof
+    remark: 'Nota: '           # remark
+    solution: 'Solución. '     # solution
+    # Empleamos el entorno "Conjetura" como "Algoritmo"
+  ui:
+    edit: Edit
+    chapter_name: 'Núcleo Temático '
+    appendix_name: 'Apéndice '
+
