@@ -1,0 +1,74 @@
+--- 
+title: "Probabilidades"
+author:
+  name: "Prof: Oswaldo Bello (oswaldobelloc@gmail.com)"
+  affiliation: "Universidade de Oriente, Venezuela"
+date: "`r stringr::str_to_sentence(format(Sys.time(), '%A, %d de %B de %Y (%X)'), locale = 'es')`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+# url: your book url like https://bookdown.org/yihui/bookdown
+# cover-image: path to the social sharing image like images/cover.jpg
+description: |
+  This is a minimal example of using the bookdown package to write a book.
+  The HTML output format for this example is bookdown::gitbook,
+  set in the _output.yml file.
+link-citations: yes
+github-repo: rstudio/bookdown-demo
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE, error = FALSE, warning = FALSE, message = FALSE,
+  strip.white = FALSE, tidy = "styler", results = "hold",
+  strip.white = FALSE,  comment = "#>",
+  tidy.opts = list(blank = FALSE, width.cutoff = 60)
+)
+```
+
+
+```{r, eval=FALSE}
+# Render book
+bookdown::render_book()
+# Preview book
+bookdown::serve_book()
+```
+
+
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown',
+  'tidyverse', 'DT', 'prob', 'gtools', 'combinat'
+), 'packages.bib')
+```
+
+
+```{r echo = FALSE}
+# función para colorear texto
+colorize <- function(x, color) {
+  if (knitr::is_latex_output()) {
+    sprintf("\\textcolor{%s}{%s}", color, x)
+  } else if (knitr::is_html_output()) {
+    sprintf("<span style='color: %s;'>%s</span>", color,
+      x)
+  } else x
+}
+```
+
+
+```{r echo = FALSE}
+# función para dar formato a número
+formato <- function(x) {
+  if (!is.numeric(x)) stop("La entrada debe ser numérica!")
+  format(
+    round(x, digits = 4),
+    mode = "double",
+    big.mark = ".",
+    decimal.mark = ","
+  )
+}
+```
+
+
+
