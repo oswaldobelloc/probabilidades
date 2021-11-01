@@ -1,5 +1,6 @@
 delete_merged_file: true
 book_filname: "libro_probabilidad"
+repo: https://github.com/oswaldobelloc/probabilidades
 output_dir: "docs"
 language:
   label:

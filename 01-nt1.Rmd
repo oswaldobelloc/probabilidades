@@ -67,7 +67,7 @@ $$n_1 + n_2 + n_3 + n_4= 3 + 5 + 4 + 2 =14$$
 
 formas para escoger una de las novelas.
 
-Este resultado se puede obtener con el siguiente bloque de código.
+El siguiente fragmento de código, muestra el cálculo anterior.
 
 ```{r}
 n1 <- 3
@@ -89,10 +89,9 @@ $$
 :::
 
 ::: {.example #ejemp1-princmult name="Pricipio de la Multiplicación"}
+Un artículo manufacturado debe pasar por tres controles. En cada uno de ellos se inspecciona una característica particular del artículo y se le marca de conformidad. En el primer control hay tres mediciones posibles, mientras que en cada uno de los últimos controles hay cuatro mediciones posibles. Por lo tanto, hay $n_1 \, n_2 \, n_3= 3 · 4 · 4 = 48$ maneras de marcar el artículo.
 
-un artículo manufacturado debe pasar por tres controles. En cada uno de ellos se inspecciona una característica particular del artículo y se le marca de conformidad. En el primer control hay tres mediciones posibles, mientras que en cada uno de los últimos controles hay cuatro mediciones posibles. Por lo tanto, hay $n_1 \, n_2 \, n_3= 3 · 4 · 4 = 48$ maneras de marcar el artículo.
-
-El resultado anterior puede conseguirse, mediante el siguiente script.
+En `r colorize("R", "blue")`, este resultado puede ser obtenido con el siguiente script.
 
 ```{r}
 n1 <- 3
@@ -107,6 +106,7 @@ Juan va a armar una computadora por sí mismo. Tiene la opción de comprar los c
 
 Juan puede armar la computadora de $n{}_1 \, n{}_2 \, n{}_3 \, n{}_4 = 2 \cdot 4 \cdot 3 \cdot 5 = 120$.
 
+El siguiente trozo de código, muestra el resultado anterior. 
 
 ```{r}
 n1 <- 2
@@ -119,7 +119,8 @@ n4 <- 5
 
 ::: {.example #ejemp3-princmult name="Pricipio de la Multiplicación"}
 ¿Cuántos números pares de cuatro dígitos se pueden formar con los dígitos 0, 1, 2, 5, 6 y 9, si cada dígito se puede usar sólo una vez?
-Como el número es par, tenemos sólo $n_1  = 3$ elecciones para la posición de las unidades. Sin embargo, para un número de cuatro dígitos la posición de las unidades de mil no puede ser cero. Por lo tanto, consideramos la posición de las unidades en dos partes: 0 o diferentes de 0. Si la posición de las unidades es 0 (es decir, $n_1 = 1$), tenemos $n_2 = 5$ elecciones para la posición de las unidades de mil, $n_3 = 4$, para la posición de las centenas y $n_4  = 3$ para la posición de las decenas. Por lo tanto, formamos un total de
+
+Como el número es par, tenemos sólo $n_1  = 3$ elecciones para la posición de las unidades. Sin embargo, para un número de cuatro dígitos la posición de las unidades de mil no puede ser cero. Por lo tanto, consideramos la posición de las unidades en dos partes: 0 o diferentes de 0. Si la posición de las unidades es 0 (es decir, $n_1 = 1$), tenemos $n_2 = 5$ elecciones para la posición de las unidades de mil, $n_3 = 4$ para la posición de las centenas y $n_4  = 3$ para la posición de las decenas. Por lo tanto, formamos un total de
 	$$
 	n_1 \: n_2 \: n_3 \: n_4 = 1 \cdot 5 \cdot 4 \cdot 3 = 60
 	$$
@@ -131,7 +132,7 @@ números pares de cuatro dígitos.
 
 Como los dos casos no pueden ocurrir al mismo tiempo, por el principio aditivo, el número total de números pares de cuatro dígitos es $60 + 96 = 156$.
 
-El resultado anterior puede obtenerse en`r colorize("R", "blue")` con el siguiente bloque de código.
+El resultado anterior puede obtenerse en `r colorize("R", "blue")` con el siguiente bloque de código.
 
 ```{r}
 n11 <- 1
@@ -171,7 +172,7 @@ Sea:
 La figura \@ref(fig:arbol1) muestra el diagrama de árbol para las diferentes maneras en que se puede clasificar la podadora de césped.
 
 ```{r arbol1, fig.cap="Diagrama de árbol para la clasificación de la podadora de césped", class.source = "watch-out", class.output = "bg-warning"}
-knitr::include_graphics(path = "figuras/diagrama_arbol2.png")
+knitr::include_graphics(path = "figuras/diagrama_arbol.png")
 ```
 :::
 
@@ -180,7 +181,7 @@ Mario y Eduardo van a jugar un torneo de tenis. La primera persona que gane 2 ju
 El diagrama de árbol que muestra los resultados posibles del torneo aparece en la figura \@ref(fig:arbol2).
 
 ```{r arbol2, fig.cap="Diagrama de árbol para el número de formas como puede desarrollarse el torneo", class.source = "watch-out", class.output = "bg-warning"}
-knitr::include_graphics(path = "figuras/diagrama_arbol.png")
+knitr::include_graphics(path = "figuras/diagrama_arbol2.png")
 ```
 :::
 
@@ -248,7 +249,7 @@ repeats.allowed = F
 ::: {.example #ejemp2-psr name="Permutación Sin repetición"}
 ¿Cuántas permutaciones se pueden hacer con las letras $a$, $b$, $c$, $d$?
 
-El número de *permutaciones sin repetición* que se pueden obtener es:
+La lista de *permutaciones sin repetición* que se pueden obtener es:
 $$
 \begin{Bmatrix}
  (a,b,c,d);&(a,b,d,c);&(a,c,b,d);&(a,c,d,b);&(a,d,b,c);\\(a,d,c,b);&(b,a,c,d);&(b,a,d,c);&(b,c,a,d);&
@@ -262,7 +263,7 @@ $$
 P_4=4\cdot3\cdot2\cdot1=24.
 $$
 
-En `r colorize("R", "blue")`, este resultado se puede mostrar con el siguiente código. Note que en este bloque de código, el resultado anterior se ha calculado de dos manera, la primera, usando la función `factorial` de la distribución base de `r colorize("R", "blue")`, y el otro, usando la función `nsamp` del paquete `prob`. 
+El resultado anterior, se puede mostrar con el siguiente código. Aquí, como en el ejemplo \@ref(exm:ejemp1-psr),  se han usado las funciones `factorial` y `nsamp` para determinar el número de *permutaciones sin repetición*. 
 
 ```{r ejemp2-psr, class.source = "watch-out", class.output = "bg-warning"}
 factorial(4)   
@@ -279,10 +280,10 @@ urnsamples(c("a", "b", "c", "d"), size = 4, replace = F, ordered = T)
 ::: {.example #ejemp3-psr name="Permutación Sin repetición"}
 En una carrera de caballos en la cual participan 12. ¿De cuántas maneras pueden llegar los caballos a la meta, si no es posible que se den empates?
 
-Usando la ecuación \@ref(eq:permutacion-sr), el número de resultados posibles es::
+Usando la ecuación \@ref(eq:permutacion-sr), el número de resultados posibles es:
 $$P_{12}=12!=12\cdot11\cdot10\cdot9\cdot8\cdot7\cdot6\cdot5\cdot4\cdot3\cdot2\cdot1=`r formato(nsamp(n = 12, k = 12, replace = FALSE, ordered = TRUE))`.$$
 
-Usando `r colorize("R", "blue")`, el resultado se muestra como sigue.
+Usando `r colorize("R", "blue")`, este resultado puede obtenerse mediante el siguiente script.
 
 ```{r ejemp3-psr, class.source = "watch-out", class.output = "bg-warning"}
 factorial(12)   
@@ -403,10 +404,16 @@ urnsamples(
 ```
 :::
 
-::: {.example #ejemp3-pcr name="Permutación Con repetición"} 
+::: {.example #ejemp3-pcr name="Permutación Con Repetición"} 
 Durante un entrenamiento del equipo de fútbol americano de la universidad, el coordinador defensivo necesita tener a 10 jugadores parados en una fila. Entre estos 10 jugadores, hay 1 de primer año, 2 de segundo año, 4 de tercer año y 3 de cuarto año, respectivamente. ¿De cuántas formas diferentes se pueden arreglar en una fila, si sólo se distingue su nivel de clase?
 
-Si sólo se distingue su nivel de clase, la fila se puede arreglar de las siguientes maneraas:
+Si sólo se distingue su nivel de clase, la fila se puede arreglar de
+$$
+PR_{4}^{2, 2}=\frac{10!}{1!\,2!\,4!\,3!}=\frac{4(3)(2!)}{2!\,2!}=\frac{10(9)(8)(7)(6)(5)(4!)}{2\,(4!)(6)}=`r PR(n = 10, k = c(1, 2, 4, 3))`.
+$$
+maneras diferentes.
+
+Con `r colorize("R", "blue")`, este resultado se puede ostrar con el siguiente bloque de código. 
 
 ```{r ejemp3-pcr}
 paste("El número de permutaciones con repeticiones es ", 
@@ -451,20 +458,21 @@ paste("Se pueden formar", c1,"delegaciones")
 ::: {.example #ejemp2-csr name="Conbinación Sin Repetición"}
 ¿De cuántas maneras se pueden colocar dos anillos idénticos en la misma mano, de modo que no estén en el mismo dedo?
 
-Los anillos se pueden colocar, según la ecuación \@ref(eq:combinacion-sr), de:
+Los anillos se pueden colocar, según la ecuación \@ref(eq:combinacion-sr), de
 
 $$
-C_{5,2}=\binom{5}{2}=\frac{5!}{2!\left ( 5-2 \right )!}=\frac{5\left ( 4 \right )\left ( 3! \right )}{2!\left ( 3! \right )}=\frac{5\left ( 4 \right )}{\left ( 2 \right )\left ( 1 \right )}=`r choose(5, 2)`.
+C_{5,2}=\binom{5}{2}=\frac{5!}{2!\left ( 5-2 \right )!}=\frac{5\left ( 4 \right )\left ( 3! \right )}{2!\left ( 3! \right )}=\frac{5\left ( 4 \right )}{\left ( 2 \right )\left ( 1 \right )}=`r choose(5, 2)`
 $$
+maneras.
 
-La función `nsamp` del paquete `prob`, también ejecuta el cálculo anterior. Como se muestra en el siguiente bloque de código.
+Usando la función `nsamp`, al igual que en el ejemplo \@ref(exm:ejemp1-csr), el resultado anterior puede ser obtenido con el siguiente script.
 
 ```{r}
 c2 <- nsamp(n = 5, k = 2, replace = F, ordered = F)
 paste("Los anillos se pueden colocar de", c2,"maneras")
 ```
 
-El siguiente script lista el número de maneras diferentes en que se pueden colocar los anillos en los dedos de una mano.
+El siguiente script lista el número de maneras diferentes en que se pueden colocar los anillos en dos dedos diferentes de una mano.
 
 ```{r ejemp2-csr-list, class.source = "watch-out", class.output = "bg-warning"}
 urnsamples(
@@ -517,22 +525,20 @@ paste("Pueden resultar", c1,"nacionalidades distintas")
 
 Una ficha de dominó es un rectángulo en el que hay dos partes, en cada una de ellas hay una serie de puntos que indican la puntuación de esa parte. Estas puntuaciones van de blanca (0 puntos) a 6. Tenemos pares de puntuaciones de 0 a 6.
 
-El total de fichas será  
-
-De la ecuación \@ref(eq:combinacion-cr), el número de formas diferentes en que puede resultar la nacionalidad es:
+El total de fichas en el dominó, de acuerdo con la ecuación \@ref(eq:combinacion-cr), serán:
 
 $$
 CR_{7,2}=\binom{7+2-1}{7-1}=\binom{8}{6}=\binom{8}{2}=\frac{\left ( 8 \right )\left ( 7 \right )}{2!}=`r nsamp(n = 7, k = 2, replace = T, ordered = F)`.
 $$
 
-La función `nsamp` del paquete `prob`, también ejecuta el cálculo anterior. Como se muestra en el siguiente bloque de código.
+Haciendo uso de la función `nsamp` del paquete `prob`, el resultado anterior puede ser replicado con el siguiente script.
 
 ```{r}
 c1 <- nsamp(n = 7, k = 2, replace = T, ordered = F)
 paste("Pueden resultar", c1,"nacionalidades distintas")
 ```
 
-Las piezas se pueden listar con el siguiente script.
+Las piezas del dominó se pueden listar con el siguiente script.
 
 ```{r}
 combinations(n = 7, r = 2, v = 0:6, set = T, 
@@ -573,7 +579,7 @@ Como los premios son distinguibles, se trata de un problema de variación. Por l
 $$
 V_{25,3}=\frac{25!}{\left( 25-3\right)!}=25\,(24)\,(23)=`r formato(nsamp(n = 25, k = 3, replace = F, ordered = T))`.
 $$
-La función `nsamp` del paquete `prob`, también ejecuta el cálculo anterior. Como se muestra en el siguiente bloque de código.
+Con la función `nsamp` del paquete `prob`, este resultado se obtiene con el siguiente trozo de código.  
 
 ```{r}
 c1 <- nsamp(n = 25, k = 3, replace = F, ordered = T)
@@ -584,7 +590,7 @@ paste("Se pueden hacer", formato(c1),"selecciones")
 ::: {.example #ejemp2-csr name="Conbinación Sin Repetición"}
 ¿De cuántas maneras se pueden colocar dos anillos diferentes en la misma mano, de modo que no estén en el mismo dedo?
 
-Dado que los anillos son diferentes, en contraposición con el ejemplo \@ref(exm:ejemp2-csr), el orden en que se coloquen en los dedo hace diferencia, por lo tanto se trata de un caso de *variación sin repetición*. Por lo tanto, el número de formas diferentes que se pueden colocar los anillos es, según la ecuación \@ref(eq:variacion-sr):
+Dado que los anillos son diferentes, en contraposición con el ejemplo \@ref(exm:ejemp2-csr), el orden en que se coloquen en los dedo hace diferencia, por lo tanto se trata de un caso de *variación sin repetición*. Por lo tanto, el número de formas diferentes en que se pueden colocar los anillos en dos dedos diferentes de la mano, según la ecuación \@ref(eq:variacion-sr) es:
 
 $$
 V_{5,2}=\frac{5!}{\left( 5-3\right)!}=\frac{5!}{ 2!}=5\,(4)=`r formato(nsamp(n = 5, k = 2, replace = F, ordered = T))`.
@@ -643,7 +649,7 @@ $$
 VR_{4,2}=4^2=`r 4 ^ 2`.
 $$
 
-La función `nsamp` del paquete `prob`, también ejecuta el cálculo anterior. Como se muestra en el siguiente bloque de código.
+La función `nsamp` del paquete `prob` ejecuta el cálculo anterior, por medio del siguiente bloque de código.
 
 ```{r}
 c1 <- nsamp(n = 4, k = 2, replace = T, ordered = T)
@@ -714,5 +720,27 @@ as_tibble(devtools::session_info()$packages) %>%
   )
 ```
 
+
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(),
+  "bookdown", "bookdownplus", "magrittr", "kableExtra",
+  "DT", "devtools", "tidyverse", "htmltools",
+  "htmlwidgets", "utf8", "stringr", "gtools", "prob",
+  "combinat", "knitcitations"
+  ), "packages.bib"
+)
+```
+
+
+`r if (knitr:::is_html_output()) '# Bibliografía {-}'`
+
+```{r generateBibliography, echo=FALSE, eval=TRUE, message=FALSE, warning=FALSE, results="asis"}
+require("knitcitations")
+cleanbib()
+options("citation_format" = "pandoc")
+read.bibtex(file = "packages.bib")
+```
 
 

@@ -6,7 +6,7 @@ author:
 date: "`r stringr::str_to_sentence(format(Sys.time(), '%A, %d de %B de %Y (%X)'), locale = 'es')`"
 site: bookdown::bookdown_site
 documentclass: book
-bibliography: [book.bib, packages.bib]
+bibliography: packages.bib
 # url: your book url like https://bookdown.org/yihui/bookdown
 # cover-image: path to the social sharing image like images/cover.jpg
 description: |
@@ -14,7 +14,7 @@ description: |
   The HTML output format for this example is bookdown::gitbook,
   set in the _output.yml file.
 link-citations: yes
-github-repo: rstudio/bookdown-demo
+github-repo: oswaldobelloc/probabilidades
 ---
 
 ```{r setup, include=FALSE}
@@ -72,10 +72,10 @@ formato <- function(x) {
 
 # Prólogo {-}
 
-Este libro es una guía para el la enseñanza la asignatura Probabilidades, esencialmente pretende ser un curso de Probabilidades Discretas aplicado con el lenguaje `r colorize("R", "blue")`. 
+Este libro es una guía para la enseñanza la asignatura Probabilidades, esencialmente pretende ser un curso de Probabilidades Discretas aplicado con el lenguaje `r colorize("R", "blue")`. 
 
-Este libro ha sido escrito en [R-Markdown](http://rmarkdown.rstudio.com) empleando el paquete [`bookdown`](https://bookdown.org/yihui/bookdown/)  y está disponible en el repositorio Github: [
-probabilidaes](https://github.com/oswaldobelloc/probabilidaes). Este repositorio es público, por lo que el cualquier persona puede acceder al código fuente y hacer comentarios en aras de mejorar la edición del mismo.
+El contenido de este texto ha sido escrito en [R-Markdown](http://rmarkdown.rstudio.com) empleando el paquete [`bookdown`](https://bookdown.org/yihui/bookdown/)  y está disponible en el repositorio Github: [
+probabilidades](https://github.com/oswaldobelloc/probabilidaes). Este repositorio es público, por lo que cualquier persona puede acceder al código fuente y hacer comentarios en aras de mejorar ediciones futuras del libro.
 
 Para generar el libro (compilar) puede ser recomendable instalar la última versión de [RStudio]((https://www.rstudio.com/products/rstudio/download/)) y la versión de desarrollo de `bookdown` disponible en [Github](https://github.com/rstudio/bookdown). 
 

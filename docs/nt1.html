@@ -17,7 +17,7 @@ set in the _output.yml file.</p>" />
   <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
 The HTML output format for this example is bookdown::gitbook,
 set in the _output.yml file.</p>" />
-  <meta name="github-repo" content="rstudio/bookdown-demo" />
+  <meta name="github-repo" content="oswaldobelloc/probabilidades" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Núcleo Temático 1 Técnicas de Conteo | Probabilidades" />
@@ -36,7 +36,7 @@ set in the _output.yml file.</p>" />
   
   
 <link rel="prev" href="index.html"/>
-<link rel="next" href="princ_prob.html"/>
+<link rel="next" href="bibliografía.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -178,6 +178,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.6" data-path="nt1.html"><a href="nt1.html#ejercicios-de-técnicas-de-conteo"><i class="fa fa-check"></i><b>1.6</b> Ejercicios de Técnicas de Conteo</a></li>
 <li class="chapter" data-level="1.7" data-path="nt1.html"><a href="nt1.html#sesion"><i class="fa fa-check"></i><b>1.7</b> Información de Sesión</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="bibliografía.html"><a href="bibliografía.html"><i class="fa fa-check"></i>Bibliografía</a></li>
 <li class="chapter" data-level="2" data-path="princ_prob.html"><a href="princ_prob.html"><i class="fa fa-check"></i><b>2</b> Princípios Básicos de probabilidades</a></li>
 <li class="chapter" data-level="3" data-path="dist_disc.html"><a href="dist_disc.html"><i class="fa fa-check"></i><b>3</b> Disribuciones Discretas de Probabilidades</a></li>
 <li class="divider"></li>
@@ -261,7 +262,7 @@ Suponiendo que los procedimientos no se pueden realizar en forma conjunta.</p>
 <p><span id="exm:ejemp2-princadit" class="example"><strong>Ejemplo 1.2  (Pricipio de la Adición) </strong></span>Suponga que en una biblioteca hay 3 novelas de misterio diferentes, 5 novelas de romance diferentes, 4 novelas de ficción diferentes y 2 novelas de aventura diferentes. Entonces hay</p>
 <p><span class="math display">\[n_1 + n_2 + n_3 + n_4= 3 + 5 + 4 + 2 =14\]</span></p>
 <p>formas para escoger una de las novelas.</p>
-<p>Este resultado se puede obtener con el siguiente bloque de código.</p>
+<p>El siguiente fragmento de código, muestra el cálculo anterior.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="nt1.html#cb5-1" aria-hidden="true" tabindex="-1"></a>n1 <span class="ot">&lt;-</span> <span class="dv">3</span></span>
 <span id="cb5-2"><a href="nt1.html#cb5-2" aria-hidden="true" tabindex="-1"></a>n2 <span class="ot">&lt;-</span> <span class="dv">5</span></span>
 <span id="cb5-3"><a href="nt1.html#cb5-3" aria-hidden="true" tabindex="-1"></a>n3 <span class="ot">&lt;-</span> <span class="dv">4</span></span>
@@ -279,8 +280,8 @@ n{}_1\,n{}_2\cdots\,n{}_k.
 \]</span></p>
 </div>
 <div class="example">
-<p><span id="exm:ejemp1-princmult" class="example"><strong>Ejemplo 1.3  (Pricipio de la Multiplicación) </strong></span>un artículo manufacturado debe pasar por tres controles. En cada uno de ellos se inspecciona una característica particular del artículo y se le marca de conformidad. En el primer control hay tres mediciones posibles, mientras que en cada uno de los últimos controles hay cuatro mediciones posibles. Por lo tanto, hay <span class="math inline">\(n_1 \, n_2 \, n_3= 3 · 4 · 4 = 48\)</span> maneras de marcar el artículo.</p>
-<p>El resultado anterior puede conseguirse, mediante el siguiente script.</p>
+<p><span id="exm:ejemp1-princmult" class="example"><strong>Ejemplo 1.3  (Pricipio de la Multiplicación) </strong></span>Un artículo manufacturado debe pasar por tres controles. En cada uno de ellos se inspecciona una característica particular del artículo y se le marca de conformidad. En el primer control hay tres mediciones posibles, mientras que en cada uno de los últimos controles hay cuatro mediciones posibles. Por lo tanto, hay <span class="math inline">\(n_1 \, n_2 \, n_3= 3 · 4 · 4 = 48\)</span> maneras de marcar el artículo.</p>
+<p>En <span style="color: blue;">R</span>, este resultado puede ser obtenido con el siguiente script.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="nt1.html#cb7-1" aria-hidden="true" tabindex="-1"></a>n1 <span class="ot">&lt;-</span> <span class="dv">3</span></span>
 <span id="cb7-2"><a href="nt1.html#cb7-2" aria-hidden="true" tabindex="-1"></a>n2 <span class="ot">&lt;-</span> <span class="dv">4</span></span>
 <span id="cb7-3"><a href="nt1.html#cb7-3" aria-hidden="true" tabindex="-1"></a>n3 <span class="ot">&lt;-</span> <span class="dv">4</span></span>
@@ -290,6 +291,7 @@ n{}_1\,n{}_2\cdots\,n{}_k.
 <div class="example">
 <p><span id="exm:ejemp2-princmult" class="example"><strong>Ejemplo 1.4  (Pricipio de la Multiplicación) </strong></span>Juan va a armar una computadora por sí mismo. Tiene la opción de comprar los chips entre dos marcas, un disco duro de cuatro marcas, la memoria de tres marcas y un conjunto de accesorios en cinco tiendas locales. ¿De cuántas formas diferentes puede Juan armar la computadora?</p>
 <p>Juan puede armar la computadora de <span class="math inline">\(n{}_1 \, n{}_2 \, n{}_3 \, n{}_4 = 2 \cdot 4 \cdot 3 \cdot 5 = 120\)</span>.</p>
+<p>El siguiente trozo de código, muestra el resultado anterior.</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="nt1.html#cb9-1" aria-hidden="true" tabindex="-1"></a>n1 <span class="ot">&lt;-</span> <span class="dv">2</span></span>
 <span id="cb9-2"><a href="nt1.html#cb9-2" aria-hidden="true" tabindex="-1"></a>n2 <span class="ot">&lt;-</span> <span class="dv">4</span></span>
 <span id="cb9-3"><a href="nt1.html#cb9-3" aria-hidden="true" tabindex="-1"></a>n3 <span class="ot">&lt;-</span> <span class="dv">3</span></span>
@@ -298,8 +300,8 @@ n{}_1\,n{}_2\cdots\,n{}_k.
 <pre><code>#&gt; [1] 120</code></pre>
 </div>
 <div class="example">
-<p><span id="exm:ejemp3-princmult" class="example"><strong>Ejemplo 1.5  (Pricipio de la Multiplicación) </strong></span>¿Cuántos números pares de cuatro dígitos se pueden formar con los dígitos 0, 1, 2, 5, 6 y 9, si cada dígito se puede usar sólo una vez?
-Como el número es par, tenemos sólo <span class="math inline">\(n_1 = 3\)</span> elecciones para la posición de las unidades. Sin embargo, para un número de cuatro dígitos la posición de las unidades de mil no puede ser cero. Por lo tanto, consideramos la posición de las unidades en dos partes: 0 o diferentes de 0. Si la posición de las unidades es 0 (es decir, <span class="math inline">\(n_1 = 1\)</span>), tenemos <span class="math inline">\(n_2 = 5\)</span> elecciones para la posición de las unidades de mil, <span class="math inline">\(n_3 = 4\)</span>, para la posición de las centenas y <span class="math inline">\(n_4 = 3\)</span> para la posición de las decenas. Por lo tanto, formamos un total de
+<p><span id="exm:ejemp3-princmult" class="example"><strong>Ejemplo 1.5  (Pricipio de la Multiplicación) </strong></span>¿Cuántos números pares de cuatro dígitos se pueden formar con los dígitos 0, 1, 2, 5, 6 y 9, si cada dígito se puede usar sólo una vez?</p>
+<p>Como el número es par, tenemos sólo <span class="math inline">\(n_1 = 3\)</span> elecciones para la posición de las unidades. Sin embargo, para un número de cuatro dígitos la posición de las unidades de mil no puede ser cero. Por lo tanto, consideramos la posición de las unidades en dos partes: 0 o diferentes de 0. Si la posición de las unidades es 0 (es decir, <span class="math inline">\(n_1 = 1\)</span>), tenemos <span class="math inline">\(n_2 = 5\)</span> elecciones para la posición de las unidades de mil, <span class="math inline">\(n_3 = 4\)</span> para la posición de las centenas y <span class="math inline">\(n_4 = 3\)</span> para la posición de las decenas. Por lo tanto, formamos un total de
 <span class="math display">\[
     n_1 \: n_2 \: n_3 \: n_4 = 1 \cdot 5 \cdot 4 \cdot 3 = 60
     \]</span>
@@ -309,7 +311,7 @@ n_1 \: n_2 \: n_3 \: n_4 = 2 \cdot 4 \cdot 4 \cdot 3 = 96
 \]</span>
 números pares de cuatro dígitos.</p>
 <p>Como los dos casos no pueden ocurrir al mismo tiempo, por el principio aditivo, el número total de números pares de cuatro dígitos es <span class="math inline">\(60 + 96 = 156\)</span>.</p>
-<p>El resultado anterior puede obtenerse en<span style="color: blue;">R</span> con el siguiente bloque de código.</p>
+<p>El resultado anterior puede obtenerse en <span style="color: blue;">R</span> con el siguiente bloque de código.</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="nt1.html#cb11-1" aria-hidden="true" tabindex="-1"></a>n11 <span class="ot">&lt;-</span> <span class="dv">1</span></span>
 <span id="cb11-2"><a href="nt1.html#cb11-2" aria-hidden="true" tabindex="-1"></a>n12 <span class="ot">&lt;-</span> <span class="dv">5</span></span>
 <span id="cb11-3"><a href="nt1.html#cb11-3" aria-hidden="true" tabindex="-1"></a>n13 <span class="ot">&lt;-</span> <span class="dv">4</span></span>
@@ -344,9 +346,9 @@ números pares de cuatro dígitos.</p>
 <li>C<sub>3</sub>: la podadora de césped es costosa de reparar</li>
 </ul>
 <p>La figura <a href="nt1.html#fig:arbol1">1.1</a> muestra el diagrama de árbol para las diferentes maneras en que se puede clasificar la podadora de césped.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb13-1"><a href="nt1.html#cb13-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="at">path =</span> <span class="st">&quot;figuras/diagrama_arbol2.png&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb13-1"><a href="nt1.html#cb13-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="at">path =</span> <span class="st">&quot;figuras/diagrama_arbol.png&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:arbol1"></span>
-<img src="figuras/diagrama_arbol2.png" alt="Diagrama de árbol para la clasificación de la podadora de césped" width="278" />
+<img src="figuras/diagrama_arbol.png" alt="Diagrama de árbol para la clasificación de la podadora de césped" width="220" />
 <p class="caption">
 Figura 1.1: Diagrama de árbol para la clasificación de la podadora de césped
 </p>
@@ -355,9 +357,9 @@ Figura 1.1: Diagrama de árbol para la clasificación de la podadora de césped
 <div class="example">
 <p><span id="exm:ejemp2-arbol" class="example"><strong>Ejemplo 1.7  (Diagrama de Árbol) </strong></span>Mario y Eduardo van a jugar un torneo de tenis. La primera persona que gane 2 juegos seguidos o quien gane un total de 3 juegos gana el torneo. Encuentre el número de formas como puede desarrollarse el torneo.
 El diagrama de árbol que muestra los resultados posibles del torneo aparece en la figura <a href="nt1.html#fig:arbol2">1.2</a>.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb14-1"><a href="nt1.html#cb14-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="at">path =</span> <span class="st">&quot;figuras/diagrama_arbol.png&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb14-1"><a href="nt1.html#cb14-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="at">path =</span> <span class="st">&quot;figuras/diagrama_arbol2.png&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:arbol2"></span>
-<img src="figuras/diagrama_arbol.png" alt="Diagrama de árbol para el número de formas como puede desarrollarse el torneo" width="220" />
+<img src="figuras/diagrama_arbol2.png" alt="Diagrama de árbol para el número de formas como puede desarrollarse el torneo" width="278" />
 <p class="caption">
 Figura 1.2: Diagrama de árbol para el número de formas como puede desarrollarse el torneo
 </p>
@@ -429,7 +431,7 @@ En <span style="color: blue;">R</span>, este resultado se puede mostrar con el s
 </div>
 <div class="example">
 <p><span id="exm:ejemp2-psr" class="example"><strong>Ejemplo 1.9  (Permutación Sin repetición) </strong></span>¿Cuántas permutaciones se pueden hacer con las letras <span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span>, <span class="math inline">\(c\)</span>, <span class="math inline">\(d\)</span>?</p>
-<p>El número de <em>permutaciones sin repetición</em> que se pueden obtener es:
+<p>La lista de <em>permutaciones sin repetición</em> que se pueden obtener es:
 <span class="math display">\[
 \begin{Bmatrix}
  (a,b,c,d);&amp;(a,b,d,c);&amp;(a,c,b,d);&amp;(a,c,d,b);&amp;(a,d,b,c);\\(a,d,c,b);&amp;(b,a,c,d);&amp;(b,a,d,c);&amp;(b,c,a,d);&amp;
@@ -441,7 +443,7 @@ En <span style="color: blue;">R</span>, este resultado se puede mostrar con el s
 <span class="math display">\[
 P_4=4\cdot3\cdot2\cdot1=24.
 \]</span></p>
-<p>En <span style="color: blue;">R</span>, este resultado se puede mostrar con el siguiente código. Note que en este bloque de código, el resultado anterior se ha calculado de dos manera, la primera, usando la función <code>factorial</code> de la distribución base de <span style="color: blue;">R</span>, y el otro, usando la función <code>nsamp</code> del paquete <code>prob</code>.</p>
+<p>El resultado anterior, se puede mostrar con el siguiente código. Aquí, como en el ejemplo <a href="nt1.html#exm:ejemp1-psr">1.8</a>, se han usado las funciones <code>factorial</code> y <code>nsamp</code> para determinar el número de <em>permutaciones sin repetición</em>.</p>
 <div class="sourceCode" id="cb21"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb21-1"><a href="nt1.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">factorial</span>(<span class="dv">4</span>)   </span>
 <span id="cb21-2"><a href="nt1.html#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nsamp</span>(<span class="at">n =</span> <span class="dv">4</span>, <span class="at">k =</span> <span class="dv">4</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>, <span class="at">ordered =</span> <span class="cn">TRUE</span>) </span></code></pre></div>
 <pre class="bg-warning"><code>#&gt; [1] 24
@@ -476,9 +478,9 @@ P_4=4\cdot3\cdot2\cdot1=24.
 </div>
 <div class="example">
 <p><span id="exm:ejemp3-psr" class="example"><strong>Ejemplo 1.10  (Permutación Sin repetición) </strong></span>En una carrera de caballos en la cual participan 12. ¿De cuántas maneras pueden llegar los caballos a la meta, si no es posible que se den empates?</p>
-<p>Usando la ecuación <a href="nt1.html#eq:permutacion-sr">(1.1)</a>, el número de resultados posibles es::
+<p>Usando la ecuación <a href="nt1.html#eq:permutacion-sr">(1.1)</a>, el número de resultados posibles es:
 <span class="math display">\[P_{12}=12!=12\cdot11\cdot10\cdot9\cdot8\cdot7\cdot6\cdot5\cdot4\cdot3\cdot2\cdot1=479.001.600.\]</span></p>
-<p>Usando <span style="color: blue;">R</span>, el resultado se muestra como sigue.</p>
+<p>Usando <span style="color: blue;">R</span>, este resultado puede obtenerse mediante el siguiente script.</p>
 <div class="sourceCode" id="cb25"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb25-1"><a href="nt1.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">factorial</span>(<span class="dv">12</span>)   </span>
 <span id="cb25-2"><a href="nt1.html#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nsamp</span>(<span class="at">n =</span> <span class="dv">12</span>, <span class="at">k =</span> <span class="dv">12</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>, <span class="at">ordered =</span> <span class="cn">TRUE</span>) </span></code></pre></div>
 <pre class="bg-warning"><code>#&gt; [1] 479001600
@@ -580,8 +582,13 @@ PR_{4}^{2, 2}=\frac{4!}{2!\,2!}=\frac{4(3)(2!)}{2!\,2!}=\frac{12}{2}=6.
 #&gt; 6  y  y  x  x</code></pre>
 </div>
 <div class="example">
-<p><span id="exm:ejemp3-pcr" class="example"><strong>Ejemplo 1.13  (Permutación Con repetición) </strong></span>Durante un entrenamiento del equipo de fútbol americano de la universidad, el coordinador defensivo necesita tener a 10 jugadores parados en una fila. Entre estos 10 jugadores, hay 1 de primer año, 2 de segundo año, 4 de tercer año y 3 de cuarto año, respectivamente. ¿De cuántas formas diferentes se pueden arreglar en una fila, si sólo se distingue su nivel de clase?</p>
-<p>Si sólo se distingue su nivel de clase, la fila se puede arreglar de las siguientes maneraas:</p>
+<p><span id="exm:ejemp3-pcr" class="example"><strong>Ejemplo 1.13  (Permutación Con Repetición) </strong></span>Durante un entrenamiento del equipo de fútbol americano de la universidad, el coordinador defensivo necesita tener a 10 jugadores parados en una fila. Entre estos 10 jugadores, hay 1 de primer año, 2 de segundo año, 4 de tercer año y 3 de cuarto año, respectivamente. ¿De cuántas formas diferentes se pueden arreglar en una fila, si sólo se distingue su nivel de clase?</p>
+<p>Si sólo se distingue su nivel de clase, la fila se puede arreglar de
+<span class="math display">\[
+PR_{4}^{2, 2}=\frac{10!}{1!\,2!\,4!\,3!}=\frac{4(3)(2!)}{2!\,2!}=\frac{10(9)(8)(7)(6)(5)(4!)}{2\,(4!)(6)}=1.26\times 10^{4}.
+\]</span>
+maneras diferentes.</p>
+<p>Con <span style="color: blue;">R</span>, este resultado se puede ostrar con el siguiente bloque de código.</p>
 <div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="nt1.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&quot;El número de permutaciones con repeticiones es &quot;</span>, </span>
 <span id="cb37-2"><a href="nt1.html#cb37-2" aria-hidden="true" tabindex="-1"></a>      <span class="fu">formato</span>(<span class="fu">PR</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">k =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">3</span>))))</span></code></pre></div>
 <pre><code>#&gt; [1] &quot;El número de permutaciones con repeticiones es  12.600&quot;</code></pre>
@@ -617,15 +624,16 @@ C_{12,3}=\binom{12}{3}=\frac{12!}{3!\left ( 12-3 \right )!}=\frac{12\left ( 11 \
 </div>
 <div class="example">
 <p><span id="exm:ejemp2-csr" class="example"><strong>Ejemplo 1.15  (Conbinación Sin Repetición) </strong></span>¿De cuántas maneras se pueden colocar dos anillos idénticos en la misma mano, de modo que no estén en el mismo dedo?</p>
-<p>Los anillos se pueden colocar, según la ecuación <a href="nt1.html#eq:combinacion-sr">(1.3)</a>, de:</p>
+<p>Los anillos se pueden colocar, según la ecuación <a href="nt1.html#eq:combinacion-sr">(1.3)</a>, de</p>
 <p><span class="math display">\[
-C_{5,2}=\binom{5}{2}=\frac{5!}{2!\left ( 5-2 \right )!}=\frac{5\left ( 4 \right )\left ( 3! \right )}{2!\left ( 3! \right )}=\frac{5\left ( 4 \right )}{\left ( 2 \right )\left ( 1 \right )}=10.
-\]</span></p>
-<p>La función <code>nsamp</code> del paquete <code>prob</code>, también ejecuta el cálculo anterior. Como se muestra en el siguiente bloque de código.</p>
+C_{5,2}=\binom{5}{2}=\frac{5!}{2!\left ( 5-2 \right )!}=\frac{5\left ( 4 \right )\left ( 3! \right )}{2!\left ( 3! \right )}=\frac{5\left ( 4 \right )}{\left ( 2 \right )\left ( 1 \right )}=10
+\]</span>
+maneras.</p>
+<p>Usando la función <code>nsamp</code>, al igual que en el ejemplo <a href="nt1.html#exm:ejemp1-csr">1.14</a>, el resultado anterior puede ser obtenido con el siguiente script.</p>
 <div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="nt1.html#cb41-1" aria-hidden="true" tabindex="-1"></a>c2 <span class="ot">&lt;-</span> <span class="fu">nsamp</span>(<span class="at">n =</span> <span class="dv">5</span>, <span class="at">k =</span> <span class="dv">2</span>, <span class="at">replace =</span> F, <span class="at">ordered =</span> F)</span>
 <span id="cb41-2"><a href="nt1.html#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&quot;Los anillos se pueden colocar de&quot;</span>, c2,<span class="st">&quot;maneras&quot;</span>)</span></code></pre></div>
 <pre><code>#&gt; [1] &quot;Los anillos se pueden colocar de 10 maneras&quot;</code></pre>
-<p>El siguiente script lista el número de maneras diferentes en que se pueden colocar los anillos en los dedos de una mano.</p>
+<p>El siguiente script lista el número de maneras diferentes en que se pueden colocar los anillos en dos dedos diferentes de una mano.</p>
 <div class="sourceCode" id="cb43"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb43-1"><a href="nt1.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">urnsamples</span>(</span>
 <span id="cb43-2"><a href="nt1.html#cb43-2" aria-hidden="true" tabindex="-1"></a>  <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,</span>
 <span id="cb43-3"><a href="nt1.html#cb43-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">size =</span> <span class="dv">2</span>, <span class="at">replace =</span> F, <span class="at">ordered =</span> F</span>
@@ -683,16 +691,15 @@ CR_{4,10}=\binom{4+10-1}{4-1}=\binom{13}{3}=\frac{\left ( 13 \right )\left ( 12 
 <div class="example">
 <p><span id="exm:ejemp2-ccr" class="example"><strong>Ejemplo 1.17  (Combinación Con Repetición) </strong></span>¿Cuántas fichas tiene el juego del dominó?</p>
 <p>Una ficha de dominó es un rectángulo en el que hay dos partes, en cada una de ellas hay una serie de puntos que indican la puntuación de esa parte. Estas puntuaciones van de blanca (0 puntos) a 6. Tenemos pares de puntuaciones de 0 a 6.</p>
-<p>El total de fichas será</p>
-<p>De la ecuación <a href="nt1.html#eq:combinacion-cr">(1.4)</a>, el número de formas diferentes en que puede resultar la nacionalidad es:</p>
+<p>El total de fichas en el dominó, de acuerdo con la ecuación <a href="nt1.html#eq:combinacion-cr">(1.4)</a>, serán:</p>
 <p><span class="math display">\[
 CR_{7,2}=\binom{7+2-1}{7-1}=\binom{8}{6}=\binom{8}{2}=\frac{\left ( 8 \right )\left ( 7 \right )}{2!}=28.
 \]</span></p>
-<p>La función <code>nsamp</code> del paquete <code>prob</code>, también ejecuta el cálculo anterior. Como se muestra en el siguiente bloque de código.</p>
+<p>Haciendo uso de la función <code>nsamp</code> del paquete <code>prob</code>, el resultado anterior puede ser replicado con el siguiente script.</p>
 <div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="nt1.html#cb49-1" aria-hidden="true" tabindex="-1"></a>c1 <span class="ot">&lt;-</span> <span class="fu">nsamp</span>(<span class="at">n =</span> <span class="dv">7</span>, <span class="at">k =</span> <span class="dv">2</span>, <span class="at">replace =</span> T, <span class="at">ordered =</span> F)</span>
 <span id="cb49-2"><a href="nt1.html#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&quot;Pueden resultar&quot;</span>, c1,<span class="st">&quot;nacionalidades distintas&quot;</span>)</span></code></pre></div>
 <pre><code>#&gt; [1] &quot;Pueden resultar 28 nacionalidades distintas&quot;</code></pre>
-<p>Las piezas se pueden listar con el siguiente script.</p>
+<p>Las piezas del dominó se pueden listar con el siguiente script.</p>
 <div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="nt1.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">combinations</span>(<span class="at">n =</span> <span class="dv">7</span>, <span class="at">r =</span> <span class="dv">2</span>, <span class="at">v =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">set =</span> T, </span>
 <span id="cb51-2"><a href="nt1.html#cb51-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">repeats.allowed =</span> T)</span></code></pre></div>
 <pre><code>#&gt;       [,1] [,2]
@@ -782,14 +789,14 @@ V_{n,r}=\frac{n!}{\left( n-r\right)!}=n\,(n-1)\,(n-2)\cdots(n-r+1);con\: r\leq n
 <p><span class="math display">\[
 V_{25,3}=\frac{25!}{\left( 25-3\right)!}=25\,(24)\,(23)=13.800.
 \]</span>
-La función <code>nsamp</code> del paquete <code>prob</code>, también ejecuta el cálculo anterior. Como se muestra en el siguiente bloque de código.</p>
+Con la función <code>nsamp</code> del paquete <code>prob</code>, este resultado se obtiene con el siguiente trozo de código.</p>
 <div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="nt1.html#cb55-1" aria-hidden="true" tabindex="-1"></a>c1 <span class="ot">&lt;-</span> <span class="fu">nsamp</span>(<span class="at">n =</span> <span class="dv">25</span>, <span class="at">k =</span> <span class="dv">3</span>, <span class="at">replace =</span> F, <span class="at">ordered =</span> T)</span>
 <span id="cb55-2"><a href="nt1.html#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&quot;Se pueden hacer&quot;</span>, <span class="fu">formato</span>(c1),<span class="st">&quot;selecciones&quot;</span>)</span></code></pre></div>
 <pre><code>#&gt; [1] &quot;Se pueden hacer 13.800 selecciones&quot;</code></pre>
 </div>
 <div class="example">
 <p><span id="exm:ejemp2-csr" class="example"><strong>Ejemplo 1.15  (Conbinación Sin Repetición) </strong></span>¿De cuántas maneras se pueden colocar dos anillos diferentes en la misma mano, de modo que no estén en el mismo dedo?</p>
-<p>Dado que los anillos son diferentes, en contraposición con el ejemplo <a href="nt1.html#exm:ejemp2-csr">1.15</a>, el orden en que se coloquen en los dedo hace diferencia, por lo tanto se trata de un caso de <em>variación sin repetición</em>. Por lo tanto, el número de formas diferentes que se pueden colocar los anillos es, según la ecuación <a href="nt1.html#eq:variacion-sr">(1.5)</a>:</p>
+<p>Dado que los anillos son diferentes, en contraposición con el ejemplo <a href="nt1.html#exm:ejemp2-csr">1.15</a>, el orden en que se coloquen en los dedo hace diferencia, por lo tanto se trata de un caso de <em>variación sin repetición</em>. Por lo tanto, el número de formas diferentes en que se pueden colocar los anillos en dos dedos diferentes de la mano, según la ecuación <a href="nt1.html#eq:variacion-sr">(1.5)</a> es:</p>
 <p><span class="math display">\[
 V_{5,2}=\frac{5!}{\left( 5-3\right)!}=\frac{5!}{ 2!}=5\,(4)=20.
 \]</span>
@@ -873,7 +880,7 @@ VR_{n,r}=n^r,\:con\: r\leq n.
 <p><span class="math display">\[
 VR_{4,2}=4^2=16.
 \]</span></p>
-<p>La función <code>nsamp</code> del paquete <code>prob</code>, también ejecuta el cálculo anterior. Como se muestra en el siguiente bloque de código.</p>
+<p>La función <code>nsamp</code> del paquete <code>prob</code> ejecuta el cálculo anterior, por medio del siguiente bloque de código.</p>
 <div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="nt1.html#cb63-1" aria-hidden="true" tabindex="-1"></a>c1 <span class="ot">&lt;-</span> <span class="fu">nsamp</span>(<span class="at">n =</span> <span class="dv">4</span>, <span class="at">k =</span> <span class="dv">2</span>, <span class="at">replace =</span> T, <span class="at">ordered =</span> T)</span>
 <span id="cb63-2"><a href="nt1.html#cb63-2" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&quot;Se pueden formar&quot;</span>, <span class="fu">formato</span>(c1),<span class="st">&quot;arreglos&quot;</span>)</span></code></pre></div>
 <pre><code>#&gt; [1] &quot;Se pueden formar 16 arreglos&quot;</code></pre>
@@ -946,9 +953,8 @@ VR_{4,2}=4^2=16.
 <span id="cb67-13"><a href="nt1.html#cb67-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">selection =</span> <span class="st">&quot;multiple&quot;</span>,</span>
 <span id="cb67-14"><a href="nt1.html#cb67-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">class =</span> <span class="st">&quot;cell-border stripe&quot;</span></span>
 <span id="cb67-15"><a href="nt1.html#cb67-15" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
-<div id="htmlwidget-6064f641ee6e96aacdb5" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-6064f641ee6e96aacdb5">{"x":{"filter":"top","vertical":false,"filterHTML":"<tr>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","caption":"<caption>Información de sesión<\/caption>","data":[["bookdown","bookdownplus","combinat","devtools","DT","gtools","htmltools","htmlwidgets","kableExtra","magrittr","prob","stringr","tidyverse","utf8"],["0.24","1.5.8","0.0-8","2.4.2","0.19","3.9.2","0.5.2","1.5.4","1.3.4","2.0.1","1.0-1","1.4.0","1.3.1","1.2.1"],["CRAN (R 4.0.5)","CRAN (R 4.0.5)","CRAN (R 4.0.3)","CRAN (R 4.0.5)","CRAN (R 4.0.5)","CRAN (R 4.0.5)","CRAN (R 4.0.5)","CRAN (R 4.0.5)","CRAN (R 4.0.4)","CRAN (R 4.0.3)","CRAN (R 4.0.5)","CRAN (R 4.0.3)","CRAN (R 4.0.5)","CRAN (R 4.0.3)"]],"container":"<table class=\"cell-border stripe\">\n  <thead>\n    <tr>\n      <th>Paquete<\/th>\n      <th>Versión<\/th>\n      <th>Fuente<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"order":[],"autoWidth":false,"orderClasses":false,"orderCellsTop":true}},"evals":[],"jsHooks":[]}</script>
-
+<div id="htmlwidget-2054f4e3755d9e5a17f3" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-2054f4e3755d9e5a17f3">{"x":{"filter":"top","vertical":false,"filterHTML":"<tr>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","caption":"<caption>Información de sesión<\/caption>","data":[["bookdown","bookdownplus","combinat","devtools","DT","gtools","htmltools","htmlwidgets","kableExtra","magrittr","prob","stringr","tidyverse","utf8"],["0.24","1.5.8","0.0-8","2.4.2","0.19","3.9.2","0.5.2","1.5.4","1.3.4","2.0.1","1.0-1","1.4.0","1.3.1","1.2.1"],["CRAN (R 4.0.5)","CRAN (R 4.0.5)","CRAN (R 4.0.3)","CRAN (R 4.0.5)","CRAN (R 4.0.5)","CRAN (R 4.0.5)","CRAN (R 4.0.5)","CRAN (R 4.0.5)","CRAN (R 4.0.4)","CRAN (R 4.0.3)","CRAN (R 4.0.5)","CRAN (R 4.0.3)","CRAN (R 4.0.5)","CRAN (R 4.0.3)"]],"container":"<table class=\"cell-border stripe\">\n  <thead>\n    <tr>\n      <th>Paquete<\/th>\n      <th>Versión<\/th>\n      <th>Fuente<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"order":[],"autoWidth":false,"orderClasses":false,"orderCellsTop":true}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
             </section>
@@ -957,7 +963,7 @@ VR_{4,2}=4^2=16.
         </div>
       </div>
 <a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="princ_prob.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="bibliografía.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
