@@ -300,7 +300,7 @@ Dados $n$ objetos, de los cuales $n_1$ son de una clase, $n_2$ de una segunda cl
 
 $$
 \begin{equation}
-PR_{n}^{n_1, n_2, \dotsc, n_k}=\frac{n!}{n_1!\,n_2!\, \cdots \,n_k},\,donde\: n=n_1+n_2+\cdots+n_k.
+PR_{n}^{n_1, n_2, \dotsc, n_k}=\frac{n!}{n_1!\,n_2!\, \cdots \,n_k},\:con\: n=n_1+n_2+\cdots+n_k.
 (\#eq:permutacion-cr)
 \end{equation}
 $$
@@ -565,7 +565,7 @@ Dados $n$ objetos diferente, el número de arreglos que se pueden formar con $r$
 
 $$
 \begin{equation}
-V_{n,r}=\frac{n!}{\left( n-r\right)!}=n\,(n-1)\,(n-2)\cdots(n-r+1);con\: r\leq n.
+V_{n,r}=\frac{n!}{\left( n-r\right)!}=n\,(n-1)\,(n-2)\cdots(n-r+1),\:con\: r\leq n.
 (\#eq:variacion-sr)
 \end{equation}
 $$
