@@ -6,7 +6,7 @@ author:
 date: "`r stringr::str_to_sentence(format(Sys.time(), '%A, %d de %B de %Y (%X)'), locale = 'es')`"
 site: bookdown::bookdown_site
 documentclass: book
-bibliography: packages.bib
+# bibliography: packages.bib
 # url: your book url like https://bookdown.org/yihui/bookdown
 # cover-image: path to the social sharing image like images/cover.jpg
 description: |

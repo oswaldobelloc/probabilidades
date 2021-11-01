@@ -734,13 +734,5 @@ knitr::write_bib(c(
 ```
 
 
-`r if (knitr:::is_html_output()) '# Bibliografía {-}'`
-
-```{r generateBibliography, echo=FALSE, eval=TRUE, message=FALSE, warning=FALSE, results="asis"}
-require("knitcitations")
-cleanbib()
-options("citation_format" = "pandoc")
-read.bibtex(file = "packages.bib")
-```
 
 
