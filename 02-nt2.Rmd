@@ -1,50 +1,313 @@
----
-editor_options: 
-  markdown: 
-    wrap: 72
----
+# Princípios Básicos de Probabilidades {#nt2}
 
-# Princípios Básicos de Probabilidades {#princ_prob}
+En este Núcleo Temático se definen algunos conceptos que servirán de soporte para comprender el concepto de probabilidad. Para ello, en la primera sección, se hace una *introducción a los conjuntos*, lo cual es necesario para entender la *definición clásica de la probabilidad*. Luego, en la segunda sección, se definen algunas *operaciones con conjuntos*. Por último, la tercera sección, constituye una *introducción a la probabilidad*.
 
-En este Núcleo Temático se definen algunos conceptos que servirán de soporte para comprender el concepto de probabilidad. Para ello, en la primera sección, se hace una *introducción  a los conjuntos*, lo cual es necesario para entender la *definición clásica de la probabilidad*. Luego, en la segunda sección, se definen algunas *operaciones con  conjuntos*. Por último, la tercera sección, constituye una *introducción a la probabilidad*.
+El siguiente bloque de código permite instalar y cargar los paquetes usados para implementar estas pruebas en `r colorize("R", "blue")`. De estos paquetes, los que contiene funciones relacionadas con la teoría de conteo son: `combinat`, `gtools` y `prob`.
 
-## Conjunto {#nt21}
-::: {.definition #conjunto name="Conjunto"}
-Un conjunto es una colección bien definida de objetos, los cuales se denominan _elementos_ o _miembros_ del conjunto. Generalmente se utilizan letras mayúsculas, como $A$, $B$, $X$, $Y$, $\dotsc$ para designar los conjuntos, y letras minúsculas, como $a$, $b$, $x$, $y$, $\dotsc$ para designar los elementos de los conjuntos. Las palabras _clase_, _colección_ y _familia_ son sinónimos de conjunto.
+```{r cargar-paquetes-nt2, class.source = "watch-out"}
+packages <- c(
+  "ggplot2", "ggstatsplot", "ggVennDiagram", "eulerr",
+  "venneuler", "VennDiagram"
+)
+package.check <- lapply(packages, FUN = function(x) {
+  if (!require(x, character.only = TRUE)) {
+    install.packages(x, dependencies = TRUE)
+    library(x, character.only = TRUE)
+  }
+})
+```
 
-Para decir que un elemento a pertenece a un conjunto A se escribe $a \in A$. (Donde el símbolo $\in$ significa “es un elemento de”). También se escribe $a,b \in A$ cuando $a$ y $b$ pertenecen a A.
+## Introducción a los Conjuntos {#nt21}
+
+En esta sección se definen algunos conceptos relacionados a la teoría de conjuntos. Estos conceptos son necesarios para entender el enfoque clásico de la probabilidad, el cual se describe en la sección \@ref(nt311).
+
+
+### Conjunto {#nt211}
+
+::: {#conjunto .definition name="Conjunto"}
+Un conjunto es una colección bien definida de objetos, los cuales se denominan *elementos* o *miembros* del conjunto. Generalmente se utilizan letras mayúsculas, como $A$, $B$, $X$, $Y$, $\dotsc$ para designar los conjuntos, y letras minúsculas, como $a$, $b$, $x$, $y$, $\dotsc$ para designar los elementos de los conjuntos. Las palabras *clase*, *colección* y *familia* son sinónimos de conjunto.
+
+Para decir que un elemento a pertenece a un conjunto A se escribe $a \in A$. (Donde el símbolo $\in$ significa "es un elemento de"). También se escribe $a,b \in A$ cuando $a$ y $b$ pertenecen a A.
 :::
 
-### Formulación de Conjuntos por Extensión
+#### Formulación de Conjuntos por Extensión {#nt2111}
 
-::: {.definition #formconjext name="Formulación de Conjuntos por Extensión"}
-Consiste en formular el conjunto listando todos los elementos del conjunto. Por ejemplo, 
+::: {#formconjext .definition name="Formulación de Conjuntos por Extensión"}
+Consiste en formular el conjunto listando todos los elementos del conjunto. Por ejemplo,
 
 $$A=\left\{1,2,3 ,5,7,9\right\}$$
 
 significa que $A$ es el conjunto que comprende los números $1, 2, 3 ,5, 7 \:y\: 9$. Observe que los elementos del conjunto están separados por comas y encerrados en corchetes$\{\:\:\}$.
 :::
-	
-### Formulación de Conjuntos por Comprensión
 
-::: {.definition #formconjcomp name="Formulación de Conjuntos por Comprensión"}
+#### Formulación de Conjuntos por Comprensión {#nt2112}
+
+::: {#formconjcomp .definition name="Formulación de Conjuntos por Comprensión"}
 Consiste en formular el conjunto a través de propiedades que caracterizan los elementos en el conjunto, es decir, las propiedades que tienen los miembros del conjunto y que no tienen los no miembros. Por ejemplo:
 
 $$A=\left\{x:x \:es\: \:un\: número\: impar, \,x<10\right\}$$.
 
 En muchos casos es inviable formular un conjunto por extensión, en tal caso se hace necesario formularlo por comprensión.
 :::
-	
-### Tamaño de un Conjunto
 
-::: {.definition #tamconj name="Tamaño de un Conjunto"}
-El tamaño de un conjunto $S$ (también, _cardinalidad_ o _cardinal del conjunto_) es el número de elementos del conjunto y se denota por $n(S)$. El tamaño del conjunto vacío es cero, es decir, $n(\phi)=0$.
+#### Tamaño de un Conjunto {#nt2113}
+
+::: {#tamconj .definition name="Tamaño de un Conjunto"}
+El tamaño de un conjunto $S$ (también, *cardinalidad* o *cardinal del conjunto*) es el número de elementos del conjunto y se denota por $n(S)$. El tamaño del conjunto vacío es cero, es decir, $n(\phi)=0$.
 :::
 
-### Conjunto Finito
+#### Conjunto Finito {#nt2114}
 
-::: {.definition #conjfinito name="Conjunto Finito"}
-Un conjunto $S$ es finito si $S$ es vacío o si el tamaño de $S$ es exactamente un número $m$ entero positivo $\left\(n(S) = m \in \ mathbb { N } \right\)$; de otra manera es infinito.
+::: {#conjfinito .definition name="Conjunto Finito"}
+Un conjunto $S$ es finito si $S$ es vacío o si el tamaño de $S$ es exactamente un número $m$ entero positivo $\left(n(S) = m \in \mathbb{ N } \right)$; de otra manera es infinito.
 :::
+
+#### Conjunto Contable {#nt2115}
+
+::: {#conjcontable .definition name="Conjunto Contable"}
+
+Un conjunto $S$ es contable si $S$ es finito o si los elementos de $S$ pueden ser colocados en forma de sucesión, en cuyo caso se dice que $S$ es infinito contable. Un conjunto es incontable si este no es contable.
+:::
+
+Considere los siguientes ejemplos:
+
+a. Sea $A$ el conjunto de las letras del alfabeto y sea $D$ los días de la semana, es decir, $A=\left\{a,b,\dotsc,y,z\right\}$ y $D=\left\{lunes,martes,\dotsc,domingo \right\}$. Entonces $A$ y $D$ son conjuntos finitos. Específicamente el tamaño de $A$ es 27 $\left(n(A)=27 \right)$ y el tamaño de $D$ es 7 $\left(n(D)=7\right)$.
+
+b. Sea $R=\left\{x:x \textit{ es un río de la tierra} \right\}$. Aunque puede ser difícil contar el número de ríos sobre la tierra, $R$ continúa siendo un conjunto finito.
+
+c. Sea $E$ el conjunto de los enteros positivos pares y sea $I$ el intervalo unidad; es decir, $E=\left\{2,4,6,\dotsc\right\}$ e $I=[0,1]=\left\{x:0≤x≤1\right\}$. Entonces, ambos conjuntos son infinitos. De manera particular $E$ es infinito contable e $I$ es infinito incontable.
+
+
+###	Subconjunto {#nt212}
+
+::: {#subconjunto .definition name="Conjunto Contable"}
+
+Sean $A$, $B$ dos conjuntos; se dice que $A$ es un _subconjunto_ de $B$, o se dice también que $A$ está contenido en $B$, si todos los elemento del conjunto $A$ también pertenecen al conjunto $B$, y se escribe como $A \subseteq B$ o $B \supseteq A$.
+
+La afirmación $A \subseteq B$ no excluye la posibilidad de que $A=B$. Sin embargo, si $A \subseteq B$ y $A\neq B$, entonces se dice que $A$ es un _subconjunto propio_ de $B$ (escrito algunas veces $A \subset B$).
+:::
+
+###	Conjuntos Iguales {#nt213}
+
+::: {#conjiguales .definition name="Conjunto Iguales"}
+
+Dos conjuntos $A$, $B$ son iguales si ambos contienen exactamente los mismos elementos o, en forma equivalente, si cada uno está contenido en el otro. Es decir,
+$A = B$ si y sólo si $A \subseteq B$ y $B \supseteq A$.
+Esto implica que si cualquier elemento $a \in A$, entonces $a \in B$.
+
+Las negaciones de $a \in A, A \subseteq B, B \supseteq A, \:y\: A=B$ se escriben $a \notin A$, $A \nsubseteq B, B \nsupseteq A, \:y\: A \neq B$.
+:::
+
+::: {#conjiguales .theorem}
+
+Sean $A$, $B$, $C$ cualquier conjunto. Entonces:
+
+1.	$A \subseteq A$
+2.	Si $A \subseteq B$ y $B \supseteq A$, entonces $A=B$
+3.	Si $A \subseteq B$ y $B \subseteq C$, entonces $A \subseteq C$.
+:::
+
+###	Conjuntos Universal {#nt214}
+
+::: {#conjuniversal .definition name="Conjunto Universal"}
+
+Es cualquier conjunto $U$ que contiene a todos los conjuntos bajo investigación en cualquier aplicación de una teoría de conjuntos. Por ejemplo en geometría de planos, el conjunto universal comprende todos los puntos en el plano; en los estudios de población humana, el conjunto universal consiste de todas las personas del mundo.
+:::
+
+###	Conjuntos Vacio o Conjunto Nulo {#nt215}
+
+::: {#conjvacio .definition name="Conjunto Vacio"}
+
+Un conjunto vacío es aquel que no tiene elementos y se representa por $\phi$.
+
+Por ejemplo, el conjunto $S=\left\{x:x \textit{ es un entero positivo},x^2=3 \right\}$ es un _conjunto vacío_, puesto que ningún entero positivo tiene la propiedad requerida.
+:::
+
+::: {#conjvacio .theorem}
+
+Para cualquier conjunto $A$, se tiene $\phi  \subseteq  A \subseteq U$.
+:::
+
+###	Conjuntos Disyuntos o Mutuamente excluyentes o Ajenos {#nt216}
+
+::: {#conjdisyuntos .definition name="Conjuntos Disyuntos o Mutuamente excluyentes o Ajenos"}
+
+Se dice que dos conjuntos $A$, $B$ son _disyuntos_ si estos no tienen elementos en común. 
+
+Consideremos, por ejemplo, los conjuntos $$A=\left\{1,2\right\};  B=\left\{2,4,6\right\};  C=\left\{4,5,6,7\right\}.$$
+Observe que $A$ y $B$ no son disyuntos porque cada uno tiene el elemento 2, y $B$ y $C$ no son disyuntos puesto que cada uno contiene el elemento 4, entre otros. Por otra parte, $A$ y $C$ son disyuntos dado que estos no tienen elementos en común. Se observa que si dos conjuntos son disyuntos, entonces ninguno es subconjunto del otro (a menos que uno sea el conjunto vacio).
+:::
+
+###	Conjunto Solapados o Traslapados {#nt217}
+
+::: {#conjdisyuntos .definition name="Conjunto Solapados o Traslapados"}
+
+Se dice que dos conjuntos $A$, $B$ son solapados si estos tienen por lo menos un elemento en común. 
+
+Consideremos, por ejemplo, los conjuntos
+$$A=\left\{1,2\right\};  B=\left\{2,4,6\right\};  C=\left\{4,5,6,7\right\}.$$
+Observe que $A$ y $B$ son solapados porque cada uno tiene el elemento 2, y B y C son solapados puesto que cada uno contiene el elemento 4, entre otros. 
+:::
+
+###	Diagrama de Venn {#nt218}
+
+::: {#diagramavenn .definition name="Diagrama de Venn"}
+
+Un _diagrama de Venn_ es una representación en dibujo de conjuntos, donde estos están representados por áreas encerradas en el plano. El conjunto universal $U$ está representado por los puntos en un rectángulo y los demás conjuntos están representados por círculos, elipses o óvalos, generalmente; que se encuentran dentro de los rectángulos.
+
+La figura \@ref(fig:venn) ilustra por medio de diagramas de Venn  diferentes relaciones entre los conjuntos $A$ y $B$.
+
+```{r venn, fig.cap="Diagramas de Venn", class.source = "watch-out", class.output = "bg-warning"}
+knitr::include_graphics(path = "figuras/diagrama_venn.png")
+```
+:::
+
+###	Partición {#nt219}
+
+::: {#particion .definition name="Partición"}
+
+Sea $S$ un conjunto no vacío. Una partición de $S$ es una colección $\left\{A_i \right\}$ de subconjuntos no vacíos de $S$ tales que:
+
+a.	Cada $a$ en $S$ pertenece a uno de los subconjuntos $A_i$.
+b.  Los conjuntos de $\left\{A_i \right\}$ son mutuamente excluyentes; es decir, si
+$$A_i≠A_j, \textit{entonces }  A_i \cap A_j= \phi.$$
+
+Los subconjuntos de una partición se denominan _células_.
+
+La figura \@ref(fig:particion) muestra la partición de un conjunto rectangular $S$ de puntos, en cinco células, $A_1$, $A_2$, $A_3$, $A_4$, $A_5$.
+
+
+```{r particion, fig.cap="Diagrama de Venn de la partición de un conjunto rectangular $S$", class.source = "watch-out", class.output = "bg-warning"}
+knitr::include_graphics(path = "figuras/particion.png")
+```
+:::
+
+## Operaciones Entre Conjuntos {#nt22}
+
+En esta sección se definen las operaciones básicas entre conjuntos, tales como: intersección, unión, complemento, diferencia y diferencia simétrica. Destacando las propiedades de estas operaciones.
+
+### Intersección {#nt221}
+
+::: {#interseccion .definition name="Intersepción"}
+La intersección de dos conjuntos $A$ y $B$, representada por $A \cap B$, es el conjunto de todos los elementos que pertenecen tanto al conjunto $A$ como al conjunto $B, es decir,
+$$A \cap B=\left\{x:x \in A  \:y\:  x \in B \right\}$$.
+
+La figura \@ref(fig:interseccion) muestra diagramas de Venn que ilustran la intersección de los conjunto $A$ y $B$.
+
+
+```{r interseccion, fig.cap="Diagrama de Venn para la intersección", class.source = "watch-out", class.output = "bg-warning"}
+knitr::include_graphics(path = "figuras/interseccion.png")
+```
+:::
+
+### Propiedades de la Intersección {#nt2211}
+
+1. $A \cap \phi=∅$.
+
+1. $A \cap U=A$.
+
+1. $A \cap A=A$. (Idempotencia)
+
+1. $A \cap B=B \cap A$. (Conmutativa)
+
+1. $(A \cap B) \cap C=A \cap (B \cap C)$. (Asociativa)
+
+1. $(A \cap B) \subseteq A$.
+
+1. $(A \cap B)\subseteq B$.
+
+::: {.example #ejemp1-interseccion name="Intersección"}
+
+Sea $A=\left\{ a, b, c, d, e, f , g, h \right\}$ y $B=\left\{ f, g, h, i, j, k, l \right\}$. Determine $A \cap B$. 
+
+De acuerdo con la definición \@ref(def:interseccion), la intersección de los conjuntos $A$ y $B$ es
+$$A \cap B = \left\{  f , g, h \right\}.$$
+
+El resultado anterior, se puede obtener con el siguiente script, usando la función `intersect` de la distribución base de `r colorize("R", "blue")`. 
+
+```{r}
+A <- letters[1:8]
+B <- letters[6:12]
+(AyB <- intersect(A, B))
+```
+
+El diagrama de Venn para este ejemplo se muestra con la función `ggVennDiagram` del paquete `ggVennDiagram`. El resultado de la ejecución de esta función es la figura \@ref(fig:ejemplo1-interseccion).
+
+```{r ejemplo1-interseccion, fig.cap="Diagrama de Venn para el ejemplo 1 de la intersección", class.source = "watch-out", class.output = "bg-warning"}
+# Lista de vectores
+x <- list(A , B)
+# Diagrama de Venn con borde personalizado
+ggVennDiagram(
+  x, color = "black", lwd = 0.8, lty = 1,
+  category.names = c("A", "B"),
+) + 
+  scale_fill_gradient(low = "#F4FAFE", high = "#4981BF")
+```
+
+:::
+
+
+::: {.example #ejemplo2-interseccion name="Intersección"}
+
+Dados los conjuntos $A=\left\{ 1, 2, 3, 4, 5 \right\}$, $B=\left\{ 2, 3, 4, 5, 6, 7 \right\}$ y $C=\left\{ 5, 6, 7, 8, 9, 10 \right\}$. Determine $A \cap B \cap C$. 
+
+Extendiendo la definición \@ref(def:interseccion) para tres conjuntos, la intersección de los conjuntos $A$, $B$ y $C$ son los elementos que se repiten en los tres conjuntos, es decir:
+$$A \cap B \cap C = \left\{5 \right\}.$$
+
+El resultado anterior, se puede obtener con el siguiente script, usando la función `intersect` de la distribución base de `r colorize("R", "blue")`. 
+
+```{r}
+A <- 1:5
+B <- 2:7
+C <- 5:10
+(AyByC <- intersect(intersect(A,B), C))
+```
+
+El Diagrama de Venn para este ejemplo se muestra en la figura \@ref(fig:ejemplo2-interseccion).
+
+```{r ejemplo2-interseccion, fig.cap="Diagrama de Venn para el ejemplo 2 de la intersección", class.source = "watch-out", class.output = "bg-warning"}
+# Lista de vectores
+x <- list(A , B , C)
+# Diagrama de Venn con borde personalizado
+ggVennDiagram(
+  x, color = "black", lwd = 0.8, lty = 1,
+  category.names = c("A", "B", "C"),
+) + 
+  scale_fill_gradient(low = "#F4FAFE", high = "#4981BF")
+```
+
+:::
+
+### Unión {#nt222}
+
+::: {#union .definition name="Unión"}
+
+La unión de dos conjuntos $A$ y $B$, representada por $A \cup B$, es el conjunto de todos los elementos que pertenecen al conjunto $A$ o al conjunto $B$ o a ambos, es decir,
+$$A∪B=\left\{x:x \in A  \textit{ o }  x \in B\right\}.$$
+
+La figura \@ref(fig:union) muestra diagramas de Venn que ilustran la intersección de los conjunto $A$ y $B$.
+
+```{r union, fig.cap="Diagrama de Venn para la Unión", class.source = "watch-out", class.output = "bg-warning"}
+knitr::include_graphics(path = "figuras/union.png")
+```
+:::
+
+### Propiedades de la Unión {#nt2221}
+
+1. $A \cup ∅=A$.
+
+1. $A \cup U=U$.
+
+1. $A \cup A=A$. (Idempotencia)
+
+1. $A \cup B=B \cup A$. (Conmutativa)
+
+1. $(A \cup B) \cup C=A \cup (B \cup C)$.  (Asociativa)
+
+1. $A \subseteq (A \cup B)$.
+
+1. $B\subseteq(A \cup B)$.
+
+
 
 
