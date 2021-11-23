@@ -4,13 +4,13 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Núcleo Temático 2 Princípios Básicos de probabilidades | Probabilidades</title>
+  <title>Núcleo Temático 2 Princípios Básicos de Probabilidades | Probabilidades</title>
   <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
 The HTML output format for this example is bookdown::gitbook,
 set in the _output.yml file.</p>" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Núcleo Temático 2 Princípios Básicos de probabilidades | Probabilidades" />
+  <meta property="og:title" content="Núcleo Temático 2 Princípios Básicos de Probabilidades | Probabilidades" />
   <meta property="og:type" content="book" />
   
   
@@ -20,7 +20,7 @@ set in the _output.yml file.</p>" />
   <meta name="github-repo" content="oswaldobelloc/probabilidades" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Núcleo Temático 2 Princípios Básicos de probabilidades | Probabilidades" />
+  <meta name="twitter:title" content="Núcleo Temático 2 Princípios Básicos de Probabilidades | Probabilidades" />
   
   <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
 The HTML output format for this example is bookdown::gitbook,
@@ -178,7 +178,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.6" data-path="nt1.html"><a href="nt1.html#ejercicios-de-técnicas-de-conteo"><i class="fa fa-check"></i><b>1.6</b> Ejercicios de Técnicas de Conteo</a></li>
 <li class="chapter" data-level="1.7" data-path="nt1.html"><a href="nt1.html#sesion"><i class="fa fa-check"></i><b>1.7</b> Información de Sesión</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="princ_prob.html"><a href="princ_prob.html"><i class="fa fa-check"></i><b>2</b> Princípios Básicos de probabilidades</a></li>
+<li class="chapter" data-level="2" data-path="princ_prob.html"><a href="princ_prob.html"><i class="fa fa-check"></i><b>2</b> Princípios Básicos de Probabilidades</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="princ_prob.html"><a href="princ_prob.html#nt21"><i class="fa fa-check"></i><b>2.1</b> Conjunto</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="princ_prob.html"><a href="princ_prob.html#formulación-de-conjuntos-por-extensión"><i class="fa fa-check"></i><b>2.1.1</b> Formulación de Conjuntos por Extensión</a></li>
+<li class="chapter" data-level="2.1.2" data-path="princ_prob.html"><a href="princ_prob.html#formulación-de-conjuntos-por-comprensión"><i class="fa fa-check"></i><b>2.1.2</b> Formulación de Conjuntos por Comprensión</a></li>
+<li class="chapter" data-level="2.1.3" data-path="princ_prob.html"><a href="princ_prob.html#tamaño-de-un-conjunto"><i class="fa fa-check"></i><b>2.1.3</b> Tamaño de un Conjunto</a></li>
+<li class="chapter" data-level="2.1.4" data-path="princ_prob.html"><a href="princ_prob.html#conjunto-finito"><i class="fa fa-check"></i><b>2.1.4</b> Conjunto Finito</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="3" data-path="dist_disc.html"><a href="dist_disc.html"><i class="fa fa-check"></i><b>3</b> Disribuciones Discretas de Probabilidades</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Publicado con bookdown</a></li>
@@ -201,8 +210,44 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="princ_prob" class="section level1" number="2">
-<h1><span class="header-section-number">Núcleo Temático 2</span> Princípios Básicos de probabilidades</h1>
+<h1><span class="header-section-number">Núcleo Temático 2</span> Princípios Básicos de Probabilidades</h1>
+<p>En este Núcleo Temático se definen algunos conceptos que servirán de soporte para comprender el concepto de probabilidad. Para ello, en la primera sección, se hace una <em>introducción a los conjuntos</em>, lo cual es necesario para entender la <em>definición clásica de la probabilidad</em>. Luego, en la segunda sección, se definen algunas <em>operaciones con conjuntos</em>. Por último, la tercera sección, constituye una <em>introducción a la probabilidad</em>.</p>
+<div id="nt21" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> Conjunto</h2>
+<div class="definition">
+<p><span id="def:conjunto" class="definition"><strong>Definición 2.1  (Conjunto) </strong></span>Un conjunto es una colección bien definida de objetos, los cuales se denominan <em>elementos</em> o <em>miembros</em> del conjunto. Generalmente se utilizan letras mayúsculas, como <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, <span class="math inline">\(X\)</span>, <span class="math inline">\(Y\)</span>, <span class="math inline">\(\dotsc\)</span> para designar los conjuntos, y letras minúsculas, como <span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span>, <span class="math inline">\(x\)</span>, <span class="math inline">\(y\)</span>, <span class="math inline">\(\dotsc\)</span> para designar los elementos de los conjuntos. Las palabras <em>clase</em>, <em>colección</em> y <em>familia</em> son sinónimos de conjunto.</p>
+<p>Para decir que un elemento a pertenece a un conjunto A se escribe <span class="math inline">\(a \in A\)</span>. (Donde el símbolo <span class="math inline">\(\in\)</span> significa “es un elemento de”). También se escribe <span class="math inline">\(a,b \in A\)</span> cuando <span class="math inline">\(a\)</span> y <span class="math inline">\(b\)</span> pertenecen a A.</p>
+</div>
+<div id="formulación-de-conjuntos-por-extensión" class="section level3" number="2.1.1">
+<h3><span class="header-section-number">2.1.1</span> Formulación de Conjuntos por Extensión</h3>
+<div class="definition">
+<p><span id="def:formconjext" class="definition"><strong>Definición 2.2  (Formulación de Conjuntos por Extensión) </strong></span>Consiste en formular el conjunto listando todos los elementos del conjunto. Por ejemplo,</p>
+<p><span class="math display">\[A=\left\{1,2,3 ,5,7,9\right\}\]</span></p>
+<p>significa que <span class="math inline">\(A\)</span> es el conjunto que comprende los números <span class="math inline">\(1, 2, 3 ,5, 7 \:y\: 9\)</span>. Observe que los elementos del conjunto están separados por comas y encerrados en corchetes<span class="math inline">\(\{\:\:\}\)</span>.</p>
+</div>
+</div>
+<div id="formulación-de-conjuntos-por-comprensión" class="section level3" number="2.1.2">
+<h3><span class="header-section-number">2.1.2</span> Formulación de Conjuntos por Comprensión</h3>
+<div class="definition">
+<p><span id="def:formconjcomp" class="definition"><strong>Definición 2.3  (Formulación de Conjuntos por Comprensión) </strong></span>Consiste en formular el conjunto a través de propiedades que caracterizan los elementos en el conjunto, es decir, las propiedades que tienen los miembros del conjunto y que no tienen los no miembros. Por ejemplo:</p>
+<p><span class="math display">\[A=\left\{x:x \:es\: \:un\: número\: impar, \,x&lt;10\right\}\]</span>.</p>
+<p>En muchos casos es inviable formular un conjunto por extensión, en tal caso se hace necesario formularlo por comprensión.</p>
+</div>
+</div>
+<div id="tamaño-de-un-conjunto" class="section level3" number="2.1.3">
+<h3><span class="header-section-number">2.1.3</span> Tamaño de un Conjunto</h3>
+<div class="definition">
+<p><span id="def:tamconj" class="definition"><strong>Definición 2.4  (Tamaño de un Conjunto) </strong></span>El tamaño de un conjunto <span class="math inline">\(S\)</span> (también, <em>cardinalidad</em> o <em>cardinal del conjunto</em>) es el número de elementos del conjunto y se denota por <span class="math inline">\(n(S)\)</span>. El tamaño del conjunto vacío es cero, es decir, <span class="math inline">\(n(\phi)=0\)</span>.</p>
+</div>
+</div>
+<div id="conjunto-finito" class="section level3" number="2.1.4">
+<h3><span class="header-section-number">2.1.4</span> Conjunto Finito</h3>
+<div class="definition">
+<p><span id="def:conjfinito" class="definition"><strong>Definición 2.5  (Conjunto Finito) </strong></span>Un conjunto <span class="math inline">\(S\)</span> es finito si <span class="math inline">\(S\)</span> es vacío o si el tamaño de <span class="math inline">\(S\)</span> es exactamente un número <span class="math inline">\(m\)</span> entero positivo <span class="math inline">\(\left\(n(S) = m \in \ mathbb { N } \right\)\)</span>; de otra manera es infinito.</p>
+</div>
 
+</div>
+</div>
 </div>
             </section>
 

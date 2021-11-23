@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Núcleo Temático 2 Princípios Básicos de Probabilidades | Probabilidades</title>
+  <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Núcleo Temático 2 Princípios Básicos de Probabilidades | Probabilidades" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="github-repo" content="oswaldobelloc/probabilidades" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Núcleo Temático 2 Princípios Básicos de Probabilidades | Probabilidades" />
+  
+  <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="nt1.html"/>
+<link rel="next" href="dist_disc.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.19/datatables.js"></script>
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
+<link href="libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet" />
+<script src="libs/nouislider-7.0.10/jquery.nouislider.min.js"></script>
+<link href="libs/selectize-0.12.0/selectize.bootstrap3.css" rel="stylesheet" />
+<script src="libs/selectize-0.12.0/selectize.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Probabilidades</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prólogo</a></li>
+<li class="chapter" data-level="1" data-path="nt1.html"><a href="nt1.html"><i class="fa fa-check"></i><b>1</b> Técnicas de Conteo</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="nt1.html"><a href="nt1.html#nt11"><i class="fa fa-check"></i><b>1.1</b> Pricipio de la Adición</a></li>
+<li class="chapter" data-level="1.2" data-path="nt1.html"><a href="nt1.html#nt12"><i class="fa fa-check"></i><b>1.2</b> Principio de la Multiplicación</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="nt1.html"><a href="nt1.html#nt121"><i class="fa fa-check"></i><b>1.2.1</b> Diagrama de Árbol</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="nt1.html"><a href="nt1.html#nt13"><i class="fa fa-check"></i><b>1.3</b> Permutación</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="nt1.html"><a href="nt1.html#nt131"><i class="fa fa-check"></i><b>1.3.1</b> Permutación Sin Repetición</a></li>
+<li class="chapter" data-level="1.3.2" data-path="nt1.html"><a href="nt1.html#nt132"><i class="fa fa-check"></i><b>1.3.2</b> Permutación Con Repetición</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="nt1.html"><a href="nt1.html#nt14"><i class="fa fa-check"></i><b>1.4</b> Combinación</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="nt1.html"><a href="nt1.html#nt141"><i class="fa fa-check"></i><b>1.4.1</b> Combinación Sin Repetición</a></li>
+<li class="chapter" data-level="1.4.2" data-path="nt1.html"><a href="nt1.html#nt142"><i class="fa fa-check"></i><b>1.4.2</b> Conbinación Con Repetición</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="nt1.html"><a href="nt1.html#nt15"><i class="fa fa-check"></i><b>1.5</b> Variación</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="nt1.html"><a href="nt1.html#nt151"><i class="fa fa-check"></i><b>1.5.1</b> Variación Sin Repetición</a></li>
+<li class="chapter" data-level="1.5.2" data-path="nt1.html"><a href="nt1.html#nt152"><i class="fa fa-check"></i><b>1.5.2</b> Variación Con Repetición</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="nt1.html"><a href="nt1.html#ejercicios-de-técnicas-de-conteo"><i class="fa fa-check"></i><b>1.6</b> Ejercicios de Técnicas de Conteo</a></li>
+<li class="chapter" data-level="1.7" data-path="nt1.html"><a href="nt1.html#sesion"><i class="fa fa-check"></i><b>1.7</b> Información de Sesión</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="nt2.html"><a href="nt2.html"><i class="fa fa-check"></i><b>2</b> Princípios Básicos de Probabilidades</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="nt2.html"><a href="nt2.html#nt21"><i class="fa fa-check"></i><b>2.1</b> Introducción a los Conjuntos</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="nt2.html"><a href="nt2.html#nt211"><i class="fa fa-check"></i><b>2.1.1</b> Conjunto</a></li>
+<li class="chapter" data-level="2.1.2" data-path="nt2.html"><a href="nt2.html#nt212"><i class="fa fa-check"></i><b>2.1.2</b> Subconjunto</a></li>
+<li class="chapter" data-level="2.1.3" data-path="nt2.html"><a href="nt2.html#nt213"><i class="fa fa-check"></i><b>2.1.3</b> Conjuntos Iguales</a></li>
+<li class="chapter" data-level="2.1.4" data-path="nt2.html"><a href="nt2.html#nt214"><i class="fa fa-check"></i><b>2.1.4</b> Conjuntos Universal</a></li>
+<li class="chapter" data-level="2.1.5" data-path="nt2.html"><a href="nt2.html#nt215"><i class="fa fa-check"></i><b>2.1.5</b> Conjuntos Vacio o Conjunto Nulo</a></li>
+<li class="chapter" data-level="2.1.6" data-path="nt2.html"><a href="nt2.html#nt216"><i class="fa fa-check"></i><b>2.1.6</b> Conjuntos Disyuntos o Mutuamente excluyentes o Ajenos</a></li>
+<li class="chapter" data-level="2.1.7" data-path="nt2.html"><a href="nt2.html#nt217"><i class="fa fa-check"></i><b>2.1.7</b> Conjunto Solapados o Traslapados</a></li>
+<li class="chapter" data-level="2.1.8" data-path="nt2.html"><a href="nt2.html#nt218"><i class="fa fa-check"></i><b>2.1.8</b> Diagrama de Venn</a></li>
+<li class="chapter" data-level="2.1.9" data-path="nt2.html"><a href="nt2.html#nt219"><i class="fa fa-check"></i><b>2.1.9</b> Partición</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="nt2.html"><a href="nt2.html#nt22"><i class="fa fa-check"></i><b>2.2</b> Operaciones Entre Conjuntos</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="nt2.html"><a href="nt2.html#nt221"><i class="fa fa-check"></i><b>2.2.1</b> Intersección</a></li>
+<li class="chapter" data-level="2.2.2" data-path="nt2.html"><a href="nt2.html#nt2211"><i class="fa fa-check"></i><b>2.2.2</b> Propiedades de la Intersección</a></li>
+<li class="chapter" data-level="2.2.3" data-path="nt2.html"><a href="nt2.html#nt222"><i class="fa fa-check"></i><b>2.2.3</b> Unión</a></li>
+<li class="chapter" data-level="2.2.4" data-path="nt2.html"><a href="nt2.html#nt2221"><i class="fa fa-check"></i><b>2.2.4</b> Propiedades de la Unión</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="dist_disc.html"><a href="dist_disc.html"><i class="fa fa-check"></i><b>3</b> Disribuciones Discretas de Probabilidades</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Publicado con bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Probabilidades</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="nt2" class="section level1" number="2">
+<h1><span class="header-section-number">Núcleo Temático 2</span> Princípios Básicos de Probabilidades</h1>
+<p>En este Núcleo Temático se definen algunos conceptos que servirán de soporte para comprender el concepto de probabilidad. Para ello, en la primera sección, se hace una <em>introducción a los conjuntos</em>, lo cual es necesario para entender la <em>definición clásica de la probabilidad</em>. Luego, en la segunda sección, se definen algunas <em>operaciones con conjuntos</em>. Por último, la tercera sección, constituye una <em>introducción a la probabilidad</em>.</p>
+<p>El siguiente bloque de código permite instalar y cargar los paquetes usados para implementar estas pruebas en <span style="color: blue;">R</span>. De estos paquetes, los que contiene funciones relacionadas con la teoría de conteo son: <code>combinat</code>, <code>gtools</code> y <code>prob</code>.</p>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb68-1"><a href="nt2.html#cb68-1" aria-hidden="true" tabindex="-1"></a>packages <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb68-2"><a href="nt2.html#cb68-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;ggplot2&quot;</span>, <span class="st">&quot;ggstatsplot&quot;</span>, <span class="st">&quot;ggVennDiagram&quot;</span>, <span class="st">&quot;eulerr&quot;</span>,</span>
+<span id="cb68-3"><a href="nt2.html#cb68-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;venneuler&quot;</span>, <span class="st">&quot;VennDiagram&quot;</span></span>
+<span id="cb68-4"><a href="nt2.html#cb68-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb68-5"><a href="nt2.html#cb68-5" aria-hidden="true" tabindex="-1"></a>package.check <span class="ot">&lt;-</span> <span class="fu">lapply</span>(packages, <span class="at">FUN =</span> <span class="cf">function</span>(x) {</span>
+<span id="cb68-6"><a href="nt2.html#cb68-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(x, <span class="at">character.only =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb68-7"><a href="nt2.html#cb68-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">install.packages</span>(x, <span class="at">dependencies =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb68-8"><a href="nt2.html#cb68-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">library</span>(x, <span class="at">character.only =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb68-9"><a href="nt2.html#cb68-9" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb68-10"><a href="nt2.html#cb68-10" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
+<div id="nt21" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> Introducción a los Conjuntos</h2>
+<p>En esta sección se definen algunos conceptos relacionados a la teoría de conjuntos. Estos conceptos son necesarios para entender el enfoque clásico de la probabilidad, el cual se describe en la sección <a href="#nt311"><strong>??</strong></a>.</p>
+<div id="nt211" class="section level3" number="2.1.1">
+<h3><span class="header-section-number">2.1.1</span> Conjunto</h3>
+<div class="definition">
+<p><span id="def:conjunto" class="definition"><strong>Definición 2.1  (Conjunto) </strong></span>Un conjunto es una colección bien definida de objetos, los cuales se denominan <em>elementos</em> o <em>miembros</em> del conjunto. Generalmente se utilizan letras mayúsculas, como <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, <span class="math inline">\(X\)</span>, <span class="math inline">\(Y\)</span>, <span class="math inline">\(\dotsc\)</span> para designar los conjuntos, y letras minúsculas, como <span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span>, <span class="math inline">\(x\)</span>, <span class="math inline">\(y\)</span>, <span class="math inline">\(\dotsc\)</span> para designar los elementos de los conjuntos. Las palabras <em>clase</em>, <em>colección</em> y <em>familia</em> son sinónimos de conjunto.</p>
+<p>Para decir que un elemento a pertenece a un conjunto A se escribe <span class="math inline">\(a \in A\)</span>. (Donde el símbolo <span class="math inline">\(\in\)</span> significa “es un elemento de”). También se escribe <span class="math inline">\(a,b \in A\)</span> cuando <span class="math inline">\(a\)</span> y <span class="math inline">\(b\)</span> pertenecen a A.</p>
+</div>
+<div id="nt2111" class="section level4" number="2.1.1.1">
+<h4><span class="header-section-number">2.1.1.1</span> Formulación de Conjuntos por Extensión</h4>
+<div class="definition">
+<p><span id="def:formconjext" class="definition"><strong>Definición 2.2  (Formulación de Conjuntos por Extensión) </strong></span>Consiste en formular el conjunto listando todos los elementos del conjunto. Por ejemplo,</p>
+<p><span class="math display">\[A=\left\{1,2,3 ,5,7,9\right\}\]</span></p>
+<p>significa que <span class="math inline">\(A\)</span> es el conjunto que comprende los números <span class="math inline">\(1, 2, 3 ,5, 7 \:y\: 9\)</span>. Observe que los elementos del conjunto están separados por comas y encerrados en corchetes<span class="math inline">\(\{\:\:\}\)</span>.</p>
+</div>
+</div>
+<div id="nt2112" class="section level4" number="2.1.1.2">
+<h4><span class="header-section-number">2.1.1.2</span> Formulación de Conjuntos por Comprensión</h4>
+<div class="definition">
+<p><span id="def:formconjcomp" class="definition"><strong>Definición 2.3  (Formulación de Conjuntos por Comprensión) </strong></span>Consiste en formular el conjunto a través de propiedades que caracterizan los elementos en el conjunto, es decir, las propiedades que tienen los miembros del conjunto y que no tienen los no miembros. Por ejemplo:</p>
+<p><span class="math display">\[A=\left\{x:x \:es\: \:un\: número\: impar, \,x&lt;10\right\}\]</span>.</p>
+<p>En muchos casos es inviable formular un conjunto por extensión, en tal caso se hace necesario formularlo por comprensión.</p>
+</div>
+</div>
+<div id="nt2113" class="section level4" number="2.1.1.3">
+<h4><span class="header-section-number">2.1.1.3</span> Tamaño de un Conjunto</h4>
+<div class="definition">
+<p><span id="def:tamconj" class="definition"><strong>Definición 2.4  (Tamaño de un Conjunto) </strong></span>El tamaño de un conjunto <span class="math inline">\(S\)</span> (también, <em>cardinalidad</em> o <em>cardinal del conjunto</em>) es el número de elementos del conjunto y se denota por <span class="math inline">\(n(S)\)</span>. El tamaño del conjunto vacío es cero, es decir, <span class="math inline">\(n(\phi)=0\)</span>.</p>
+</div>
+</div>
+<div id="nt2114" class="section level4" number="2.1.1.4">
+<h4><span class="header-section-number">2.1.1.4</span> Conjunto Finito</h4>
+<div class="definition">
+<p><span id="def:conjfinito" class="definition"><strong>Definición 2.5  (Conjunto Finito) </strong></span>Un conjunto <span class="math inline">\(S\)</span> es finito si <span class="math inline">\(S\)</span> es vacío o si el tamaño de <span class="math inline">\(S\)</span> es exactamente un número <span class="math inline">\(m\)</span> entero positivo <span class="math inline">\(\left(n(S) = m \in \mathbb{ N } \right)\)</span>; de otra manera es infinito.</p>
+</div>
+</div>
+<div id="nt2115" class="section level4" number="2.1.1.5">
+<h4><span class="header-section-number">2.1.1.5</span> Conjunto Contable</h4>
+<div class="definition">
+<p><span id="def:conjcontable" class="definition"><strong>Definición 2.6  (Conjunto Contable) </strong></span>Un conjunto <span class="math inline">\(S\)</span> es contable si <span class="math inline">\(S\)</span> es finito o si los elementos de <span class="math inline">\(S\)</span> pueden ser colocados en forma de sucesión, en cuyo caso se dice que <span class="math inline">\(S\)</span> es infinito contable. Un conjunto es incontable si este no es contable.</p>
+</div>
+<p>Considere los siguientes ejemplos:</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Sea <span class="math inline">\(A\)</span> el conjunto de las letras del alfabeto y sea <span class="math inline">\(D\)</span> los días de la semana, es decir, <span class="math inline">\(A=\left\{a,b,\dotsc,y,z\right\}\)</span> y <span class="math inline">\(D=\left\{lunes,martes,\dotsc,domingo \right\}\)</span>. Entonces <span class="math inline">\(A\)</span> y <span class="math inline">\(D\)</span> son conjuntos finitos. Específicamente el tamaño de <span class="math inline">\(A\)</span> es 27 <span class="math inline">\(\left(n(A)=27 \right)\)</span> y el tamaño de <span class="math inline">\(D\)</span> es 7 <span class="math inline">\(\left(n(D)=7\right)\)</span>.</p></li>
+<li><p>Sea <span class="math inline">\(R=\left\{x:x \textit{ es un río de la tierra} \right\}\)</span>. Aunque puede ser difícil contar el número de ríos sobre la tierra, <span class="math inline">\(R\)</span> continúa siendo un conjunto finito.</p></li>
+<li><p>Sea <span class="math inline">\(E\)</span> el conjunto de los enteros positivos pares y sea <span class="math inline">\(I\)</span> el intervalo unidad; es decir, <span class="math inline">\(E=\left\{2,4,6,\dotsc\right\}\)</span> e <span class="math inline">\(I=[0,1]=\left\{x:0≤x≤1\right\}\)</span>. Entonces, ambos conjuntos son infinitos. De manera particular <span class="math inline">\(E\)</span> es infinito contable e <span class="math inline">\(I\)</span> es infinito incontable.</p></li>
+</ol>
+</div>
+</div>
+<div id="nt212" class="section level3" number="2.1.2">
+<h3><span class="header-section-number">2.1.2</span> Subconjunto</h3>
+<div class="definition">
+<p><span id="def:subconjunto" class="definition"><strong>Definición 2.7  (Conjunto Contable) </strong></span>Sean <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span> dos conjuntos; se dice que <span class="math inline">\(A\)</span> es un <em>subconjunto</em> de <span class="math inline">\(B\)</span>, o se dice también que <span class="math inline">\(A\)</span> está contenido en <span class="math inline">\(B\)</span>, si todos los elemento del conjunto <span class="math inline">\(A\)</span> también pertenecen al conjunto <span class="math inline">\(B\)</span>, y se escribe como <span class="math inline">\(A \subseteq B\)</span> o <span class="math inline">\(B \supseteq A\)</span>.</p>
+<p>La afirmación <span class="math inline">\(A \subseteq B\)</span> no excluye la posibilidad de que <span class="math inline">\(A=B\)</span>. Sin embargo, si <span class="math inline">\(A \subseteq B\)</span> y <span class="math inline">\(A\neq B\)</span>, entonces se dice que <span class="math inline">\(A\)</span> es un <em>subconjunto propio</em> de <span class="math inline">\(B\)</span> (escrito algunas veces <span class="math inline">\(A \subset B\)</span>).</p>
+</div>
+</div>
+<div id="nt213" class="section level3" number="2.1.3">
+<h3><span class="header-section-number">2.1.3</span> Conjuntos Iguales</h3>
+<div class="definition">
+<p><span id="def:conjiguales" class="definition"><strong>Definición 2.8  (Conjunto Iguales) </strong></span>Dos conjuntos <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span> son iguales si ambos contienen exactamente los mismos elementos o, en forma equivalente, si cada uno está contenido en el otro. Es decir,
+<span class="math inline">\(A = B\)</span> si y sólo si <span class="math inline">\(A \subseteq B\)</span> y <span class="math inline">\(B \supseteq A\)</span>.
+Esto implica que si cualquier elemento <span class="math inline">\(a \in A\)</span>, entonces <span class="math inline">\(a \in B\)</span>.</p>
+<p>Las negaciones de <span class="math inline">\(a \in A, A \subseteq B, B \supseteq A, \:y\: A=B\)</span> se escriben <span class="math inline">\(a \notin A\)</span>, <span class="math inline">\(A \nsubseteq B, B \nsupseteq A, \:y\: A \neq B\)</span>.</p>
+</div>
+<div class="theorem">
+<p><span id="thm:conjiguales" class="theorem"><strong>Teorema 2.1  </strong></span>Sean <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, <span class="math inline">\(C\)</span> cualquier conjunto. Entonces:</p>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(A \subseteq A\)</span></li>
+<li>Si <span class="math inline">\(A \subseteq B\)</span> y <span class="math inline">\(B \supseteq A\)</span>, entonces <span class="math inline">\(A=B\)</span></li>
+<li>Si <span class="math inline">\(A \subseteq B\)</span> y <span class="math inline">\(B \subseteq C\)</span>, entonces <span class="math inline">\(A \subseteq C\)</span>.</li>
+</ol>
+</div>
+</div>
+<div id="nt214" class="section level3" number="2.1.4">
+<h3><span class="header-section-number">2.1.4</span> Conjuntos Universal</h3>
+<div class="definition">
+<p><span id="def:conjuniversal" class="definition"><strong>Definición 2.9  (Conjunto Universal) </strong></span>Es cualquier conjunto <span class="math inline">\(U\)</span> que contiene a todos los conjuntos bajo investigación en cualquier aplicación de una teoría de conjuntos. Por ejemplo en geometría de planos, el conjunto universal comprende todos los puntos en el plano; en los estudios de población humana, el conjunto universal consiste de todas las personas del mundo.</p>
+</div>
+</div>
+<div id="nt215" class="section level3" number="2.1.5">
+<h3><span class="header-section-number">2.1.5</span> Conjuntos Vacio o Conjunto Nulo</h3>
+<div class="definition">
+<p><span id="def:conjvacio" class="definition"><strong>Definición 2.10  (Conjunto Vacio) </strong></span>Un conjunto vacío es aquel que no tiene elementos y se representa por <span class="math inline">\(\phi\)</span>.</p>
+<p>Por ejemplo, el conjunto <span class="math inline">\(S=\left\{x:x \textit{ es un entero positivo},x^2=3 \right\}\)</span> es un <em>conjunto vacío</em>, puesto que ningún entero positivo tiene la propiedad requerida.</p>
+</div>
+<div class="theorem">
+<p><span id="thm:conjvacio" class="theorem"><strong>Teorema 2.2  </strong></span>Para cualquier conjunto <span class="math inline">\(A\)</span>, se tiene <span class="math inline">\(\phi \subseteq A \subseteq U\)</span>.</p>
+</div>
+</div>
+<div id="nt216" class="section level3" number="2.1.6">
+<h3><span class="header-section-number">2.1.6</span> Conjuntos Disyuntos o Mutuamente excluyentes o Ajenos</h3>
+<div class="definition">
+<p><span id="def:conjdisyuntos" class="definition"><strong>Definición 2.11  (Conjuntos Disyuntos o Mutuamente excluyentes o Ajenos) </strong></span>Se dice que dos conjuntos <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span> son <em>disyuntos</em> si estos no tienen elementos en común.</p>
+<p>Consideremos, por ejemplo, los conjuntos <span class="math display">\[A=\left\{1,2\right\};  B=\left\{2,4,6\right\};  C=\left\{4,5,6,7\right\}.\]</span>
+Observe que <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> no son disyuntos porque cada uno tiene el elemento 2, y <span class="math inline">\(B\)</span> y <span class="math inline">\(C\)</span> no son disyuntos puesto que cada uno contiene el elemento 4, entre otros. Por otra parte, <span class="math inline">\(A\)</span> y <span class="math inline">\(C\)</span> son disyuntos dado que estos no tienen elementos en común. Se observa que si dos conjuntos son disyuntos, entonces ninguno es subconjunto del otro (a menos que uno sea el conjunto vacio).</p>
+</div>
+</div>
+<div id="nt217" class="section level3" number="2.1.7">
+<h3><span class="header-section-number">2.1.7</span> Conjunto Solapados o Traslapados</h3>
+<div class="definition">
+<p><span id="def:conjdisyuntos" class="definition"><strong>Definición 2.11  (Conjunto Solapados o Traslapados) </strong></span>Se dice que dos conjuntos <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span> son solapados si estos tienen por lo menos un elemento en común.</p>
+<p>Consideremos, por ejemplo, los conjuntos
+<span class="math display">\[A=\left\{1,2\right\};  B=\left\{2,4,6\right\};  C=\left\{4,5,6,7\right\}.\]</span>
+Observe que <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> son solapados porque cada uno tiene el elemento 2, y B y C son solapados puesto que cada uno contiene el elemento 4, entre otros.</p>
+</div>
+</div>
+<div id="nt218" class="section level3" number="2.1.8">
+<h3><span class="header-section-number">2.1.8</span> Diagrama de Venn</h3>
+<div class="definition">
+<p><span id="def:diagramavenn" class="definition"><strong>Definición 2.12  (Diagrama de Venn) </strong></span>Un <em>diagrama de Venn</em> es una representación en dibujo de conjuntos, donde estos están representados por áreas encerradas en el plano. El conjunto universal <span class="math inline">\(U\)</span> está representado por los puntos en un rectángulo y los demás conjuntos están representados por círculos, elipses o óvalos, generalmente; que se encuentran dentro de los rectángulos.</p>
+<p>La figura <a href="nt2.html#fig:venn">2.1</a> ilustra por medio de diagramas de Venn diferentes relaciones entre los conjuntos <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span>.</p>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb69-1"><a href="nt2.html#cb69-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="at">path =</span> <span class="st">&quot;figuras/diagrama_venn.png&quot;</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:venn"></span>
+<img src="figuras/diagrama_venn.png" alt="Diagramas de Venn" width="381" />
+<p class="caption">
+Figura 2.1: Diagramas de Venn
+</p>
+</div>
+</div>
+</div>
+<div id="nt219" class="section level3" number="2.1.9">
+<h3><span class="header-section-number">2.1.9</span> Partición</h3>
+<div class="definition">
+<p><span id="def:particion" class="definition"><strong>Definición 2.13  (Partición) </strong></span>Sea <span class="math inline">\(S\)</span> un conjunto no vacío. Una partición de <span class="math inline">\(S\)</span> es una colección <span class="math inline">\(\left\{A_i \right\}\)</span> de subconjuntos no vacíos de <span class="math inline">\(S\)</span> tales que:</p>
+<ol style="list-style-type: lower-alpha">
+<li>Cada <span class="math inline">\(a\)</span> en <span class="math inline">\(S\)</span> pertenece a uno de los subconjuntos <span class="math inline">\(A_i\)</span>.</li>
+<li>Los conjuntos de <span class="math inline">\(\left\{A_i \right\}\)</span> son mutuamente excluyentes; es decir, si
+<span class="math display">\[A_i≠A_j, \textit{entonces }  A_i \cap A_j= \phi.\]</span></li>
+</ol>
+<p>Los subconjuntos de una partición se denominan <em>células</em>.</p>
+<p>La figura <a href="nt2.html#fig:particion">2.2</a> muestra la partición de un conjunto rectangular <span class="math inline">\(S\)</span> de puntos, en cinco células, <span class="math inline">\(A_1\)</span>, <span class="math inline">\(A_2\)</span>, <span class="math inline">\(A_3\)</span>, <span class="math inline">\(A_4\)</span>, <span class="math inline">\(A_5\)</span>.</p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb70-1"><a href="nt2.html#cb70-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="at">path =</span> <span class="st">&quot;figuras/particion.png&quot;</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:particion"></span>
+<img src="figuras/particion.png" alt="Diagrama de Venn de la partición de un conjunto rectangular $S$" width="228" />
+<p class="caption">
+Figura 2.2: Diagrama de Venn de la partición de un conjunto rectangular <span class="math inline">\(S\)</span>
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="nt22" class="section level2" number="2.2">
+<h2><span class="header-section-number">2.2</span> Operaciones Entre Conjuntos</h2>
+<p>En esta sección se definen las operaciones básicas entre conjuntos, tales como: intersección, unión, complemento, diferencia y diferencia simétrica. Destacando las propiedades de estas operaciones.</p>
+<div id="nt221" class="section level3" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> Intersección</h3>
+<div class="definition">
+<p><span id="def:interseccion" class="definition"><strong>Definición 2.14  (Intersepción) </strong></span>La intersección de dos conjuntos <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span>, representada por <span class="math inline">\(A \cap B\)</span>, es el conjunto de todos los elementos que pertenecen tanto al conjunto <span class="math inline">\(A\)</span> como al conjunto $B, es decir,
+<span class="math display">\[A \cap B=\left\{x:x \in A  y  x \in B \right\}\]</span>.</p>
+<p>La figura <a href="nt2.html#fig:interseccion">2.3</a> muestra diagramas de Venn que ilustran la intersección de los conjunto <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span>.</p>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb71-1"><a href="nt2.html#cb71-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="at">path =</span> <span class="st">&quot;figuras/interseccion.png&quot;</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:interseccion"></span>
+<img src="figuras/interseccion.png" alt="Diagrama de Venn para la intersección" width="265" />
+<p class="caption">
+Figura 2.3: Diagrama de Venn para la intersección
+</p>
+</div>
+</div>
+</div>
+<div id="nt2211" class="section level3" number="2.2.2">
+<h3><span class="header-section-number">2.2.2</span> Propiedades de la Intersección</h3>
+<ol style="list-style-type: decimal">
+<li><p><span class="math inline">\(A \cap \phi=∅\)</span>.</p></li>
+<li><p><span class="math inline">\(A \cap U=A\)</span>.</p></li>
+<li><p><span class="math inline">\(A \cap A=A\)</span>. (Idempotencia)</p></li>
+<li><p><span class="math inline">\(A \cap B=B \cap A\)</span>. (Conmutativa)</p></li>
+<li><p><span class="math inline">\((A \cap B) \cap C=A \cap (B \cap C)\)</span>. (Asociativa)</p></li>
+<li><p><span class="math inline">\((A \cap B) \subseteq A\)</span>.</p></li>
+<li><p><span class="math inline">\((A \cap B)\subseteq B\)</span>.</p></li>
+</ol>
+<div class="example">
+<p><span id="exm:ejemp1-interseccion" class="example"><strong>Ejemplo 2.1  (Intersección) </strong></span>Sea <span class="math inline">\(A=\left\{ a, b, c, d, e, f , g, h \right\}\)</span> y <span class="math inline">\(B=\left\{ f, g, h, i, j, k, l \right\}\)</span>. Determine <span class="math inline">\(A \cap B\)</span>.</p>
+<p>De acuerdo con la definición <a href="nt2.html#def:interseccion">2.14</a>, la intersección de los conjuntos <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> es
+<span class="math display">\[A \cap B = \left\{  f , g, h \right\}.\]</span></p>
+<p>El resultado anterior, se puede obtener con el siguiente script, usando la función <code>intersect</code> de la distribución base de <span style="color: blue;">R</span>.</p>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="nt2.html#cb72-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>]</span>
+<span id="cb72-2"><a href="nt2.html#cb72-2" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> letters[<span class="dv">6</span><span class="sc">:</span><span class="dv">12</span>]</span>
+<span id="cb72-3"><a href="nt2.html#cb72-3" aria-hidden="true" tabindex="-1"></a>(AyB <span class="ot">&lt;-</span> <span class="fu">intersect</span>(A, B))</span></code></pre></div>
+<pre><code>#&gt; [1] &quot;f&quot; &quot;g&quot; &quot;h&quot;</code></pre>
+<p>El diagrama de Venn para este ejemplo se muestra con la función <code>ggVennDiagram</code> del paquete <code>ggVennDiagram</code>. El resultado de la ejecución de esta función es la figura <a href="nt2.html#fig:ejemplo1-interseccion">2.4</a>.</p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb74-1"><a href="nt2.html#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Lista de vectores</span></span>
+<span id="cb74-2"><a href="nt2.html#cb74-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">list</span>(A , B)</span>
+<span id="cb74-3"><a href="nt2.html#cb74-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagrama de Venn con borde personalizado</span></span>
+<span id="cb74-4"><a href="nt2.html#cb74-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggVennDiagram</span>(</span>
+<span id="cb74-5"><a href="nt2.html#cb74-5" aria-hidden="true" tabindex="-1"></a>  x, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>, <span class="at">lwd =</span> <span class="fl">0.8</span>, <span class="at">lty =</span> <span class="dv">1</span>,</span>
+<span id="cb74-6"><a href="nt2.html#cb74-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">category.names =</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>),</span>
+<span id="cb74-7"><a href="nt2.html#cb74-7" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span> </span>
+<span id="cb74-8"><a href="nt2.html#cb74-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> <span class="st">&quot;#F4FAFE&quot;</span>, <span class="at">high =</span> <span class="st">&quot;#4981BF&quot;</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:ejemplo1-interseccion"></span>
+<img src="_main_files/figure-html/ejemplo1-interseccion-1.png" alt="Diagrama de Venn para el ejemplo 1 de la intersección" width="672" />
+<p class="caption">
+Figura 2.4: Diagrama de Venn para el ejemplo 1 de la intersección
+</p>
+</div>
+</div>
+<div class="example">
+<p><span id="exm:ejemplo2-interseccion" class="example"><strong>Ejemplo 2.2  (Intersección) </strong></span>Dados los conjuntos <span class="math inline">\(A=\left\{ 1, 2, 3, 4, 5 \right\}\)</span>, <span class="math inline">\(B=\left\{ 2, 3, 4, 5, 6, 7 \right\}\)</span> y <span class="math inline">\(C=\left\{ 5, 6, 7, 8, 9, 10 \right\}\)</span>. Determine <span class="math inline">\(A \cap B \cap C\)</span>.</p>
+<p>Extendiendo la definición <a href="nt2.html#def:interseccion">2.14</a> para tres conjuntos, la intersección de los conjuntos <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span> y <span class="math inline">\(C\)</span> son los elementos que se repiten en los tres conjuntos, es decir:
+<span class="math display">\[A \cap B \cap C = \left\{5 \right\}.\]</span></p>
+<p>El resultado anterior, se puede obtener con el siguiente script, usando la función <code>intersect</code> de la distribución base de <span style="color: blue;">R</span>.</p>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="nt2.html#cb75-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span>
+<span id="cb75-2"><a href="nt2.html#cb75-2" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">7</span></span>
+<span id="cb75-3"><a href="nt2.html#cb75-3" aria-hidden="true" tabindex="-1"></a>C <span class="ot">&lt;-</span> <span class="dv">5</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb75-4"><a href="nt2.html#cb75-4" aria-hidden="true" tabindex="-1"></a>(AyByC <span class="ot">&lt;-</span> <span class="fu">intersect</span>(<span class="fu">intersect</span>(A,B), C))</span></code></pre></div>
+<pre><code>#&gt; [1] 5</code></pre>
+<p>El Diagrama de Venn para este ejemplo se muestra en la figura <a href="nt2.html#fig:ejemplo2-interseccion">2.5</a>.</p>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb77-1"><a href="nt2.html#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Lista de vectores</span></span>
+<span id="cb77-2"><a href="nt2.html#cb77-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">list</span>(A , B , C)</span>
+<span id="cb77-3"><a href="nt2.html#cb77-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagrama de Venn con borde personalizado</span></span>
+<span id="cb77-4"><a href="nt2.html#cb77-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggVennDiagram</span>(</span>
+<span id="cb77-5"><a href="nt2.html#cb77-5" aria-hidden="true" tabindex="-1"></a>  x, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>, <span class="at">lwd =</span> <span class="fl">0.8</span>, <span class="at">lty =</span> <span class="dv">1</span>,</span>
+<span id="cb77-6"><a href="nt2.html#cb77-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">category.names =</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>),</span>
+<span id="cb77-7"><a href="nt2.html#cb77-7" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span> </span>
+<span id="cb77-8"><a href="nt2.html#cb77-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> <span class="st">&quot;#F4FAFE&quot;</span>, <span class="at">high =</span> <span class="st">&quot;#4981BF&quot;</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:ejemplo2-interseccion"></span>
+<img src="_main_files/figure-html/ejemplo2-interseccion-1.png" alt="Diagrama de Venn para el ejemplo 2 de la intersección" width="672" />
+<p class="caption">
+Figura 2.5: Diagrama de Venn para el ejemplo 2 de la intersección
+</p>
+</div>
+</div>
+</div>
+<div id="nt222" class="section level3" number="2.2.3">
+<h3><span class="header-section-number">2.2.3</span> Unión</h3>
+<div class="definition">
+<p><span id="def:union" class="definition"><strong>Definición 2.15  (Unión) </strong></span>La unión de dos conjuntos <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span>, representada por <span class="math inline">\(A \cup B\)</span>, es el conjunto de todos los elementos que pertenecen al conjunto <span class="math inline">\(A\)</span> o al conjunto <span class="math inline">\(B\)</span> o a ambos, es decir,
+<span class="math display">\[A∪B=\left\{x:x \in A  \textit{ o }  x \in B\right\}.\]</span></p>
+<p>La figura <a href="nt2.html#fig:union">2.6</a> muestra diagramas de Venn que ilustran la intersección de los conjunto <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span>.</p>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb78-1"><a href="nt2.html#cb78-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="at">path =</span> <span class="st">&quot;figuras/union.png&quot;</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:union"></span>
+<img src="figuras/union.PNG" alt="Diagrama de Venn para la Unión" width="270" />
+<p class="caption">
+Figura 2.6: Diagrama de Venn para la Unión
+</p>
+</div>
+</div>
+</div>
+<div id="nt2221" class="section level3" number="2.2.4">
+<h3><span class="header-section-number">2.2.4</span> Propiedades de la Unión</h3>
+<ol style="list-style-type: decimal">
+<li><p><span class="math inline">\(A \cup ∅=A\)</span>.</p></li>
+<li><p><span class="math inline">\(A \cup U=U\)</span>.</p></li>
+<li><p><span class="math inline">\(A \cup A=A\)</span>. (Idempotencia)</p></li>
+<li><p><span class="math inline">\(A \cup B=B \cup A\)</span>. (Conmutativa)</p></li>
+<li><p><span class="math inline">\((A \cup B) \cup C=A \cup (B \cup C)\)</span>. (Asociativa)</p></li>
+<li><p><span class="math inline">\(A \subseteq (A \cup B)\)</span>.</p></li>
+<li><p><span class="math inline">\(B\subseteq(A \cup B)\)</span>.</p></li>
+</ol>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="nt1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="dist_disc.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/oswaaldobelloc/probabilidades/edit/master/02-nt2.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

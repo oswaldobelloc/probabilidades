@@ -1,2 +1,50 @@
-# Princípios Básicos de probabilidades {#princ_prob}
+---
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+# Princípios Básicos de Probabilidades {#princ_prob}
+
+En este Núcleo Temático se definen algunos conceptos que servirán de soporte para comprender el concepto de probabilidad. Para ello, en la primera sección, se hace una *introducción  a los conjuntos*, lo cual es necesario para entender la *definición clásica de la probabilidad*. Luego, en la segunda sección, se definen algunas *operaciones con  conjuntos*. Por último, la tercera sección, constituye una *introducción a la probabilidad*.
+
+## Conjunto {#nt21}
+::: {.definition #conjunto name="Conjunto"}
+Un conjunto es una colección bien definida de objetos, los cuales se denominan _elementos_ o _miembros_ del conjunto. Generalmente se utilizan letras mayúsculas, como $A$, $B$, $X$, $Y$, $\dotsc$ para designar los conjuntos, y letras minúsculas, como $a$, $b$, $x$, $y$, $\dotsc$ para designar los elementos de los conjuntos. Las palabras _clase_, _colección_ y _familia_ son sinónimos de conjunto.
+
+Para decir que un elemento a pertenece a un conjunto A se escribe $a \in A$. (Donde el símbolo $\in$ significa “es un elemento de”). También se escribe $a,b \in A$ cuando $a$ y $b$ pertenecen a A.
+:::
+
+### Formulación de Conjuntos por Extensión
+
+::: {.definition #formconjext name="Formulación de Conjuntos por Extensión"}
+Consiste en formular el conjunto listando todos los elementos del conjunto. Por ejemplo, 
+
+$$A=\left\{1,2,3 ,5,7,9\right\}$$
+
+significa que $A$ es el conjunto que comprende los números $1, 2, 3 ,5, 7 \:y\: 9$. Observe que los elementos del conjunto están separados por comas y encerrados en corchetes$\{\:\:\}$.
+:::
+	
+### Formulación de Conjuntos por Comprensión
+
+::: {.definition #formconjcomp name="Formulación de Conjuntos por Comprensión"}
+Consiste en formular el conjunto a través de propiedades que caracterizan los elementos en el conjunto, es decir, las propiedades que tienen los miembros del conjunto y que no tienen los no miembros. Por ejemplo:
+
+$$A=\left\{x:x \:es\: \:un\: número\: impar, \,x<10\right\}$$.
+
+En muchos casos es inviable formular un conjunto por extensión, en tal caso se hace necesario formularlo por comprensión.
+:::
+	
+### Tamaño de un Conjunto
+
+::: {.definition #tamconj name="Tamaño de un Conjunto"}
+El tamaño de un conjunto $S$ (también, _cardinalidad_ o _cardinal del conjunto_) es el número de elementos del conjunto y se denota por $n(S)$. El tamaño del conjunto vacío es cero, es decir, $n(\phi)=0$.
+:::
+
+### Conjunto Finito
+
+::: {.definition #conjfinito name="Conjunto Finito"}
+Un conjunto $S$ es finito si $S$ es vacío o si el tamaño de $S$ es exactamente un número $m$ entero positivo $\left\(n(S) = m \in \ mathbb { N } \right\)$; de otra manera es infinito.
+:::
+
 

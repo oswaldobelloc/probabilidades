@@ -35,6 +35,11 @@ eq:variacion-sr
 def:variacion-cr
 eq:variacion-cr
 exm:ejemp1-vcr
+def:conjunto
+def:formconjext
+def:formconjcomp
+def:tamconj
+def:conjfinito
 nt1
 nt11
 nt12
@@ -51,4 +56,9 @@ nt152
 ejercicios-de-técnicas-de-conteo
 sesion
 princ_prob
+nt21
+formulación-de-conjuntos-por-extensión
+formulación-de-conjuntos-por-comprensión
+tamaño-de-un-conjunto
+conjunto-finito
 dist_disc
