@@ -198,6 +198,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.2.2" data-path="nt2.html"><a href="nt2.html#nt2211"><i class="fa fa-check"></i><b>2.2.2</b> Propiedades de la Intersección</a></li>
 <li class="chapter" data-level="2.2.3" data-path="nt2.html"><a href="nt2.html#nt222"><i class="fa fa-check"></i><b>2.2.3</b> Unión</a></li>
 <li class="chapter" data-level="2.2.4" data-path="nt2.html"><a href="nt2.html#nt2221"><i class="fa fa-check"></i><b>2.2.4</b> Propiedades de la Unión</a></li>
+<li class="chapter" data-level="2.2.5" data-path="nt2.html"><a href="nt2.html#nt223"><i class="fa fa-check"></i><b>2.2.5</b> Complemento</a></li>
+<li class="chapter" data-level="2.2.6" data-path="nt2.html"><a href="nt2.html#nt2231"><i class="fa fa-check"></i><b>2.2.6</b> Propiedades del Complemento</a></li>
+<li class="chapter" data-level="2.2.7" data-path="nt2.html"><a href="nt2.html#nt224"><i class="fa fa-check"></i><b>2.2.7</b> Diferencia</a></li>
+<li class="chapter" data-level="2.2.8" data-path="nt2.html"><a href="nt2.html#nt2241"><i class="fa fa-check"></i><b>2.2.8</b> Propiedades de la Diferencia</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="dist_disc.html"><a href="dist_disc.html"><i class="fa fa-check"></i><b>3</b> Disribuciones Discretas de Probabilidades</a></li>
@@ -256,7 +260,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h4><span class="header-section-number">2.1.1.2</span> Formulación de Conjuntos por Comprensión</h4>
 <div class="definition">
 <p><span id="def:formconjcomp" class="definition"><strong>Definición 2.3  (Formulación de Conjuntos por Comprensión) </strong></span>Consiste en formular el conjunto a través de propiedades que caracterizan los elementos en el conjunto, es decir, las propiedades que tienen los miembros del conjunto y que no tienen los no miembros. Por ejemplo:</p>
-<p><span class="math display">\[A=\left\{x:x \:es\: \:un\: número\: impar, \,x&lt;10\right\}\]</span>.</p>
+<p><span class="math display">\[A=\left\{x:x \:es\: \:un\: número\: impar, \,x&lt;10\right\}.\]</span></p>
 <p>En muchos casos es inviable formular un conjunto por extensión, en tal caso se hace necesario formularlo por comprensión.</p>
 </div>
 </div>
@@ -288,7 +292,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="nt212" class="section level3" number="2.1.2">
 <h3><span class="header-section-number">2.1.2</span> Subconjunto</h3>
 <div class="definition">
-<p><span id="def:subconjunto" class="definition"><strong>Definición 2.7  (Conjunto Contable) </strong></span>Sean <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span> dos conjuntos; se dice que <span class="math inline">\(A\)</span> es un <em>subconjunto</em> de <span class="math inline">\(B\)</span>, o se dice también que <span class="math inline">\(A\)</span> está contenido en <span class="math inline">\(B\)</span>, si todos los elemento del conjunto <span class="math inline">\(A\)</span> también pertenecen al conjunto <span class="math inline">\(B\)</span>, y se escribe como <span class="math inline">\(A \subseteq B\)</span> o <span class="math inline">\(B \supseteq A\)</span>.</p>
+<p><span id="def:subconjunto" class="definition"><strong>Definición 2.7  (Subconjunto) </strong></span>Sean <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span> dos conjuntos; se dice que <span class="math inline">\(A\)</span> es un <em>subconjunto</em> de <span class="math inline">\(B\)</span>, o se dice también que <span class="math inline">\(A\)</span> está contenido en <span class="math inline">\(B\)</span>, si todos los elemento del conjunto <span class="math inline">\(A\)</span> también pertenecen al conjunto <span class="math inline">\(B\)</span>, y se escribe como <span class="math inline">\(A \subseteq B\)</span> o <span class="math inline">\(B \supseteq A\)</span>.</p>
 <p>La afirmación <span class="math inline">\(A \subseteq B\)</span> no excluye la posibilidad de que <span class="math inline">\(A=B\)</span>. Sin embargo, si <span class="math inline">\(A \subseteq B\)</span> y <span class="math inline">\(A\neq B\)</span>, entonces se dice que <span class="math inline">\(A\)</span> es un <em>subconjunto propio</em> de <span class="math inline">\(B\)</span> (escrito algunas veces <span class="math inline">\(A \subset B\)</span>).</p>
 </div>
 </div>
@@ -302,7 +306,7 @@ Esto implica que si cualquier elemento <span class="math inline">\(a \in A\)</sp
 </div>
 <div class="theorem">
 <p><span id="thm:conjiguales" class="theorem"><strong>Teorema 2.1  </strong></span>Sean <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, <span class="math inline">\(C\)</span> cualquier conjunto. Entonces:</p>
-<ol style="list-style-type: decimal">
+<ol style="list-style-type: lower-alpha">
 <li><span class="math inline">\(A \subseteq A\)</span></li>
 <li>Si <span class="math inline">\(A \subseteq B\)</span> y <span class="math inline">\(B \supseteq A\)</span>, entonces <span class="math inline">\(A=B\)</span></li>
 <li>Si <span class="math inline">\(A \subseteq B\)</span> y <span class="math inline">\(B \subseteq C\)</span>, entonces <span class="math inline">\(A \subseteq C\)</span>.</li>
@@ -384,7 +388,7 @@ Figura 2.2: Diagrama de Venn de la partición de un conjunto rectangular <span c
 <h3><span class="header-section-number">2.2.1</span> Intersección</h3>
 <div class="definition">
 <p><span id="def:interseccion" class="definition"><strong>Definición 2.14  (Intersepción) </strong></span>La intersección de dos conjuntos <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span>, representada por <span class="math inline">\(A \cap B\)</span>, es el conjunto de todos los elementos que pertenecen tanto al conjunto <span class="math inline">\(A\)</span> como al conjunto $B, es decir,
-<span class="math display">\[A \cap B=\left\{x:x \in A  y  x \in B \right\}\]</span>.</p>
+<span class="math display">\[A \cap B=\left\{x:x \in A  \:y\:  x \in B \right\}\]</span>.</p>
 <p>La figura <a href="nt2.html#fig:interseccion">2.3</a> muestra diagramas de Venn que ilustran la intersección de los conjunto <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span>.</p>
 <div class="sourceCode" id="cb71"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb71-1"><a href="nt2.html#cb71-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="at">path =</span> <span class="st">&quot;figuras/interseccion.png&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:interseccion"></span>
@@ -397,7 +401,7 @@ Figura 2.3: Diagrama de Venn para la intersección
 </div>
 <div id="nt2211" class="section level3" number="2.2.2">
 <h3><span class="header-section-number">2.2.2</span> Propiedades de la Intersección</h3>
-<ol style="list-style-type: decimal">
+<ol style="list-style-type: lower-alpha">
 <li><p><span class="math inline">\(A \cap \phi=∅\)</span>.</p></li>
 <li><p><span class="math inline">\(A \cap U=A\)</span>.</p></li>
 <li><p><span class="math inline">\(A \cap A=A\)</span>. (Idempotencia)</p></li>
@@ -407,7 +411,7 @@ Figura 2.3: Diagrama de Venn para la intersección
 <li><p><span class="math inline">\((A \cap B)\subseteq B\)</span>.</p></li>
 </ol>
 <div class="example">
-<p><span id="exm:ejemp1-interseccion" class="example"><strong>Ejemplo 2.1  (Intersección) </strong></span>Sea <span class="math inline">\(A=\left\{ a, b, c, d, e, f , g, h \right\}\)</span> y <span class="math inline">\(B=\left\{ f, g, h, i, j, k, l \right\}\)</span>. Determine <span class="math inline">\(A \cap B\)</span>.</p>
+<p><span id="exm:ejemplo1-interseccion" class="example"><strong>Ejemplo 2.1  (Intersección) </strong></span>Sea <span class="math inline">\(A=\left\{ a, b, c, d, e, f , g, h \right\}\)</span> y <span class="math inline">\(B=\left\{ f, g, h, i, j, k, l \right\}\)</span>. Determine <span class="math inline">\(A \cap B\)</span>.</p>
 <p>De acuerdo con la definición <a href="nt2.html#def:interseccion">2.14</a>, la intersección de los conjuntos <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> es
 <span class="math display">\[A \cap B = \left\{  f , g, h \right\}.\]</span></p>
 <p>El resultado anterior, se puede obtener con el siguiente script, usando la función <code>intersect</code> de la distribución base de <span style="color: blue;">R</span>.</p>
@@ -475,7 +479,7 @@ Figura 2.6: Diagrama de Venn para la Unión
 </div>
 <div id="nt2221" class="section level3" number="2.2.4">
 <h3><span class="header-section-number">2.2.4</span> Propiedades de la Unión</h3>
-<ol style="list-style-type: decimal">
+<ol style="list-style-type: lower-alpha">
 <li><p><span class="math inline">\(A \cup ∅=A\)</span>.</p></li>
 <li><p><span class="math inline">\(A \cup U=U\)</span>.</p></li>
 <li><p><span class="math inline">\(A \cup A=A\)</span>. (Idempotencia)</p></li>
@@ -483,7 +487,131 @@ Figura 2.6: Diagrama de Venn para la Unión
 <li><p><span class="math inline">\((A \cup B) \cup C=A \cup (B \cup C)\)</span>. (Asociativa)</p></li>
 <li><p><span class="math inline">\(A \subseteq (A \cup B)\)</span>.</p></li>
 <li><p><span class="math inline">\(B\subseteq(A \cup B)\)</span>.</p></li>
+<li><p><span class="math inline">\(A \cap (B \cup C)=(A \cap B) \cup (A \cap C)\)</span>. (Distributiva de la intersección)</p></li>
+<li><p>$ A (B∩C)=(A B) (A C)$. (Distributiva de la unión)</p></li>
 </ol>
+<div class="example">
+<p><span id="exm:ejemp1-union" class="example"><strong>Ejemplo 2.3  (Unión) </strong></span>Dados los conjuntos <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, especificados en el ejemplo <a href="nt2.html#exm:ejemplo1-interseccion">2.1</a>, determine <span class="math inline">\(A \cup B\)</span>.</p>
+<p>De acuerdo con la definición <a href="nt2.html#def:union">2.15</a>, la unión de los conjuntos <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> es
+<span class="math display">\[A \cup B = \left\{a , b, c, d, e, f, g, h, i, j, k, l  \right\}.\]</span></p>
+<p>El resultado anterior, se puede obtener con el siguiente script, usando la función <code>union</code> de la distribución base de <span style="color: blue;">R</span>.</p>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="nt2.html#cb79-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>]</span>
+<span id="cb79-2"><a href="nt2.html#cb79-2" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> letters[<span class="dv">6</span><span class="sc">:</span><span class="dv">12</span>]</span>
+<span id="cb79-3"><a href="nt2.html#cb79-3" aria-hidden="true" tabindex="-1"></a>(AoB <span class="ot">&lt;-</span> <span class="fu">union</span>(A, B))</span></code></pre></div>
+<pre><code>#&gt;  [1] &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot; &quot;e&quot; &quot;f&quot; &quot;g&quot; &quot;h&quot; &quot;i&quot; &quot;j&quot; &quot;k&quot; &quot;l&quot;</code></pre>
+</div>
+<div class="example">
+<p><span id="exm:ejemp2-union" class="example"><strong>Ejemplo 2.4  (Unión) </strong></span>Dados los conjuntos <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, <span class="math inline">\(C\)</span>, especificados en el ejemplo <a href="nt2.html#exm:ejemplo2-interseccion">2.2</a>, determine <span class="math inline">\(A \cup B \cup C\)</span>.</p>
+<p>De acuerdo con la definición <a href="nt2.html#def:union">2.15</a>, la unión de los conjuntos <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> es
+<span class="math display">\[A \cup B \cup C= \left\{1,  2,  3,  4,  5,  6,  7,  8,  9, 10  \right\}.\]</span></p>
+<p>El resultado anterior, se puede obtener con el siguiente script, usando la función <code>union</code> de la distribución base de <span style="color: blue;">R</span>.</p>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="nt2.html#cb81-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span>
+<span id="cb81-2"><a href="nt2.html#cb81-2" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">7</span></span>
+<span id="cb81-3"><a href="nt2.html#cb81-3" aria-hidden="true" tabindex="-1"></a>C <span class="ot">&lt;-</span> <span class="dv">5</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb81-4"><a href="nt2.html#cb81-4" aria-hidden="true" tabindex="-1"></a>(AoBoC <span class="ot">&lt;-</span> <span class="fu">union</span>(<span class="fu">union</span>(A,B), C))</span></code></pre></div>
+<pre><code>#&gt;  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
+</div>
+</div>
+<div id="nt223" class="section level3" number="2.2.5">
+<h3><span class="header-section-number">2.2.5</span> Complemento</h3>
+<div class="definition">
+<p><span id="def:complmento" class="definition"><strong>Definición 2.16  (Complemeto) </strong></span>El <em>complemento absoluto</em> o, simplemente, el <em>complemento</em> de un conjunto <span class="math inline">\(A\)</span>, representado por <span class="math inline">\(A^c\)</span>, es el conjunto de elementos que pertenecen a <span class="math inline">\(U\)</span> pero que no pertenecen a <span class="math inline">\(A\)</span>, es decir, <span class="math display">\[A^c=\left\{x:x∈U,x \notin A\right\}.\]</span></p>
+<p>Algunos textos representan el complemento de <span class="math inline">\(A\)</span> mediante <span class="math inline">\(A&#39;\)</span> o <span class="math inline">\(\bar{A}\)</span>.</p>
+<p>La figura <a href="nt2.html#fig:complemento">2.7</a> muestra el diagramas de Venn para <span class="math inline">\(A^c\)</span>. La zona coloreada en azul representa el conjunto <span class="math inline">\(A^c\)</span>.</p>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb83-1"><a href="nt2.html#cb83-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="at">path =</span> <span class="st">&quot;figuras/complemento.png&quot;</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:complemento"></span>
+<img src="figuras/complemento.png" alt="Diagrama de Venn para el complemento" width="202" />
+<p class="caption">
+Figura 2.7: Diagrama de Venn para el complemento
+</p>
+</div>
+</div>
+</div>
+<div id="nt2231" class="section level3" number="2.2.6">
+<h3><span class="header-section-number">2.2.6</span> Propiedades del Complemento</h3>
+<ol style="list-style-type: lower-alpha">
+<li><p><span class="math inline">\(\left(A^c \right)^c=A\)</span>. (Propiedad Involutiva)</p></li>
+<li><p><span class="math inline">\(A \cup A^c = U\)</span></p></li>
+<li><p><span class="math inline">\(A \cap A^c=\phi\)</span></p></li>
+<li><p><span class="math inline">\(U^c=\phi\)</span></p></li>
+</ol>
+<div class="example">
+<p><span id="exm:ejemp1-complemento" class="example"><strong>Ejemplo 2.5  (Complemento) </strong></span>Dado el conjunto universal <span class="math inline">\(U\)</span>, el cual representa el alfabeto inglés (no contiene la letra ñ). Dado el conjunto <span class="math display">\[A= \left\{l, w, z, f, s, m, y, v, c, p, q, x, k, b, j  \right\}.\]</span>
+Determine el complemento de A <span class="math inline">\(\left(A^c \right)\)</span>.</p>
+<p>De acuerdo con la definición <a href="#def:complemento"><strong>??</strong></a>, el complemento de <span class="math inline">\(A\)</span> es:
+<span class="math display">\[A^c = \left\{a, d, e, g, h, i, n, o, r, t, u \right\}.\]</span></p>
+<p>El resultado anterior, se puede obtener con el siguiente script, usando la función <code>setdiff</code> de la distribución base de <span style="color: blue;">R</span>.</p>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="nt2.html#cb84-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb84-2"><a href="nt2.html#cb84-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;l&quot;</span>, <span class="st">&quot;w&quot;</span>, <span class="st">&quot;z&quot;</span>, <span class="st">&quot;f&quot;</span>, <span class="st">&quot;s&quot;</span>, <span class="st">&quot;m&quot;</span>, <span class="st">&quot;y&quot;</span>, <span class="st">&quot;v&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;p&quot;</span>, <span class="st">&quot;q&quot;</span>, </span>
+<span id="cb84-3"><a href="nt2.html#cb84-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;x&quot;</span>, <span class="st">&quot;k&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;j&quot;</span></span>
+<span id="cb84-4"><a href="nt2.html#cb84-4" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb84-5"><a href="nt2.html#cb84-5" aria-hidden="true" tabindex="-1"></a>U <span class="ot">&lt;-</span> letters</span>
+<span id="cb84-6"><a href="nt2.html#cb84-6" aria-hidden="true" tabindex="-1"></a>(Ac <span class="ot">&lt;-</span> <span class="fu">setdiff</span>(U, A))</span></code></pre></div>
+<pre><code>#&gt;  [1] &quot;a&quot; &quot;d&quot; &quot;e&quot; &quot;g&quot; &quot;h&quot; &quot;i&quot; &quot;n&quot; &quot;o&quot; &quot;r&quot; &quot;t&quot; &quot;u&quot;</code></pre>
+<p>Con el siguiente trozo de código se verifican las propiedades del complemento, dadas en la sección sección <a href="nt2.html#nt2231">2.2.6</a>, para el ejemplo en cuestión.</p>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="nt2.html#cb86-1" aria-hidden="true" tabindex="-1"></a>Acc <span class="ot">&lt;-</span> <span class="fu">setdiff</span>(U, Ac)</span>
+<span id="cb86-2"><a href="nt2.html#cb86-2" aria-hidden="true" tabindex="-1"></a>CV <span class="ot">&lt;-</span> <span class="fu">as.character</span>(<span class="fu">c</span>())</span>
+<span id="cb86-3"><a href="nt2.html#cb86-3" aria-hidden="true" tabindex="-1"></a>(a <span class="ot">&lt;-</span> <span class="fu">setequal</span>(Acc, A))</span></code></pre></div>
+<p>[1] TRUE</p>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="nt2.html#cb87-1" aria-hidden="true" tabindex="-1"></a>(b <span class="ot">&lt;-</span> <span class="fu">setequal</span>(<span class="fu">union</span>(A, Ac), U))</span></code></pre></div>
+<p>[1] TRUE</p>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="nt2.html#cb88-1" aria-hidden="true" tabindex="-1"></a>(c <span class="ot">&lt;-</span> <span class="fu">setequal</span>(<span class="fu">intersect</span>(A, Ac), CV))</span></code></pre></div>
+<p>[1] TRUE</p>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="nt2.html#cb89-1" aria-hidden="true" tabindex="-1"></a>(d <span class="ot">&lt;-</span> <span class="fu">setequal</span>(<span class="fu">setdiff</span>(U, U), CV))</span></code></pre></div>
+<p>[1] TRUE</p>
+</div>
+</div>
+<div id="nt224" class="section level3" number="2.2.7">
+<h3><span class="header-section-number">2.2.7</span> Diferencia</h3>
+<div class="definition">
+<p><span id="def:diferencia" class="definition"><strong>Definición 2.17  (Diferencia) </strong></span>El complemento relativo de un conjunto <span class="math inline">\(B\)</span> con respecto a un conjunto <span class="math inline">\(A\)</span>, o, simplemente, la diferencia entre <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span>, representado por <span class="math inline">\(A \setminus B\)</span>, es el conjunto de elementos que pertenecen a <span class="math inline">\(A\)</span> pero que no pertenecen a <span class="math inline">\(B\)</span>, es decir,
+<span class="math display">\[A  \setminus  B=\left\{x:x \in A,x \notin B \right\}.\]</span>
+El conjunto <span class="math inline">\(A \setminus B\)</span> se lee “<span class="math inline">\(A\)</span> menos <span class="math inline">\(B\)</span>”. Algunos textos representan <span class="math inline">\(A \setminus B\)</span> mediante <span class="math inline">\(A-B\)</span> o <span class="math inline">\(A \sim B\)</span>.</p>
+<p>La figura <a href="nt2.html#fig:diferencia">2.8</a> muestra el diagramas de Venn para <span class="math inline">\(A \setminus B\)</span>.</p>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb90-1"><a href="nt2.html#cb90-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="at">path =</span> <span class="st">&quot;figuras/diferencia.png&quot;</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:diferencia"></span>
+<img src="figuras/diferencia.png" alt="Diagrama de Venn para la diferencia" width="310" />
+<p class="caption">
+Figura 2.8: Diagrama de Venn para la diferencia
+</p>
+</div>
+</div>
+</div>
+<div id="nt2241" class="section level3" number="2.2.8">
+<h3><span class="header-section-number">2.2.8</span> Propiedades de la Diferencia</h3>
+<ol style="list-style-type: lower-alpha">
+<li><p><span class="math inline">\(A \setminus B \neq B \setminus A\)</span> (la diferencia no es conmutativa).</p></li>
+<li><p><span class="math inline">\(A \setminus B= A \cap B^c \:o\: B∖A=B \cap A^c\)</span>.</p></li>
+<li><p><span class="math inline">\(U \setminus A=A^c\)</span></p></li>
+<li><p><span class="math inline">\((A \setminus B) \cap (B \setminus A )=\phi\)</span></p></li>
+<li><p><span class="math inline">\(A \setminus B \subseteq A\)</span></p></li>
+</ol>
+<div class="example">
+<p><span id="exm:ejemp1-diferencia" class="example"><strong>Ejemplo 2.6  (Diferencia) </strong></span>Se tiene el conjunto universal <span class="math inline">\(U\)</span> representado por el alfabeto inglés. Por ptro lado, se tienen los conjunto <span class="math display">\[A= \left\{d, s, l, y, h, t, b, u, f, n  \right\}.\]</span> y <span class="math display">\[B= \left\{p, y, u, m, k, f, r, j, h, n  \right\}.\]</span>
+Determine <span class="math inline">\((A \setminus B)\)</span> y B A$.</p>
+<p>De acuerdo con la definición <a href="nt2.html#def:diferencia">2.17</a>, <span class="math inline">\(A\)</span> menos <span class="math inline">\(B\)</span> es:
+<span class="math display">\[(A \setminus B) = \left\{d, s, l, t, b \right\}.\]</span></p>
+<p>Mientras que <span class="math inline">\(B\)</span> menos <span class="math inline">\(A\)</span> es:
+<span class="math display">\[(B \setminus A) = \left\{p, m, k, r, j \right\}.\]</span></p>
+<p>El resultado anterior, se puede obtener con el siguiente script, usando la función <code>setdiff</code> de la distribución base de <span style="color: blue;">R</span>.</p>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="nt2.html#cb91-1" aria-hidden="true" tabindex="-1"></a>U <span class="ot">&lt;-</span> letters</span>
+<span id="cb91-2"><a href="nt2.html#cb91-2" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;d&quot;</span>, <span class="st">&quot;s&quot;</span>, <span class="st">&quot;l&quot;</span>, <span class="st">&quot;y&quot;</span>, <span class="st">&quot;h&quot;</span>, <span class="st">&quot;t&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;u&quot;</span>, <span class="st">&quot;f&quot;</span>, <span class="st">&quot;n&quot;</span> )</span>
+<span id="cb91-3"><a href="nt2.html#cb91-3" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;p&quot;</span>, <span class="st">&quot;y&quot;</span>, <span class="st">&quot;u&quot;</span>, <span class="st">&quot;m&quot;</span>, <span class="st">&quot;k&quot;</span>, <span class="st">&quot;f&quot;</span>, <span class="st">&quot;r&quot;</span>, <span class="st">&quot;j&quot;</span>, <span class="st">&quot;h&quot;</span>, <span class="st">&quot;n&quot;</span>)</span>
+<span id="cb91-4"><a href="nt2.html#cb91-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb91-5"><a href="nt2.html#cb91-5" aria-hidden="true" tabindex="-1"></a>(AmenosB <span class="ot">&lt;-</span> <span class="fu">setdiff</span>(A, B))</span>
+<span id="cb91-6"><a href="nt2.html#cb91-6" aria-hidden="true" tabindex="-1"></a>(BmenosA <span class="ot">&lt;-</span> <span class="fu">setdiff</span>(B, A))</span></code></pre></div>
+<pre><code>#&gt; [1] &quot;d&quot; &quot;s&quot; &quot;l&quot; &quot;t&quot; &quot;b&quot;
+#&gt; [1] &quot;p&quot; &quot;m&quot; &quot;k&quot; &quot;r&quot; &quot;j&quot;</code></pre>
+<p>Las propiedades de la diferencia descritas en la sección <a href="nt2.html#nt2211">2.2.2</a> se pueden verificar en este ejercicio por medio del siguiente script.</p>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="nt2.html#cb93-1" aria-hidden="true" tabindex="-1"></a>(a <span class="ot">&lt;-</span> <span class="fu">setequal</span>(AmenosB, BmenosA))</span>
+<span id="cb93-2"><a href="nt2.html#cb93-2" aria-hidden="true" tabindex="-1"></a>(b <span class="ot">&lt;-</span> <span class="fu">setequal</span>(AmenosB, <span class="fu">intersect</span>(A, <span class="fu">setdiff</span>(U, B))))</span>
+<span id="cb93-3"><a href="nt2.html#cb93-3" aria-hidden="true" tabindex="-1"></a>(c <span class="ot">&lt;-</span> <span class="fu">setequal</span>(<span class="fu">setdiff</span>(U, A), <span class="fu">setdiff</span>(U, A)))</span>
+<span id="cb93-4"><a href="nt2.html#cb93-4" aria-hidden="true" tabindex="-1"></a>(d <span class="ot">&lt;-</span> <span class="fu">setequal</span>(<span class="fu">intersect</span>(AmenosB,BmenosA), CV))</span></code></pre></div>
+<pre><code>#&gt; [1] FALSE
+#&gt; [1] TRUE
+#&gt; [1] TRUE
+#&gt; [1] TRUE</code></pre>
+</div>
 
 </div>
 </div>

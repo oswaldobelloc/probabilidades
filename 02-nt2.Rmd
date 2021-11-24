@@ -45,7 +45,7 @@ significa que $A$ es el conjunto que comprende los números $1, 2, 3 ,5, 7 \:y\:
 ::: {#formconjcomp .definition name="Formulación de Conjuntos por Comprensión"}
 Consiste en formular el conjunto a través de propiedades que caracterizan los elementos en el conjunto, es decir, las propiedades que tienen los miembros del conjunto y que no tienen los no miembros. Por ejemplo:
 
-$$A=\left\{x:x \:es\: \:un\: número\: impar, \,x<10\right\}$$.
+$$A=\left\{x:x \:es\: \:un\: número\: impar, \,x<10\right\}.$$
 
 En muchos casos es inviable formular un conjunto por extensión, en tal caso se hace necesario formularlo por comprensión.
 :::
@@ -80,7 +80,7 @@ c. Sea $E$ el conjunto de los enteros positivos pares y sea $I$ el intervalo uni
 
 ###	Subconjunto {#nt212}
 
-::: {#subconjunto .definition name="Conjunto Contable"}
+::: {#subconjunto .definition name="Subconjunto"}
 
 Sean $A$, $B$ dos conjuntos; se dice que $A$ es un _subconjunto_ de $B$, o se dice también que $A$ está contenido en $B$, si todos los elemento del conjunto $A$ también pertenecen al conjunto $B$, y se escribe como $A \subseteq B$ o $B \supseteq A$.
 
@@ -102,9 +102,9 @@ Las negaciones de $a \in A, A \subseteq B, B \supseteq A, \:y\: A=B$ se escriben
 
 Sean $A$, $B$, $C$ cualquier conjunto. Entonces:
 
-1.	$A \subseteq A$
-2.	Si $A \subseteq B$ y $B \supseteq A$, entonces $A=B$
-3.	Si $A \subseteq B$ y $B \subseteq C$, entonces $A \subseteq C$.
+a.	$A \subseteq A$
+a.	Si $A \subseteq B$ y $B \supseteq A$, entonces $A=B$
+a.	Si $A \subseteq B$ y $B \subseteq C$, entonces $A \subseteq C$.
 :::
 
 ###	Conjuntos Universal {#nt214}
@@ -202,21 +202,22 @@ knitr::include_graphics(path = "figuras/interseccion.png")
 
 ### Propiedades de la Intersección {#nt2211}
 
-1. $A \cap \phi=∅$.
+a. $A \cap \phi=∅$.
 
-1. $A \cap U=A$.
+a. $A \cap U=A$.
 
-1. $A \cap A=A$. (Idempotencia)
+a. $A \cap A=A$. (Idempotencia)
 
-1. $A \cap B=B \cap A$. (Conmutativa)
+a. $A \cap B=B \cap A$. (Conmutativa)
 
-1. $(A \cap B) \cap C=A \cap (B \cap C)$. (Asociativa)
+a. $(A \cap B) \cap C=A \cap (B \cap C)$. (Asociativa)
 
-1. $(A \cap B) \subseteq A$.
+a. $(A \cap B) \subseteq A$.
 
-1. $(A \cap B)\subseteq B$.
+a. $(A \cap B)\subseteq B$.
 
-::: {.example #ejemp1-interseccion name="Intersección"}
+
+::: {.example #ejemplo1-interseccion name="Intersección"}
 
 Sea $A=\left\{ a, b, c, d, e, f , g, h \right\}$ y $B=\left\{ f, g, h, i, j, k, l \right\}$. Determine $A \cap B$. 
 
@@ -294,20 +295,173 @@ knitr::include_graphics(path = "figuras/union.png")
 
 ### Propiedades de la Unión {#nt2221}
 
-1. $A \cup ∅=A$.
+a. $A \cup ∅=A$.
 
-1. $A \cup U=U$.
+a. $A \cup U=U$.
 
-1. $A \cup A=A$. (Idempotencia)
+a. $A \cup A=A$. (Idempotencia)
 
-1. $A \cup B=B \cup A$. (Conmutativa)
+a. $A \cup B=B \cup A$. (Conmutativa)
 
-1. $(A \cup B) \cup C=A \cup (B \cup C)$.  (Asociativa)
+a. $(A \cup B) \cup C=A \cup (B \cup C)$.  (Asociativa)
 
-1. $A \subseteq (A \cup B)$.
+a. $A \subseteq (A \cup B)$.
 
-1. $B\subseteq(A \cup B)$.
+a. $B\subseteq(A \cup B)$.
+
+a. $A \cap (B \cup C)=(A \cap B) \cup (A \cap C)$. (Distributiva de la intersección)
+
+a. $	A \cup (B∩C)=(A \cup B) \cap (A \cup C)$. (Distributiva de la unión)
+
+::: {.example #ejemp1-union name="Unión"}
+
+Dados los conjuntos $A$, $B$, especificados en el ejemplo  \@ref(exm:ejemplo1-interseccion), determine $A \cup B$.
+
+De acuerdo con la definición \@ref(def:union), la unión de los conjuntos $A$ y $B$ es
+$$A \cup B = \left\{a , b, c, d, e, f, g, h, i, j, k, l  \right\}.$$
+
+El resultado anterior, se puede obtener con el siguiente script, usando la función `union` de la distribución base de `r colorize("R", "blue")`. 
+
+```{r}
+A <- letters[1:8]
+B <- letters[6:12]
+(AoB <- union(A, B))
+```
+:::
+
+::: {.example #ejemp2-union name="Unión"}
+
+Dados los conjuntos $A$, $B$, $C$, especificados en el ejemplo  \@ref(exm:ejemplo2-interseccion), determine $A \cup B \cup C$.
+
+De acuerdo con la definición \@ref(def:union), la unión de los conjuntos $A$ y $B$ es
+$$A \cup B \cup C= \left\{1,  2,  3,  4,  5,  6,  7,  8,  9, 10  \right\}.$$
+
+El resultado anterior, se puede obtener con el siguiente script, usando la función `union` de la distribución base de `r colorize("R", "blue")`. 
+
+```{r}
+A <- 1:5
+B <- 2:7
+C <- 5:10
+(AoBoC <- union(union(A,B), C))
+```
+:::
+
+### Complemento {#nt223}
+
+::: {#complmento .definition name="Complemeto"}
+El _complemento absoluto_ o, simplemente, el _complemento_ de un conjunto $A$, representado por $A^c$, es el conjunto de elementos que pertenecen a $U$ pero que no pertenecen a $A$, es decir, $$A^c=\left\{x:x∈U,x \notin A\right\}.$$
+
+Algunos textos representan el complemento de $A$ mediante $A'$ o $\bar{A}$.
+
+La figura \@ref(fig:complemento) muestra el diagramas de Venn para $A^c$. La zona coloreada en azul representa el conjunto $A^c$.
 
 
+```{r complemento, fig.cap="Diagrama de Venn para el complemento", class.source = "watch-out", class.output = "bg-warning"}
+knitr::include_graphics(path = "figuras/complemento.png")
+```
+:::
+
+### Propiedades del Complemento {#nt2231}
+
+a)	$\left(A^c \right)^c=A$.  (Propiedad Involutiva)
+
+a)	$A \cup A^c = U$
+
+a)	$A \cap A^c=\phi$
+
+a)	$U^c=\phi$
+
+::: {.example #ejemp1-complemento name="Complemento"}
+
+Dado el conjunto universal $U$, el cual representa el alfabeto inglés (no contiene la letra ñ). Dado el conjunto $$A= \left\{l, w, z, f, s, m, y, v, c, p, q, x, k, b, j  \right\}.$$
+Determine el complemento de A $\left(A^c \right)$.
+
+De acuerdo con la definición \@ref(def:complemento), el complemento de $A$ es:
+$$A^c = \left\{a, d, e, g, h, i, n, o, r, t, u \right\}.$$
+
+El resultado anterior, se puede obtener con el siguiente script, usando la función `setdiff` de la distribución base de `r colorize("R", "blue")`. 
+
+```{r}
+A <- c(
+  "l", "w", "z", "f", "s", "m", "y", "v", "c", "p", "q", 
+  "x", "k", "b", "j"
+  )
+U <- letters
+(Ac <- setdiff(U, A))
+```
+
+Con el siguiente trozo de código  se verifican las propiedades del complemento, dadas en la sección sección \@ref(nt2231), para el ejemplo en cuestión.
+
+```{r prop-complemento, results='asis'}
+Acc <- setdiff(U, Ac)
+CV <- as.character(c())
+(a <- setequal(Acc, A))
+(b <- setequal(union(A, Ac), U))
+(c <- setequal(intersect(A, Ac), CV))
+(d <- setequal(setdiff(U, U), CV))
+```
+:::
+
+### Diferencia {#nt224}
+
+::: {#diferencia .definition name="Diferencia"}
+El complemento relativo de un conjunto $B$ con respecto a un conjunto $A$, o, simplemente, la diferencia entre $A$ y $B$, representado por $A \setminus B$, es el conjunto de elementos que pertenecen a $A$ pero que no pertenecen a $B$, es decir,
+$$A  \setminus  B=\left\{x:x \in A,x \notin B \right\}.$$
+El conjunto $A  \setminus  B$ se lee “$A$ menos $B$”. Algunos textos representan $A  \setminus  B$ mediante $A-B$ o $A \sim B$.
+
+
+La figura \@ref(fig:diferencia) muestra el diagramas de Venn para $A  \setminus  B$.
+
+```{r diferencia, fig.cap="Diagrama de Venn para la diferencia", class.source = "watch-out", class.output = "bg-warning"}
+knitr::include_graphics(path = "figuras/diferencia.png")
+```
+:::
+
+### Propiedades de la Diferencia {#nt2241}
+
+a)	$A  \setminus  B \neq B  \setminus  A$   (la diferencia no es conmutativa).
+
+a)	$A \setminus B= A \cap B^c \:o\:  B∖A=B \cap A^c$.
+
+a)	$U \setminus A=A^c$
+
+a)	$(A \setminus B) \cap (B \setminus A )=\phi$ 
+
+a)	$A \setminus B \subseteq A$
+
+
+::: {.example #ejemp1-diferencia name="Diferencia"}
+
+Se tiene el conjunto universal $U$ representado por el alfabeto inglés. Por ptro lado, se tienen los conjunto $$A= \left\{d, s, l, y, h, t, b, u, f, n  \right\}.$$ y $$B= \left\{p, y, u, m, k, f, r, j, h, n  \right\}.$$
+Determine $(A \setminus B)$ y B \setminus A$.
+
+De acuerdo con la definición \@ref(def:diferencia),  $A$ menos $B$ es:
+$$(A \setminus B) = \left\{d, s, l, t, b \right\}.$$
+
+Mientras que $B$ menos $A$ es:
+$$(B \setminus A) = \left\{p, m, k, r, j \right\}.$$
+
+El resultado anterior, se puede obtener con el siguiente script, usando la función `setdiff` de la distribución base de `r colorize("R", "blue")`. 
+
+```{r}
+U <- letters
+A <- c("d", "s", "l", "y", "h", "t", "b", "u", "f", "n" )
+B <- c("p", "y", "u", "m", "k", "f", "r", "j", "h", "n")
+
+(AmenosB <- setdiff(A, B))
+(BmenosA <- setdiff(B, A))
+```
+
+Las propiedades de la diferencia descritas en la sección \@ref(nt2211) se pueden verificar en este ejercicio por medio del siguiente script.
+
+```{r}
+(a <- setequal(AmenosB, BmenosA))
+(b <- setequal(AmenosB, intersect(A, setdiff(U, B))))
+(c <- setequal(setdiff(U, A), setdiff(U, A)))
+(d <- setequal(intersect(AmenosB,BmenosA), CV))
+```
+
+
+:::
 
 
