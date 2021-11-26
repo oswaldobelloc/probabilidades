@@ -27,7 +27,7 @@ En esta sección se definen algunos conceptos relacionados a la teoría de conju
 ::: {#conjunto .definition name="Conjunto"}
 Un conjunto es una colección bien definida de objetos, los cuales se denominan *elementos* o *miembros* del conjunto. Generalmente se utilizan letras mayúsculas, como $A$, $B$, $X$, $Y$, $\dotsc$ para designar los conjuntos, y letras minúsculas, como $a$, $b$, $x$, $y$, $\dotsc$ para designar los elementos de los conjuntos. Las palabras *clase*, *colección* y *familia* son sinónimos de conjunto.
 
-Para decir que un elemento a pertenece a un conjunto A se escribe $a \in A$. (Donde el símbolo $\in$ significa "es un elemento de"). También se escribe $a,b \in A$ cuando $a$ y $b$ pertenecen a A.
+Para decir que un elemento $a$ pertenece a un conjunto $A$ se escribe $a \in A$. (Donde el símbolo $\in$ significa "es un elemento de"). También se escribe $a,b \in A$ cuando $a$ y $b$ pertenecen a A.
 :::
 
 #### Formulación de Conjuntos por Extensión {#nt2111}
@@ -311,7 +311,7 @@ a. $B\subseteq(A \cup B)$.
 
 a. $A \cap (B \cup C)=(A \cap B) \cup (A \cap C)$. (Distributiva de la intersección)
 
-a. $	A \cup (B∩C)=(A \cup B) \cap (A \cup C)$. (Distributiva de la unión)
+a. $A \cup (B \cap C)=(A \cup B) \cap (A \cup C)$. (Distributiva de la unión)
 
 ::: {.example #ejemp1-union name="Unión"}
 
@@ -348,7 +348,7 @@ C <- 5:10
 
 ### Complemento {#nt223}
 
-::: {#complmento .definition name="Complemeto"}
+::: {#complemento .definition name="Complemeto"}
 El _complemento absoluto_ o, simplemente, el _complemento_ de un conjunto $A$, representado por $A^c$, es el conjunto de elementos que pertenecen a $U$ pero que no pertenecen a $A$, es decir, $$A^c=\left\{x:x∈U,x \notin A\right\}.$$
 
 Algunos textos representan el complemento de $A$ mediante $A'$ o $\bar{A}$.
@@ -361,7 +361,7 @@ knitr::include_graphics(path = "figuras/complemento.png")
 ```
 :::
 
-### Propiedades del Complemento {#nt2231}
+#### Propiedades del Complemento {#nt2231}
 
 a)	$\left(A^c \right)^c=A$.  (Propiedad Involutiva)
 
@@ -373,7 +373,7 @@ a)	$U^c=\phi$
 
 a)	$\phi^c=U$
 
-### Leyes de Morgan {#nt2232}
+#### Leyes de Morgan {#nt2232}
 
 a)	$\left(A \cup B \right)^c=A^c \cap B^c$
 
@@ -440,7 +440,7 @@ a)	$A \setminus B \subseteq A$
 
 ::: {.example #ejemp1-diferencia name="Diferencia"}
 
-Se tiene el conjunto universal $U$ representado por el alfabeto inglés. Por otro lado, se tienen los conjunto $$A= \left\{d, s, l, y, h, t, b, u, f, n  \right\}.$$ y $$B= \left\{p, y, u, m, k, f, r, j, h, n  \right\}.$$
+Se tiene el conjunto universal $U$ representado por el alfabeto inglés. Por otro lado, se tienen los conjunto $A= \left\{d, s, l, y, h, t, b, u, f, n  \right\}$ y $B= \left\{p, y, u, m, k, f, r, j, h, n  \right\}$.
 Determine $A \setminus B$ y $B \setminus A$.
 
 De acuerdo con la definición \@ref(def:diferencia),  $A$ menos $B$ es:
@@ -449,13 +449,12 @@ $$A \setminus B = \left\{d, s, l, t, b \right\}.$$
 Mientras que $B$ menos $A$ es:
 $$B \setminus A = \left\{p, m, k, r, j \right\}.$$
 
-El resultado anterior, se puede obtener con el siguiente script, usando la función `setdiff` de la distribución base de `r colorize("R", "blue")`. 
+El resultado anterior se puede obtener con el siguiente script, usando la función `setdiff` de la distribución base de `r colorize("R", "blue")`. 
 
 ```{r}
 U <- letters
 A <- c("d", "s", "l", "y", "h", "t", "b", "u", "f", "n" )
 B <- c("p", "y", "u", "m", "k", "f", "r", "j", "h", "n")
-
 (AmenosB <- setdiff(A, B))
 (BmenosA <- setdiff(B, A))
 ```
@@ -492,16 +491,16 @@ b)	$(A \oplus B) \oplus C=A \oplus (B \oplus C)$ (asociativa)
 
 ::: {.example #ejemp1-diferenciasimetrica name="Diferencia Simétrica"}
 
-Dados los conjuntos $A$, $B$, especificados en el ejemplo  \@ref(exm:ejemp1-diferencia), determine $A \oplus BB$ y $B \oplus A$ y verifique la propiedad conmutativa de la diferencia simétrica.
+Dados los conjuntos $A$, $B$, especificados en el ejemplo  \@ref(exm:ejemp1-diferencia), determine $A \oplus B$ y $B \oplus A$ y verifique la propiedad conmutativa de la diferencia simétrica.
 
 De acuerdo con la definición \@ref(def:diferenciasimetrica)
 $$A \oplus B= \left\{d, s, l, t, b, p, m, k, r, j \right\}$$, mientras que $$B \oplus A= \left\{p, m, k, r, j, d, s, l, t, b \right\}.$$
 
-Note que $A \oplus B = B \oplus A$ dado que ambos conjuntos contienen los mismos elementos. (Revise la definición \@ref(def:conjiguales)).
+Note que $A \oplus B = B \oplus A$, dado que ambos conjuntos contienen los mismos elementos. (Revise la definición \@ref(def:conjiguales)).
 
 El resultado anterior, se puede obtener con el siguiente script. 
 
-```{r}
+```{r ej1-diferenciasimetrica,  class.source = "watch-out", class.output = "bg-warning"}
 A <- c("d", "s", "l", "y", "h", "t", "b", "u", "f", "n" )
 B <- c("p", "y", "u", "m", "k", "f", "r", "j", "h", "n")
 AmenosB <- setdiff(A, B)

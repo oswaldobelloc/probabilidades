@@ -199,12 +199,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.2.3" data-path="nt2.html"><a href="nt2.html#nt222"><i class="fa fa-check"></i><b>2.2.3</b> Unión</a></li>
 <li class="chapter" data-level="2.2.4" data-path="nt2.html"><a href="nt2.html#nt2221"><i class="fa fa-check"></i><b>2.2.4</b> Propiedades de la Unión</a></li>
 <li class="chapter" data-level="2.2.5" data-path="nt2.html"><a href="nt2.html#nt223"><i class="fa fa-check"></i><b>2.2.5</b> Complemento</a></li>
-<li class="chapter" data-level="2.2.6" data-path="nt2.html"><a href="nt2.html#nt2231"><i class="fa fa-check"></i><b>2.2.6</b> Propiedades del Complemento</a></li>
-<li class="chapter" data-level="2.2.7" data-path="nt2.html"><a href="nt2.html#nt2232"><i class="fa fa-check"></i><b>2.2.7</b> Leyes de Morgan</a></li>
-<li class="chapter" data-level="2.2.8" data-path="nt2.html"><a href="nt2.html#nt224"><i class="fa fa-check"></i><b>2.2.8</b> Diferencia</a></li>
-<li class="chapter" data-level="2.2.9" data-path="nt2.html"><a href="nt2.html#nt2241"><i class="fa fa-check"></i><b>2.2.9</b> Propiedades de la Diferencia</a></li>
-<li class="chapter" data-level="2.2.10" data-path="nt2.html"><a href="nt2.html#nt225"><i class="fa fa-check"></i><b>2.2.10</b> Diferencia Simétrica</a></li>
-<li class="chapter" data-level="2.2.11" data-path="nt2.html"><a href="nt2.html#nt2251"><i class="fa fa-check"></i><b>2.2.11</b> Propiedades de la Diferencia Simétrica</a></li>
+<li class="chapter" data-level="2.2.6" data-path="nt2.html"><a href="nt2.html#nt224"><i class="fa fa-check"></i><b>2.2.6</b> Diferencia</a></li>
+<li class="chapter" data-level="2.2.7" data-path="nt2.html"><a href="nt2.html#nt2241"><i class="fa fa-check"></i><b>2.2.7</b> Propiedades de la Diferencia</a></li>
+<li class="chapter" data-level="2.2.8" data-path="nt2.html"><a href="nt2.html#nt225"><i class="fa fa-check"></i><b>2.2.8</b> Diferencia Simétrica</a></li>
+<li class="chapter" data-level="2.2.9" data-path="nt2.html"><a href="nt2.html#nt2251"><i class="fa fa-check"></i><b>2.2.9</b> Propiedades de la Diferencia Simétrica</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="dist_disc.html"><a href="dist_disc.html"><i class="fa fa-check"></i><b>3</b> Disribuciones Discretas de Probabilidades</a></li>
@@ -249,7 +247,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">2.1.1</span> Conjunto</h3>
 <div class="definition">
 <p><span id="def:conjunto" class="definition"><strong>Definición 2.1  (Conjunto) </strong></span>Un conjunto es una colección bien definida de objetos, los cuales se denominan <em>elementos</em> o <em>miembros</em> del conjunto. Generalmente se utilizan letras mayúsculas, como <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, <span class="math inline">\(X\)</span>, <span class="math inline">\(Y\)</span>, <span class="math inline">\(\dotsc\)</span> para designar los conjuntos, y letras minúsculas, como <span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span>, <span class="math inline">\(x\)</span>, <span class="math inline">\(y\)</span>, <span class="math inline">\(\dotsc\)</span> para designar los elementos de los conjuntos. Las palabras <em>clase</em>, <em>colección</em> y <em>familia</em> son sinónimos de conjunto.</p>
-<p>Para decir que un elemento a pertenece a un conjunto A se escribe <span class="math inline">\(a \in A\)</span>. (Donde el símbolo <span class="math inline">\(\in\)</span> significa “es un elemento de”). También se escribe <span class="math inline">\(a,b \in A\)</span> cuando <span class="math inline">\(a\)</span> y <span class="math inline">\(b\)</span> pertenecen a A.</p>
+<p>Para decir que un elemento <span class="math inline">\(a\)</span> pertenece a un conjunto <span class="math inline">\(A\)</span> se escribe <span class="math inline">\(a \in A\)</span>. (Donde el símbolo <span class="math inline">\(\in\)</span> significa “es un elemento de”). También se escribe <span class="math inline">\(a,b \in A\)</span> cuando <span class="math inline">\(a\)</span> y <span class="math inline">\(b\)</span> pertenecen a A.</p>
 </div>
 <div id="nt2111" class="section level4" number="2.1.1.1">
 <h4><span class="header-section-number">2.1.1.1</span> Formulación de Conjuntos por Extensión</h4>
@@ -491,7 +489,7 @@ Figura 2.6: Diagrama de Venn para la Unión
 <li><p><span class="math inline">\(A \subseteq (A \cup B)\)</span>.</p></li>
 <li><p><span class="math inline">\(B\subseteq(A \cup B)\)</span>.</p></li>
 <li><p><span class="math inline">\(A \cap (B \cup C)=(A \cap B) \cup (A \cap C)\)</span>. (Distributiva de la intersección)</p></li>
-<li><p>$ A (B∩C)=(A B) (A C)$. (Distributiva de la unión)</p></li>
+<li><p><span class="math inline">\(A \cup (B \cap C)=(A \cup B) \cap (A \cup C)\)</span>. (Distributiva de la unión)</p></li>
 </ol>
 <div class="example">
 <p><span id="exm:ejemp1-union" class="example"><strong>Ejemplo 2.3  (Unión) </strong></span>Dados los conjuntos <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, especificados en el ejemplo <a href="nt2.html#exm:ejemplo1-interseccion">2.1</a>, determine <span class="math inline">\(A \cup B\)</span>.</p>
@@ -518,7 +516,7 @@ Figura 2.6: Diagrama de Venn para la Unión
 <div id="nt223" class="section level3" number="2.2.5">
 <h3><span class="header-section-number">2.2.5</span> Complemento</h3>
 <div class="definition">
-<p><span id="def:complmento" class="definition"><strong>Definición 2.16  (Complemeto) </strong></span>El <em>complemento absoluto</em> o, simplemente, el <em>complemento</em> de un conjunto <span class="math inline">\(A\)</span>, representado por <span class="math inline">\(A^c\)</span>, es el conjunto de elementos que pertenecen a <span class="math inline">\(U\)</span> pero que no pertenecen a <span class="math inline">\(A\)</span>, es decir, <span class="math display">\[A^c=\left\{x:x∈U,x \notin A\right\}.\]</span></p>
+<p><span id="def:complemento" class="definition"><strong>Definición 2.16  (Complemeto) </strong></span>El <em>complemento absoluto</em> o, simplemente, el <em>complemento</em> de un conjunto <span class="math inline">\(A\)</span>, representado por <span class="math inline">\(A^c\)</span>, es el conjunto de elementos que pertenecen a <span class="math inline">\(U\)</span> pero que no pertenecen a <span class="math inline">\(A\)</span>, es decir, <span class="math display">\[A^c=\left\{x:x∈U,x \notin A\right\}.\]</span></p>
 <p>Algunos textos representan el complemento de <span class="math inline">\(A\)</span> mediante <span class="math inline">\(A&#39;\)</span> o <span class="math inline">\(\bar{A}\)</span>.</p>
 <p>La figura <a href="nt2.html#fig:complemento">2.7</a> muestra el diagramas de Venn para <span class="math inline">\(A^c\)</span>. La zona coloreada en azul representa el conjunto <span class="math inline">\(A^c\)</span>.</p>
 <div class="sourceCode" id="cb83"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb83-1"><a href="nt2.html#cb83-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="at">path =</span> <span class="st">&quot;figuras/complemento.png&quot;</span>)</span></code></pre></div>
@@ -529,9 +527,8 @@ Figura 2.7: Diagrama de Venn para el complemento
 </p>
 </div>
 </div>
-</div>
-<div id="nt2231" class="section level3" number="2.2.6">
-<h3><span class="header-section-number">2.2.6</span> Propiedades del Complemento</h3>
+<div id="nt2231" class="section level4" number="2.2.5.1">
+<h4><span class="header-section-number">2.2.5.1</span> Propiedades del Complemento</h4>
 <ol style="list-style-type: lower-alpha">
 <li><p><span class="math inline">\(\left(A^c \right)^c=A\)</span>. (Propiedad Involutiva)</p></li>
 <li><p><span class="math inline">\(A \cup A^c = U\)</span></p></li>
@@ -540,8 +537,8 @@ Figura 2.7: Diagrama de Venn para el complemento
 <li><p><span class="math inline">\(\phi^c=U\)</span></p></li>
 </ol>
 </div>
-<div id="nt2232" class="section level3" number="2.2.7">
-<h3><span class="header-section-number">2.2.7</span> Leyes de Morgan</h3>
+<div id="nt2232" class="section level4" number="2.2.5.2">
+<h4><span class="header-section-number">2.2.5.2</span> Leyes de Morgan</h4>
 <ol style="list-style-type: lower-alpha">
 <li><p><span class="math inline">\(\left(A \cup B \right)^c=A^c \cap B^c\)</span></p></li>
 <li><p><span class="math inline">\(\left(A \cap B \right)^c=A^c \cup B^c\)</span></p></li>
@@ -549,7 +546,7 @@ Figura 2.7: Diagrama de Venn para el complemento
 <div class="example">
 <p><span id="exm:ejemp1-complemento" class="example"><strong>Ejemplo 2.5  (Complemento) </strong></span>Dado el conjunto universal <span class="math inline">\(U\)</span>, el cual representa el alfabeto inglés (no contiene la letra ñ). Dado el conjunto <span class="math display">\[A= \left\{l, w, z, f, s, m, y, v, c, p, q, x, k, b, j  \right\}.\]</span>
 Determine el complemento de A <span class="math inline">\(\left(A^c \right)\)</span>.</p>
-<p>De acuerdo con la definición <a href="#def:complemento"><strong>??</strong></a>, el complemento de <span class="math inline">\(A\)</span> es:
+<p>De acuerdo con la definición <a href="nt2.html#def:complemento">2.16</a>, el complemento de <span class="math inline">\(A\)</span> es:
 <span class="math display">\[A^c = \left\{a, d, e, g, h, i, n, o, r, t, u \right\}.\]</span></p>
 <p>El resultado anterior, se puede obtener con el siguiente script, usando la función <code>setdiff</code> de la distribución base de <span style="color: blue;">R</span>.</p>
 <div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="nt2.html#cb84-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
@@ -559,7 +556,7 @@ Determine el complemento de A <span class="math inline">\(\left(A^c \right)\)</s
 <span id="cb84-5"><a href="nt2.html#cb84-5" aria-hidden="true" tabindex="-1"></a>U <span class="ot">&lt;-</span> letters</span>
 <span id="cb84-6"><a href="nt2.html#cb84-6" aria-hidden="true" tabindex="-1"></a>(Ac <span class="ot">&lt;-</span> <span class="fu">setdiff</span>(U, A))</span></code></pre></div>
 <pre><code>#&gt;  [1] &quot;a&quot; &quot;d&quot; &quot;e&quot; &quot;g&quot; &quot;h&quot; &quot;i&quot; &quot;n&quot; &quot;o&quot; &quot;r&quot; &quot;t&quot; &quot;u&quot;</code></pre>
-<p>Con el siguiente trozo de código se verifican las propiedades del complemento, dadas en la sección sección <a href="nt2.html#nt2231">2.2.6</a>, para el ejemplo en cuestión.</p>
+<p>Con el siguiente trozo de código se verifican las propiedades del complemento, dadas en la sección sección <a href="nt2.html#nt2231">2.2.5.1</a>, para el ejemplo en cuestión.</p>
 <div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="nt2.html#cb86-1" aria-hidden="true" tabindex="-1"></a>Acc <span class="ot">&lt;-</span> <span class="fu">setdiff</span>(U, Ac)</span>
 <span id="cb86-2"><a href="nt2.html#cb86-2" aria-hidden="true" tabindex="-1"></a>CV <span class="ot">&lt;-</span> <span class="fu">as.character</span>(<span class="fu">c</span>())</span>
 <span id="cb86-3"><a href="nt2.html#cb86-3" aria-hidden="true" tabindex="-1"></a>(a <span class="ot">&lt;-</span> <span class="fu">setequal</span>(Acc, A))</span>
@@ -568,8 +565,9 @@ Determine el complemento de A <span class="math inline">\(\left(A^c \right)\)</s
 <span id="cb86-6"><a href="nt2.html#cb86-6" aria-hidden="true" tabindex="-1"></a>(d <span class="ot">&lt;-</span> <span class="fu">setequal</span>(<span class="fu">setdiff</span>(U, U), CV))</span></code></pre></div>
 </div>
 </div>
-<div id="nt224" class="section level3" number="2.2.8">
-<h3><span class="header-section-number">2.2.8</span> Diferencia</h3>
+</div>
+<div id="nt224" class="section level3" number="2.2.6">
+<h3><span class="header-section-number">2.2.6</span> Diferencia</h3>
 <div class="definition">
 <p><span id="def:diferencia" class="definition"><strong>Definición 2.17  (Diferencia) </strong></span>El complemento relativo de un conjunto <span class="math inline">\(B\)</span> con respecto a un conjunto <span class="math inline">\(A\)</span>, o, simplemente, la diferencia entre <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span>, representado por <span class="math inline">\(A \setminus B\)</span>, es el conjunto de elementos que pertenecen a <span class="math inline">\(A\)</span> pero que no pertenecen a <span class="math inline">\(B\)</span>, es decir,
 <span class="math display">\[A  \setminus  B=\left\{x:x \in A,x \notin B \right\}.\]</span>
@@ -584,8 +582,8 @@ Figura 2.8: Diagrama de Venn para la diferencia
 </div>
 </div>
 </div>
-<div id="nt2241" class="section level3" number="2.2.9">
-<h3><span class="header-section-number">2.2.9</span> Propiedades de la Diferencia</h3>
+<div id="nt2241" class="section level3" number="2.2.7">
+<h3><span class="header-section-number">2.2.7</span> Propiedades de la Diferencia</h3>
 <ol style="list-style-type: lower-alpha">
 <li><p><span class="math inline">\(A \setminus B \neq B \setminus A\)</span> (la diferencia no es conmutativa).</p></li>
 <li><p><span class="math inline">\(A \setminus B= A \cap B^c \:o\: B∖A=B \cap A^c\)</span>.</p></li>
@@ -594,19 +592,18 @@ Figura 2.8: Diagrama de Venn para la diferencia
 <li><p><span class="math inline">\(A \setminus B \subseteq A\)</span></p></li>
 </ol>
 <div class="example">
-<p><span id="exm:ejemp1-diferencia" class="example"><strong>Ejemplo 2.6  (Diferencia) </strong></span>Se tiene el conjunto universal <span class="math inline">\(U\)</span> representado por el alfabeto inglés. Por otro lado, se tienen los conjunto <span class="math display">\[A= \left\{d, s, l, y, h, t, b, u, f, n  \right\}.\]</span> y <span class="math display">\[B= \left\{p, y, u, m, k, f, r, j, h, n  \right\}.\]</span>
+<p><span id="exm:ejemp1-diferencia" class="example"><strong>Ejemplo 2.6  (Diferencia) </strong></span>Se tiene el conjunto universal <span class="math inline">\(U\)</span> representado por el alfabeto inglés. Por otro lado, se tienen los conjunto <span class="math inline">\(A= \left\{d, s, l, y, h, t, b, u, f, n \right\}\)</span> y <span class="math inline">\(B= \left\{p, y, u, m, k, f, r, j, h, n \right\}\)</span>.
 Determine <span class="math inline">\(A \setminus B\)</span> y <span class="math inline">\(B \setminus A\)</span>.</p>
 <p>De acuerdo con la definición <a href="nt2.html#def:diferencia">2.17</a>, <span class="math inline">\(A\)</span> menos <span class="math inline">\(B\)</span> es:
 <span class="math display">\[A \setminus B = \left\{d, s, l, t, b \right\}.\]</span></p>
 <p>Mientras que <span class="math inline">\(B\)</span> menos <span class="math inline">\(A\)</span> es:
 <span class="math display">\[B \setminus A = \left\{p, m, k, r, j \right\}.\]</span></p>
-<p>El resultado anterior, se puede obtener con el siguiente script, usando la función <code>setdiff</code> de la distribución base de <span style="color: blue;">R</span>.</p>
+<p>El resultado anterior se puede obtener con el siguiente script, usando la función <code>setdiff</code> de la distribución base de <span style="color: blue;">R</span>.</p>
 <div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="nt2.html#cb88-1" aria-hidden="true" tabindex="-1"></a>U <span class="ot">&lt;-</span> letters</span>
 <span id="cb88-2"><a href="nt2.html#cb88-2" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;d&quot;</span>, <span class="st">&quot;s&quot;</span>, <span class="st">&quot;l&quot;</span>, <span class="st">&quot;y&quot;</span>, <span class="st">&quot;h&quot;</span>, <span class="st">&quot;t&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;u&quot;</span>, <span class="st">&quot;f&quot;</span>, <span class="st">&quot;n&quot;</span> )</span>
 <span id="cb88-3"><a href="nt2.html#cb88-3" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;p&quot;</span>, <span class="st">&quot;y&quot;</span>, <span class="st">&quot;u&quot;</span>, <span class="st">&quot;m&quot;</span>, <span class="st">&quot;k&quot;</span>, <span class="st">&quot;f&quot;</span>, <span class="st">&quot;r&quot;</span>, <span class="st">&quot;j&quot;</span>, <span class="st">&quot;h&quot;</span>, <span class="st">&quot;n&quot;</span>)</span>
-<span id="cb88-4"><a href="nt2.html#cb88-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb88-5"><a href="nt2.html#cb88-5" aria-hidden="true" tabindex="-1"></a>(AmenosB <span class="ot">&lt;-</span> <span class="fu">setdiff</span>(A, B))</span>
-<span id="cb88-6"><a href="nt2.html#cb88-6" aria-hidden="true" tabindex="-1"></a>(BmenosA <span class="ot">&lt;-</span> <span class="fu">setdiff</span>(B, A))</span></code></pre></div>
+<span id="cb88-4"><a href="nt2.html#cb88-4" aria-hidden="true" tabindex="-1"></a>(AmenosB <span class="ot">&lt;-</span> <span class="fu">setdiff</span>(A, B))</span>
+<span id="cb88-5"><a href="nt2.html#cb88-5" aria-hidden="true" tabindex="-1"></a>(BmenosA <span class="ot">&lt;-</span> <span class="fu">setdiff</span>(B, A))</span></code></pre></div>
 <pre><code>#&gt; [1] &quot;d&quot; &quot;s&quot; &quot;l&quot; &quot;t&quot; &quot;b&quot;
 #&gt; [1] &quot;p&quot; &quot;m&quot; &quot;k&quot; &quot;r&quot; &quot;j&quot;</code></pre>
 <p>Las propiedades de la diferencia descritas en la sección <a href="nt2.html#nt2211">2.2.2</a> se pueden verificar en este ejercicio por medio del siguiente script.</p>
@@ -620,8 +617,8 @@ Determine <span class="math inline">\(A \setminus B\)</span> y <span class="math
 #&gt; [1] TRUE</code></pre>
 </div>
 </div>
-<div id="nt225" class="section level3" number="2.2.10">
-<h3><span class="header-section-number">2.2.10</span> Diferencia Simétrica</h3>
+<div id="nt225" class="section level3" number="2.2.8">
+<h3><span class="header-section-number">2.2.8</span> Diferencia Simétrica</h3>
 <div class="definition">
 <p><span id="def:diferenciasimetrica" class="definition"><strong>Definición 2.18  (Diferencia simétrica) </strong></span>La diferencia simétrica de los conjuntos <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span>, representado por <span class="math inline">\(A \oplus B\)</span>, es el conjunto de elementos que pertenecen <span class="math inline">\(A\)</span> o a <span class="math inline">\(B\)</span>, pero no a ambos. Es decir,
 <span class="math inline">\(A \oplus B=(A \cup B) \setminus (A \cap B)\)</span> o <span class="math inline">\(A \oplus B=(A \setminus B) \cup (B \setminus A)\)</span>.
@@ -636,19 +633,19 @@ Figura 2.9: Diagrama de Venn para la diferencia simétrica
 </div>
 </div>
 </div>
-<div id="nt2251" class="section level3" number="2.2.11">
-<h3><span class="header-section-number">2.2.11</span> Propiedades de la Diferencia Simétrica</h3>
+<div id="nt2251" class="section level3" number="2.2.9">
+<h3><span class="header-section-number">2.2.9</span> Propiedades de la Diferencia Simétrica</h3>
 <ol style="list-style-type: lower-alpha">
 <li><p><span class="math inline">\(A \oplus B=B \oplus A\)</span> (conmutativa)</p></li>
 <li><p><span class="math inline">\((A \oplus B) \oplus C=A \oplus (B \oplus C)\)</span> (asociativa)</p></li>
 </ol>
 <div class="example">
-<p><span id="exm:ejemp1-diferenciasimetrica" class="example"><strong>Ejemplo 2.7  (Diferencia Simétrica) </strong></span>Dados los conjuntos <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, especificados en el ejemplo <a href="nt2.html#exm:ejemp1-diferencia">2.6</a>, determine <span class="math inline">\(A \oplus BB\)</span> y <span class="math inline">\(B \oplus A\)</span> y verifique la propiedad conmutativa de la diferencia simétrica.</p>
+<p><span id="exm:ejemp1-diferenciasimetrica" class="example"><strong>Ejemplo 2.7  (Diferencia Simétrica) </strong></span>Dados los conjuntos <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, especificados en el ejemplo <a href="nt2.html#exm:ejemp1-diferencia">2.6</a>, determine <span class="math inline">\(A \oplus B\)</span> y <span class="math inline">\(B \oplus A\)</span> y verifique la propiedad conmutativa de la diferencia simétrica.</p>
 <p>De acuerdo con la definición <a href="nt2.html#def:diferenciasimetrica">2.18</a>
 <span class="math display">\[A \oplus B= \left\{d, s, l, t, b, p, m, k, r, j \right\}\]</span>, mientras que <span class="math display">\[B \oplus A= \left\{p, m, k, r, j, d, s, l, t, b \right\}.\]</span></p>
-<p>Note que <span class="math inline">\(A \oplus B = B \oplus A\)</span> dado que ambos conjuntos contienen los mismos elementos. (Revise la definición <a href="nt2.html#def:conjiguales">2.8</a>).</p>
+<p>Note que <span class="math inline">\(A \oplus B = B \oplus A\)</span>, dado que ambos conjuntos contienen los mismos elementos. (Revise la definición <a href="nt2.html#def:conjiguales">2.8</a>).</p>
 <p>El resultado anterior, se puede obtener con el siguiente script.</p>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="nt2.html#cb93-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;d&quot;</span>, <span class="st">&quot;s&quot;</span>, <span class="st">&quot;l&quot;</span>, <span class="st">&quot;y&quot;</span>, <span class="st">&quot;h&quot;</span>, <span class="st">&quot;t&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;u&quot;</span>, <span class="st">&quot;f&quot;</span>, <span class="st">&quot;n&quot;</span> )</span>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb93-1"><a href="nt2.html#cb93-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;d&quot;</span>, <span class="st">&quot;s&quot;</span>, <span class="st">&quot;l&quot;</span>, <span class="st">&quot;y&quot;</span>, <span class="st">&quot;h&quot;</span>, <span class="st">&quot;t&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;u&quot;</span>, <span class="st">&quot;f&quot;</span>, <span class="st">&quot;n&quot;</span> )</span>
 <span id="cb93-2"><a href="nt2.html#cb93-2" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;p&quot;</span>, <span class="st">&quot;y&quot;</span>, <span class="st">&quot;u&quot;</span>, <span class="st">&quot;m&quot;</span>, <span class="st">&quot;k&quot;</span>, <span class="st">&quot;f&quot;</span>, <span class="st">&quot;r&quot;</span>, <span class="st">&quot;j&quot;</span>, <span class="st">&quot;h&quot;</span>, <span class="st">&quot;n&quot;</span>)</span>
 <span id="cb93-3"><a href="nt2.html#cb93-3" aria-hidden="true" tabindex="-1"></a>AmenosB <span class="ot">&lt;-</span> <span class="fu">setdiff</span>(A, B)</span>
 <span id="cb93-4"><a href="nt2.html#cb93-4" aria-hidden="true" tabindex="-1"></a>BmenosA <span class="ot">&lt;-</span> <span class="fu">setdiff</span>(B, A)</span>
@@ -659,7 +656,7 @@ Figura 2.9: Diagrama de Venn para la diferencia simétrica
 <span id="cb93-9"><a href="nt2.html#cb93-9" aria-hidden="true" tabindex="-1"></a>(AomasB_2 <span class="ot">&lt;-</span> <span class="fu">union</span>(AmenosB, BmenosA))</span>
 <span id="cb93-10"><a href="nt2.html#cb93-10" aria-hidden="true" tabindex="-1"></a>(BomasA_2 <span class="ot">&lt;-</span> <span class="fu">union</span>(BmenosA, AmenosB))</span>
 <span id="cb93-11"><a href="nt2.html#cb93-11" aria-hidden="true" tabindex="-1"></a><span class="fu">setequal</span>(AomasB_2, BomasA_2)</span></code></pre></div>
-<pre><code>#&gt;  [1] &quot;d&quot; &quot;s&quot; &quot;l&quot; &quot;t&quot; &quot;b&quot; &quot;p&quot; &quot;m&quot; &quot;k&quot; &quot;r&quot; &quot;j&quot;
+<pre class="bg-warning"><code>#&gt;  [1] &quot;d&quot; &quot;s&quot; &quot;l&quot; &quot;t&quot; &quot;b&quot; &quot;p&quot; &quot;m&quot; &quot;k&quot; &quot;r&quot; &quot;j&quot;
 #&gt;  [1] &quot;p&quot; &quot;m&quot; &quot;k&quot; &quot;r&quot; &quot;j&quot; &quot;d&quot; &quot;s&quot; &quot;l&quot; &quot;t&quot; &quot;b&quot;
 #&gt; [1] TRUE
 #&gt;  [1] &quot;d&quot; &quot;s&quot; &quot;l&quot; &quot;t&quot; &quot;b&quot; &quot;p&quot; &quot;m&quot; &quot;k&quot; &quot;r&quot; &quot;j&quot;

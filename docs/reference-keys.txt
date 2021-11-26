@@ -62,7 +62,7 @@ def:union
 fig:union
 exm:ejemp1-union
 exm:ejemp2-union
-def:complmento
+def:complemento
 fig:complemento
 exm:ejemp1-complemento
 def:diferencia
