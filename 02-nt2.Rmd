@@ -371,6 +371,14 @@ a)	$A \cap A^c=\phi$
 
 a)	$U^c=\phi$
 
+a)	$\phi^c=U$
+
+### Leyes de Morgan {#nt2232}
+
+a)	$\left(A \cup B \right)^c=A^c \cap B^c$
+
+a)	$\left(A \cap B \right)^c=A^c \cup B^c$
+
 ::: {.example #ejemp1-complemento name="Complemento"}
 
 Dado el conjunto universal $U$, el cual representa el alfabeto inglés (no contiene la letra ñ). Dado el conjunto $$A= \left\{l, w, z, f, s, m, y, v, c, p, q, x, k, b, j  \right\}.$$
@@ -392,7 +400,7 @@ U <- letters
 
 Con el siguiente trozo de código  se verifican las propiedades del complemento, dadas en la sección sección \@ref(nt2231), para el ejemplo en cuestión.
 
-```{r prop-complemento, results='asis'}
+```{r prop-complemento, results='hide'}
 Acc <- setdiff(U, Ac)
 CV <- as.character(c())
 (a <- setequal(Acc, A))
@@ -432,14 +440,14 @@ a)	$A \setminus B \subseteq A$
 
 ::: {.example #ejemp1-diferencia name="Diferencia"}
 
-Se tiene el conjunto universal $U$ representado por el alfabeto inglés. Por ptro lado, se tienen los conjunto $$A= \left\{d, s, l, y, h, t, b, u, f, n  \right\}.$$ y $$B= \left\{p, y, u, m, k, f, r, j, h, n  \right\}.$$
-Determine $(A \setminus B)$ y B \setminus A$.
+Se tiene el conjunto universal $U$ representado por el alfabeto inglés. Por otro lado, se tienen los conjunto $$A= \left\{d, s, l, y, h, t, b, u, f, n  \right\}.$$ y $$B= \left\{p, y, u, m, k, f, r, j, h, n  \right\}.$$
+Determine $A \setminus B$ y $B \setminus A$.
 
 De acuerdo con la definición \@ref(def:diferencia),  $A$ menos $B$ es:
-$$(A \setminus B) = \left\{d, s, l, t, b \right\}.$$
+$$A \setminus B = \left\{d, s, l, t, b \right\}.$$
 
 Mientras que $B$ menos $A$ es:
-$$(B \setminus A) = \left\{p, m, k, r, j \right\}.$$
+$$B \setminus A = \left\{p, m, k, r, j \right\}.$$
 
 El resultado anterior, se puede obtener con el siguiente script, usando la función `setdiff` de la distribución base de `r colorize("R", "blue")`. 
 
@@ -460,8 +468,52 @@ Las propiedades de la diferencia descritas en la sección \@ref(nt2211) se puede
 (c <- setequal(setdiff(U, A), setdiff(U, A)))
 (d <- setequal(intersect(AmenosB,BmenosA), CV))
 ```
+:::
 
+### Diferencia Simétrica {#nt225}
 
+::: {#diferenciasimetrica .definition name="Diferencia simétrica"}
+La diferencia simétrica de los conjuntos $A$ y $B$, representado por $A \oplus B$, es el conjunto de elementos que pertenecen $A$ o a $B$, pero no a ambos. Es decir,
+$A \oplus B=(A \cup B)  \setminus  (A \cap B)$  o  $A \oplus B=(A  \setminus  B) \cup (B  \setminus  A)$.
+Algunos textos representan $A \oplus B$ mediante $A \triangleright B$.
+
+La figura \@ref(fig:diferenciasimetrica) muestra el diagramas de Venn para $A \oplus B$. El Área coloreada representa el conjunto $A \oplus B$.
+
+```{r diferenciasimetrica, fig.cap="Diagrama de Venn para la diferencia simétrica", class.source = "watch-out", class.output = "bg-warning"}
+knitr::include_graphics(path = "figuras/diferenciasimetrica.png")
+```
+:::
+
+### Propiedades de la Diferencia Simétrica {#nt2251}
+
+a)	$A \oplus B=B \oplus A$ (conmutativa)
+
+b)	$(A \oplus B) \oplus C=A \oplus (B \oplus C)$ (asociativa)
+
+::: {.example #ejemp1-diferenciasimetrica name="Diferencia Simétrica"}
+
+Dados los conjuntos $A$, $B$, especificados en el ejemplo  \@ref(exm:ejemp1-diferencia), determine $A \oplus BB$ y $B \oplus A$ y verifique la propiedad conmutativa de la diferencia simétrica.
+
+De acuerdo con la definición \@ref(def:diferenciasimetrica)
+$$A \oplus B= \left\{d, s, l, t, b, p, m, k, r, j \right\}$$, mientras que $$B \oplus A= \left\{p, m, k, r, j, d, s, l, t, b \right\}.$$
+
+Note que $A \oplus B = B \oplus A$ dado que ambos conjuntos contienen los mismos elementos. (Revise la definición \@ref(def:conjiguales)).
+
+El resultado anterior, se puede obtener con el siguiente script. 
+
+```{r}
+A <- c("d", "s", "l", "y", "h", "t", "b", "u", "f", "n" )
+B <- c("p", "y", "u", "m", "k", "f", "r", "j", "h", "n")
+AmenosB <- setdiff(A, B)
+BmenosA <- setdiff(B, A)
+(AomasB <- setdiff(union(A, B), intersect(A, B)))
+(BomasA <- setdiff(union(B, A), intersect(B, A)))
+setequal(AomasB, BomasA)
+# Otra forma de obtener la diferencia simétrica
+(AomasB_2 <- union(AmenosB, BmenosA))
+(BomasA_2 <- union(BmenosA, AmenosB))
+setequal(AomasB_2, BomasA_2)
+```
 :::
 
 

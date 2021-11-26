@@ -68,6 +68,9 @@ exm:ejemp1-complemento
 def:diferencia
 fig:diferencia
 exm:ejemp1-diferencia
+def:diferenciasimetrica
+fig:diferenciasimetrica
+exm:ejemp1-diferenciasimetrica
 nt1
 nt11
 nt12
@@ -106,6 +109,9 @@ nt222
 nt2221
 nt223
 nt2231
+nt2232
 nt224
 nt2241
+nt225
+nt2251
 dist_disc
