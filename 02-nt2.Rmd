@@ -53,7 +53,7 @@ En muchos casos es inviable formular un conjunto por extensión, en tal caso se 
 #### Tamaño de un Conjunto {#nt2113}
 
 ::: {#tamconj .definition name="Tamaño de un Conjunto"}
-El tamaño de un conjunto $S$ (también, *cardinalidad* o *cardinal del conjunto*) es el número de elementos del conjunto y se denota por $n(S)$. El tamaño del conjunto vacío es cero, es decir, $n(\phi)=0$.
+El tamaño de un conjunto $S$ (también, *cardinalidad* o *cardinal del conjunto*) es el número de elementos del conjunto y se denota por $n(S)$. El tamaño del conjunto vacío es cero, es decir, $n(\emptyset)=0$.
 :::
 
 #### Conjunto Finito {#nt2114}
@@ -111,21 +111,21 @@ a.	Si $A \subseteq B$ y $B \subseteq C$, entonces $A \subseteq C$.
 
 ::: {#conjuniversal .definition name="Conjunto Universal"}
 
-Es cualquier conjunto $U$ que contiene a todos los conjuntos bajo investigación en cualquier aplicación de una teoría de conjuntos. Por ejemplo en geometría de planos, el conjunto universal comprende todos los puntos en el plano; en los estudios de población humana, el conjunto universal consiste de todas las personas del mundo.
+Es cualquier conjunto $\mathbb{U}$ que contiene a todos los conjuntos bajo investigación en cualquier aplicación de una teoría de conjuntos. Por ejemplo en geometría de planos, el conjunto universal comprende todos los puntos en el plano; en los estudios de población humana, el conjunto universal consiste de todas las personas del mundo.
 :::
 
 ###	Conjuntos Vacio o Conjunto Nulo {#nt215}
 
 ::: {#conjvacio .definition name="Conjunto Vacio"}
 
-Un conjunto vacío es aquel que no tiene elementos y se representa por $\phi$.
+Un conjunto vacío es aquel que no tiene elementos y se representa por $\emptyset$.
 
 Por ejemplo, el conjunto $S=\left\{x:x \textit{ es un entero positivo},x^2=3 \right\}$ es un _conjunto vacío_, puesto que ningún entero positivo tiene la propiedad requerida.
 :::
 
 ::: {#conjvacio .theorem}
 
-Para cualquier conjunto $A$, se tiene $\phi  \subseteq  A \subseteq U$.
+Para cualquier conjunto $A$, se tiene $\emptyset  \subseteq  A \subseteq \mathbb{U}$.
 :::
 
 ###	Conjuntos Disyuntos o Mutuamente excluyentes o Ajenos {#nt216}
@@ -153,7 +153,7 @@ Observe que $A$ y $B$ son solapados porque cada uno tiene el elemento 2, y B y C
 
 ::: {#diagramavenn .definition name="Diagrama de Venn"}
 
-Un _diagrama de Venn_ es una representación en dibujo de conjuntos, donde estos están representados por áreas encerradas en el plano. El conjunto universal $U$ está representado por los puntos en un rectángulo y los demás conjuntos están representados por círculos, elipses o óvalos, generalmente; que se encuentran dentro de los rectángulos.
+Un _diagrama de Venn_ es una representación en dibujo de conjuntos, donde estos están representados por áreas encerradas en el plano. El conjunto universal $\mathbb{U}$ está representado por los puntos en un rectángulo y los demás conjuntos están representados por círculos, elipses o óvalos, generalmente; que se encuentran dentro de los rectángulos.
 
 La figura \@ref(fig:venn) ilustra por medio de diagramas de Venn  diferentes relaciones entre los conjuntos $A$ y $B$.
 
@@ -170,7 +170,7 @@ Sea $S$ un conjunto no vacío. Una partición de $S$ es una colección $\left\{A
 
 a.	Cada $a$ en $S$ pertenece a uno de los subconjuntos $A_i$.
 b.  Los conjuntos de $\left\{A_i \right\}$ son mutuamente excluyentes; es decir, si
-$$A_i≠A_j, \textit{entonces }  A_i \cap A_j= \phi.$$
+$$A_i≠A_j, \textit{entonces }  A_i \cap A_j= \emptyset.$$
 
 Los subconjuntos de una partición se denominan _células_.
 
@@ -200,11 +200,11 @@ knitr::include_graphics(path = "figuras/interseccion.png")
 ```
 :::
 
-### Propiedades de la Intersección {#nt2211}
+#### Propiedades de la Intersección {#nt2211}
 
-a. $A \cap \phi=∅$.
+a. $A \cap \emptyset=∅$.
 
-a. $A \cap U=A$.
+a. $A \cap \mathbb{U}=A$.
 
 a. $A \cap A=A$. (Idempotencia)
 
@@ -293,11 +293,11 @@ knitr::include_graphics(path = "figuras/union.png")
 ```
 :::
 
-### Propiedades de la Unión {#nt2221}
+#### Propiedades de la Unión {#nt2221}
 
 a. $A \cup ∅=A$.
 
-a. $A \cup U=U$.
+a. $A \cup \mathbb{U}=\mathbb{U}$.
 
 a. $A \cup A=A$. (Idempotencia)
 
@@ -349,7 +349,7 @@ C <- 5:10
 ### Complemento {#nt223}
 
 ::: {#complemento .definition name="Complemeto"}
-El _complemento absoluto_ o, simplemente, el _complemento_ de un conjunto $A$, representado por $A^c$, es el conjunto de elementos que pertenecen a $U$ pero que no pertenecen a $A$, es decir, $$A^c=\left\{x:x∈U,x \notin A\right\}.$$
+El _complemento absoluto_ o, simplemente, el _complemento_ de un conjunto $A$, representado por $A^c$, es el conjunto de elementos que pertenecen a $\mathbb{U}$ pero que no pertenecen a $A$, es decir, $$A^c=\left\{x:x∈\mathbb{U},x \notin A\right\}.$$
 
 Algunos textos representan el complemento de $A$ mediante $A'$ o $\bar{A}$.
 
@@ -365,13 +365,13 @@ knitr::include_graphics(path = "figuras/complemento.png")
 
 a)	$\left(A^c \right)^c=A$.  (Propiedad Involutiva)
 
-a)	$A \cup A^c = U$
+a)	$A \cup A^c = \mathbb{U}$
 
-a)	$A \cap A^c=\phi$
+a)	$A \cap A^c=\emptyset$
 
-a)	$U^c=\phi$
+a)	$\mathbb{U}^c=\emptyset$
 
-a)	$\phi^c=U$
+a)	$\emptyset^c=\mathbb{U}$
 
 #### Leyes de Morgan {#nt2232}
 
@@ -381,7 +381,7 @@ a)	$\left(A \cap B \right)^c=A^c \cup B^c$
 
 ::: {.example #ejemp1-complemento name="Complemento"}
 
-Dado el conjunto universal $U$, el cual representa el alfabeto inglés (no contiene la letra ñ). Dado el conjunto $$A= \left\{l, w, z, f, s, m, y, v, c, p, q, x, k, b, j  \right\}.$$
+Dado el conjunto universal $\mathbb{U}$, el cual representa el alfabeto inglés (no contiene la letra ñ). Dado el conjunto $$A= \left\{l, w, z, f, s, m, y, v, c, p, q, x, k, b, j  \right\}.$$
 Determine el complemento de A $\left(A^c \right)$.
 
 De acuerdo con la definición \@ref(def:complemento), el complemento de $A$ es:
@@ -425,22 +425,22 @@ knitr::include_graphics(path = "figuras/diferencia.png")
 ```
 :::
 
-### Propiedades de la Diferencia {#nt2241}
+#### Propiedades de la Diferencia {#nt2241}
 
 a)	$A  \setminus  B \neq B  \setminus  A$   (la diferencia no es conmutativa).
 
 a)	$A \setminus B= A \cap B^c \:o\:  B∖A=B \cap A^c$.
 
-a)	$U \setminus A=A^c$
+a)	$\mathbb{U} \setminus A=A^c$
 
-a)	$(A \setminus B) \cap (B \setminus A )=\phi$ 
+a)	$(A \setminus B) \cap (B \setminus A )=\emptyset$ 
 
 a)	$A \setminus B \subseteq A$
 
 
 ::: {.example #ejemp1-diferencia name="Diferencia"}
 
-Se tiene el conjunto universal $U$ representado por el alfabeto inglés. Por otro lado, se tienen los conjunto $A= \left\{d, s, l, y, h, t, b, u, f, n  \right\}$ y $B= \left\{p, y, u, m, k, f, r, j, h, n  \right\}$.
+Se tiene el conjunto universal $\mathbb{U}$ representado por el alfabeto inglés. Por otro lado, se tienen los conjunto $A= \left\{d, s, l, y, h, t, b, u, f, n  \right\}$ y $B= \left\{p, y, u, m, k, f, r, j, h, n  \right\}$.
 Determine $A \setminus B$ y $B \setminus A$.
 
 De acuerdo con la definición \@ref(def:diferencia),  $A$ menos $B$ es:
@@ -483,7 +483,7 @@ knitr::include_graphics(path = "figuras/diferenciasimetrica.png")
 ```
 :::
 
-### Propiedades de la Diferencia Simétrica {#nt2251}
+#### Propiedades de la Diferencia Simétrica {#nt2251}
 
 a)	$A \oplus B=B \oplus A$ (conmutativa)
 
@@ -514,5 +514,82 @@ setequal(AomasB, BomasA)
 setequal(AomasB_2, BomasA_2)
 ```
 :::
+
+### Principios para Determinar el Tamaño de un Conjunto {#nt226}
+
+a.	Sean $A$ y $B$ conjuntos finitos disyuntos. Entonces $A \cup B$ es finito y
+$$n \left(A \cup B \right) = n\left(A \right) + n\left(B \right).$$
+
+b.	Sean $A$ y $B$ conjuntos finitos. Entonces
+$$n \left(A \setminus B \right)=n(A) - n(A \cap B).$$
+
+c.	Suponiendo que $A$ es un subconjunto del conjunto Universal $\mathbb{U}$. Entonces
+$$n \left(A^c \right)=n \left(\mathbb{U} \right)-n \left(A \right).$$
+
+d.	**Principio de Inclusión-Exclusión**
+Sean $A$ y $B$ conjuntos finitos. Entonces $A∩B$ y $A∪B$ son finitos y
+$$
+n \left( A \cup B \right)=n \left(A \right) + n \left(B \right) - n \left(A \cap B \right).
+$$
+Es decir, el número de elementos que están en $A$ o en $B$ (o ambos) se encuentran sumando primero $n \left(A \right)$ y $n \left(B \right)$ (inclusión) y luego restando $n \left(A \cap B \right)$ (exclusión), puesto que sus elementos fueron contados dos veces. Fíjese que si los conjuntos $A$ y $B$ son disyuntos, entonces
+$$
+n \left(A \cup B \right)=n\left(A \right)+n \left(B \right),
+$$ 
+dado que $A \cap B = \emptyset$.
+Este resultado se puede extender para tres conjuntos de la siguiente manera:
+Supongamos que $A$, $B$, $C$ son tres conjuntos finitos. Entonces $A \cup B \cup C$ es finito y
+$$n \left(A \cup B \cup C \right) = n \left(A \right) + n \left(B \right) + n \left(C \right)-n \left(A \cap B \right) - n \left(A \cap C \right) - n \left(B \cap C \right) + n \left(A \cap B \cap C \right).$$
+
+e.	Sean $A$ y $B$ conjuntos finitos. Entonces $A \oplus B$ es finito y
+$$
+n \left(A \oplus B \right)=n \left(A \right) + n \left(B \right) - 2n \left(A \cap B \right).
+$$
+Se excluyen dos veces el número de elementos en $\left(A \cap B \right)$ ya que estos están contenidos en $A$ y en $B$.
+El principio anterior se puede extender a tres conjuntos de la siguiente manera:
+Supongamos que $A$, $B$, $C$ son tres conjuntos finitos. Entonces $A∪B∪C$ es finito y
+$$
+n \left( A \oplus B \oplus C \right)   = \left(A \right)+n\left(B \right)+n \left(C \right)-2n \left(A \cap B \right)-2n \left(A \cap C \right)-2n \left(B \cap C \right)+4n \left(A \cap B \cap C \right).
+$$
+
+f.	Supongamos que $A$, $B$, $C$ son tres conjuntos finitos. Entonces el número de elementos que están en dos de los tres conjuntos queda determinado por
+$$
+n \left[ \left(A \cap B \cap C \right) \setminus A \oplus B \oplus C \right] = n \left(A∩B \right) + n \left(A \cap C \right) + n \left(B \cap C \right) - 3n \left(A \cap B \cap C \right).
+$$
+
+g.	Supongamos que $A$, $B$, $C$ son tres conjuntos finitos. Entonces el número de elementos que están exactamente en uno de los tres conjuntos queda determinado por
+$$
+n \left(P \cup M \right)=n\left(P \right)+n \left(M \right),
+$$
+
+::: {.example #ejemp2-cardinal name="Tamaño de un Conjunto"}
+
+De 140 alumnos de un centro de idiomas se sabe que: 62 estudian inglés, 52 estudian francés, 54 estudian alemán, 18 estudian inglés y francés, 20 estudian francés y alemán, 17 solo estudian alemán y 8 estudian los tres idiomas ¿Cuántos alumnos estudian otros idiomas?
+
+Sea $\left(\mathbb{U} \right)$ el conjunto universal formado por los 40 alumnos, $I$ el conjunto de los alumnos que estudian inglés,  $F$ el conjunto de los alumnos que estudian francés y $A$ el conjuntos de los alumnos que estudian alemán. Entonces, los datos anteriores se pueden reescribir de la siguiente manera: $n \left(I \right) = 62$, $n \left(F \right) = 52$, $n \left(A \right) = 54$, $n \left(I \cap F \right) = 18$,  $n \left(F \cap A \right) = 20$, $n \left(A \setminus \left(I \cup F \right) \right) = 17$ y $\left(I \cap F \cap A \right) = 8$.
+
+Los alumnos que estudian otros idiomas son 
+$$
+n \left( \left(I \cup F \cup A \right)^c \right)= n \left( \mathbb{U} \right) - n \left(I \cup F \cup A  \right).
+$$
+Note que para hallar  $n \left(I \cup F \cup A  \right)$ es necesario hallar $n \left(I \cap A \right)$. Pero,
+$$
+n \left(A \setminus \left(I \cup F \right) \right) = n \left(A \right) - n \left(A \cap \left(I \cup F \right)  \right) = n \left(A \right) - \left[n \left(A \cap I \right)   \cup \left(A \cap F \right) \right] = n \left(A \right)-\left[ n \left(A \cap I \right) + n \left(A \cap F \right) - n \left( \left(A \cap I  \right) \left(A \cap F  \right) \cap  \right) \right] = n \left(A \right) - \left(A \cap I \right)-\left(A \cap F \right) + \left(I \cap F \cap A \right) 
+$$
+
+El resultados anterior puede resumirse en el siguiente diagrama de Venn que se muestra en la figura \@ref(fig:ej2-cardinal-conjunto) . Este diagrama se ha generado con la función `ggVennDiagram` del paquete `ggVennDiagram`.
+
+```{r ej2-cardinal-conjunto, fig.cap="Ejemplo 1 de tamaño de un conjunto", class.source = "watch-out", class.output = "bg-warning"}
+ggVennDiagram(
+  x = list(P = 1:15, M = 6:25), color = "black", 
+  lwd = 0.8, lty = 1, category.names = c("P", "M"),
+  ) + 
+  scale_fill_gradient(low = "#F4FAFE", high = "#4981BF") +
+  theme(legend.position = "none")
+```
+:::
+
+
+
+
 
 

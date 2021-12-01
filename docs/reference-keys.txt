@@ -71,6 +71,8 @@ exm:ejemp1-diferencia
 def:diferenciasimetrica
 fig:diferenciasimetrica
 exm:ejemp1-diferenciasimetrica
+exm:ejemp2-cardinal
+fig:ej2-cardinal-conjunto
 nt1
 nt11
 nt12
@@ -114,4 +116,5 @@ nt224
 nt2241
 nt225
 nt2251
+nt226
 dist_disc

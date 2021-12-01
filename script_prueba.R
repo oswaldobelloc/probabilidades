@@ -12,12 +12,12 @@ p1 <- draw.pairwise.venn(
 grid.newpage()
 
 p2 <- draw.pairwise.venn(
-  area1 = 22, area2 = 6, cross.area = 0,
-  category = c("A", "B"),
-  lty = rep("dashed", 1), fill = c("light blue", "green"),
+  area1 = 15, area2 = 20, cross.area = 10,
+  category = c("P", "M"),
+  lty = rep("dashed", 2), fill = c("light blue", "green"),
   alpha = rep(0.5, 1), cat.pos = c(0, 0),
   euler.d = TRUE, sep.dist = 0.03,
-  rotation.degree = 45
+  rotation.degree = 0
 )
 grid.newpage()
 
@@ -59,7 +59,7 @@ venn.diagram(list(B = letters[1:5], A = letters[1:10]),
 v <- venneuler(c(A = 450, B = 1800, "A&B" = 230))
 plot(v)
 
-
+## paquete ggVennDiagram
 x1 <- list(A = letters[1:5], B = letters[1:10])
 # Diagrama de Venn sin leyenda
 g1 <- ggVennDiagram(x1, color = 1, lwd = 0.7, label = "none", show_intersect = FALSE) +
@@ -81,8 +81,12 @@ g3 <- ggVennDiagram(x3, color = 1, lwd = 0.7, label = "none") +
   theme(legend.position = "none")
 g3
 
-
-
+## paquete euler
+plot(euler(c(P = 15, M = 20, "P&M" = 10)),
+     fills = list(fill = c("red", "steelblue4"), 
+                  alpha = 0.5),
+     edges = TRUE, lty = 1:2, 
+     labels = list(font = 4), quantities = TRUE)
 
 
 
