@@ -571,7 +571,7 @@ a. El número de estudiantes que aprobaron Probabilidades solamente es:
 
 $$
 \begin{align*}
-n \left(P \setminus M  \right) &=n\left (P \right ) - n\left ( P \cap M \right )\\ & = 20 - 5 \\ & = 15. 
+n \left(P \setminus M  \right) & = n\left(P \right) - n\left ( P \cap M \right )\\ & = 20 - 5 \\ & = 15. 
 \end{align*}
 $$
 
@@ -579,7 +579,7 @@ b. El número de estudiantes que no aprobaron Probabilidades es:
 
 $$
 \begin{align*}
-n \left(P^c) & = n\left (\mathbb{U} \right ) - n\left( P \right )\\ & =50 - 20 \\ & = 30. 
+n \left( P^c \right) & = n\left (\mathbb{U} \right ) - n\left( P \right )\\ & =50 - 20 \\ & = 30. 
 \end{align*}
 $$
 
