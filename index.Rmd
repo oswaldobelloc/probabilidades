@@ -74,7 +74,7 @@ formato <- function(x) {
 
 # Prólogo {-}
 
-Este libro es una guía para la enseñanza la asignatura Probabilidades, esencialmente pretende ser un curso de Probabilidades Discretas aplicado con el lenguaje `r colorize("R", "blue")`. 
+Este libro es una guía para la enseñanza de la asignatura Probabilidades, esencialmente pretende ser un curso de Probabilidades Discretas aplicado con el lenguaje `r colorize("R", "blue")`. 
 
 El contenido de este texto ha sido escrito en [R-Markdown](http://rmarkdown.rstudio.com) empleando el paquete [`bookdown`](https://bookdown.org/yihui/bookdown/)  y está disponible en el repositorio Github: [
 probabilidades](https://github.com/oswaldobelloc/probabilidaes). Este repositorio es público, por lo que cualquier persona puede acceder al código fuente y hacer comentarios en aras de mejorar ediciones futuras del libro.

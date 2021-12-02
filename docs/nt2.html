@@ -693,37 +693,128 @@ Supongamos que <span class="math inline">\(A\)</span>, <span class="math inline"
 <span class="math display">\[
 n \left( A \oplus B \oplus C \right)   = \left(A \right)+n\left(B \right)+n \left(C \right)-2n \left(A \cap B \right)-2n \left(A \cap C \right)-2n \left(B \cap C \right)+4n \left(A \cap B \cap C \right).
 \]</span></p></li>
-<li><p>Supongamos que A, B, C son tres conjuntos finitos. Entonces el número de elementos que están en dos de los tres conjuntos queda determinado por
+<li><p>Supongamos que <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, <span class="math inline">\(C\)</span> son tres conjuntos finitos. Entonces el número de elementos que están en dos de los tres conjuntos queda determinado por
 <span class="math display">\[
 n \left[ \left(A \cap B \cap C \right) \setminus A \oplus B \oplus C \right] = n \left(A∩B \right) + n \left(A \cap C \right) + n \left(B \cap C \right) - 3n \left(A \cap B \cap C \right).
 \]</span></p></li>
-<li><p>Supongamos que <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, C son tres conjuntos finitos. Entonces el número de elementos que están exactamente en uno de los tres conjuntos queda determinado por
+<li><p>Supongamos que <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, <span class="math inline">\(C\)</span> son tres conjuntos finitos. Entonces el número de elementos que están exactamente en uno de los tres conjuntos queda determinado por
 <span class="math display">\[
 n \left(P \cup M \right)=n\left(P \right)+n \left(M \right),
 \]</span></p></li>
 </ol>
 <div class="example">
-<p><span id="exm:ejemp2-cardinal" class="example"><strong>Ejemplo 2.8  (Tamaño de un Conjunto) </strong></span>De 140 alumnos de un centro de idiomas se sabe que: 62 estudian inglés, 52 estudian francés, 54 estudian alemán, 18 estudian inglés y francés, 20 estudian francés y alemán, 17 solo estudian alemán y 8 estudian los tres idiomas ¿Cuántos alumnos estudian otros idiomas?</p>
-<p>Sea <span class="math inline">\(\left(\mathbb{U} \right)\)</span> el conjunto universal formado por los 40 alumnos, <span class="math inline">\(I\)</span> el conjunto de los alumnos que estudian inglés, <span class="math inline">\(F\)</span> el conjunto de los alumnos que estudian francés y <span class="math inline">\(A\)</span> el conjuntos de los alumnos que estudian alemán. Entonces, los datos anteriores se pueden reescribir de la siguiente manera: <span class="math inline">\(n \left(I \right) = 62\)</span>, <span class="math inline">\(n \left(F \right) = 52\)</span>, <span class="math inline">\(n \left(A \right) = 54\)</span>, <span class="math inline">\(n \left(I \cap F \right) = 18\)</span>, <span class="math inline">\(n \left(F \cap A \right) = 20\)</span>, <span class="math inline">\(n \left(A \setminus \left(I \cup F \right) \right) = 17\)</span> y <span class="math inline">\(\left(I \cap F \cap A \right) = 8\)</span>.</p>
-<p>Los alumnos que estudian otros idiomas son
-<span class="math display">\[
-n \left( \left(I \cup F \cup A \right)^c \right)= n \left( \mathbb{U} \right) - n \left(I \cup F \cup A  \right).
-\]</span>
-Note que para hallar <span class="math inline">\(n \left(I \cup F \cup A \right)\)</span> es necesario hallar <span class="math inline">\(n \left(I \cap A \right)\)</span>. Pero,
-<span class="math display">\[
-n \left(A \setminus \left(I \cup F \right) \right) = n \left(A \right) - n \left(A \cap \left(I \cup F \right)  \right) = n \left(A \right) - \left[n \left(A \cap I \right)   \cup \left(A \cap F \right) \right] = n \left(A \right)-\left[ n \left(A \cap I \right) + n \left(A \cap F \right) - n \left( \left(A \cap I  \right) \left(A \cap F  \right) \cap  \right) \right] = n \left(A \right) - \left(A \cap I \right)-\left(A \cap F \right) + \left(I \cap F \cap A \right) 
+<p><span id="exm:ej1-cardinal" class="example"><strong>Ejemplo 2.8  (Tamaño de un Conjunto) </strong></span>Los estudiantes de Licenciatura en Estadísticas deben aprobar las asignaturas Matemáticas II y Probabilidades. Se les aplicó una encuesta a 50 estudiantes que cursan la carrera carrera para ver si ellos habían cursado estas materias y se obtuvo la siguientes respuesta: 25 estudiantes aprobaron Matemáticas II, 20 estudiantes aprobaron Probabilidades y cinco estudiantes aprobaron ambas asignaturas. Encuentre el número de estudiantes que: a) aprobaron Probabilidades solamente, b) no aprobaron Probabilidades, c) aprobaron Matemáticas II o Probabilidades (o ambas), d) no aprobaron ninguna de las dos asignaturas y e) aprobaron una de las asignaturas.</p>
+<p>Sea <span class="math inline">\(\mathbb{U}\)</span> el conjunto universal formado por los 50 alumnos encuestados, <span class="math inline">\(M\)</span> el conjunto de los alumnos que aprobaron Matemáticas II y <span class="math inline">\(P\)</span> los alumnos que aprobaron probabilidades. Entonces los datos anteriores se pueden expresar de la siguiente manera: <span class="math inline">\(\mathbb{U} = 50\)</span>, <span class="math inline">\(M = 25\)</span>, <span class="math inline">\(P = 20\)</span> y <span class="math inline">\(M \cap P = 5\)</span>.</p>
+<ol style="list-style-type: lower-alpha">
+<li>El número de estudiantes que aprobaron Probabilidades solamente es:</li>
+</ol>
+<p><span class="math display">\[
+\begin{align*}
+n \left(P \setminus M  \right) &amp;=n\left (P \right ) - n\left ( P \cap M \right )\\ &amp; = 20 - 5 \\ &amp; = 15. 
+\end{align*}
 \]</span></p>
-<p>El resultados anterior puede resumirse en el siguiente diagrama de Venn que se muestra en la figura <a href="nt2.html#fig:ej2-cardinal-conjunto">2.10</a> . Este diagrama se ha generado con la función <code>ggVennDiagram</code> del paquete <code>ggVennDiagram</code>.</p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>El número de estudiantes que no aprobaron Probabilidades es:</li>
+</ol>
+<p><span class="math display">\[
+\begin{align*}
+n \left(P^c) &amp; = n\left (\mathbb{U} \right ) - n\left( P \right )\\ &amp; =50 - 20 \\ &amp; = 30. 
+\end{align*}
+\]</span></p>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>El número de estudiantes que aprobaron Matemáticas II o Probabilidades (o ambas) es:</li>
+</ol>
+<p><span class="math display">\[
+\begin{align*}
+n \left(M \cup P \right) &amp; = n\left (M \right ) + n\left( P \right ) - n\left (M \cap P \right )\\ &amp; =25 + 20 - 5  \\ &amp; = 40. 
+\end{align*}
+\]</span></p>
+<ol start="4" style="list-style-type: lower-alpha">
+<li>El número de estudiantes que no aprobaron aprobaron ninguna de las dos asignaturas es:</li>
+</ol>
+<p><span class="math display">\[
+\begin{align*}
+n \left(M^c \cap P^c \right) &amp; = n\left ( \left (M \cup P \right )^c \right )= n\left( \mathbb{U} \right ) - n\left (M \cup P \right )\\ &amp; =50 - 40  \\ &amp; = 10. 
+\end{align*}
+\]</span></p>
+<ol start="4" style="list-style-type: lower-alpha">
+<li>El número de estudiantes que no aprobaron una de las asignaturas:</li>
+</ol>
+<p><span class="math display">\[
+\begin{align*}
+n \left(M \oplus P \right) &amp; = n\left (M \right ) + n\left( P \right ) - 2n\left (M \cap P \right )\\ &amp; =25 + 20 - 2(5)  \\ &amp; = 35. 
+\end{align*}
+\]</span></p>
+<p>Los resultados anteriores se resumen en el siguiente diagrama de Venn, el cual se muestra en la figura <a href="nt2.html#fig:ej1-cardinal">2.10</a> . Este diagrama se ha generado con la función <code>ggVennDiagra</code> del paquete <code>ggVennDiagra</code>.</p>
 <div class="sourceCode" id="cb95"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb95-1"><a href="nt2.html#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggVennDiagram</span>(</span>
-<span id="cb95-2"><a href="nt2.html#cb95-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">list</span>(<span class="at">P =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">15</span>, <span class="at">M =</span> <span class="dv">6</span><span class="sc">:</span><span class="dv">25</span>), <span class="at">color =</span> <span class="st">&quot;black&quot;</span>, </span>
+<span id="cb95-2"><a href="nt2.html#cb95-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">list</span>(<span class="at">P =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">25</span>, <span class="at">M =</span> <span class="dv">21</span><span class="sc">:</span><span class="dv">40</span>), <span class="at">color =</span> <span class="st">&quot;black&quot;</span>, </span>
 <span id="cb95-3"><a href="nt2.html#cb95-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">lwd =</span> <span class="fl">0.8</span>, <span class="at">lty =</span> <span class="dv">1</span>, <span class="at">category.names =</span> <span class="fu">c</span>(<span class="st">&quot;P&quot;</span>, <span class="st">&quot;M&quot;</span>),</span>
 <span id="cb95-4"><a href="nt2.html#cb95-4" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
-<span id="cb95-5"><a href="nt2.html#cb95-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> <span class="st">&quot;#F4FAFE&quot;</span>, <span class="at">high =</span> <span class="st">&quot;#4981BF&quot;</span>) <span class="sc">+</span></span>
-<span id="cb95-6"><a href="nt2.html#cb95-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:ej2-cardinal-conjunto"></span>
-<img src="_main_files/figure-html/ej2-cardinal-conjunto-1.png" alt="Ejemplo 1 de tamaño de un conjunto" width="672" />
+<span id="cb95-5"><a href="nt2.html#cb95-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> <span class="st">&quot;#F4FAFE&quot;</span>, <span class="at">high =</span> <span class="st">&quot;#4981BF&quot;</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:ej1-cardinal"></span>
+<img src="_main_files/figure-html/ej1-cardinal-1.png" alt="Diagrama de Venn del Ejemplo \@ref(exm:ej1-cardinal)" width="672" />
 <p class="caption">
-Figura 2.10: Ejemplo 1 de tamaño de un conjunto
+Figura 2.10: Diagrama de Venn del Ejemplo <a href="nt2.html#exm:ej1-cardinal">2.8</a>
+</p>
+</div>
+</div>
+<div class="example">
+<p><span id="exm:ej2-cardinal" class="example"><strong>Ejemplo 2.9  (Tamaño de un Conjunto) </strong></span>De 140 alumnos de un centro de idiomas se sabe que: 62 estudian inglés, 52 estudian francés, 54 estudian alemán, 18 estudian inglés y francés, 20 estudian francés y alemán, 17 solo estudian alemán y 8 estudian los tres idiomas ¿Cuántos alumnos estudian otros idiomas?</p>
+<p>Sea <span class="math inline">\(\mathbb{U}\)</span> el conjunto universal formado por los 140 alumnos, <span class="math inline">\(I\)</span> el conjunto de los alumnos que estudian inglés,
+<span class="math inline">\(F\)</span> el conjunto de los alumnos que estudian francés y <span class="math inline">\(A\)</span> el conjuntos de los alumnos que estudian alemán. Entonces, los datos anteriores se pueden reescribir de la siguiente manera: <span class="math inline">\(n \left(I \right) = 62\)</span>, <span class="math inline">\(n \left(F \right) = 52\)</span>, <span class="math inline">\(n \left(A \right) = 54\)</span>, <span class="math inline">\(n \left(I \cap F \right) = 18\)</span>, <span class="math inline">\(n \left(F \cap A \right) = 20\)</span>, <span class="math inline">\(n \left(A \setminus \left(I \cup F \right) \right) = 17\)</span> y <span class="math inline">\(\left(I \cap F \cap A \right) = 8\)</span>.</p>
+<p>Los alumnos que estudian otros idiomas son</p>
+<p><span class="math display">\[
+n \left( \left(I \cup F \cup A \right)^c \right)= n \left( \mathbb{U} \right) - n \left(I \cup F \cup A  \right).
+\]</span></p>
+<p>Note que para hallar <span class="math inline">\(n \left(I \cup F \cup A \right)\)</span> es necesario hallar <span class="math inline">\(n \left(I \cap A \right)\)</span>. Pero,</p>
+<p><span class="math display">\[
+\begin{align*}
+n \left(A \setminus \left(I \cup F \right) \right) &amp;= n \left(A \right) - n \left(A \cap \left(I \cup F \right)  \right) \\ &amp; = n \left(A \right) - n \left( \left(A \cap I \right)   \cup \left(A \cap F \right) \right) \\ &amp; = n \left(A \right)-\left[ n \left(A \cap I \right) + n \left(A \cap F \right) - n \left( \left(A \cap I  \right) \cap \left(A \cap F  \right) \right) \right] \\ &amp; = n \left(A \right) - n\left(A \cap I \right)- n\left(A \cap F \right) + n\left(I \cap F \cap A \right) \\
+17&amp; = 54 - n\left(A \cap I \right) -20 + 8.
+\end{align*}
+\]</span></p>
+<p>De donde se obtiene que <span class="math inline">\(n\left(I \cap A \right)=25\)</span>. Luego,</p>
+<p><span class="math display">\[
+\begin{align*}
+n \left(I \cup F \cup A  \right) &amp;=n\left ( I \right ) + n\left ( F \right ) + n\left ( A \right ) - n\left ( I \cap F \right ) - n\left ( I \cap A \right ) - n\left ( F \cap A \right ) + n\left ( I \cap F \cap A \right )\\ &amp; =62 + 52 + 54 -18 - 25 -30 -20 + 8 \\ &amp; = 113. 
+\end{align*}
+\]</span></p>
+<p>Por último,</p>
+<p><span class="math display">\[
+\begin{align*}
+n \left( \left(I \cup F \cup A \right)^c \right)&amp;= n \left( \mathbb{U} \right) - n \left(I \cup F \cup A  \right)\\
+&amp; = 140 - 113\\
+&amp; = 27. 
+\end{align*}
+\]</span></p>
+<p>Los resultados anteriores se resumen en el siguiente diagrama de Venn, el cual se muestra en la figura <a href="nt2.html#fig:ej2-cardinal">2.11</a> . Este diagrama se ha generado con la función <code>draw.triple.venn</code> del paquete <code>VennDiagram</code>.</p>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb96-1"><a href="nt2.html#cb96-1" aria-hidden="true" tabindex="-1"></a>ej2_car <span class="ot">&lt;-</span> <span class="fu">draw.triple.venn</span>(</span>
+<span id="cb96-2"><a href="nt2.html#cb96-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">area1 =</span> <span class="dv">62</span>, <span class="at">area2 =</span> <span class="dv">52</span>, <span class="at">area3 =</span> <span class="dv">54</span>, <span class="at">n12 =</span> <span class="dv">18</span>, <span class="at">n23 =</span> <span class="dv">20</span>,</span>
+<span id="cb96-3"><a href="nt2.html#cb96-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">n13 =</span> <span class="dv">25</span>, <span class="at">n123 =</span> <span class="dv">8</span>, </span>
+<span id="cb96-4"><a href="nt2.html#cb96-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">category =</span> <span class="fu">c</span>(<span class="st">&quot;Inglés&quot;</span>, <span class="st">&quot;Frances&quot;</span>, <span class="st">&quot;Alemán&quot;</span>),</span>
+<span id="cb96-5"><a href="nt2.html#cb96-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">rotation =</span> <span class="dv">1</span>, <span class="at">reverse =</span> <span class="cn">FALSE</span>, <span class="at">euler.d =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb96-6"><a href="nt2.html#cb96-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">scaled =</span> <span class="cn">TRUE</span>, <span class="at">lwd =</span> <span class="fu">rep</span>(<span class="dv">1</span>, <span class="dv">3</span>), <span class="at">lty =</span> <span class="fu">rep</span>(<span class="st">&quot;dashed&quot;</span>, <span class="dv">3</span>), </span>
+<span id="cb96-7"><a href="nt2.html#cb96-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="fu">rep</span>(<span class="st">&quot;red&quot;</span>, <span class="dv">3</span>), <span class="at">fill =</span> <span class="fu">c</span>(<span class="st">&quot;pink&quot;</span>, <span class="st">&quot;green&quot;</span>, <span class="st">&quot;orange&quot;</span>),</span>
+<span id="cb96-8"><a href="nt2.html#cb96-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">alpha =</span> <span class="fu">rep</span>(<span class="fl">0.5</span>, <span class="dv">3</span>),</span>
+<span id="cb96-9"><a href="nt2.html#cb96-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">label.col =</span> <span class="fu">rep</span>(<span class="st">&quot;black&quot;</span>, <span class="dv">7</span>), <span class="at">cex =</span> <span class="fu">rep</span>(<span class="dv">1</span>, <span class="dv">7</span>), </span>
+<span id="cb96-10"><a href="nt2.html#cb96-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">fontface =</span> <span class="fu">rep</span>(<span class="st">&quot;plain&quot;</span>, <span class="dv">7</span>), <span class="at">fontfamily =</span> <span class="fu">rep</span>(<span class="st">&quot;serif&quot;</span>, <span class="dv">7</span>),</span>
+<span id="cb96-11"><a href="nt2.html#cb96-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">cat.pos =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">40</span>, <span class="dv">40</span>, <span class="dv">180</span>), <span class="at">cat.dist =</span> <span class="fu">c</span>(<span class="fl">0.05</span>, <span class="fl">0.05</span>, <span class="fl">0.025</span>),</span>
+<span id="cb96-12"><a href="nt2.html#cb96-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">cat.col =</span> <span class="fu">c</span>(<span class="st">&quot;pink&quot;</span>, <span class="st">&quot;green&quot;</span>, <span class="st">&quot;orange&quot;</span>),  </span>
+<span id="cb96-13"><a href="nt2.html#cb96-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">cat.cex =</span> <span class="fu">rep</span>(<span class="dv">1</span>, <span class="dv">3</span>), <span class="at">cat.fontface =</span> <span class="fu">rep</span>(<span class="st">&quot;plain&quot;</span>, <span class="dv">3</span>), </span>
+<span id="cb96-14"><a href="nt2.html#cb96-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">cat.fontfamily =</span> <span class="fu">rep</span>(<span class="st">&quot;serif&quot;</span>, <span class="dv">3</span>), </span>
+<span id="cb96-15"><a href="nt2.html#cb96-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">cat.just =</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="fl">0.5</span>, <span class="dv">1</span>), <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="dv">1</span>), <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="dv">0</span>)),</span>
+<span id="cb96-16"><a href="nt2.html#cb96-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">cat.default.pos =</span> <span class="st">&quot;outer&quot;</span>, <span class="at">cat.prompts =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb96-17"><a href="nt2.html#cb96-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">rotation.degree =</span> <span class="dv">0</span>, <span class="at">rotation.centre =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>), </span>
+<span id="cb96-18"><a href="nt2.html#cb96-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">ind =</span> <span class="cn">TRUE</span>, <span class="at">sep.dist =</span> <span class="fl">0.05</span>, <span class="at">offset =</span> <span class="dv">0</span>, <span class="at">cex.prop =</span> <span class="cn">NULL</span>,</span>
+<span id="cb96-19"><a href="nt2.html#cb96-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">print.mode =</span> <span class="fu">c</span>(<span class="st">&quot;raw&quot;</span>,<span class="st">&quot;percent&quot;</span>), <span class="at">sigdigs =</span> <span class="dv">3</span>, </span>
+<span id="cb96-20"><a href="nt2.html#cb96-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">direct.area =</span> <span class="cn">FALSE</span>, <span class="at">area.vector =</span> <span class="dv">0</span>,</span>
+<span id="cb96-21"><a href="nt2.html#cb96-21" aria-hidden="true" tabindex="-1"></a>  <span class="at">output =</span> <span class="cn">TRUE</span>, <span class="at">filename =</span> <span class="cn">NULL</span></span>
+<span id="cb96-22"><a href="nt2.html#cb96-22" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb96-23"><a href="nt2.html#cb96-23" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.draw</span>(ej2_car)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:ej2-cardinal"></span>
+<img src="_main_files/figure-html/ej2-cardinal-1.png" alt="Diagrama de Venn del Ejemplo \@ref(exm:ej2-cardinal)" width="672" />
+<p class="caption">
+Figura 2.11: Diagrama de Venn del Ejemplo <a href="nt2.html#exm:ej2-cardinal">2.9</a>
 </p>
 </div>
 </div>
