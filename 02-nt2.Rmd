@@ -2,7 +2,7 @@
 
 En este Núcleo Temático se definen algunos conceptos que servirán de soporte para comprender el concepto de probabilidad. Para ello, en la primera sección, se hace una *introducción a los conjuntos*, lo cual es necesario para entender la *definición clásica de la probabilidad*. Luego, en la segunda sección, se definen algunas *operaciones con conjuntos*. Por último, la tercera sección, constituye una *introducción a la probabilidad*.
 
-El siguiente bloque de código permite instalar y cargar los paquetes usados para implementar estas pruebas en `r colorize("R", "blue")`. De estos paquetes, los que contiene funciones relacionadas con la teoría de conteo son: `combinat`, `gtools` y `prob`.
+El siguiente bloque de código permite instalar y cargar los paquetes de `r colorize("R", "blue")` que se usaran en esta sección.
 
 ```{r cargar-paquetes-nt2, class.source = "watch-out"}
 packages <- c(
@@ -19,7 +19,7 @@ package.check <- lapply(packages, FUN = function(x) {
 
 ## Introducción a los Conjuntos {#nt21}
 
-En esta sección se definen algunos conceptos relacionados a la teoría de conjuntos. Estos conceptos son necesarios para entender el enfoque clásico de la probabilidad, el cual se describe en la sección \@ref(nt311).
+En esta sección se definen algunos conceptos relacionados a la teoría de conjuntos. Estos conceptos son necesarios para entender el enfoque clásico de la probabilidad, el cual se describe en la sección \@ref(nt2341).
 
 
 ### Conjunto {#nt211}
@@ -398,7 +398,7 @@ U <- letters
 (Ac <- setdiff(U, A))
 ```
 
-Con el siguiente trozo de código  se verifican las propiedades del complemento, dadas en la sección sección \@ref(nt2231), para el ejemplo en cuestión.
+Con el siguiente trozo de código  se verifican las propiedades del complemento, dadas en la sección \@ref(nt2231), para el ejemplo en cuestión.
 
 ```{r prop-complemento, results='hide'}
 Acc <- setdiff(U, Ac)
@@ -686,7 +686,220 @@ grid.draw(ej2_car)
 ```
 :::
 
+## Introducción a la Probabilidad {#nt23}
+
+En esta sección se introducen algunas definiciones que permiten entender el concepto de probabilidad, así como también, se define de manera axiomática la probabilidad de un evento. Por otro lado, se definen algunos enfoques para la asignación y cálculo de probabilidades de eventos. También, se define la probabilidad condicional y el teorema de Bayes para hacer cálculo de probabilidades de eventos dependientes e independientes. 
+
+### Experimento Determinístico {#nt231}
+
+::: {#expdet .definition name="Experimento Determinístico"}
+Es un experimento en el cual se puede predecir el resultado.
+	
+**Ejemplo:** Supóngase que se deja caer desde una altura $h$ un objeto y se anota el tiempo que tarde el objeto en chocar con el suelo.
+:::
+
+### Experimento Aleatorio o Experiencia Aleatoria {#nt232}
+
+::: {#expaleat .definition name="Experimento Aleatorio"}
+Es un experimento en el cual no se puede predecir el resultado o en otras palabras el resultado está regido por el azar.
+	
+**Ejemplo:** Supóngase que se lanza un dado y se anota el número que aparece.
+:::
 
 
+### Espacio Muestral {#nt233}
+
+::: {#espmuest .definition name="Espacio Muestral"}
+Es el conjunto que consta de todos los resultados posibles de un experimento aleatorio y se denotará con la letra $S$. A cada uno de los resultados posibles de un experimento aleatorio se denomina punto muestral. Algunos textos representa el espacio muestral con $\Omega$ o $E$. 
+
+**Ejemplo:** En el experimento de lanzar un dado y anotar el número que aparece, el espacio muestral es
+$$
+S=\left\{1,2,3,4,5,6 \right\};
+$$
+y los puntos muestrales son $1,2,3,4,5,6$.
+:::
+
+#### Espacio Muestral Finito {#nt2331}
+
+::: {#espmuestfin .definition name="Espacio Muestral Finito"}
+Un espacio muestral $S$ es finito si el número de puntos muestrales de $S$ $\left(n \left(S \right) \right)$ es un número $m$ entero positivo; es decir
+$$
+n(S)=m, \:donde\: m \in \mathbb{ N }.
+$$
+
+**Ejemplo:** En el experimento de lanzar un dado el espacio muestral es finito, ya que $n \left(S \right)=6$.
+:::
+
+#### Espacio Muestral Infinito Contable {#nt2332}
+
+::: {#espmuestinfincont .definition name="Espacio Muestral Infinito Contable"}
+Un espacio muestral $S$ es infinito contable (o numerable) si se puede establecer una correspondencia uno a uno (biunívoca) entre cada uno de los puntos muestrales de $S$ y los números naturales $\mathbb{ N }$.
+
+**Ejemplo:** Supóngase el experimento que consiste en anotar el número de veces en que se lanza una moneda hasta que salga una cara, entonces el espacio muestral definido sobre este experimento aleatorio es
+$$
+S=\left\{c,sc,ssc,sssc,ssssc,\dotsc \right\}.
+$$
+
+Como se puede notar S es infinito numerable.
+:::
+
+#### Evento o Suceso {#nt2333}
+
+::: {#evento .definition name="Evento"}
+Es cualquier subconjunto del espacio muestral $S$, cuyos elementos tienen características comunes. Sea $A$ un evento, se dice que el evento $A$ ocurrió si el resultado del experimento es un elemento de $A$.
+
+**Ejemplo:** En el experimento aleatorio de lanzar un dado y anotar el número que sale, los siguientes conjuntos son eventos:
+$$
+A=\left\{1 \right\}; B=\left\{6 \right\}; C=\left\{1,3,5 \right\}; D=\left\{2,4,6 \right\}.
+$$
+
+Como se puede notar $S$ es infinito numerable.
+:::
+
+#### Evento Simple o Evento Elemental {#nt2334}
+
+::: {#eventosimple .definition name="Evento Simple"}
+Es el evento constituido por un solo punto muestral.
+
+**Ejemplo:** En el experimento aleatorio de lanzar un dado y anotar el número que sale, los siguientes eventos constituyen eventos elementales:
+$$
+A=\left\{1 \right\}; B=\left\{2 \right\}; C=\left\{3 \right\}; D=\left\{4 \right\};E=\left\{5 \right\}; F=\left\{6 \right\}.
+$$
+:::
+
+#### Evento Compuesto {#nt2335}
+
+::: {#eventocompuesto .definition name="Evento Compuesto"}
+Es el evento constituido por más de un punto muestral.
+
+**Ejemplo:** En el experimento aleatorio de lanzar un dado y anotar el número que sale, los siguientes eventos constituyen eventos compuestos:
+$$
+A=\left\{1,2 \right\}; B=\left\{1,3,5\right\};C=\left\{1,3,5,6 \right\}; D=\left\{1,2,3,4,5,6 \right\}.
+$$
+:::
+
+#### Evento Imposible {#nt2336}
+
+::: {#eventoimposible .definition name="Evento Imposible"}
+Es el evento que nunca ocurre, es decir, el evento que contiene a ningún resultado posible del espacio muestral. En otras palabras, el conjunto vació $(\emptyset)$.
+:::
+
+#### Evento Seguro o Cierto {#nt2337}
+
+::: {#eventoseguro .definition name="Evento Seguro"}
+Es el evento que siempre ocurre, es decir, el evento que contiene a todos los resultados posibles del espacio muestral. En otras palabras, el espacio muestral $\left(S \right)$.
+:::
 
 
+#### Eventos Mutuamente Excluyentes o Incompatibles {#nt2338}
+
+::: {#eventosmutexcluy .definition name="Eventos Mutuamente Excluyentes"}
+Dos eventos $A$, $B$ son mutuamente excluyentes si la ocurrencia de uno implica la no ocurrencia del otro. En otras palabras, se puede decir que dos sucesos son mutuamente excluyentes si ninguno de los puntos muestrales que conforman uno están contenido en el otro; por lo que
+$$
+A \cap B=\emptyset.
+$$
+:::
+
+#### Eventos Compatibles o Solapados {#nt2339}
+
+::: {#eventoscompatibles .definition name="Eventos Compatibles"}
+Dos eventos $A$, $B$ se dice que son compatibles, o que no son mutuamente excluyentes o que son solapados, cuando la ocurrencia de uno no impide la ocurrencia del otro. En otros términos, los eventos comparte por lo menos un punto muestral; por lo que
+$$
+A \cap B \neq \emptyset.
+$$
+:::
+
+::: {#nota1 .remark }
+Como se ha podido notar los eventos son conjunto por lo tanto toda la teoría de conjunto es aplicable a los eventos.
+:::
+
+### Probabilidad {#nt234}
+
+::: {#probabilidad .definition name="Probabilidad"}
+Es una medida de la incertidumbre sobre la ocurrencia de un evento en particular en un experimento aleatorio.
+:::
+
+#### Enfoque Clásico (o de Laplace o a Priori) de la Probabilidad {#nt2341}
+::: {#probabilidadclasica .definition name="Enfoque Clásico de la Probabilidad"}
+Si un experimento aleatorio puede ocurrir de $N$ maneras diferentes $\left(n \left(S \right) = N \right)$ igualmente probables y mutuamente excluyentes, y un evento $A$ puede ocurrir de $n$ maneras diferentes $\left(n \left(A \right) = n \right)$. Entonces la probabilidad de que ocurra el evento A viene dada por
+$$
+P\left(A \right)=\frac{n\left(A \right)}{n \left(S \right)} =\frac{n}{N}.
+$$
+**Ejemplo:** Supongamos que queremos conocer la probabilidad de que ocurra cara en el lanzamiento sencillo de una moneda. Dado que hay dos maneras igualmente probables como puede caer la moneda, a saber: cara o sello (suponiendo que no se pierda o caiga de canto), y de esas dos maneras puede aparecer cara de una sola forma. Entonces la probabilidad de que ocurra cara es
+$$
+P \left(A \right)=\frac{1}{2}=0,5.
+$$
+Para llegar a este resultado suponemos que la moneda es balanceada.
+:::
+
+#### Enfoque Frecuentista (Empírico o a Posteriori) de la Probabilidad {#nt2342}
+::: {#probabilidadfrecuentista .definition name="Enfoque Frecuentista de la Probabilidad"}
+Si un experimento se repite $N$ veces bajo las mismas condiciones y en $n$ de los resultados ocurre un evento $A$. Entonces, la probabilidad de que ocurra el evento $A$ tiende a $n/N$, conforme $N$ tiende a infinito. Es decir,
+$$
+P\left(A \right) = \lim_{N \to \infty} \frac{n}{N}.
+$$
+:::
+
+#### Enfoque Subjetivo (o personal) de la Probabilidad {#nt2343}
+::: {#probabilidadsubjetiva .definition name="Enfoque Subjetivo de la Probabilidad"}
+Es el grado de creencia o de convicción que se tiene con respecto a la ocurrencia de un evento.
+
+**Ejemplo:** A una persona se le pregunta sobre la probabilidad de que llueva, la persona mira hacia el cielo y al percatarse que el cielo está nublado dice “la probabilidad de que llueva es de un 80\%".
+:::
+
+#### Axiomas de la Probabilidad {#nt2344}
+Sea $S$ cualquier espacio muestral y $A$ cualquier evento de éste. Se llamará *función de probabilidad* sobre el espacio muestral $S$ a $P\left(A \right)$ si satisface los siguientes axiomas:
+
+1.	$P\left(A \right) \geq 0$ (toda probabilidad es no negativa).
+
+1.	$P\left(S \right)=1$ (la probabilidad del espacio muestral es uno).
+
+1.	Si $A_1, A_2, A_3, \dotsc$ es una sucesión de eventos mutuamente excluyente; es decir $A_i \cap A_j = \emptyset$ para todo $i \ne j$. Entonces
+$$
+P(A_1 \cup A_2  \cup A_3 \cup \cdots)=P(A_1 )+P(A_2 )+P(A_3 )+ \cdots
+$$
+
+De estos tres axiomas se desprenden los siguientes teoremas:
+
+::: {#teorema1 .theorem}
+La probabilidad de que ocurra el evento imposible es cero. Es decir,
+$$
+P(\emptyset)=0.
+$$
+:::
+
+::: {#pruebateorema1 .proof}
+$S \cup \emptyset=S$ y $S \cap \emptyset=\emptyset$.
+Por el axioma 3,
+$P \left(S \cup \emptyset \right)=P \left(S \right)+P \left( \emptyset \right)$; pero por el axioma 2, $P \left(S \right)=1$, y de esta manera $P(\emptyset)=0$.
+:::
+
+::: {#teorema2 .theorem}
+Para cualquier evento $A \subseteq S$, se cumple que 
+$$
+0 \le P \left(A \right) \le 1.
+$$
+:::
+
+::: {#pruebateorema2 .proof}
+Por el axioma 1 $P(A) \ge 0$; de aquí que solo es necesario probar que $P(A) \le 1$.
+$A \cup A^c = S$ y $A \cap A^c = \emptyset$.
+Por los axiomas 2 y 3,
+$P \left(A \cup A^c \right)=P \left(A \right)+P \left(A^c \right)=P \left(S \right)=1$;
+Dado que $P \left(A^c \right) \ge 0$, entonces
+$P \left(A \right) \le 1$.
+:::
+
+::: {#teorema3 .theorem name="Regla del Complemento"}
+Para cualquier evento $A$, se tiene
+$$P\left(A^c \right)=1-P \left(A \right).
+$$
+:::
+
+::: {#pruebateorema3 .proof}
+Como $A \cup A^c = S$ y $A \cap A^c= \emptyset$.
+Por los axiomas 2 y 3,
+$P \left(A \cup A^c \right)=P \left(A \right)+P \left(A^c \right)=P \left(S \right)=1$;
+De aquí que
+$P \left(A^c \right)=1-P \left(A \right)$.
+:::

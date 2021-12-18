@@ -201,6 +201,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.2.5" data-path="nt2.html"><a href="nt2.html#nt225"><i class="fa fa-check"></i><b>2.2.5</b> Diferencia Simétrica</a></li>
 <li class="chapter" data-level="2.2.6" data-path="nt2.html"><a href="nt2.html#nt226"><i class="fa fa-check"></i><b>2.2.6</b> Principios para Determinar el Tamaño de un Conjunto</a></li>
 </ul></li>
+<li class="chapter" data-level="2.3" data-path="nt2.html"><a href="nt2.html#nt23"><i class="fa fa-check"></i><b>2.3</b> Introducción a la Probabilidad</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="nt2.html"><a href="nt2.html#nt231"><i class="fa fa-check"></i><b>2.3.1</b> Experimento Determinístico</a></li>
+<li class="chapter" data-level="2.3.2" data-path="nt2.html"><a href="nt2.html#nt232"><i class="fa fa-check"></i><b>2.3.2</b> Experimento Aleatorio o Experiencia Aleatoria</a></li>
+<li class="chapter" data-level="2.3.3" data-path="nt2.html"><a href="nt2.html#nt233"><i class="fa fa-check"></i><b>2.3.3</b> Espacio Muestral</a></li>
+<li class="chapter" data-level="2.3.4" data-path="nt2.html"><a href="nt2.html#nt234"><i class="fa fa-check"></i><b>2.3.4</b> Probabilidad</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="dist_disc.html"><a href="dist_disc.html"><i class="fa fa-check"></i><b>3</b> Disribuciones Discretas de Probabilidades</a></li>
 <li class="divider"></li>
@@ -226,7 +233,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="nt2" class="section level1" number="2">
 <h1><span class="header-section-number">Núcleo Temático 2</span> Princípios Básicos de Probabilidades</h1>
 <p>En este Núcleo Temático se definen algunos conceptos que servirán de soporte para comprender el concepto de probabilidad. Para ello, en la primera sección, se hace una <em>introducción a los conjuntos</em>, lo cual es necesario para entender la <em>definición clásica de la probabilidad</em>. Luego, en la segunda sección, se definen algunas <em>operaciones con conjuntos</em>. Por último, la tercera sección, constituye una <em>introducción a la probabilidad</em>.</p>
-<p>El siguiente bloque de código permite instalar y cargar los paquetes usados para implementar estas pruebas en <span style="color: blue;">R</span>. De estos paquetes, los que contiene funciones relacionadas con la teoría de conteo son: <code>combinat</code>, <code>gtools</code> y <code>prob</code>.</p>
+<p>El siguiente bloque de código permite instalar y cargar los paquetes de <span style="color: blue;">R</span> que se usaran en esta sección.</p>
 <div class="sourceCode" id="cb68"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb68-1"><a href="nt2.html#cb68-1" aria-hidden="true" tabindex="-1"></a>packages <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
 <span id="cb68-2"><a href="nt2.html#cb68-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;ggplot2&quot;</span>, <span class="st">&quot;ggstatsplot&quot;</span>, <span class="st">&quot;ggVennDiagram&quot;</span>, <span class="st">&quot;eulerr&quot;</span>,</span>
 <span id="cb68-3"><a href="nt2.html#cb68-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;venneuler&quot;</span>, <span class="st">&quot;VennDiagram&quot;</span></span>
@@ -239,7 +246,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb68-10"><a href="nt2.html#cb68-10" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
 <div id="nt21" class="section level2" number="2.1">
 <h2><span class="header-section-number">2.1</span> Introducción a los Conjuntos</h2>
-<p>En esta sección se definen algunos conceptos relacionados a la teoría de conjuntos. Estos conceptos son necesarios para entender el enfoque clásico de la probabilidad, el cual se describe en la sección <a href="#nt311"><strong>??</strong></a>.</p>
+<p>En esta sección se definen algunos conceptos relacionados a la teoría de conjuntos. Estos conceptos son necesarios para entender el enfoque clásico de la probabilidad, el cual se describe en la sección <a href="nt2.html#nt2341">2.3.4.1</a>.</p>
 <div id="nt211" class="section level3" number="2.1.1">
 <h3><span class="header-section-number">2.1.1</span> Conjunto</h3>
 <div class="definition">
@@ -553,7 +560,7 @@ Determine el complemento de A <span class="math inline">\(\left(A^c \right)\)</s
 <span id="cb84-5"><a href="nt2.html#cb84-5" aria-hidden="true" tabindex="-1"></a>U <span class="ot">&lt;-</span> letters</span>
 <span id="cb84-6"><a href="nt2.html#cb84-6" aria-hidden="true" tabindex="-1"></a>(Ac <span class="ot">&lt;-</span> <span class="fu">setdiff</span>(U, A))</span></code></pre></div>
 <pre><code>#&gt;  [1] &quot;a&quot; &quot;d&quot; &quot;e&quot; &quot;g&quot; &quot;h&quot; &quot;i&quot; &quot;n&quot; &quot;o&quot; &quot;r&quot; &quot;t&quot; &quot;u&quot;</code></pre>
-<p>Con el siguiente trozo de código se verifican las propiedades del complemento, dadas en la sección sección <a href="nt2.html#nt2231">2.2.3.1</a>, para el ejemplo en cuestión.</p>
+<p>Con el siguiente trozo de código se verifican las propiedades del complemento, dadas en la sección <a href="nt2.html#nt2231">2.2.3.1</a>, para el ejemplo en cuestión.</p>
 <div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="nt2.html#cb86-1" aria-hidden="true" tabindex="-1"></a>Acc <span class="ot">&lt;-</span> <span class="fu">setdiff</span>(U, Ac)</span>
 <span id="cb86-2"><a href="nt2.html#cb86-2" aria-hidden="true" tabindex="-1"></a>CV <span class="ot">&lt;-</span> <span class="fu">as.character</span>(<span class="fu">c</span>())</span>
 <span id="cb86-3"><a href="nt2.html#cb86-3" aria-hidden="true" tabindex="-1"></a>(a <span class="ot">&lt;-</span> <span class="fu">setequal</span>(Acc, A))</span>
@@ -710,7 +717,7 @@ n \left(P \cup M \right)=n\left(P \right)+n \left(M \right),
 </ol>
 <p><span class="math display">\[
 \begin{align*}
-n \left(P \setminus M  \right) &amp;=n\left (P \right ) - n\left ( P \cap M \right )\\ &amp; = 20 - 5 \\ &amp; = 15. 
+n \left(P \setminus M  \right) &amp; = n\left(P \right) - n\left ( P \cap M \right )\\ &amp; = 20 - 5 \\ &amp; = 15. 
 \end{align*}
 \]</span></p>
 <ol start="2" style="list-style-type: lower-alpha">
@@ -718,7 +725,7 @@ n \left(P \setminus M  \right) &amp;=n\left (P \right ) - n\left ( P \cap M \rig
 </ol>
 <p><span class="math display">\[
 \begin{align*}
-n \left(P^c) &amp; = n\left (\mathbb{U} \right ) - n\left( P \right )\\ &amp; =50 - 20 \\ &amp; = 30. 
+n \left( P^c \right) &amp; = n\left (\mathbb{U} \right ) - n\left( P \right )\\ &amp; =50 - 20 \\ &amp; = 30. 
 \end{align*}
 \]</span></p>
 <ol start="3" style="list-style-type: lower-alpha">
@@ -818,7 +825,207 @@ Figura 2.11: Diagrama de Venn del Ejemplo <a href="nt2.html#exm:ej2-cardinal">2.
 </p>
 </div>
 </div>
+</div>
+</div>
+<div id="nt23" class="section level2" number="2.3">
+<h2><span class="header-section-number">2.3</span> Introducción a la Probabilidad</h2>
+<p>En esta sección se introducen algunas definiciones que permiten entender el concepto de probabilidad, así como también, se define de manera axiomática la probabilidad de un evento. Por otro lado, se definen algunos enfoques para la asignación y cálculo de probabilidades de eventos. También, se define la probabilidad condicional y el teorema de Bayes para hacer cálculo de probabilidades de eventos dependientes e independientes.</p>
+<div id="nt231" class="section level3" number="2.3.1">
+<h3><span class="header-section-number">2.3.1</span> Experimento Determinístico</h3>
+<div class="definition">
+<p><span id="def:expdet" class="definition"><strong>Definición 2.19  (Experimento Determinístico) </strong></span>Es un experimento en el cual se puede predecir el resultado.</p>
+<p><strong>Ejemplo:</strong> Supóngase que se deja caer desde una altura <span class="math inline">\(h\)</span> un objeto y se anota el tiempo que tarde el objeto en chocar con el suelo.</p>
+</div>
+</div>
+<div id="nt232" class="section level3" number="2.3.2">
+<h3><span class="header-section-number">2.3.2</span> Experimento Aleatorio o Experiencia Aleatoria</h3>
+<div class="definition">
+<p><span id="def:expaleat" class="definition"><strong>Definición 2.20  (Experimento Aleatorio) </strong></span>Es un experimento en el cual no se puede predecir el resultado o en otras palabras el resultado está regido por el azar.</p>
+<p><strong>Ejemplo:</strong> Supóngase que se lanza un dado y se anota el número que aparece.</p>
+</div>
+</div>
+<div id="nt233" class="section level3" number="2.3.3">
+<h3><span class="header-section-number">2.3.3</span> Espacio Muestral</h3>
+<div class="definition">
+<p><span id="def:espmuest" class="definition"><strong>Definición 2.21  (Espacio Muestral) </strong></span>Es el conjunto que consta de todos los resultados posibles de un experimento aleatorio y se denotará con la letra <span class="math inline">\(S\)</span>. A cada uno de los resultados posibles de un experimento aleatorio se denomina punto muestral. Algunos textos representa el espacio muestral con <span class="math inline">\(\Omega\)</span> o <span class="math inline">\(E\)</span>.</p>
+<p><strong>Ejemplo:</strong> En el experimento de lanzar un dado y anotar el número que aparece, el espacio muestral es
+<span class="math display">\[
+S=\left\{1,2,3,4,5,6 \right\};
+\]</span>
+y los puntos muestrales son <span class="math inline">\(1,2,3,4,5,6\)</span>.</p>
+</div>
+<div id="nt2331" class="section level4" number="2.3.3.1">
+<h4><span class="header-section-number">2.3.3.1</span> Espacio Muestral Finito</h4>
+<div class="definition">
+<p><span id="def:espmuestfin" class="definition"><strong>Definición 2.22  (Espacio Muestral Finito) </strong></span>Un espacio muestral <span class="math inline">\(S\)</span> es finito si el número de puntos muestrales de <span class="math inline">\(S\)</span> <span class="math inline">\(\left(n \left(S \right) \right)\)</span> es un número <span class="math inline">\(m\)</span> entero positivo; es decir
+<span class="math display">\[
+n(S)=m, \:donde\: m \in \mathbb{ N }.
+\]</span></p>
+<p><strong>Ejemplo:</strong> En el experimento de lanzar un dado el espacio muestral es finito, ya que <span class="math inline">\(n \left(S \right)=6\)</span>.</p>
+</div>
+</div>
+<div id="nt2332" class="section level4" number="2.3.3.2">
+<h4><span class="header-section-number">2.3.3.2</span> Espacio Muestral Infinito Contable</h4>
+<div class="definition">
+<p><span id="def:espmuestinfincont" class="definition"><strong>Definición 2.23  (Espacio Muestral Infinito Contable) </strong></span>Un espacio muestral <span class="math inline">\(S\)</span> es infinito contable (o numerable) si se puede establecer una correspondencia uno a uno (biunívoca) entre cada uno de los puntos muestrales de <span class="math inline">\(S\)</span> y los números naturales <span class="math inline">\(\mathbb{ N }\)</span>.</p>
+<p><strong>Ejemplo:</strong> Supóngase el experimento que consiste en anotar el número de veces en que se lanza una moneda hasta que salga una cara, entonces el espacio muestral definido sobre este experimento aleatorio es
+<span class="math display">\[
+S=\left\{c,sc,ssc,sssc,ssssc,\dotsc \right\}.
+\]</span></p>
+<p>Como se puede notar S es infinito numerable.</p>
+</div>
+</div>
+<div id="nt2333" class="section level4" number="2.3.3.3">
+<h4><span class="header-section-number">2.3.3.3</span> Evento o Suceso</h4>
+<div class="definition">
+<p><span id="def:evento" class="definition"><strong>Definición 2.24  (Evento) </strong></span>Es cualquier subconjunto del espacio muestral <span class="math inline">\(S\)</span>, cuyos elementos tienen características comunes. Sea <span class="math inline">\(A\)</span> un evento, se dice que el evento <span class="math inline">\(A\)</span> ocurrió si el resultado del experimento es un elemento de <span class="math inline">\(A\)</span>.</p>
+<p><strong>Ejemplo:</strong> En el experimento aleatorio de lanzar un dado y anotar el número que sale, los siguientes conjuntos son eventos:
+<span class="math display">\[
+A=\left\{1 \right\}; B=\left\{6 \right\}; C=\left\{1,3,5 \right\}; D=\left\{2,4,6 \right\}.
+\]</span></p>
+<p>Como se puede notar <span class="math inline">\(S\)</span> es infinito numerable.</p>
+</div>
+</div>
+<div id="nt2334" class="section level4" number="2.3.3.4">
+<h4><span class="header-section-number">2.3.3.4</span> Evento Simple o Evento Elemental</h4>
+<div class="definition">
+<p><span id="def:eventosimple" class="definition"><strong>Definición 2.25  (Evento Simple) </strong></span>Es el evento constituido por un solo punto muestral.</p>
+<p><strong>Ejemplo:</strong> En el experimento aleatorio de lanzar un dado y anotar el número que sale, los siguientes eventos constituyen eventos elementales:
+<span class="math display">\[
+A=\left\{1 \right\}; B=\left\{2 \right\}; C=\left\{3 \right\}; D=\left\{4 \right\};E=\left\{5 \right\}; F=\left\{6 \right\}.
+\]</span></p>
+</div>
+</div>
+<div id="nt2335" class="section level4" number="2.3.3.5">
+<h4><span class="header-section-number">2.3.3.5</span> Evento Compuesto</h4>
+<div class="definition">
+<p><span id="def:eventocompuesto" class="definition"><strong>Definición 2.26  (Evento Compuesto) </strong></span>Es el evento constituido por más de un punto muestral.</p>
+<p><strong>Ejemplo:</strong> En el experimento aleatorio de lanzar un dado y anotar el número que sale, los siguientes eventos constituyen eventos compuestos:
+<span class="math display">\[
+A=\left\{1,2 \right\}; B=\left\{1,3,5\right\};C=\left\{1,3,5,6 \right\}; D=\left\{1,2,3,4,5,6 \right\}.
+\]</span></p>
+</div>
+</div>
+<div id="nt2336" class="section level4" number="2.3.3.6">
+<h4><span class="header-section-number">2.3.3.6</span> Evento Imposible</h4>
+<div class="definition">
+<p><span id="def:eventoimposible" class="definition"><strong>Definición 2.27  (Evento Imposible) </strong></span>Es el evento que nunca ocurre, es decir, el evento que contiene a ningún resultado posible del espacio muestral. En otras palabras, el conjunto vació <span class="math inline">\((\emptyset)\)</span>.</p>
+</div>
+</div>
+<div id="nt2337" class="section level4" number="2.3.3.7">
+<h4><span class="header-section-number">2.3.3.7</span> Evento Seguro o Cierto</h4>
+<div class="definition">
+<p><span id="def:eventoseguro" class="definition"><strong>Definición 2.28  (Evento Seguro) </strong></span>Es el evento que siempre ocurre, es decir, el evento que contiene a todos los resultados posibles del espacio muestral. En otras palabras, el espacio muestral <span class="math inline">\(\left(S \right)\)</span>.</p>
+</div>
+</div>
+<div id="nt2338" class="section level4" number="2.3.3.8">
+<h4><span class="header-section-number">2.3.3.8</span> Eventos Mutuamente Excluyentes o Incompatibles</h4>
+<div class="definition">
+<p><span id="def:eventosmutexcluy" class="definition"><strong>Definición 2.29  (Eventos Mutuamente Excluyentes) </strong></span>Dos eventos <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span> son mutuamente excluyentes si la ocurrencia de uno implica la no ocurrencia del otro. En otras palabras, se puede decir que dos sucesos son mutuamente excluyentes si ninguno de los puntos muestrales que conforman uno están contenido en el otro; por lo que
+<span class="math display">\[
+A \cap B=\emptyset.
+\]</span></p>
+</div>
+</div>
+<div id="nt2339" class="section level4" number="2.3.3.9">
+<h4><span class="header-section-number">2.3.3.9</span> Eventos Compatibles o Solapados</h4>
+<div class="definition">
+<p><span id="def:eventoscompatibles" class="definition"><strong>Definición 2.30  (Eventos Compatibles) </strong></span>Dos eventos <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span> se dice que son compatibles, o que no son mutuamente excluyentes o que son solapados, cuando la ocurrencia de uno no impide la ocurrencia del otro. En otros términos, los eventos comparte por lo menos un punto muestral; por lo que
+<span class="math display">\[
+A \cap B \neq \emptyset.
+\]</span></p>
+</div>
+<div class="remark">
+<p><span id="nota1" class="remark"><em>Nota:</em>. </span>Como se ha podido notar los eventos son conjunto por lo tanto toda la teoría de conjunto es aplicable a los eventos.</p>
+</div>
+</div>
+</div>
+<div id="nt234" class="section level3" number="2.3.4">
+<h3><span class="header-section-number">2.3.4</span> Probabilidad</h3>
+<div class="definition">
+<p><span id="def:probabilidad" class="definition"><strong>Definición 2.31  (Probabilidad) </strong></span>Es una medida de la incertidumbre sobre la ocurrencia de un evento en particular en un experimento aleatorio.</p>
+</div>
+<div id="nt2341" class="section level4" number="2.3.4.1">
+<h4><span class="header-section-number">2.3.4.1</span> Enfoque Clásico (o de Laplace o a Priori) de la Probabilidad</h4>
+<div class="definition">
+<p><span id="def:probabilidadclasica" class="definition"><strong>Definición 2.32  (Enfoque Clásico de la Probabilidad) </strong></span>Si un experimento aleatorio puede ocurrir de <span class="math inline">\(N\)</span> maneras diferentes <span class="math inline">\(\left(n \left(S \right) = N \right)\)</span> igualmente probables y mutuamente excluyentes, y un evento <span class="math inline">\(A\)</span> puede ocurrir de <span class="math inline">\(n\)</span> maneras diferentes <span class="math inline">\(\left(n \left(A \right) = n \right)\)</span>. Entonces la probabilidad de que ocurra el evento A viene dada por
+<span class="math display">\[
+P\left(A \right)=\frac{n\left(A \right)}{n \left(S \right)} =\frac{n}{N}.
+\]</span>
+<strong>Ejemplo:</strong> Supongamos que queremos conocer la probabilidad de que ocurra cara en el lanzamiento sencillo de una moneda. Dado que hay dos maneras igualmente probables como puede caer la moneda, a saber: cara o sello (suponiendo que no se pierda o caiga de canto), y de esas dos maneras puede aparecer cara de una sola forma. Entonces la probabilidad de que ocurra cara es
+<span class="math display">\[
+P \left(A \right)=\frac{1}{2}=0,5.
+\]</span>
+Para llegar a este resultado suponemos que la moneda es balanceada.</p>
+</div>
+</div>
+<div id="nt2342" class="section level4" number="2.3.4.2">
+<h4><span class="header-section-number">2.3.4.2</span> Enfoque Frecuentista (Empírico o a Posteriori) de la Probabilidad</h4>
+<div class="definition">
+<p><span id="def:probabilidadfrecuentista" class="definition"><strong>Definición 2.33  (Enfoque Frecuentista de la Probabilidad) </strong></span>Si un experimento se repite <span class="math inline">\(N\)</span> veces bajo las mismas condiciones y en <span class="math inline">\(n\)</span> de los resultados ocurre un evento <span class="math inline">\(A\)</span>. Entonces, la probabilidad de que ocurra el evento <span class="math inline">\(A\)</span> tiende a <span class="math inline">\(n/N\)</span>, conforme <span class="math inline">\(N\)</span> tiende a infinito. Es decir,
+<span class="math display">\[
+P\left(A \right) = \lim_{N \to \infty} \frac{n}{N}.
+\]</span></p>
+</div>
+</div>
+<div id="nt2343" class="section level4" number="2.3.4.3">
+<h4><span class="header-section-number">2.3.4.3</span> Enfoque Subjetivo (o personal) de la Probabilidad</h4>
+<div class="definition">
+<p><span id="def:probabilidadsubjetiva" class="definition"><strong>Definición 2.34  (Enfoque Subjetivo de la Probabilidad) </strong></span>Es el grado de creencia o de convicción que se tiene con respecto a la ocurrencia de un evento.</p>
+<p><strong>Ejemplo:</strong> A una persona se le pregunta sobre la probabilidad de que llueva, la persona mira hacia el cielo y al percatarse que el cielo está nublado dice “la probabilidad de que llueva es de un 80%”.</p>
+</div>
+</div>
+<div id="nt2344" class="section level4" number="2.3.4.4">
+<h4><span class="header-section-number">2.3.4.4</span> Axiomas de la Probabilidad</h4>
+<p>Sea <span class="math inline">\(S\)</span> cualquier espacio muestral y <span class="math inline">\(A\)</span> cualquier evento de éste. Se llamará <em>función de probabilidad</em> sobre el espacio muestral <span class="math inline">\(S\)</span> a <span class="math inline">\(P\left(A \right)\)</span> si satisface los siguientes axiomas:</p>
+<ol style="list-style-type: decimal">
+<li><p><span class="math inline">\(P\left(A \right) \geq 0\)</span> (toda probabilidad es no negativa).</p></li>
+<li><p><span class="math inline">\(P\left(S \right)=1\)</span> (la probabilidad del espacio muestral es uno).</p></li>
+<li><p>Si <span class="math inline">\(A_1, A_2, A_3, \dotsc\)</span> es una sucesión de eventos mutuamente excluyente; es decir <span class="math inline">\(A_i \cap A_j = \emptyset\)</span> para todo <span class="math inline">\(i \ne j\)</span>. Entonces
+<span class="math display">\[
+P(A_1 \cup A_2  \cup A_3 \cup \cdots)=P(A_1 )+P(A_2 )+P(A_3 )+ \cdots
+\]</span></p></li>
+</ol>
+<p>De estos tres axiomas se desprenden los siguientes teoremas:</p>
+<div class="theorem">
+<p><span id="thm:teorema1" class="theorem"><strong>Teorema 2.3  </strong></span>La probabilidad de que ocurra el evento imposible es cero. Es decir,
+<span class="math display">\[
+P(\emptyset)=0.
+\]</span></p>
+</div>
+<div class="proof">
+<p><span id="pruebateorema1" class="proof"><em>Demostración</em>. </span><span class="math inline">\(S \cup \emptyset=S\)</span> y <span class="math inline">\(S \cap \emptyset=\emptyset\)</span>.
+Por el axioma 3,
+<span class="math inline">\(P \left(S \cup \emptyset \right)=P \left(S \right)+P \left( \emptyset \right)\)</span>; pero por el axioma 2, <span class="math inline">\(P \left(S \right)=1\)</span>, y de esta manera <span class="math inline">\(P(\emptyset)=0\)</span>.</p>
+</div>
+<div class="theorem">
+<p><span id="thm:teorema2" class="theorem"><strong>Teorema 2.4  </strong></span>Para cualquier evento <span class="math inline">\(A \subseteq S\)</span>, se cumple que
+<span class="math display">\[
+0 \le P \left(A \right) \le 1.
+\]</span></p>
+</div>
+<div class="proof">
+<p><span id="pruebateorema2" class="proof"><em>Demostración</em>. </span>Por el axioma 1 <span class="math inline">\(P(A) \ge 0\)</span>; de aquí que solo es necesario probar que <span class="math inline">\(P(A) \le 1\)</span>.
+<span class="math inline">\(A \cup A^c = S\)</span> y <span class="math inline">\(A \cap A^c = \emptyset\)</span>.
+Por los axiomas 2 y 3,
+<span class="math inline">\(P \left(A \cup A^c \right)=P \left(A \right)+P \left(A^c \right)=P \left(S \right)=1\)</span>;
+Dado que <span class="math inline">\(P \left(A^c \right) \ge 0\)</span>, entonces
+<span class="math inline">\(P \left(A \right) \le 1\)</span>.</p>
+</div>
+<div class="theorem">
+<p><span id="thm:teorema3" class="theorem"><strong>Teorema 2.5  (Regla del Complemento) </strong></span>Para cualquier evento <span class="math inline">\(A\)</span>, se tiene
+<span class="math display">\[P\left(A^c \right)=1-P \left(A \right).
+\]</span></p>
+</div>
+<div class="proof">
+<p><span id="pruebateorema3" class="proof"><em>Demostración</em>. </span>Como <span class="math inline">\(A \cup A^c = S\)</span> y <span class="math inline">\(A \cap A^c= \emptyset\)</span>.
+Por los axiomas 2 y 3,
+<span class="math inline">\(P \left(A \cup A^c \right)=P \left(A \right)+P \left(A^c \right)=P \left(S \right)=1\)</span>;
+De aquí que
+<span class="math inline">\(P \left(A^c \right)=1-P \left(A \right)\)</span>.</p>
+</div>
 
+</div>
 </div>
 </div>
 </div>
