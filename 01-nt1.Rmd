@@ -489,7 +489,7 @@ combinations(n = 5, r = 2, v = 1:5, set = T,
 ```
 :::
 
-### Conbinación Con Repetición {#nt142}
+### Combinación Con Repetición {#nt142}
 ::: {.definition #combinacion-cr name="Conbinación Con Repetición"}
 Dados $n$ objetos distintos, el número de combinaciones que se pueden formar con $r$ de estos objetos, pudiendo haber objetos repetidos viene dado por:
 

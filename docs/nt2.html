@@ -187,7 +187,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.1.3" data-path="nt2.html"><a href="nt2.html#nt213"><i class="fa fa-check"></i><b>2.1.3</b> Conjuntos Iguales</a></li>
 <li class="chapter" data-level="2.1.4" data-path="nt2.html"><a href="nt2.html#nt214"><i class="fa fa-check"></i><b>2.1.4</b> Conjuntos Universal</a></li>
 <li class="chapter" data-level="2.1.5" data-path="nt2.html"><a href="nt2.html#nt215"><i class="fa fa-check"></i><b>2.1.5</b> Conjuntos Vacio o Conjunto Nulo</a></li>
-<li class="chapter" data-level="2.1.6" data-path="nt2.html"><a href="nt2.html#nt216"><i class="fa fa-check"></i><b>2.1.6</b> Conjuntos Disyuntos o Mutuamente excluyentes o Ajenos</a></li>
+<li class="chapter" data-level="2.1.6" data-path="nt2.html"><a href="nt2.html#nt216"><i class="fa fa-check"></i><b>2.1.6</b> Conjuntos Disyuntos o Mutuamente Excluyentes o Ajenos</a></li>
 <li class="chapter" data-level="2.1.7" data-path="nt2.html"><a href="nt2.html#nt217"><i class="fa fa-check"></i><b>2.1.7</b> Conjunto Solapados o Traslapados</a></li>
 <li class="chapter" data-level="2.1.8" data-path="nt2.html"><a href="nt2.html#nt218"><i class="fa fa-check"></i><b>2.1.8</b> Diagrama de Venn</a></li>
 <li class="chapter" data-level="2.1.9" data-path="nt2.html"><a href="nt2.html#nt219"><i class="fa fa-check"></i><b>2.1.9</b> Partición</a></li>
@@ -335,7 +335,7 @@ Esto implica que si cualquier elemento <span class="math inline">\(a \in A\)</sp
 </div>
 </div>
 <div id="nt216" class="section level3" number="2.1.6">
-<h3><span class="header-section-number">2.1.6</span> Conjuntos Disyuntos o Mutuamente excluyentes o Ajenos</h3>
+<h3><span class="header-section-number">2.1.6</span> Conjuntos Disyuntos o Mutuamente Excluyentes o Ajenos</h3>
 <div class="definition">
 <p><span id="def:conjdisyuntos" class="definition"><strong>Definición 2.11  (Conjuntos Disyuntos o Mutuamente excluyentes o Ajenos) </strong></span>Se dice que dos conjuntos <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span> son <em>disyuntos</em> si estos no tienen elementos en común.</p>
 <p>Consideremos, por ejemplo, los conjuntos <span class="math display">\[A=\left\{1,2\right\};  B=\left\{2,4,6\right\};  C=\left\{4,5,6,7\right\}.\]</span>
@@ -872,7 +872,7 @@ n(S)=m, \:donde\: m \in \mathbb{ N }.
 <span class="math display">\[
 S=\left\{c,sc,ssc,sssc,ssssc,\dotsc \right\}.
 \]</span></p>
-<p>Como se puede notar S es infinito numerable.</p>
+<p>Como se puede notar <span class="math inline">\(S\)</span> es infinito numerable.</p>
 </div>
 </div>
 <div id="nt2333" class="section level4" number="2.3.3.3">
@@ -948,9 +948,12 @@ A \cap B \neq \emptyset.
 <div id="nt2341" class="section level4" number="2.3.4.1">
 <h4><span class="header-section-number">2.3.4.1</span> Enfoque Clásico (o de Laplace o a Priori) de la Probabilidad</h4>
 <div class="definition">
-<p><span id="def:probabilidadclasica" class="definition"><strong>Definición 2.32  (Enfoque Clásico de la Probabilidad) </strong></span>Si un experimento aleatorio puede ocurrir de <span class="math inline">\(N\)</span> maneras diferentes <span class="math inline">\(\left(n \left(S \right) = N \right)\)</span> igualmente probables y mutuamente excluyentes, y un evento <span class="math inline">\(A\)</span> puede ocurrir de <span class="math inline">\(n\)</span> maneras diferentes <span class="math inline">\(\left(n \left(A \right) = n \right)\)</span>. Entonces la probabilidad de que ocurra el evento A viene dada por
-<span class="math display">\[
+<p><span id="def:probabilidadclasica" class="definition"><strong>Definición 2.32  (Enfoque Clásico de la Probabilidad) </strong></span>Si un experimento aleatorio puede ocurrir de <span class="math inline">\(N\)</span> maneras diferentes <span class="math inline">\(\left(n \left(S \right) = N \right)\)</span> igualmente probables y mutuamente excluyentes, y un evento <span class="math inline">\(A\)</span> puede ocurrir de <span class="math inline">\(n\)</span> maneras diferentes <span class="math inline">\(\left(n \left(A \right) = n \right)\)</span>. Entonces la probabilidad de que ocurra el evento <span class="math inline">\(A\)</span> viene dada por
+<span class="math display" id="eq:probabilidad-clasicaa">\[
+\begin{equation}
 P\left(A \right)=\frac{n\left(A \right)}{n \left(S \right)} =\frac{n}{N}.
+\tag{2.1}
+\end{equation}
 \]</span>
 <strong>Ejemplo:</strong> Supongamos que queremos conocer la probabilidad de que ocurra cara en el lanzamiento sencillo de una moneda. Dado que hay dos maneras igualmente probables como puede caer la moneda, a saber: cara o sello (suponiendo que no se pierda o caiga de canto), y de esas dos maneras puede aparecer cara de una sola forma. Entonces la probabilidad de que ocurra cara es
 <span class="math display">\[
@@ -963,8 +966,11 @@ Para llegar a este resultado suponemos que la moneda es balanceada.</p>
 <h4><span class="header-section-number">2.3.4.2</span> Enfoque Frecuentista (Empírico o a Posteriori) de la Probabilidad</h4>
 <div class="definition">
 <p><span id="def:probabilidadfrecuentista" class="definition"><strong>Definición 2.33  (Enfoque Frecuentista de la Probabilidad) </strong></span>Si un experimento se repite <span class="math inline">\(N\)</span> veces bajo las mismas condiciones y en <span class="math inline">\(n\)</span> de los resultados ocurre un evento <span class="math inline">\(A\)</span>. Entonces, la probabilidad de que ocurra el evento <span class="math inline">\(A\)</span> tiende a <span class="math inline">\(n/N\)</span>, conforme <span class="math inline">\(N\)</span> tiende a infinito. Es decir,
-<span class="math display">\[
+<span class="math display" id="eq:probabilidad-frecuentista">\[
+\begin{equation}
 P\left(A \right) = \lim_{N \to \infty} \frac{n}{N}.
+\tag{2.2}
+\end{equation}
 \]</span></p>
 </div>
 </div>
@@ -1010,11 +1016,14 @@ Por el axioma 3,
 Por los axiomas 2 y 3,
 <span class="math inline">\(P \left(A \cup A^c \right)=P \left(A \right)+P \left(A^c \right)=P \left(S \right)=1\)</span>;
 Dado que <span class="math inline">\(P \left(A^c \right) \ge 0\)</span>, entonces
-<span class="math inline">\(P \left(A \right) \le 1\)</span>.</p>
+<span class="math display">\[
+P \left(A \right) \le 1.
+\]</span></p>
 </div>
 <div class="theorem">
 <p><span id="thm:teorema3" class="theorem"><strong>Teorema 2.5  (Regla del Complemento) </strong></span>Para cualquier evento <span class="math inline">\(A\)</span>, se tiene
-<span class="math display">\[P\left(A^c \right)=1-P \left(A \right).
+<span class="math display">\[
+P\left(A^c \right)=1-P \left(A \right).
 \]</span></p>
 </div>
 <div class="proof">
@@ -1022,7 +1031,22 @@ Dado que <span class="math inline">\(P \left(A^c \right) \ge 0\)</span>, entonce
 Por los axiomas 2 y 3,
 <span class="math inline">\(P \left(A \cup A^c \right)=P \left(A \right)+P \left(A^c \right)=P \left(S \right)=1\)</span>;
 De aquí que
-<span class="math inline">\(P \left(A^c \right)=1-P \left(A \right)\)</span>.</p>
+<span class="math display">\[
+P \left(A^c \right)=1-P \left(A \right).
+\]</span></p>
+</div>
+</div>
+<div id="nt2345" class="section level4" number="2.3.4.5">
+<h4><span class="header-section-number">2.3.4.5</span> Probabilidad Condicional</h4>
+<div class="definition">
+<p><span id="def:probabilidadcondicional" class="definition"><strong>Definición 2.35  (Probabilidad Condicional) </strong></span>Suponga que <span class="math inline">\(E\)</span> es un evento en un espacio muestral <span class="math inline">\(S\)</span>, tal que <span class="math inline">\(P \left(E \right) &gt; 0\)</span>, es decir <span class="math inline">\(E \neq \emptyset\)</span>. La probabilidad de que ocurra un evento <span class="math inline">\(A\)</span> una vez que <span class="math inline">\(E\)</span> ha ocurrido o, en otras palabras, la _la probabilidad condicional de <span class="math inline">\(A\)</span> dado <span class="math inline">\(E\)</span>, escrita <span class="math inline">\(P \left( A \mid E \right)\)</span>, se define así:
+<span class="math display" id="eq:probabilidad-condicional">\[
+\begin{equation}
+P \left( A \mid E \right)=\frac{P \left( A \cap E \right)}{P \left( E \right)}.
+\tag{2.3}
+\end{equation}
+\]</span></p>
+<p><strong>Ejemplo:</strong> A una persona se le pregunta sobre la probabilidad de que llueva, la persona mira hacia el cielo y al percatarse que el cielo está nublado dice “la probabilidad de que llueva es de un 80%”.</p>
 </div>
 
 </div>

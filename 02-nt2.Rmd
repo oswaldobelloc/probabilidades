@@ -128,7 +128,7 @@ Por ejemplo, el conjunto $S=\left\{x:x \textit{ es un entero positivo},x^2=3 \ri
 Para cualquier conjunto $A$, se tiene $\emptyset  \subseteq  A \subseteq \mathbb{U}$.
 :::
 
-###	Conjuntos Disyuntos o Mutuamente excluyentes o Ajenos {#nt216}
+###	Conjuntos Disyuntos o Mutuamente Excluyentes o Ajenos {#nt216}
 
 ::: {#conjdisyuntos .definition name="Conjuntos Disyuntos o Mutuamente excluyentes o Ajenos"}
 
@@ -740,7 +740,7 @@ $$
 S=\left\{c,sc,ssc,sssc,ssssc,\dotsc \right\}.
 $$
 
-Como se puede notar S es infinito numerable.
+Como se puede notar $S$ es infinito numerable.
 :::
 
 #### Evento o Suceso {#nt2333}
@@ -821,9 +821,12 @@ Es una medida de la incertidumbre sobre la ocurrencia de un evento en particular
 
 #### Enfoque Clásico (o de Laplace o a Priori) de la Probabilidad {#nt2341}
 ::: {#probabilidadclasica .definition name="Enfoque Clásico de la Probabilidad"}
-Si un experimento aleatorio puede ocurrir de $N$ maneras diferentes $\left(n \left(S \right) = N \right)$ igualmente probables y mutuamente excluyentes, y un evento $A$ puede ocurrir de $n$ maneras diferentes $\left(n \left(A \right) = n \right)$. Entonces la probabilidad de que ocurra el evento A viene dada por
+Si un experimento aleatorio puede ocurrir de $N$ maneras diferentes $\left(n \left(S \right) = N \right)$ igualmente probables y mutuamente excluyentes, y un evento $A$ puede ocurrir de $n$ maneras diferentes $\left(n \left(A \right) = n \right)$. Entonces la probabilidad de que ocurra el evento $A$ viene dada por
 $$
+\begin{equation}
 P\left(A \right)=\frac{n\left(A \right)}{n \left(S \right)} =\frac{n}{N}.
+(\#eq:probabilidad-clasicaa)
+\end{equation}
 $$
 **Ejemplo:** Supongamos que queremos conocer la probabilidad de que ocurra cara en el lanzamiento sencillo de una moneda. Dado que hay dos maneras igualmente probables como puede caer la moneda, a saber: cara o sello (suponiendo que no se pierda o caiga de canto), y de esas dos maneras puede aparecer cara de una sola forma. Entonces la probabilidad de que ocurra cara es
 $$
@@ -836,7 +839,10 @@ Para llegar a este resultado suponemos que la moneda es balanceada.
 ::: {#probabilidadfrecuentista .definition name="Enfoque Frecuentista de la Probabilidad"}
 Si un experimento se repite $N$ veces bajo las mismas condiciones y en $n$ de los resultados ocurre un evento $A$. Entonces, la probabilidad de que ocurra el evento $A$ tiende a $n/N$, conforme $N$ tiende a infinito. Es decir,
 $$
+\begin{equation}
 P\left(A \right) = \lim_{N \to \infty} \frac{n}{N}.
+(\#eq:probabilidad-frecuentista)
+\end{equation}
 $$
 :::
 
@@ -887,12 +893,15 @@ $A \cup A^c = S$ y $A \cap A^c = \emptyset$.
 Por los axiomas 2 y 3,
 $P \left(A \cup A^c \right)=P \left(A \right)+P \left(A^c \right)=P \left(S \right)=1$;
 Dado que $P \left(A^c \right) \ge 0$, entonces
-$P \left(A \right) \le 1$.
+$$
+P \left(A \right) \le 1.
+$$
 :::
 
 ::: {#teorema3 .theorem name="Regla del Complemento"}
 Para cualquier evento $A$, se tiene
-$$P\left(A^c \right)=1-P \left(A \right).
+$$
+P\left(A^c \right)=1-P \left(A \right).
 $$
 :::
 
@@ -901,5 +910,24 @@ Como $A \cup A^c = S$ y $A \cap A^c= \emptyset$.
 Por los axiomas 2 y 3,
 $P \left(A \cup A^c \right)=P \left(A \right)+P \left(A^c \right)=P \left(S \right)=1$;
 De aquí que
-$P \left(A^c \right)=1-P \left(A \right)$.
+$$
+P \left(A^c \right)=1-P \left(A \right).
+$$
 :::
+
+#### Probabilidad Condicional {#nt2345}
+
+::: {#probabilidadcondicional .definition name="Probabilidad Condicional"}
+Suponga que $E$ es un evento en un espacio muestral $S$, tal que $P \left(E \right) > 0$, es decir $E \neq \emptyset$. La probabilidad de que ocurra un evento $A$ una vez que $E$ ha ocurrido o, en otras palabras, la _la probabilidad condicional de $A$ dado $E$, escrita $P \left( A \mid E \right)$, se define así:
+$$
+\begin{equation}
+P \left( A \mid E \right)=\frac{P \left( A \cap E \right)}{P \left( E \right)}.
+(\#eq:probabilidad-condicional)
+\end{equation}
+$$
+
+**Ejemplo:** A una persona se le pregunta sobre la probabilidad de que llueva, la persona mira hacia el cielo y al percatarse que el cielo está nublado dice “la probabilidad de que llueva es de un 80\%".
+:::
+
+
+

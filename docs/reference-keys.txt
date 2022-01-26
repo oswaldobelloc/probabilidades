@@ -89,11 +89,15 @@ def:eventosmutexcluy
 def:eventoscompatibles
 def:probabilidad
 def:probabilidadclasica
+eq:probabilidad-clasicaa
 def:probabilidadfrecuentista
+eq:probabilidad-frecuentista
 def:probabilidadsubjetiva
 thm:teorema1
 thm:teorema2
 thm:teorema3
+def:probabilidadcondicional
+eq:probabilidad-condicional
 nt1
 nt11
 nt12
@@ -156,4 +160,5 @@ nt2341
 nt2342
 nt2343
 nt2344
+nt2345
 dist_disc
