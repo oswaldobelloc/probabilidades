@@ -926,7 +926,6 @@ P \left( A \mid E \right)=\frac{P \left( A \cap E \right)}{P \left( E \right)}.
 \end{equation}
 $$
 
-**Ejemplo:** A una persona se le pregunta sobre la probabilidad de que llueva, la persona mira hacia el cielo y al percatarse que el cielo está nublado dice “la probabilidad de que llueva es de un 80\%".
 :::
 
 
