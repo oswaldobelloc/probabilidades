@@ -490,7 +490,7 @@ combinations(n = 5, r = 2, v = 1:5, set = T,
 :::
 
 ### Combinación Con Repetición {#nt142}
-::: {.definition #combinacion-cr name="Conbinación Con Repetición"}
+::: {.definition #combinacion-cr name="Combinación Con Repetición"}
 Dados $n$ objetos distintos, el número de combinaciones que se pueden formar con $r$ de estos objetos, pudiendo haber objetos repetidos viene dado por:
 
 $$
@@ -571,7 +571,7 @@ V_{n,r}=\frac{n!}{\left( n-r\right)!}=n\,(n-1)\,(n-2)\cdots(n-r+1),\:con\: r\leq
 $$
 :::
 
-::: {.example #ejemp1-csr name="Combinación Sin Repetición"}
+::: {.example #ejemp1-csr name="Variación Sin Repetición"}
 En un año se otorgarán tres premios (a la investigación, la enseñanza y el servicio) en un grupo de 25 estudiantes de posgrado del departamento de estadística. Si cada estudiante puede recibir un premio como máximo, ¿cuántas selecciones posibles habría?
 
 Como los premios son distinguibles, se trata de un problema de variación. Por lo tanto, aplicando la ecuación \@ref(eq:variacion-sr), el número total de posibilidades es
@@ -587,7 +587,7 @@ paste("Se pueden hacer", formato(c1),"selecciones")
 ```
 :::
 
-::: {.example #ejemp2-csr name="Conbinación Sin Repetición"}
+::: {.example #ejemp2-csr name="Variación Sin Repetición"}
 ¿De cuántas maneras se pueden colocar dos anillos diferentes en la misma mano, de modo que no estén en el mismo dedo?
 
 Dado que los anillos son diferentes, en contraposición con el ejemplo \@ref(exm:ejemp2-csr), el orden en que se coloquen en los dedo hace diferencia, por lo tanto se trata de un caso de *variación sin repetición*. Por lo tanto, el número de formas diferentes en que se pueden colocar los anillos en dos dedos diferentes de la mano, según la ecuación \@ref(eq:variacion-sr) es:
