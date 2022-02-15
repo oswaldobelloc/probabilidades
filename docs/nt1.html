@@ -69,6 +69,8 @@ set in the _output.yml file.</p>" />
 <script src="libs/selectize-0.12.0/selectize.min.js"></script>
 <link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -560,8 +562,10 @@ PR_{3}^{1, 2}=\frac{3!}{1!\,2!}=3.
 <span id="cb29-7"><a href="nt1.html#cb29-7" aria-hidden="true" tabindex="-1"></a>  }</span>
 <span id="cb29-8"><a href="nt1.html#cb29-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(PR)</span>
 <span id="cb29-9"><a href="nt1.html#cb29-9" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb29-10"><a href="nt1.html#cb29-10" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&quot;El número de permutaciones con repeticiones es &quot;</span>, </span>
-<span id="cb29-11"><a href="nt1.html#cb29-11" aria-hidden="true" tabindex="-1"></a>      <span class="fu">PR</span>(<span class="at">n =</span> <span class="dv">3</span>, <span class="at">k =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>)))</span></code></pre></div>
+<span id="cb29-10"><a href="nt1.html#cb29-10" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(</span>
+<span id="cb29-11"><a href="nt1.html#cb29-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;El número de permutaciones con repeticiones es &quot;</span>,</span>
+<span id="cb29-12"><a href="nt1.html#cb29-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">PR</span>(<span class="at">n =</span> <span class="dv">3</span>, <span class="at">k =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb29-13"><a href="nt1.html#cb29-13" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>#&gt; [1] &quot;El número de permutaciones con repeticiones es  3&quot;</code></pre>
 <p>La lista <em>de premutaciones con repeticiones</em> se puede obtener con el siguiente script. Note que el script lista todas las <em>permutaciones sin repeticiones</em> del vector <code>c("a", "x", "x")</code> y luego elimina las que se repiten.</p>
 <div class="sourceCode" id="cb31"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb31-1"><a href="nt1.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">urnsamples</span>(</span>
@@ -593,8 +597,10 @@ PR_{3}^{1, 2}=\frac{3!}{1!\,2!}=3.
 PR_{4}^{2, 2}=\frac{4!}{2!\,2!}=\frac{4(3)(2!)}{2!\,2!}=\frac{12}{2}=6.
 \]</span></p>
 <p>El cálculo del número de permutaciones, en este ejemplo, se puede conseguir con el siguiente script.</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="nt1.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&quot;El número de permutaciones con repeticiones es &quot;</span>, </span>
-<span id="cb33-2"><a href="nt1.html#cb33-2" aria-hidden="true" tabindex="-1"></a>      <span class="fu">PR</span>(<span class="at">n =</span> <span class="dv">4</span>, <span class="at">k =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="nt1.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(</span>
+<span id="cb33-2"><a href="nt1.html#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;El número de permutaciones con repeticiones es &quot;</span>,</span>
+<span id="cb33-3"><a href="nt1.html#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">PR</span>(<span class="at">n =</span> <span class="dv">4</span>, <span class="at">k =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb33-4"><a href="nt1.html#cb33-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>#&gt; [1] &quot;El número de permutaciones con repeticiones es  6&quot;</code></pre>
 <p>La lista de premutaciones con repeticiones se puede obtener con el siguiente script. Note que el script lista todas las <em>permutaciones sin repeticiones</em> del vector <code>c("x", "x", "y", "y")</code> y luego elimina las que se repiten.</p>
 <div class="sourceCode" id="cb35"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb35-1"><a href="nt1.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">urnsamples</span>(</span>
@@ -618,8 +624,10 @@ PR_{4}^{2, 2}=\frac{10!}{1!\,2!\,4!\,3!}=\frac{4(3)(2!)}{2!\,2!}=\frac{10(9)(8)(
 \]</span>
 maneras diferentes.</p>
 <p>Con <span style="color: blue;">R</span>, este resultado se puede ostrar con el siguiente bloque de código.</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="nt1.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&quot;El número de permutaciones con repeticiones es &quot;</span>, </span>
-<span id="cb37-2"><a href="nt1.html#cb37-2" aria-hidden="true" tabindex="-1"></a>      <span class="fu">formato</span>(<span class="fu">PR</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">k =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">3</span>))))</span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="nt1.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(</span>
+<span id="cb37-2"><a href="nt1.html#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;El número de permutaciones con repeticiones es &quot;</span>,</span>
+<span id="cb37-3"><a href="nt1.html#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">formato</span>(<span class="fu">PR</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">k =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">3</span>)))</span>
+<span id="cb37-4"><a href="nt1.html#cb37-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>#&gt; [1] &quot;El número de permutaciones con repeticiones es  12.600&quot;</code></pre>
 </div>
 </div>
@@ -679,8 +687,9 @@ maneras.</p>
 #&gt; 9   3  5
 #&gt; 10  4  5</code></pre>
 <p>El resultado anterior, también se puede obtener con la función <code>combinations</code> del paquete <code>gtools</code>.</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="nt1.html#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">combinations</span>(<span class="at">n =</span> <span class="dv">5</span>, <span class="at">r =</span> <span class="dv">2</span>, <span class="at">v =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">set =</span> T, </span>
-<span id="cb45-2"><a href="nt1.html#cb45-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">repeats.allowed =</span> F)</span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="nt1.html#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">combinations</span>(</span>
+<span id="cb45-2"><a href="nt1.html#cb45-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">n =</span> <span class="dv">5</span>, <span class="at">r =</span> <span class="dv">2</span>, <span class="at">v =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">set =</span> T, <span class="at">repeats.allowed =</span> F</span>
+<span id="cb45-3"><a href="nt1.html#cb45-3" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>#&gt;       [,1] [,2]
 #&gt;  [1,]    1    2
 #&gt;  [2,]    1    3
@@ -729,8 +738,9 @@ CR_{7,2}=\binom{7+2-1}{7-1}=\binom{8}{6}=\binom{8}{2}=\frac{\left ( 8 \right )\l
 <span id="cb49-2"><a href="nt1.html#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&quot;Pueden resultar&quot;</span>, c1,<span class="st">&quot;nacionalidades distintas&quot;</span>)</span></code></pre></div>
 <pre><code>#&gt; [1] &quot;Pueden resultar 28 nacionalidades distintas&quot;</code></pre>
 <p>Las piezas del dominó se pueden listar con el siguiente script.</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="nt1.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">combinations</span>(<span class="at">n =</span> <span class="dv">7</span>, <span class="at">r =</span> <span class="dv">2</span>, <span class="at">v =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">set =</span> T, </span>
-<span id="cb51-2"><a href="nt1.html#cb51-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">repeats.allowed =</span> T)</span></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="nt1.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">combinations</span>(</span>
+<span id="cb51-2"><a href="nt1.html#cb51-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">n =</span> <span class="dv">7</span>, <span class="at">r =</span> <span class="dv">2</span>, <span class="at">v =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">set =</span> T, <span class="at">repeats.allowed =</span> T</span>
+<span id="cb51-3"><a href="nt1.html#cb51-3" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>#&gt;       [,1] [,2]
 #&gt;  [1,]    0    0
 #&gt;  [2,]    0    1
@@ -762,8 +772,9 @@ CR_{7,2}=\binom{7+2-1}{7-1}=\binom{8}{6}=\binom{8}{2}=\frac{\left ( 8 \right )\l
 #&gt; [28,]    6    6</code></pre>
 <p>Igual resultado se consigue con el siguiente fragmento de código.</p>
 <div class="sourceCode" id="cb53"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb53-1"><a href="nt1.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">urnsamples</span>(</span>
-<span id="cb53-2"><a href="nt1.html#cb53-2" aria-hidden="true" tabindex="-1"></a>  <span class="dv">0</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">size =</span> <span class="dv">2</span>, <span class="at">replace =</span> T, <span class="at">ordered =</span> F</span>
-<span id="cb53-3"><a href="nt1.html#cb53-3" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<span id="cb53-2"><a href="nt1.html#cb53-2" aria-hidden="true" tabindex="-1"></a>  <span class="dv">0</span><span class="sc">:</span><span class="dv">6</span>,</span>
+<span id="cb53-3"><a href="nt1.html#cb53-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">size =</span> <span class="dv">2</span>, <span class="at">replace =</span> T, <span class="at">ordered =</span> F</span>
+<span id="cb53-4"><a href="nt1.html#cb53-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre class="bg-warning"><code>#&gt;    X1 X2
 #&gt; 1   0  0
 #&gt; 2   0  1
@@ -860,8 +871,9 @@ Este resultado, se puede obtener con el siguiente script.</p>
 #&gt; 19  4  5
 #&gt; 20  5  4</code></pre>
 <p>El resultado anterior, también se puede obtener con la función <code>permutations</code> del paquete <code>gtools</code>.</p>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="nt1.html#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">permutations</span>(<span class="at">n =</span> <span class="dv">5</span>, <span class="at">r =</span> <span class="dv">2</span>, <span class="at">v =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">set =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb61-2"><a href="nt1.html#cb61-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">repeats.allowed =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="nt1.html#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">permutations</span>(</span>
+<span id="cb61-2"><a href="nt1.html#cb61-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">n =</span> <span class="dv">5</span>, <span class="at">r =</span> <span class="dv">2</span>, <span class="at">v =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">set =</span> <span class="cn">TRUE</span>, <span class="at">repeats.allowed =</span> <span class="cn">FALSE</span></span>
+<span id="cb61-3"><a href="nt1.html#cb61-3" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>#&gt;       [,1] [,2]
 #&gt;  [1,]    1    2
 #&gt;  [2,]    1    3
@@ -915,8 +927,8 @@ VR_{4,2}=4^2=16.
 <pre><code>#&gt; [1] &quot;Se pueden formar 16 arreglos&quot;</code></pre>
 <p>La lista de arreglos, usando <span style="color: blue;">R</span>, se puede obtener con la siguiente instrucción.</p>
 <div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="nt1.html#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">urnsamples</span>(</span>
-<span id="cb65-2"><a href="nt1.html#cb65-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;d&quot;</span>),</span>
-<span id="cb65-3"><a href="nt1.html#cb65-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">size =</span> <span class="dv">2</span>, <span class="at">replace =</span> T, <span class="at">ordered =</span> T</span>
+<span id="cb65-2"><a href="nt1.html#cb65-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;d&quot;</span>), <span class="at">size =</span> <span class="dv">2</span>, </span>
+<span id="cb65-3"><a href="nt1.html#cb65-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">replace =</span> T, <span class="at">ordered =</span> T</span>
 <span id="cb65-4"><a href="nt1.html#cb65-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>#&gt;    X1 X2
 #&gt; 1   a  a
@@ -982,8 +994,8 @@ VR_{4,2}=4^2=16.
 <span id="cb67-13"><a href="nt1.html#cb67-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">selection =</span> <span class="st">&quot;multiple&quot;</span>,</span>
 <span id="cb67-14"><a href="nt1.html#cb67-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">class =</span> <span class="st">&quot;cell-border stripe&quot;</span></span>
 <span id="cb67-15"><a href="nt1.html#cb67-15" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
-<div id="htmlwidget-cf7e52173f8edc97639b" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-cf7e52173f8edc97639b">{"x":{"filter":"top","vertical":false,"filterHTML":"<tr>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","caption":"<caption>Información de sesión<\/caption>","data":[["bookdown","bookdownplus","combinat","devtools","DT","gtools","htmltools","htmlwidgets","kableExtra","magrittr","prob","stringr","tidyverse","utf8"],["0.24","1.5.8","0.0-8","2.4.2","0.19","3.9.2","0.5.2","1.5.4","1.3.4","2.0.1","1.0-1","1.4.0","1.3.1","1.2.1"],["CRAN (R 4.0.5)","CRAN (R 4.0.5)","CRAN (R 4.0.3)","CRAN (R 4.0.5)","CRAN (R 4.0.5)","CRAN (R 4.0.5)","CRAN (R 4.0.5)","CRAN (R 4.0.5)","CRAN (R 4.0.4)","CRAN (R 4.0.3)","CRAN (R 4.0.5)","CRAN (R 4.0.3)","CRAN (R 4.0.5)","CRAN (R 4.0.3)"]],"container":"<table class=\"cell-border stripe\">\n  <thead>\n    <tr>\n      <th>Paquete<\/th>\n      <th>Versión<\/th>\n      <th>Fuente<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"order":[],"autoWidth":false,"orderClasses":false,"orderCellsTop":true}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-5db475e2f19238abf02d" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-5db475e2f19238abf02d">{"x":{"filter":"top","vertical":false,"filterHTML":"<tr>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","caption":"<caption>Información de sesión<\/caption>","data":[["bookdown","bookdownplus","combinat","devtools","DT","gtools","htmltools","htmlwidgets","kableExtra","magrittr","prob","stringr","tidyverse","utf8"],["0.24","1.5.8","0.0-8","2.4.2","0.19","3.9.2","0.5.2","1.5.4","1.3.4","2.0.1","1.0-1","1.4.0","1.3.1","1.2.1"],["CRAN (R 4.0.5)","CRAN (R 4.0.5)","CRAN (R 4.0.3)","CRAN (R 4.0.5)","CRAN (R 4.0.5)","CRAN (R 4.0.5)","CRAN (R 4.0.5)","CRAN (R 4.0.5)","CRAN (R 4.0.4)","CRAN (R 4.0.3)","CRAN (R 4.0.5)","CRAN (R 4.0.3)","CRAN (R 4.0.5)","CRAN (R 4.0.3)"]],"container":"<table class=\"cell-border stripe\">\n  <thead>\n    <tr>\n      <th>Paquete<\/th>\n      <th>Versión<\/th>\n      <th>Fuente<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"order":[],"autoWidth":false,"orderClasses":false,"orderCellsTop":true}},"evals":[],"jsHooks":[]}</script>
 
 </div>
 </div>

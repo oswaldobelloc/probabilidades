@@ -347,8 +347,10 @@ PR <- function(n, k) {
   }
   return(PR)
 }
-paste("El número de permutaciones con repeticiones es ", 
-      PR(n = 3, k = c(1, 2)))
+paste(
+  "El número de permutaciones con repeticiones es ",
+  PR(n = 3, k = c(1, 2))
+)
 ```
 
 La lista *de premutaciones con repeticiones* se puede obtener con el siguiente script. Note que el script lista todas las *permutaciones sin repeticiones* del vector `c("a", "x", "x")` y luego elimina las que se repiten.
@@ -389,8 +391,10 @@ $$
 El cálculo del número de permutaciones, en este ejemplo, se puede conseguir con el siguiente script.
 
 ```{r}
-paste("El número de permutaciones con repeticiones es ", 
-      PR(n = 4, k = c(2, 2)))
+paste(
+  "El número de permutaciones con repeticiones es ",
+  PR(n = 4, k = c(2, 2))
+)
 ```
 
 La lista de premutaciones con repeticiones se puede obtener con el siguiente script. Note que el script lista todas las *permutaciones sin repeticiones* del vector `c("x", "x", "y", "y")` y luego elimina las que se repiten.
@@ -416,8 +420,10 @@ maneras diferentes.
 Con `r colorize("R", "blue")`, este resultado se puede ostrar con el siguiente bloque de código. 
 
 ```{r ejemp3-pcr}
-paste("El número de permutaciones con repeticiones es ", 
-      formato(PR(n = 10, k = c(1, 2, 4, 3))))
+paste(
+  "El número de permutaciones con repeticiones es ",
+  formato(PR(n = 10, k = c(1, 2, 4, 3)))
+)
 ```
 :::
 
@@ -484,8 +490,9 @@ urnsamples(
 El resultado anterior, también se puede obtener con la función `combinations` del paquete `gtools`.
 
 ```{r}
-combinations(n = 5, r = 2, v = 1:5, set = T, 
-             repeats.allowed = F)
+combinations(
+  n = 5, r = 2, v = 1:5, set = T, repeats.allowed = F
+)
 ```
 :::
 
@@ -541,15 +548,17 @@ paste("Pueden resultar", c1,"nacionalidades distintas")
 Las piezas del dominó se pueden listar con el siguiente script.
 
 ```{r}
-combinations(n = 7, r = 2, v = 0:6, set = T, 
-             repeats.allowed = T)
+combinations(
+  n = 7, r = 2, v = 0:6, set = T, repeats.allowed = T
+)
 ```
 
 Igual resultado se consigue con el siguiente fragmento de código.
 
 ```{r ejemp2-ccr-list, class.source = "watch-out", class.output = "bg-warning"}
 urnsamples(
-  0:6, size = 2, replace = T, ordered = F
+  0:6,
+  size = 2, replace = T, ordered = F
 )
 ```
 :::
@@ -614,8 +623,9 @@ urnsamples(
 El resultado anterior, también se puede obtener con la función `permutations` del paquete `gtools`.
 
 ```{r}
-permutations(n = 5, r = 2, v = 1:5, set = TRUE,
-             repeats.allowed = FALSE)
+permutations(
+  n = 5, r = 2, v = 1:5, set = TRUE, repeats.allowed = FALSE
+)
 ```
 :::
 
@@ -660,8 +670,8 @@ La lista de arreglos, usando `r colorize("R", "blue")`, se puede obtener con la 
 
 ```{r}
 urnsamples(
-  c("a", "b", "c", "d"),
-  size = 2, replace = T, ordered = T
+  c("a", "b", "c", "d"), size = 2, 
+  replace = T, ordered = T
 )
 ```
 :::

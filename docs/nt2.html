@@ -69,6 +69,8 @@ set in the _output.yml file.</p>" />
 <script src="libs/selectize-0.12.0/selectize.min.js"></script>
 <link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -955,7 +957,7 @@ P\left(A \right)=\frac{n\left(A \right)}{n \left(S \right)} =\frac{n}{N}.
 \tag{2.1}
 \end{equation}
 \]</span>
-<strong>Ejemplo:</strong> Supongamos que queremos conocer la probabilidad de que ocurra cara en el lanzamiento sencillo de una moneda. Dado que hay dos maneras igualmente probables como puede caer la moneda, a saber: cara o sello (suponiendo que no se pierda o caiga de canto), y de esas dos maneras puede aparecer cara de una sola forma. Entonces la probabilidad de que ocurra cara es
+<strong>Ejemplo:</strong> Supongamos que queremos conocer la probabilidad de que ocurra cara en el lanzamiento sencillo de una moneda. Dado que hay dos maneras igualmente probables como puede caer la moneda, a saber: cara o sello (suponiendo que no se pierda o caiga de canto), y de esas dos maneras puede aparecer cara de una sola forma. Sea <span class="math inline">\(A\)</span> el evento “la meoneda cae cara”, entonces la probabilidad de que ocurra cara es
 <span class="math display">\[
 P \left(A \right)=\frac{1}{2}=0,5.
 \]</span>
@@ -972,6 +974,9 @@ P\left(A \right) = \lim_{N \to \infty} \frac{n}{N}.
 \tag{2.2}
 \end{equation}
 \]</span></p>
+<p><strong>Ejemplo:</strong> Se realiza un experimento bajo ciertas condiciones, el cual consiste en agregar un antibiótico a una cepa de bacterias. Una hora después de realizar el experimento encontramos que de 7.627 bacterias 4.036 murieron en 1 hora o antes. ¿Cuál es la probabilidad que tiene una bacteria de morir en una hora o antes?</p>
+<p>Sea <span class="math inline">\(A\)</span>: “la bacteria muere en una hora o antes”, entonces la probabilidad de que ocurra <span class="math inline">\(A\)</span>, según la ecuación <a href="nt2.html#eq:probabilidad-frecuentista">(2.2)</a>, es:
+<span class="math display">\[P\left(A \right) =\frac{4.036}{7.627}=0,5292.\]</span></p>
 </div>
 </div>
 <div id="nt2343" class="section level4" number="2.3.4.3">
@@ -1046,6 +1051,511 @@ P \left( A \mid E \right)=\frac{P \left( A \cap E \right)}{P \left( E \right)}.
 \tag{2.3}
 \end{equation}
 \]</span></p>
+</div>
+<p>Como se ilustra en el diagrama de Venn en la figura <a href="#fig:probabilidad-condicional"><strong>??</strong></a>, <span class="math inline">\(P \left( A \mid E \right)\)</span> mide, en cierto sentido, la probabilidad relativa de <span class="math inline">\(A\)</span> con respecto al espacio reducido <span class="math inline">\(E\)</span>.</p>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb97-1"><a href="nt2.html#cb97-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="at">path =</span> <span class="st">&quot;figuras/probabilidad_condicional.png&quot;</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:probabilidd-condional"></span>
+<img src="figuras/probabilidad_condicional.png" alt="Probabilidad Condicional" width="288" />
+<p class="caption">
+Figura 2.12: Probabilidad Condicional
+</p>
+</div>
+<p>Ahora, suponga que <span class="math inline">\(S\)</span> es un espacio equiprobable y sea <span class="math inline">\(n\left(A\right)\)</span> el número de elementos en el evento <span class="math inline">\(A\)</span>. Entonces,</p>
+<p><span class="math display">\[
+P \left( A \cap E \right)=\frac{n\left(A \cap E\right)}{n\left(S \right)} \; y \; P \left(E \right)=\frac{n\left( E \right)}{n\left(S \right)}.
+\]</span></p>
+<p>Luego, sustituyendo en la ecuación <a href="nt2.html#eq:probabilidad-condicional">(2.3)</a> se obtiene que:
+<span class="math display" id="eq:probabilidad-condicional2">\[
+\begin{equation}
+P \left( A \cap E \right)=\frac{n\left(A \cap E\right)}{n\left(E \right)}.
+\tag{2.4}
+\end{equation}
+\]</span></p>
+<div class="example">
+<p><span id="exm:ejemp1-probcond" class="example"><strong>Ejemplo 2.10  (Probabilidad Condicional) </strong></span>Se lanza un par de dados equilibrados. Encuentre la probabilidad de que uno de los dados sea 2 si la suma es 6.</p>
+<p>Dado que cada dado puede caer de 6 formas diferentes, entonces el número de formas diferentes en que pueden caer los dos dados, es decir, el número de elementos del espacio muestral <span class="math inline">\(S\)</span>, por el principio de la multiplicación <a href="nt1.html#def:princmult">1.2</a>, es <span class="math inline">\(6\cdot6=36\)</span>. En tal sentido, el espacio muestral <span class="math inline">\(S\)</span> viene determinado por:
+<span class="math display">\[
+S=\begin{Bmatrix}
+(1,1);&amp;(1,2);&amp;(1,3);&amp;(1,4);&amp;(1,5);&amp;(1,6);\\
+(2,1);&amp;(2,2);&amp;(2,3);&amp;(2,4);&amp;(2,5);&amp;(2,6);\\
+(3,1);&amp;(3,2);&amp;(3,3);&amp;(3,4);&amp;(3,5);&amp;(3,6);\\
+(4,1);&amp;(4,2);&amp;(4,3);&amp;(4,4);&amp;(4,5);&amp;(4,6);\\
+(5,1);&amp;(5,2);&amp;(5,3);&amp;(5,4);&amp;(5,5);&amp;(5,6);\\
+(6,1);&amp;(6,2);&amp;(6,3);&amp;(6,4);&amp;(6,5);&amp;(6,6)\\
+\end{Bmatrix}.
+\]</span></p>
+<p>Sea <span class="math inline">\(A\)</span> el evento en el cual uno de los dados es 2, el cual viene dado por:
+<span class="math display">\[
+A=\begin{Bmatrix}
+(2,1);&amp;(2,2);&amp;(2,3);&amp;(2,4);&amp;(2,5);&amp;(2,6);\\
+(1,2);&amp;(3,2);&amp;(4,2);&amp;(5,2);&amp;(6,2)\\
+\end{Bmatrix}.
+\]</span>
+Y <span class="math inline">\(E\)</span> el evento en el cual la suma es 6, representado por:
+<span class="math display">\[
+E=\begin{Bmatrix}
+(1,5);&amp;(2,4);&amp;(3,3);&amp;(4,2);&amp;(5,1)\\
+\end{Bmatrix}.
+\]</span>
+Entonces el evento en el cual uno de los dos dados es 2 y cuya suma es 6, es decir, <span class="math inline">\(A \cap E\)</span>, viene dado por:</p>
+<p><span class="math display">\[
+E=\begin{Bmatrix}
+(2,4);&amp;(4,2)\\
+\end{Bmatrix}.
+\]</span>
+De lo anterior se obtiene que,
+<span class="math display">\[
+P \left( A \cap E \right)=\frac{n\left(A \cap E\right)}{n\left(S \right)}=\frac{2}{36} \; y \; P \left(E \right)=\frac{n\left( E \right)}{n\left(S \right)}=\frac{5}{36}.
+\]</span>
+Luego, sustituyendo el resultado anterior en la ecuación <a href="nt2.html#eq:probabilidad-condicional">(2.3)</a> se obtiene que la probabilidad de que uno de los dados sea 2 si la suma es 6 es:
+<span class="math display">\[
+P \left( A \mid E \right)=\frac{P \left( A \cap E \right)}{P \left( E \right)}=\frac{\frac{2}{36}}{\frac{5}{36}}=\frac{2}{5}=0,4.
+\]</span></p>
+<p>El espacio muestral <span class="math inline">\(S\)</span> para este ejemplo se puede listar con el siguiente script. Note que en la tabla <a href="nt2.html#tab:dados">2.1</a> las filas en color azul representa el evento <span class="math inline">\(E\)</span>.</p>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb98-1"><a href="nt2.html#cb98-1" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">&lt;-</span> <span class="fu">urnsamples</span>(</span>
+<span id="cb98-2"><a href="nt2.html#cb98-2" aria-hidden="true" tabindex="-1"></a>  <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,</span>
+<span id="cb98-3"><a href="nt2.html#cb98-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">size =</span> <span class="dv">2</span>, <span class="at">replace =</span> T, <span class="at">ordered =</span> T</span>
+<span id="cb98-4"><a href="nt2.html#cb98-4" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
+<span id="cb98-5"><a href="nt2.html#cb98-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb98-6"><a href="nt2.html#cb98-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb98-7"><a href="nt2.html#cb98-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">suma =</span> X1 <span class="sc">+</span> X2</span>
+<span id="cb98-8"><a href="nt2.html#cb98-8" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb98-9"><a href="nt2.html#cb98-9" aria-hidden="true" tabindex="-1"></a>kableExtra<span class="sc">::</span><span class="fu">kbl</span>(</span>
+<span id="cb98-10"><a href="nt2.html#cb98-10" aria-hidden="true" tabindex="-1"></a>  dados,</span>
+<span id="cb98-11"><a href="nt2.html#cb98-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">&quot;Dado 1&quot;</span>, <span class="st">&quot;Dado 2&quot;</span>, <span class="st">&quot;Suma&quot;</span>),</span>
+<span id="cb98-12"><a href="nt2.html#cb98-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">format.args =</span> <span class="fu">list</span>(<span class="at">decimal.mark =</span> <span class="st">&quot;,&quot;</span>, <span class="at">big.mark =</span> <span class="st">&quot;.&quot;</span>),</span>
+<span id="cb98-13"><a href="nt2.html#cb98-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">booktabs =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb98-14"><a href="nt2.html#cb98-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">caption =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">label{tab2:dados}Lanzamiento de dos dados&quot;</span>,</span>
+<span id="cb98-15"><a href="nt2.html#cb98-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">escape =</span> <span class="cn">FALSE</span></span>
+<span id="cb98-16"><a href="nt2.html#cb98-16" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
+<span id="cb98-17"><a href="nt2.html#cb98-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(</span>
+<span id="cb98-18"><a href="nt2.html#cb98-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">bootstrap_options =</span> <span class="st">&quot;striped&quot;</span>,</span>
+<span id="cb98-19"><a href="nt2.html#cb98-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">full_width =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb98-20"><a href="nt2.html#cb98-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">fixed_thead =</span> T</span>
+<span id="cb98-21"><a href="nt2.html#cb98-21" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb98-22"><a href="nt2.html#cb98-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">row_spec</span>(</span>
+<span id="cb98-23"><a href="nt2.html#cb98-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">which</span>(dados<span class="sc">$</span>suma <span class="sc">==</span> <span class="st">&quot;6&quot;</span>), <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">strikeout =</span> F</span>
+<span id="cb98-24"><a href="nt2.html#cb98-24" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
+<span id="cb98-25"><a href="nt2.html#cb98-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_classic_2</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb98-26"><a href="nt2.html#cb98-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scroll_box</span>(<span class="at">width =</span> <span class="st">&quot;100%&quot;</span>, <span class="at">height =</span> <span class="st">&quot;400px&quot;</span>)</span></code></pre></div>
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:400px; overflow-x: scroll; width:100%; ">
+<table class="table table-striped lightable-classic-2" style="width: auto !important; margin-left: auto; margin-right: auto; font-family: &quot;Arial Narrow&quot;, &quot;Source Sans Pro&quot;, sans-serif; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:dados">Tabla 2.1: </span>Lanzamiento de dos dados
+</caption>
+<thead>
+<tr>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;">
+Dado 1
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;">
+Dado 2
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;">
+Suma
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:right;color: blue !important;">
+5
+</td>
+<td style="text-align:right;color: blue !important;">
+1
+</td>
+<td style="text-align:right;color: blue !important;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:right;color: blue !important;">
+4
+</td>
+<td style="text-align:right;color: blue !important;">
+2
+</td>
+<td style="text-align:right;color: blue !important;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:right;color: blue !important;">
+3
+</td>
+<td style="text-align:right;color: blue !important;">
+3
+</td>
+<td style="text-align:right;color: blue !important;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:right;color: blue !important;">
+2
+</td>
+<td style="text-align:right;color: blue !important;">
+4
+</td>
+<td style="text-align:right;color: blue !important;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+10
+</td>
+</tr>
+<tr>
+<td style="text-align:right;color: blue !important;">
+1
+</td>
+<td style="text-align:right;color: blue !important;">
+5
+</td>
+<td style="text-align:right;color: blue !important;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+10
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+11
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+10
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+11
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+12
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 
 </div>

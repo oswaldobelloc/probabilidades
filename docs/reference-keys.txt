@@ -98,6 +98,10 @@ thm:teorema2
 thm:teorema3
 def:probabilidadcondicional
 eq:probabilidad-condicional
+fig:probabilidd-condional
+eq:probabilidad-condicional2
+exm:ejemp1-probcond
+tab:dados
 nt1
 nt11
 nt12

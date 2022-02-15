@@ -828,7 +828,7 @@ P\left(A \right)=\frac{n\left(A \right)}{n \left(S \right)} =\frac{n}{N}.
 (\#eq:probabilidad-clasicaa)
 \end{equation}
 $$
-**Ejemplo:** Supongamos que queremos conocer la probabilidad de que ocurra cara en el lanzamiento sencillo de una moneda. Dado que hay dos maneras igualmente probables como puede caer la moneda, a saber: cara o sello (suponiendo que no se pierda o caiga de canto), y de esas dos maneras puede aparecer cara de una sola forma. Entonces la probabilidad de que ocurra cara es
+**Ejemplo:** Supongamos que queremos conocer la probabilidad de que ocurra cara en el lanzamiento sencillo de una moneda. Dado que hay dos maneras igualmente probables como puede caer la moneda, a saber: cara o sello (suponiendo que no se pierda o caiga de canto), y de esas dos maneras puede aparecer cara de una sola forma. Sea $A$ el evento "la meoneda cae cara", entonces la probabilidad de que ocurra cara es
 $$
 P \left(A \right)=\frac{1}{2}=0,5.
 $$
@@ -844,6 +844,12 @@ P\left(A \right) = \lim_{N \to \infty} \frac{n}{N}.
 (\#eq:probabilidad-frecuentista)
 \end{equation}
 $$
+
+**Ejemplo:** Se realiza un experimento bajo ciertas condiciones, el cual consiste en agregar un antibiótico a una cepa de bacterias. Una hora después de realizar el experimento encontramos que de 7.627 bacterias 4.036 murieron en 1 hora o antes. ¿Cuál es la probabilidad que tiene una bacteria de morir en una hora o antes?
+
+Sea $A$: "la bacteria muere en una hora o antes", entonces la probabilidad de que ocurra $A$, según la ecuación \@ref(eq:probabilidad-frecuentista), es:
+$$P\left(A \right) =\frac{4.036}{7.627}=0,5292.$$
+
 :::
 
 #### Enfoque Subjetivo (o personal) de la Probabilidad {#nt2343}
@@ -925,8 +931,105 @@ P \left( A \mid E \right)=\frac{P \left( A \cap E \right)}{P \left( E \right)}.
 (\#eq:probabilidad-condicional)
 \end{equation}
 $$
-
 :::
 
+Como se ilustra en el diagrama de Venn en la figura \@ref(fig:probabilidad-condicional), $P \left( A \mid E \right)$ mide, en cierto sentido, la probabilidad relativa de $A$ con respecto al espacio reducido $E$.
+
+```{r probabilidd-condional, fig.cap="Probabilidad Condicional", class.source = "watch-out", class.output = "bg-warning"}
+knitr::include_graphics(path = "figuras/probabilidad_condicional.png")
+```
+
+Ahora, suponga que $S$ es un espacio equiprobable y sea $n\left(A\right)$ el número de elementos en el evento $A$. Entonces,
+
+$$
+P \left( A \cap E \right)=\frac{n\left(A \cap E\right)}{n\left(S \right)} \; y \; P \left(E \right)=\frac{n\left( E \right)}{n\left(S \right)}.
+$$
+
+Luego, sustituyendo en la ecuación \@ref(eq:probabilidad-condicional) se obtiene que:
+$$
+\begin{equation}
+P \left( A \cap E \right)=\frac{n\left(A \cap E\right)}{n\left(E \right)}.
+(\#eq:probabilidad-condicional2)
+\end{equation}
+$$
+
+::: {.example #ejemp1-probcond name="Probabilidad Condicional"}
+
+Se lanza un par de dados equilibrados. Encuentre la probabilidad de que uno de los dados sea 2 si la suma es 6.
+
+Dado que cada dado puede caer de 6 formas diferentes, entonces el número de formas diferentes en que pueden caer los dos dados, es decir, el número de elementos del espacio muestral $S$, por el principio de la multiplicación \@ref(def:princmult), es $6\cdot6=36$. En tal sentido, el espacio muestral $S$ viene determinado por:
+$$
+S=\begin{Bmatrix}
+(1,1);&(1,2);&(1,3);&(1,4);&(1,5);&(1,6);\\
+(2,1);&(2,2);&(2,3);&(2,4);&(2,5);&(2,6);\\
+(3,1);&(3,2);&(3,3);&(3,4);&(3,5);&(3,6);\\
+(4,1);&(4,2);&(4,3);&(4,4);&(4,5);&(4,6);\\
+(5,1);&(5,2);&(5,3);&(5,4);&(5,5);&(5,6);\\
+(6,1);&(6,2);&(6,3);&(6,4);&(6,5);&(6,6)\\
+\end{Bmatrix}.
+$$
+
+Sea $A$ el evento en el cual uno de los dados es 2, el cual viene dado por:
+$$
+A=\begin{Bmatrix}
+(2,1);&(2,2);&(2,3);&(2,4);&(2,5);&(2,6);\\
+(1,2);&(3,2);&(4,2);&(5,2);&(6,2)\\
+\end{Bmatrix}.
+$$
+Y $E$ el evento en el cual la suma es 6, representado por:
+$$
+E=\begin{Bmatrix}
+(1,5);&(2,4);&(3,3);&(4,2);&(5,1)\\
+\end{Bmatrix}.
+$$
+Entonces el evento en el cual uno de los dos dados es 2 y cuya suma es 6, es decir, $A \cap E$, viene dado por:
+
+$$
+E=\begin{Bmatrix}
+(2,4);&(4,2)\\
+\end{Bmatrix}.
+$$
+De lo anterior se obtiene que,
+$$
+P \left( A \cap E \right)=\frac{n\left(A \cap E\right)}{n\left(S \right)}=\frac{2}{36} \; y \; P \left(E \right)=\frac{n\left( E \right)}{n\left(S \right)}=\frac{5}{36}.
+$$
+Luego, sustituyendo el resultado anterior en la ecuación \@ref(eq:probabilidad-condicional) se obtiene que la probabilidad de que uno de los dados sea 2 si la suma es 6 es:
+$$
+P \left( A \mid E \right)=\frac{P \left( A \cap E \right)}{P \left( E \right)}=\frac{\frac{2}{36}}{\frac{5}{36}}=\frac{2}{5}=0,4.
+$$
+
+El espacio muestral $S$ para este ejemplo se puede listar con el siguiente script. Note que en la tabla \@ref(tab:dados) las filas en color azul representa el evento $E$. 
+
+```{r dados, class.source = "watch-out"}
+dados <- urnsamples(
+  1:6,
+  size = 2, replace = T, ordered = T
+) %>%
+  as_tibble() %>%
+  mutate(
+    suma = X1 + X2
+  )
+kableExtra::kbl(
+  dados,
+  col.names = c("Dado 1", "Dado 2", "Suma"),
+  format.args = list(decimal.mark = ",", big.mark = "."),
+  booktabs = TRUE,
+  caption = "\\label{tab2:dados}Lanzamiento de dos dados",
+  escape = FALSE
+) %>%
+  kable_styling(
+    bootstrap_options = "striped",
+    full_width = FALSE,
+    fixed_thead = T
+  ) %>%
+  row_spec(
+    which(dados$suma == "6"), color = "blue", strikeout = F
+    ) %>%
+  kable_classic_2() %>%
+  scroll_box(width = "100%", height = "400px")
+```
+
+
+:::
 
 
