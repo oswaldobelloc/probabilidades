@@ -778,20 +778,20 @@ n \left( \left(I \cup F \cup A \right)^c \right)= n \left( \mathbb{U} \right) - 
 <p>Note que para hallar <span class="math inline">\(n \left(I \cup F \cup A \right)\)</span> es necesario hallar <span class="math inline">\(n \left(I \cap A \right)\)</span>. Pero,</p>
 <p><span class="math display">\[
 \begin{align*}
-n \left(A \setminus \left(I \cup F \right) \right) &amp;= n \left(A \right) - n \left(A \cap \left(I \cup F \right)  \right) \\ &amp; = n \left(A \right) - n \left( \left(A \cap I \right)   \cup \left(A \cap F \right) \right) \\ &amp; = n \left(A \right)-\left[ n \left(A \cap I \right) + n \left(A \cap F \right) - n \left( \left(A \cap I  \right) \cap \left(A \cap F  \right) \right) \right] \\ &amp; = n \left(A \right) - n\left(A \cap I \right)- n\left(A \cap F \right) + n\left(I \cap F \cap A \right) \\
+n \left(A \setminus \left(I \cup F \right) \right) &amp; = n \left(A \right) - n \left(A \cap \left(I \cup F \right)  \right) \\ &amp; = n \left(A \right) - n \left( \left(A \cap I \right)   \cup \left(A \cap F \right) \right) \\ &amp; = n \left(A \right)-\left[ n \left(A \cap I \right) + n \left(A \cap F \right) - n \left( \left(A \cap I  \right) \cap \left(A \cap F  \right) \right) \right] \\ &amp; = n \left(A \right) - n\left(A \cap I \right)- n\left(A \cap F \right) + n\left(I \cap F \cap A \right) \\
 17&amp; = 54 - n\left(A \cap I \right) -20 + 8.
 \end{align*}
 \]</span></p>
 <p>De donde se obtiene que <span class="math inline">\(n\left(I \cap A \right)=25\)</span>. Luego,</p>
 <p><span class="math display">\[
 \begin{align*}
-n \left(I \cup F \cup A  \right) &amp;=n\left ( I \right ) + n\left ( F \right ) + n\left ( A \right ) - n\left ( I \cap F \right ) - n\left ( I \cap A \right ) - n\left ( F \cap A \right ) + n\left ( I \cap F \cap A \right )\\ &amp; =62 + 52 + 54 -18 - 25 -30 -20 + 8 \\ &amp; = 113. 
+n \left(I \cup F \cup A  \right) &amp; = n\left ( I \right ) + n\left ( F \right ) + n\left ( A \right ) - n\left ( I \cap F \right ) - n\left ( I \cap A \right ) - n\left ( F \cap A \right ) + n\left ( I \cap F \cap A \right )\\ &amp; =62 + 52 + 54 -18 - 25 -30 -20 + 8 \\ &amp; = 113. 
 \end{align*}
 \]</span></p>
 <p>Por último,</p>
 <p><span class="math display">\[
 \begin{align*}
-n \left( \left(I \cup F \cup A \right)^c \right)&amp;= n \left( \mathbb{U} \right) - n \left(I \cup F \cup A  \right)\\
+n \left( \left(I \cup F \cup A \right)^c \right) &amp; = n \left( \mathbb{U} \right) - n \left(I \cup F \cup A  \right)\\
 &amp; = 140 - 113\\
 &amp; = 27. 
 \end{align*}
@@ -1052,9 +1052,9 @@ P \left( A \mid E \right)=\frac{P \left( A \cap E \right)}{P \left( E \right)}.
 \end{equation}
 \]</span></p>
 </div>
-<p>Como se ilustra en el diagrama de Venn en la figura <a href="#fig:probabilidad-condicional"><strong>??</strong></a>, <span class="math inline">\(P \left( A \mid E \right)\)</span> mide, en cierto sentido, la probabilidad relativa de <span class="math inline">\(A\)</span> con respecto al espacio reducido <span class="math inline">\(E\)</span>.</p>
+<p>Como se ilustra en el diagrama de Venn en la figura <a href="nt2.html#fig:probabilidad-condicional">2.12</a>, <span class="math inline">\(P \left( A \mid E \right)\)</span> mide, en cierto sentido, la probabilidad relativa de <span class="math inline">\(A\)</span> con respecto al espacio reducido <span class="math inline">\(E\)</span>.</p>
 <div class="sourceCode" id="cb97"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb97-1"><a href="nt2.html#cb97-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="at">path =</span> <span class="st">&quot;figuras/probabilidad_condicional.png&quot;</span>)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:probabilidd-condional"></span>
+<div class="figure"><span style="display:block;" id="fig:probabilidad-condicional"></span>
 <img src="figuras/probabilidad_condicional.png" alt="Probabilidad Condicional" width="288" />
 <p class="caption">
 Figura 2.12: Probabilidad Condicional
@@ -1073,7 +1073,7 @@ P \left( A \cap E \right)=\frac{n\left(A \cap E\right)}{n\left(E \right)}.
 \]</span></p>
 <div class="example">
 <p><span id="exm:ejemp1-probcond" class="example"><strong>Ejemplo 2.10  (Probabilidad Condicional) </strong></span>Se lanza un par de dados equilibrados. Encuentre la probabilidad de que uno de los dados sea 2 si la suma es 6.</p>
-<p>Dado que cada dado puede caer de 6 formas diferentes, entonces el número de formas diferentes en que pueden caer los dos dados, es decir, el número de elementos del espacio muestral <span class="math inline">\(S\)</span>, por el principio de la multiplicación <a href="nt1.html#def:princmult">1.2</a>, es <span class="math inline">\(6\cdot6=36\)</span>. En tal sentido, el espacio muestral <span class="math inline">\(S\)</span> viene determinado por:
+<p>Dado que cada dado puede caer de 6 formas diferentes, entonces el número de formas diferentes en que pueden caer los dos dados, es decir, el número de elementos del espacio muestral <span class="math inline">\(S\)</span>, por el principio de la multiplicación <a href="nt1.html#def:princmult">1.2</a>, es <span class="math inline">\(6 \cdot 6=36\)</span>. En tal sentido, el espacio muestral <span class="math inline">\(S\)</span> viene determinado por:
 <span class="math display">\[
 S=\begin{Bmatrix}
 (1,1);&amp;(1,2);&amp;(1,3);&amp;(1,4);&amp;(1,5);&amp;(1,6);\\
@@ -1556,6 +1556,77 @@ Suma
 </tbody>
 </table>
 </div>
+</div>
+</div>
+<div id="nt2346" class="section level4" number="2.3.4.6">
+<h4><span class="header-section-number">2.3.4.6</span> Teorema de la Multiplicación</h4>
+<div class="theorem">
+<p><span id="thm:teorema-multiplicacion" class="theorem"><strong>Teorema 2.6  (Teorema de la Multiplicación) </strong></span>Si <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> son dos eventos cualesquiera de un espacio muestral <span class="math inline">\(S\)</span> y <span class="math inline">\(P\left(A \right) \neq 0\)</span> , entonces
+<span class="math display" id="eq:teorema-multiplicacion1">\[
+\begin{equation}
+P\left(A \cap B \right)=P \left(A \right) \cdot P \left( B \mid A \right).
+\tag{2.5}
+\end{equation}
+\]</span></p>
+<p>En forma alternativa, si <span class="math inline">\(P\left(B \right) \neq 0\)</span>, entonces
+<span class="math display" id="eq:teorema-multiplicacion2">\[
+\begin{equation}
+P\left(A \cap B \right)=P \left(B \right) \cdot P \left( A \mid B \right).
+\tag{2.6}
+\end{equation}
+\]</span></p>
+</div>
+<div class="theorem">
+<p><span id="thm:teorema-multiplicacion3" class="theorem"><strong>Teorema 2.7  (Teorema de la Multiplicación para Tres Eventos) </strong></span>Si <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span> y <span class="math inline">\(C\)</span> son tres eventos cualesquiera de un espacio muestral <span class="math inline">\(S\)</span>, tal que y <span class="math inline">\(P\left(A \right) \neq 0\)</span> y <span class="math inline">\(P\left(A \cap B \right) \neq 0\)</span>, entonces
+<span class="math display" id="eq:teorema-multiplicacion3">\[
+\begin{equation}
+P\left(A \cap B \cap C \right)=P \left(A \right) \cdot P \left( B \mid A \right) \cdot P \left( C \mid A \cap B \right).
+\tag{2.7}
+\end{equation}
+\]</span></p>
+</div>
+<div class="proof">
+<p><span id="prueba-teorema-multiplicacion3" class="proof"><em>Demostración</em>. </span>Al escribir <span class="math inline">\(A \cap B \cap C\)</span> como <span class="math inline">\(\left(A \cap B \right) \cap C\)</span> y utilizando la fórmula del teorema <a href="nt2.html#thm:teorema-multiplicacion">2.6</a> dos veces, se obtiene
+<span class="math display">\[
+\begin{align*}
+P \left(A \cap B \cap C \right) &amp; = P \left[ \left(A \cap B \right) \cap C \right] \\  
+&amp; = P \left(A \cap B \right) \cdot P \left(C \mid A \cap B \right) \\ 
+&amp; = P \left(A \right) \cdot P \left( B \mid A \right) \cdot P \left( C \mid A \cap B \right).
+\end{align*}
+\]</span></p>
+</div>
+<div class="theorem">
+<p><span id="thm:teorema-multiplicacionk" class="theorem"><strong>Teorema 2.8  (Teorema de la Multiplicación para $k$ Eventos) </strong></span>Si <span class="math inline">\(A{}_1, A{}_2, \cdots A{}_k\)</span> son <span class="math inline">\(k\)</span> eventos cualesquiera de un espacio muestral <span class="math inline">\(S\)</span>, tal que y <span class="math inline">\(P\left(A{}_1 \cap A{}_2 \cap \cdots A{}_{k-1} \right) \neq 0\)</span> , entonces
+<span class="math display" id="eq:teorema-multiplicacion3">\[
+\begin{equation}
+P\left(A{}_1 \cap A{}_2 \cap \cdots \cap A{}_{k-1} \right)=P \left(A{}_1 \right) \cdot P \left( A{}_2 \mid A{}_1 \right) \cdot P \left( A{}_3 \mid A{}_1 \cap A{}_2 \right) \cdots P \left( A{}_k \mid A{}_1 \cap A{}_2 \cap \cdots \cap A{}_{k-1} \right).
+\tag{2.7}
+\end{equation}
+\]</span></p>
+</div>
+<div class="example">
+<p><span id="exm:ejemp1-teorema-multiplicacion" class="example"><strong>Ejemplo 2.11  (Teorema de la Multiplicación) </strong></span>Determine la probabilidad de tomar de manera aleatoria o al azar en sucesión dos ases de un un mazo de cartas españolas a) si las cartas se toman sin reemplazo y b) si las cartas se toman con reemplazo.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Si <span class="math inline">\(A\)</span> es el evento de que la primera carta es un as y <span class="math inline">\(B\)</span> el evento de que la segunda carta es otro as. Entonces, la probabilidad de que las dos cartas sean ases, si el muestreo se realiza sin reemplazo, viene dado por
+<span class="math display">\[
+P\left(A \cap B \right)=P \left(A \right) \cdot P \left( B \mid A \right)=\frac{4}{40} \cdot \frac{3}{39}=\frac{1}{130}\approx 0,0077.
+\]</span></p></li>
+<li><p>Si el muestreo se realiza con reemplazo la probabilidad de seleccionar dos ases es,
+<span class="math display">\[
+P\left(A \cap B \right)=P \left(A \right) \cdot P \left( B \mid A \right)=\frac{4}{40} \cdot \frac{4}{40}=\frac{1}{100}=0,01.
+\]</span></p></li>
+</ol>
+</div>
+<div class="example">
+<p><span id="exm:ejemp2-teorema-multiplicacion" class="example"><strong>Ejemplo 2.12  (Teorema de la Multiplicación) </strong></span>Una caja de bombillos contiene 100 unidades, de los cuales 5 están defectuosos. Si se seleccionan al azar tres bombillos y se sacan de la caja en sucesión sin reemplazo, ¿cuál es la probabilidad de que los tres bombillos sean defectuosos.</p>
+<p>Sea <span class="math inline">\(A\)</span> el evento de que el primer bombillo es defectuosos, <span class="math inline">\(B\)</span> el evento de que el segundo bobillo es defectuosos y <span class="math inline">\(C\)</span> el evento de que el tercer bombillo es defectuosos. Entonces, la probabilidad de que los tres bombillos sean defectuosos, según la ecuación <a href="nt2.html#eq:teorema-multiplicacion3">(2.7)</a> dada en el teorema <a href="nt2.html#thm:teorema-multiplicacion3">2.7</a> es
+<span class="math display">\[
+\begin{align*}
+P\left(A \cap B \cap C \right) &amp; = P \left(A \right) \cdot P \left( B \mid A \right) \cdot P \left( C \mid A \cap B \right) \\
+&amp;=\frac{5}{100} \cdot \frac{4}{99}\cdot \frac{3}{98}\\
+&amp;=\frac{1}{16.170} \approx 0,00006.
+\end{align*}
+\]</span></p>
 </div>
 
 </div>

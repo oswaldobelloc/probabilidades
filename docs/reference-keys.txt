@@ -98,10 +98,18 @@ thm:teorema2
 thm:teorema3
 def:probabilidadcondicional
 eq:probabilidad-condicional
-fig:probabilidd-condional
+fig:probabilidad-condicional
 eq:probabilidad-condicional2
 exm:ejemp1-probcond
 tab:dados
+thm:teorema-multiplicacion
+eq:teorema-multiplicacion1
+eq:teorema-multiplicacion2
+thm:teorema-multiplicacion3
+eq:teorema-multiplicacion3
+thm:teorema-multiplicacionk
+exm:ejemp1-teorema-multiplicacion
+exm:ejemp2-teorema-multiplicacion
 nt1
 nt11
 nt12
@@ -165,4 +173,5 @@ nt2342
 nt2343
 nt2344
 nt2345
+nt2346
 dist_disc

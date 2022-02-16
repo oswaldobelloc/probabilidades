@@ -634,7 +634,7 @@ Note que para hallar  $n \left(I \cup F \cup A  \right)$ es necesario hallar $n 
 
 $$
 \begin{align*}
-n \left(A \setminus \left(I \cup F \right) \right) &= n \left(A \right) - n \left(A \cap \left(I \cup F \right)  \right) \\ & = n \left(A \right) - n \left( \left(A \cap I \right)   \cup \left(A \cap F \right) \right) \\ & = n \left(A \right)-\left[ n \left(A \cap I \right) + n \left(A \cap F \right) - n \left( \left(A \cap I  \right) \cap \left(A \cap F  \right) \right) \right] \\ & = n \left(A \right) - n\left(A \cap I \right)- n\left(A \cap F \right) + n\left(I \cap F \cap A \right) \\
+n \left(A \setminus \left(I \cup F \right) \right) & = n \left(A \right) - n \left(A \cap \left(I \cup F \right)  \right) \\ & = n \left(A \right) - n \left( \left(A \cap I \right)   \cup \left(A \cap F \right) \right) \\ & = n \left(A \right)-\left[ n \left(A \cap I \right) + n \left(A \cap F \right) - n \left( \left(A \cap I  \right) \cap \left(A \cap F  \right) \right) \right] \\ & = n \left(A \right) - n\left(A \cap I \right)- n\left(A \cap F \right) + n\left(I \cap F \cap A \right) \\
 17& = 54 - n\left(A \cap I \right) -20 + 8.
 \end{align*}
 $$
@@ -643,7 +643,7 @@ De donde se obtiene que $n\left(I \cap A \right)=25$. Luego,
 
 $$
 \begin{align*}
-n \left(I \cup F \cup A  \right) &=n\left ( I \right ) + n\left ( F \right ) + n\left ( A \right ) - n\left ( I \cap F \right ) - n\left ( I \cap A \right ) - n\left ( F \cap A \right ) + n\left ( I \cap F \cap A \right )\\ & =62 + 52 + 54 -18 - 25 -30 -20 + 8 \\ & = 113. 
+n \left(I \cup F \cup A  \right) & = n\left ( I \right ) + n\left ( F \right ) + n\left ( A \right ) - n\left ( I \cap F \right ) - n\left ( I \cap A \right ) - n\left ( F \cap A \right ) + n\left ( I \cap F \cap A \right )\\ & =62 + 52 + 54 -18 - 25 -30 -20 + 8 \\ & = 113. 
 \end{align*}
 $$
 
@@ -651,7 +651,7 @@ Por último,
 
 $$
 \begin{align*}
-n \left( \left(I \cup F \cup A \right)^c \right)&= n \left( \mathbb{U} \right) - n \left(I \cup F \cup A  \right)\\
+n \left( \left(I \cup F \cup A \right)^c \right) & = n \left( \mathbb{U} \right) - n \left(I \cup F \cup A  \right)\\
 & = 140 - 113\\
 & = 27. 
 \end{align*}
@@ -935,7 +935,7 @@ $$
 
 Como se ilustra en el diagrama de Venn en la figura \@ref(fig:probabilidad-condicional), $P \left( A \mid E \right)$ mide, en cierto sentido, la probabilidad relativa de $A$ con respecto al espacio reducido $E$.
 
-```{r probabilidd-condional, fig.cap="Probabilidad Condicional", class.source = "watch-out", class.output = "bg-warning"}
+```{r probabilidad-condicional, fig.cap="Probabilidad Condicional", class.source = "watch-out", class.output = "bg-warning"}
 knitr::include_graphics(path = "figuras/probabilidad_condicional.png")
 ```
 
@@ -957,7 +957,7 @@ $$
 
 Se lanza un par de dados equilibrados. Encuentre la probabilidad de que uno de los dados sea 2 si la suma es 6.
 
-Dado que cada dado puede caer de 6 formas diferentes, entonces el número de formas diferentes en que pueden caer los dos dados, es decir, el número de elementos del espacio muestral $S$, por el principio de la multiplicación \@ref(def:princmult), es $6\cdot6=36$. En tal sentido, el espacio muestral $S$ viene determinado por:
+Dado que cada dado puede caer de 6 formas diferentes, entonces el número de formas diferentes en que pueden caer los dos dados, es decir, el número de elementos del espacio muestral $S$, por el principio de la multiplicación \@ref(def:princmult), es $6 \cdot 6=36$. En tal sentido, el espacio muestral $S$ viene determinado por:
 $$
 S=\begin{Bmatrix}
 (1,1);&(1,2);&(1,3);&(1,4);&(1,5);&(1,6);\\
@@ -1028,7 +1028,90 @@ kableExtra::kbl(
   kable_classic_2() %>%
   scroll_box(width = "100%", height = "400px")
 ```
+:::
 
+#### Teorema de la Multiplicación {#nt2346}
+
+::: {#teorema-multiplicacion .theorem name="Teorema de la Multiplicación"}
+
+Si $A$ y $B$ son dos eventos cualesquiera de un espacio muestral $S$ y $P\left(A \right) \neq 0$ , entonces
+$$
+\begin{equation}
+P\left(A \cap B \right)=P \left(A \right) \cdot P \left( B \mid A \right).
+(\#eq:teorema-multiplicacion1)
+\end{equation}
+$$
+
+En forma alternativa, si $P\left(B \right) \neq 0$, entonces
+$$
+\begin{equation}
+P\left(A \cap B \right)=P \left(B \right) \cdot P \left( A \mid B \right).
+(\#eq:teorema-multiplicacion2)
+\end{equation}
+$$
+:::
+
+::: {#teorema-multiplicacion3 .theorem name="Teorema de la Multiplicación para Tres Eventos"}
+
+Si $A$, $B$ y $C$ son tres eventos cualesquiera de un espacio muestral $S$, tal que y $P\left(A \right) \neq 0$ y $P\left(A \cap B \right) \neq 0$, entonces
+$$
+\begin{equation}
+P\left(A \cap B \cap C \right)=P \left(A \right) \cdot P \left( B \mid A \right) \cdot P \left( C \mid A \cap B \right).
+(\#eq:teorema-multiplicacion3)
+\end{equation}
+$$
+:::
+
+::: {#prueba-teorema-multiplicacion3 .proof}
+
+Al escribir $A \cap B \cap C$ como $\left(A \cap B \right) \cap C$ y utilizando la fórmula del teorema \@ref(thm:teorema-multiplicacion) dos veces, se obtiene
+$$
+\begin{align*}
+P \left(A \cap B \cap C \right) & = P \left[ \left(A \cap B \right) \cap C \right] \\  
+& = P \left(A \cap B \right) \cdot P \left(C \mid A \cap B \right) \\ 
+& = P \left(A \right) \cdot P \left( B \mid A \right) \cdot P \left( C \mid A \cap B \right).
+\end{align*}
+$$
+:::
+
+::: {#teorema-multiplicacionk .theorem name="Teorema de la Multiplicación para $k$ Eventos"}
+
+Si $A{}_1, A{}_2, \dotsc, A{}_k$ son $k$ eventos cualesquiera de un espacio muestral $S$, tal que y $P\left(A{}_1 \cap A{}_2 \cap \cdots \cap A{}_{k-1} \right) \neq 0$ , entonces
+$$
+\begin{equation}
+P\left(A{}_1 \cap A{}_2 \cap \cdots \cap A{}_{k-1} \right)=P \left(A{}_1 \right) \cdot P \left( A{}_2 \mid A{}_1 \right) \cdot P \left( A{}_3 \mid A{}_1 \cap A{}_2 \right) \cdots P \left( A{}_k \mid A{}_1 \cap A{}_2 \cap \cdots \cap A{}_{k-1} \right).
+(\#eq:teorema-multiplicacionk)
+\end{equation}
+$$
+:::
+
+::: {.example #ejemp1-teorema-multiplicacion name="Teorema de la Multiplicación"}
+
+Determine la probabilidad de tomar de manera aleatoria o al azar en sucesión dos ases de un un mazo de cartas españolas a) si las cartas se toman sin reemplazo y b) si las cartas se toman con reemplazo.
+
+a)  Si $A$ es el evento de que la primera carta es un as y $B$ el evento de que la segunda carta es otro as. Entonces, la probabilidad de que las dos cartas sean ases, si el muestreo se realiza sin reemplazo, viene dado por
+$$
+P\left(A \cap B \right)=P \left(A \right) \cdot P \left( B \mid A \right)=\frac{4}{40} \cdot \frac{3}{39}=\frac{1}{130}\approx 0,0077.
+$$
+
+b)  Si el muestreo se realiza con reemplazo la probabilidad de seleccionar dos ases es,
+$$
+P\left(A \cap B \right)=P \left(A \right) \cdot P \left( B \mid A \right)=\frac{4}{40} \cdot \frac{4}{40}=\frac{1}{100}=0,01.
+$$
+:::
+
+::: {.example #ejemp2-teorema-multiplicacion name="Teorema de la Multiplicación"}
+
+Una caja de bombillos contiene 100 unidades, de los cuales 5 están defectuosos. Si se seleccionan al azar tres bombillos y se sacan de la caja en sucesión sin reemplazo, ¿cuál es la probabilidad de que los tres bombillos sean defectuosos.
+
+Sea $A$ el evento de que el primer bombillo es defectuosos, $B$ el evento de que el segundo bobillo es defectuosos y $C$ el evento de que el tercer bombillo es defectuosos. Entonces, la probabilidad de que los tres bombillos sean defectuosos, según la ecuación \@ref(eq:teorema-multiplicacion3) dada en el teorema \@ref(thm:teorema-multiplicacion3) es
+$$
+\begin{align*}
+P\left(A \cap B \cap C \right) & = P \left(A \right) \cdot P \left( B \mid A \right) \cdot P \left( C \mid A \cap B \right) \\
+&=\frac{5}{100} \cdot \frac{4}{99}\cdot \frac{3}{98}\\
+&=\frac{1}{16.170} \approx 0,00006.
+\end{align*}
+$$
 
 :::
 
