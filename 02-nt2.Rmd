@@ -924,16 +924,16 @@ $$
 #### Probabilidad Condicional {#nt2345}
 
 ::: {#probabilidadcondicional .definition name="Probabilidad Condicional"}
-Suponga que $E$ es un evento en un espacio muestral $S$, tal que $P \left(E \right) > 0$, es decir $E \neq \emptyset$. La probabilidad de que ocurra un evento $A$ una vez que $E$ ha ocurrido o, en otras palabras, la _la probabilidad condicional de $A$ dado $E$, escrita $P \left( A \mid E \right)$, se define así:
+Suponga que $B$ es un evento en un espacio muestral $S$, tal que $P \left(B \right) > 0$, es decir $B \neq \emptyset$. La probabilidad de que ocurra un evento $A$ una vez que $B$ ha ocurrido o, en otras palabras, la _la probabilidad condicional de $A$ dado $B$_, escrita $P \left( A \mid B \right)$, se define así:
 $$
 \begin{equation}
-P \left( A \mid E \right)=\frac{P \left( A \cap E \right)}{P \left( E \right)}.
+P \left( A \mid B \right)=\frac{P \left( A \cap B \right)}{P \left( B \right)}.
 (\#eq:probabilidad-condicional)
 \end{equation}
 $$
 :::
 
-Como se ilustra en el diagrama de Venn en la figura \@ref(fig:probabilidad-condicional), $P \left( A \mid E \right)$ mide, en cierto sentido, la probabilidad relativa de $A$ con respecto al espacio reducido $E$.
+Como se ilustra en el diagrama de Venn en la figura \@ref(fig:probabilidad-condicional), $P \left( A \mid B \right)$ mide, en cierto sentido, la probabilidad relativa de $A$ con respecto al espacio reducido $B$.
 
 ```{r probabilidad-condicional, fig.cap="Probabilidad Condicional", class.source = "watch-out", class.output = "bg-warning"}
 knitr::include_graphics(path = "figuras/probabilidad_condicional.png")
@@ -942,13 +942,13 @@ knitr::include_graphics(path = "figuras/probabilidad_condicional.png")
 Ahora, suponga que $S$ es un espacio equiprobable y sea $n\left(A\right)$ el número de elementos en el evento $A$. Entonces,
 
 $$
-P \left( A \cap E \right)=\frac{n\left(A \cap E\right)}{n\left(S \right)} \; y \; P \left(E \right)=\frac{n\left( E \right)}{n\left(S \right)}.
+P \left( A \cap B \right)=\frac{n\left(A \cap B \right)}{n\left(S \right)} \; y \; P \left( B \right)=\frac{n\left( B \right)}{n\left(S \right)}.
 $$
 
 Luego, sustituyendo en la ecuación \@ref(eq:probabilidad-condicional) se obtiene que:
 $$
 \begin{equation}
-P \left( A \cap E \right)=\frac{n\left(A \cap E\right)}{n\left(E \right)}.
+P \left( A \cap B \right)=\frac{n\left(A \cap B \right)}{n\left(B \right)}.
 (\#eq:probabilidad-condicional2)
 \end{equation}
 $$
@@ -976,29 +976,29 @@ A=\begin{Bmatrix}
 (1,2);&(3,2);&(4,2);&(5,2);&(6,2)\\
 \end{Bmatrix}.
 $$
-Y $E$ el evento en el cual la suma es 6, representado por:
+Y $B$ el evento en el cual la suma es 6, representado por:
 $$
-E=\begin{Bmatrix}
+B = \begin{Bmatrix}
 (1,5);&(2,4);&(3,3);&(4,2);&(5,1)\\
 \end{Bmatrix}.
 $$
-Entonces el evento en el cual uno de los dos dados es 2 y cuya suma es 6, es decir, $A \cap E$, viene dado por:
+Entonces el evento en el cual uno de los dos dados es 2 y cuya suma es 6, es decir, $A \cap B$, viene dado por:
 
 $$
-E=\begin{Bmatrix}
+A \cap B=\begin{Bmatrix}
 (2,4);&(4,2)\\
 \end{Bmatrix}.
 $$
 De lo anterior se obtiene que,
 $$
-P \left( A \cap E \right)=\frac{n\left(A \cap E\right)}{n\left(S \right)}=\frac{2}{36} \; y \; P \left(E \right)=\frac{n\left( E \right)}{n\left(S \right)}=\frac{5}{36}.
+P \left( A \cap B \right)=\frac{n\left(A \cap B \right)}{n\left(S \right)}=\frac{2}{36} \; y \; P \left( B \right)=\frac{n\left( B \right)}{n\left(S \right)}=\frac{5}{36}.
 $$
 Luego, sustituyendo el resultado anterior en la ecuación \@ref(eq:probabilidad-condicional) se obtiene que la probabilidad de que uno de los dados sea 2 si la suma es 6 es:
 $$
-P \left( A \mid E \right)=\frac{P \left( A \cap E \right)}{P \left( E \right)}=\frac{\frac{2}{36}}{\frac{5}{36}}=\frac{2}{5}=0,4.
+P \left( A \mid B \right)=\frac{P \left( A \cap B \right)}{P \left( B \right)}=\frac{\frac{2}{36}}{\frac{5}{36}}=\frac{2}{5}=0,4.
 $$
 
-El espacio muestral $S$ para este ejemplo se puede listar con el siguiente script. Note que en la tabla \@ref(tab:dados) las filas en color azul representa el evento $E$. 
+El espacio muestral $S$ para este ejemplo se puede listar con el siguiente script de `r colorize("R", "blue")`. Note que en la tabla \@ref(tab:dados) las filas en color azul representa el evento $B$. 
 
 ```{r dados, class.source = "watch-out"}
 dados <- urnsamples(
@@ -1032,9 +1032,9 @@ kableExtra::kbl(
 
 #### Teorema de la Multiplicación {#nt2346}
 
-::: {#teorema-multiplicacion .theorem name="Teorema de la Multiplicación"}
+::: {#teorema-multiplicacion .theorem name="Teorema de la Multiplicación para Dos Eventos"}
 
-Si $A$ y $B$ son dos eventos cualesquiera de un espacio muestral $S$ y $P\left(A \right) \neq 0$ , entonces
+Si $A$ y $B$ son dos eventos cualesquiera de un espacio muestral $S$ y $P\left(A \right) \neq 0$, entonces
 $$
 \begin{equation}
 P\left(A \cap B \right)=P \left(A \right) \cdot P \left( B \mid A \right).
@@ -1053,7 +1053,7 @@ $$
 
 ::: {#teorema-multiplicacion3 .theorem name="Teorema de la Multiplicación para Tres Eventos"}
 
-Si $A$, $B$ y $C$ son tres eventos cualesquiera de un espacio muestral $S$, tal que y $P\left(A \right) \neq 0$ y $P\left(A \cap B \right) \neq 0$, entonces
+Si $A$, $B$ y $C$ son tres eventos cualesquiera de un espacio muestral $S$, tal que $P\left(A \right) \neq 0$ y $P\left(A \cap B \right) \neq 0$, entonces
 $$
 \begin{equation}
 P\left(A \cap B \cap C \right)=P \left(A \right) \cdot P \left( B \mid A \right) \cdot P \left( C \mid A \cap B \right).
@@ -1074,18 +1074,21 @@ P \left(A \cap B \cap C \right) & = P \left[ \left(A \cap B \right) \cap C \righ
 $$
 :::
 
-::: {#teorema-multiplicacionk .theorem name="Teorema de la Multiplicación para $k$ Eventos"}
+(ref:teorema-multiplicacionk) $k$
 
-Si $A{}_1, A{}_2, \dotsc, A{}_k$ son $k$ eventos cualesquiera de un espacio muestral $S$, tal que y $P\left(A{}_1 \cap A{}_2 \cap \cdots \cap A{}_{k-1} \right) \neq 0$ , entonces
+::: {#teorema-multiplicacionk .theorem name="Teorema de la Multiplicación para (ref:teorema-multiplicacionk) Eventos"}
+
+Si $A{}_1, A{}_2, \dotsc, A{}_k$ son $k$ eventos cualesquiera de un espacio muestral $S$, tal que $P\left(A{}_1 \cap A{}_2 \cap \cdots \cap A{}_{k-1} \right) \neq 0$ , entonces
 $$
-\begin{equation}
-P\left(A{}_1 \cap A{}_2 \cap \cdots \cap A{}_{k-1} \right)=P \left(A{}_1 \right) \cdot P \left( A{}_2 \mid A{}_1 \right) \cdot P \left( A{}_3 \mid A{}_1 \cap A{}_2 \right) \cdots P \left( A{}_k \mid A{}_1 \cap A{}_2 \cap \cdots \cap A{}_{k-1} \right).
+\begin{align*}
+P\left(A_1 \cap A_2 \cap \cdots \cap A_k \right)  = &
+P \left(A_1 \right) \cdot P \left( A_2 \mid A_1 \right) \cdot P \left( A_3 \mid A_1 \cap A_2 \right)\\ & \cdots P \left( A_k \mid A_1 \cap A_2 \cap \cdots \cap A_{k-1} \right).
 (\#eq:teorema-multiplicacionk)
-\end{equation}
+\end{align*}
 $$
 :::
 
-::: {.example #ejemp1-teorema-multiplicacion name="Teorema de la Multiplicación"}
+::: {.example #ejemp1-teorema-multiplicacion name="Teorema de la Multiplicación para Dos Eventos"}
 
 Determine la probabilidad de tomar de manera aleatoria o al azar en sucesión dos ases de un un mazo de cartas españolas a) si las cartas se toman sin reemplazo y b) si las cartas se toman con reemplazo.
 
@@ -1100,11 +1103,12 @@ P\left(A \cap B \right)=P \left(A \right) \cdot P \left( B \mid A \right)=\frac{
 $$
 :::
 
-::: {.example #ejemp2-teorema-multiplicacion name="Teorema de la Multiplicación"}
+::: {.example #ejemp2-teorema-multiplicacion name="Teorema de la Multiplicación para Tres Eventos"}
 
 Una caja de bombillos contiene 100 unidades, de los cuales 5 están defectuosos. Si se seleccionan al azar tres bombillos y se sacan de la caja en sucesión sin reemplazo, ¿cuál es la probabilidad de que los tres bombillos sean defectuosos.
 
-Sea $A$ el evento de que el primer bombillo es defectuosos, $B$ el evento de que el segundo bobillo es defectuosos y $C$ el evento de que el tercer bombillo es defectuosos. Entonces, la probabilidad de que los tres bombillos sean defectuosos, según la ecuación \@ref(eq:teorema-multiplicacion3) dada en el teorema \@ref(thm:teorema-multiplicacion3) es
+Sea $A$ el evento de que el primer bombillo es defectuosos, $B$ el evento de que el segundo bobillo es defectuosos y $C$ el evento de que el tercer bombillo es defectuosos. Entonces, la probabilidad de que los tres bombillos sean defectuosos, según 
+ecuación \@ref(eq:teorema-multiplicacion3) dada en el teorema \@ref(thm:teorema-multiplicacion3) es
 $$
 \begin{align*}
 P\left(A \cap B \cap C \right) & = P \left(A \right) \cdot P \left( B \mid A \right) \cdot P \left( C \mid A \cap B \right) \\
@@ -1112,7 +1116,178 @@ P\left(A \cap B \cap C \right) & = P \left(A \right) \cdot P \left( B \mid A \ri
 &=\frac{1}{16.170} \approx 0,00006.
 \end{align*}
 $$
+:::
 
+#### Eventos Independientes {#nt2347}
+
+En términos informales, se dice que dos eventos $A$ y $B$ son __independientes__ si la ocurrencia de uno no afecta la ocurrencia del otro. Por ejemplo, si se lanzan dos monedas es de esperarse que la ocurrencia de un resultado en una moneda no afecte el resultado en la otra moneda. Del mismo modo, si se considera el inciso b) del ejemplo \@ref(exm:ejemp1-teorema-multiplicacion) se puede ver que la ocurrencia de un as en la primera carta no afecta la ocurrencia de un as en la segunda carta, en tal sentido los eventos $A$ y $B$ son independientes. En contraste con lo anterior, el inciso a) muestra que los eventos $A$ y $B$ son dependientes dado que la ocurrencia de un as en la primera carta $\left(P\left(A \right)=4/40 \right)$ afecta la ocurrencia de un as en la segunda carta $\left(P\left(B \right)=3/40 \right)$.
+
+Simbólicamente, dos eventos $A$ y $B$ son independientes si $P \left( A \mid B \right)=P \left( A \right)$ y $P \left( B \mid A \right) = P \left(B \right)$ y puede demostrarse que una u otra de estas igualdades implican a la otra cuando existen las dos probabilidades condicionales, es decir, cuando ni $P \left( A \right)$ ni $P \left( B \right)$ es igual a cero.
+
+Ahora bien, si se sustituye $P \left(B \right)$ por $P \left( B \mid A \right)$ en la formula del teorema \@ref(thm:teorema-multiplicacion) se obtiene
+$$
+\begin{align*}
+P\left(A \cap B\right)  & =P\left(A \right) \cdot P \left( B \mid A \right)\\
+ & = P\left(A \right) \cdot P\left(B \right).
+\end{align*}
+$$
+De manera análoga,
+$$
+\begin{align*}
+P\left(A \cap B\right) =  P\left(B \cap A \right)& =P\left(B \right) \cdot P \left(A \mid B \right)\\
+ & = P\left(B \right) \cdot  P \left(A \right)\\
+ & = P\left(A \right) \cdot  P \left(B \right).
+\end{align*}
+$$
+De donde se concluye que los eventos $A$ y $B$ son independientes si
+$$
+P\left(A \cap B \right)=P \left(A \right) \cdot P \left( B \right).
+$$
+
+::: {#eventos-independientes2 .definition name="Independencia de Dos Eventos"}
+
+Dos eventos $A$ y $B$ cualesquiera de un espacio muestral $S$ son _independientes_ si y sólo si
+$$
+\begin{equation}
+P\left(A \cap B \right)=P \left(A \right) \cdot P \left( B \right).
+(\#eq:eventos-independientes2)
+\end{equation}
+$$
+De lo contrario, es decir, si 
+$$
+P\left(A \cap B \right) \neq P \left(A \right) \cdot P \left( B \right),
+$$
+se dice que los eventos $A$ y $B$ son dependientes.
+:::
+
+::: {#eventos-independientes3 .definition name="Independencia de Tres Eventos"}
+
+Tres eventos $A$, $B$ y $C$  cualesquiera de un espacio muestral $S$ son _independientes_ si se cumplen las dos condiciones siguientes:
+
+1)  Son independientes por pares, es decir
+$$
+\begin{align*}
+& P\left(A \cap B \right)=P \left(A \right) \cdot P \left(B \right)\\
+& P\left(A \cap C \right)=P \left(A \right) \cdot P \left(C \right)\\
+& P\left(B \cap C \right)=P \left(B \right) \cdot P \left(C \right).
+(\#eq:eventos-independientes3-1)
+\end{align*}
+$$
+2)  La probabilidad de la intersección de los tres eventos es igual a el producto de sus probabilidades, es decir  
+$$
+\begin{equation}
+P\left(A \cap B \cap C \right)  =P \left(A \right) \cdot P \left(B \right) \cdot P \left(C \right)
+(\#eq:eventos-independientes3-2)
+\end{equation}
+$$
+:::
+
+(ref:eventos-independientes) $k$
+
+::: {#eventos-independientes3 .definition name="Independencia de (ref:eventos-independientes) Eventos"}
+
+Los eventos $A{}_1, A{}_2, \dots, \;y\; A{}_k$ son independientes si y sólo si la la probabilidad de la intersección de $2, 3, \dots, \;o\; k$ de estos eventos es igual al producto de sus respectivas probabilidades.
+:::
+
+::: {#teorema-eventos-independientes .theorem}
+
+Si los eventos $A$ y $B$ son independientes, entonces los eventos $A$ y $B^c$ también son independientes. Es decir,
+$$
+\begin{equation}
+P\left(A \cap B^c \right)=P \left(A \right) \cdot P \left( B^c \right).
+(\#eq:teorema-eventos-independientes2)
+\end{equation}
+$$
+:::
+
+::: {#prueba-teorema-eventos-independientes2 .proof}
+
+Como $A=\left(A \cap B \right) \cup \left(A \cap B^c \right)$ y $A \cap B$ y $A \cap B^c$ son mutuamente excluyentes, se tiene que
+$$
+\begin{align*}
+P\left(A \right) & = P\left[ \left(A \cap B \right) \cup \left(A \cap B^c \right) \right]\\
+& = P \left(A \cap B \right) + P \left(A \cap B^c \right).
+\end{align*}
+$$
+Por otro lado, como $A$ y $B$ son independientes,
+$$
+P\left(A \right)=P\left(A \right) \cdot P\left(B \right) + P \left(A \cap B^c \right). 
+$$
+Despejando $P \left(A \cap B^c \right)$ de la ecuación anterior, se obtiene que
+$$
+\begin{align*}
+P \left(A \cap B^c \right) & = P\left(A \right) - P\left(A \right) \cdot P\left(B \right)\\
+& = P\left(A \right) \cdot \left[1- P\left(A \right) \right]\\
+& = P\left(A \right) \cdot P\left(B^c \right)
+\end{align*}
+$$
+y, por tanto, $A$ y $B^c$ son independientes.
+:::
+
+::: {.example #ejemp1-eventos-independientes name="Eventos Independietes"}
+
+Se lanzan tres monedas equilibradas las cueles pueden resultar en cara ($c$) o sello ($s$). Sean los eventos $A: \{ \textrm{en las tres monedas sale el mismo signo} \}$; $B: \{ \textrm{por lo menos una de las tres monedas muestra cara} \}$ y $C: \{ \textrm{por lo menos salen dos caras} \}$. Determine si estos eventos son independientes por pares.
+
+De acuerdo a este experimento aleatorio, el espacio muestral $S$ está determinado por,
+$$
+S=\left\{ccc, scc, csc, ssc,ccs, scs, css, sss\right\}.
+$$
+Mientras que los eventos $A$, $B$, $C$, $A \cap B$, $A \cap C$ y $B \cap C$ viene dados por $A=\left\{ccc,sss\right\}$, $B=\left\{ccc, scc, csc, ssc,ccs, scs, css\right\}$, $C=\left\{ccc, scc, csc, ccs\right\}$, $A \cap B=\left\{ccc\right\}$, $A \cap C =\left\{ccc\right\}$ y $B \cap C =C=\left\{ccc, scc, csc, ccs\right\}$, respectivamente.
+
+De lo anterior se obtiene que:
+$$
+ P \left(A \cap B \right)=\frac{1}{8} \neq P  \left(A \right)\cdot P\left(B \right)=\frac{2}{8}\cdot\frac{7}{8}=\frac{7}{32}.
+$$
+De donde se deduce que los eventos $A$ y $B$ no son independientes, es decir, son dependientes.
+
+Por otro lado,
+$$
+ P \left(A \cap C \right)=\frac{1}{8} = P  \left(A \right)\cdot P\left(C \right)=\frac{2}{8}\cdot\frac{4}{8}=\frac{1}{8}.
+$$
+En consecuencia, los eventos $A$ y $C$ son independientes.
+
+De manera análoga a como se procedió en los casos anteriores,
+$$
+ P \left(B \cap C \right)=\frac{4}{8}=\frac{1}{2} \neq P  \left(B \right)\cdot P\left(C \right)=\frac{7}{8}\cdot\frac{4}{8}=\frac{7}{16}.
+$$
+Lo que implica que los eventos $B$ y $C$ no son independientes (son dependientes).
+
+Note de la definición \@ref(def:eventos-independientes3) que estos tres eventos no son independientes, dado que los eventos $A$ y $B$ y $A$ y $C$ no son independientes, aunque solo basta que uno de los tres pares de eventos no sean independientes para concluir que los tres eventos no son independientes.
+:::
+
+#### Ley de Probabilidad Total {#nt2348}
+
+Suponga que un espacio muestral $S$ es la unión de los $k$ eventos mutuamente excluyentes $A{}_1, A{}_2, \dotsc, A{}_k$; es decir, $A{}_1, A{}_2, \dotsc, A{}_k$ forman una partición de del conjunto $S$. Además, suponga que $E$ es cualquier subconjunto de $S$. Entonces, como se ilustra en la figura \@ref(fig:probabilidad-total) para el caso $k=5$,
+$$
+E=E \cap S=E \cap \left(A{}_1 \cup A{}_2 \cup \cdots \cup A{_k}  \right)=\left(E \cap A{_1} \right) \cup \left(E \cap A{_2} \right) \cup \cdots \cup \left(E \cap A{_k} \right).
+$$
+```{r probabilidad-total, fig.cap="Probabilidad Total", class.source = "watch-out", class.output = "bg-warning"}
+knitr::include_graphics(path = "figuras/probabilidad_total.png")
+```
+
+Como los $k$ eventos a la derecha de la ecuación anterior son también mutuamente excluyentes, esta puede reescribirse de la siguiente manera (ver el axioma 3 de los axiomas de la probabilidad \@ref(nt2344)).
+$$
+P \left(E \right)=P\left(E \cap A{_1} \right) + P\left(E \cap A{_2} \right) + \cdots + P\left(E \cap A{_k} \right).
+$$
+Luego, utilizando el teorema de multiplicación para dos eventos \@ref(thm:teorema-multiplicacion) en cada uno de los sumando de la ecuación anterior , bajo el supuesto de que  $P\left(A{}_i \right) \neq 0$ para $i=1, 2, \dotsc, k$,   se obtiene que
+$$
+\begin{align*}
+P \left(E \right)&=P \left(A{}_1 \right) \cdot P \left( E \mid A{}_1 \right) + P \left(A{}_2 \right) \cdot P \left( E \mid A{}_2 \right) + \cdots + P \left(A{}_k \right) \cdot P \left( E \mid A{}_k \right)\\
+&=\sum_{i=1}^{k}P\left ( A{}_i \right ) \cdot P\left ( E \mid A{}_i \right )
+\end{align*}
+$$
+
+Lo anteriormente expuesto se resume en el siguiente teorema:
+
+::: {#probabilidad-total .theorem name="Ley de la Probabilidad Total"}
+
+Sea $E$ un evento en un espacio muestral $S$ y sean los eventos $A{}_1, A{}_2, \dotsc, A{}_k$ una partición de $S$ para los cuales se cumple que $P\left(A{}_i \right) \neq 0$ para $i=1, 2, \dotsc, k$. Entonces
+$$
+\begin{equation}
+P \left(E \right)=\sum_{i=1}^{k}P\left ( A{}_i \right ) \cdot P\left ( E \mid A{}_i \right ).
+(\#eq:probabilidad-total)
+\end{equation}
+$$
 :::
 
 

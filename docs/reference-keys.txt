@@ -108,8 +108,20 @@ eq:teorema-multiplicacion2
 thm:teorema-multiplicacion3
 eq:teorema-multiplicacion3
 thm:teorema-multiplicacionk
+eq:teorema-multiplicacionk
 exm:ejemp1-teorema-multiplicacion
 exm:ejemp2-teorema-multiplicacion
+def:eventos-independientes2
+eq:eventos-independientes2
+def:eventos-independientes3
+eq:eventos-independientes3-1
+eq:eventos-independientes3-2
+thm:teorema-eventos-independientes
+eq:teorema-eventos-independientes2
+exm:ejemp1-eventos-independientes
+fig:probabilidad-total
+thm:probabilidad-total
+eq:probabilidad-total
 nt1
 nt11
 nt12
@@ -174,4 +186,6 @@ nt2343
 nt2344
 nt2345
 nt2346
+nt2347
+nt2348
 dist_disc

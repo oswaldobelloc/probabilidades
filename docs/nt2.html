@@ -1044,30 +1044,30 @@ P \left(A^c \right)=1-P \left(A \right).
 <div id="nt2345" class="section level4" number="2.3.4.5">
 <h4><span class="header-section-number">2.3.4.5</span> Probabilidad Condicional</h4>
 <div class="definition">
-<p><span id="def:probabilidadcondicional" class="definition"><strong>Definición 2.35  (Probabilidad Condicional) </strong></span>Suponga que <span class="math inline">\(E\)</span> es un evento en un espacio muestral <span class="math inline">\(S\)</span>, tal que <span class="math inline">\(P \left(E \right) &gt; 0\)</span>, es decir <span class="math inline">\(E \neq \emptyset\)</span>. La probabilidad de que ocurra un evento <span class="math inline">\(A\)</span> una vez que <span class="math inline">\(E\)</span> ha ocurrido o, en otras palabras, la _la probabilidad condicional de <span class="math inline">\(A\)</span> dado <span class="math inline">\(E\)</span>, escrita <span class="math inline">\(P \left( A \mid E \right)\)</span>, se define así:
+<p><span id="def:probabilidadcondicional" class="definition"><strong>Definición 2.35  (Probabilidad Condicional) </strong></span>Suponga que <span class="math inline">\(B\)</span> es un evento en un espacio muestral <span class="math inline">\(S\)</span>, tal que <span class="math inline">\(P \left(B \right) &gt; 0\)</span>, es decir <span class="math inline">\(B \neq \emptyset\)</span>. La probabilidad de que ocurra un evento <span class="math inline">\(A\)</span> una vez que <span class="math inline">\(B\)</span> ha ocurrido o, en otras palabras, la <em>la probabilidad condicional de <span class="math inline">\(A\)</span> dado <span class="math inline">\(B\)</span></em>, escrita <span class="math inline">\(P \left( A \mid B \right)\)</span>, se define así:
 <span class="math display" id="eq:probabilidad-condicional">\[
 \begin{equation}
-P \left( A \mid E \right)=\frac{P \left( A \cap E \right)}{P \left( E \right)}.
+P \left( A \mid B \right)=\frac{P \left( A \cap B \right)}{P \left( B \right)}.
 \tag{2.3}
 \end{equation}
 \]</span></p>
 </div>
-<p>Como se ilustra en el diagrama de Venn en la figura <a href="nt2.html#fig:probabilidad-condicional">2.12</a>, <span class="math inline">\(P \left( A \mid E \right)\)</span> mide, en cierto sentido, la probabilidad relativa de <span class="math inline">\(A\)</span> con respecto al espacio reducido <span class="math inline">\(E\)</span>.</p>
+<p>Como se ilustra en el diagrama de Venn en la figura <a href="nt2.html#fig:probabilidad-condicional">2.12</a>, <span class="math inline">\(P \left( A \mid B \right)\)</span> mide, en cierto sentido, la probabilidad relativa de <span class="math inline">\(A\)</span> con respecto al espacio reducido <span class="math inline">\(B\)</span>.</p>
 <div class="sourceCode" id="cb97"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb97-1"><a href="nt2.html#cb97-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="at">path =</span> <span class="st">&quot;figuras/probabilidad_condicional.png&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:probabilidad-condicional"></span>
-<img src="figuras/probabilidad_condicional.png" alt="Probabilidad Condicional" width="288" />
+<img src="figuras/probabilidad_condicional.png" alt="Probabilidad Condicional" width="163" />
 <p class="caption">
 Figura 2.12: Probabilidad Condicional
 </p>
 </div>
 <p>Ahora, suponga que <span class="math inline">\(S\)</span> es un espacio equiprobable y sea <span class="math inline">\(n\left(A\right)\)</span> el número de elementos en el evento <span class="math inline">\(A\)</span>. Entonces,</p>
 <p><span class="math display">\[
-P \left( A \cap E \right)=\frac{n\left(A \cap E\right)}{n\left(S \right)} \; y \; P \left(E \right)=\frac{n\left( E \right)}{n\left(S \right)}.
+P \left( A \cap B \right)=\frac{n\left(A \cap B \right)}{n\left(S \right)} \; y \; P \left( B \right)=\frac{n\left( B \right)}{n\left(S \right)}.
 \]</span></p>
 <p>Luego, sustituyendo en la ecuación <a href="nt2.html#eq:probabilidad-condicional">(2.3)</a> se obtiene que:
 <span class="math display" id="eq:probabilidad-condicional2">\[
 \begin{equation}
-P \left( A \cap E \right)=\frac{n\left(A \cap E\right)}{n\left(E \right)}.
+P \left( A \cap B \right)=\frac{n\left(A \cap B \right)}{n\left(B \right)}.
 \tag{2.4}
 \end{equation}
 \]</span></p>
@@ -1091,27 +1091,27 @@ A=\begin{Bmatrix}
 (1,2);&amp;(3,2);&amp;(4,2);&amp;(5,2);&amp;(6,2)\\
 \end{Bmatrix}.
 \]</span>
-Y <span class="math inline">\(E\)</span> el evento en el cual la suma es 6, representado por:
+Y <span class="math inline">\(B\)</span> el evento en el cual la suma es 6, representado por:
 <span class="math display">\[
-E=\begin{Bmatrix}
+B = \begin{Bmatrix}
 (1,5);&amp;(2,4);&amp;(3,3);&amp;(4,2);&amp;(5,1)\\
 \end{Bmatrix}.
 \]</span>
-Entonces el evento en el cual uno de los dos dados es 2 y cuya suma es 6, es decir, <span class="math inline">\(A \cap E\)</span>, viene dado por:</p>
+Entonces el evento en el cual uno de los dos dados es 2 y cuya suma es 6, es decir, <span class="math inline">\(A \cap B\)</span>, viene dado por:</p>
 <p><span class="math display">\[
-E=\begin{Bmatrix}
+A \cap B=\begin{Bmatrix}
 (2,4);&amp;(4,2)\\
 \end{Bmatrix}.
 \]</span>
 De lo anterior se obtiene que,
 <span class="math display">\[
-P \left( A \cap E \right)=\frac{n\left(A \cap E\right)}{n\left(S \right)}=\frac{2}{36} \; y \; P \left(E \right)=\frac{n\left( E \right)}{n\left(S \right)}=\frac{5}{36}.
+P \left( A \cap B \right)=\frac{n\left(A \cap B \right)}{n\left(S \right)}=\frac{2}{36} \; y \; P \left( B \right)=\frac{n\left( B \right)}{n\left(S \right)}=\frac{5}{36}.
 \]</span>
 Luego, sustituyendo el resultado anterior en la ecuación <a href="nt2.html#eq:probabilidad-condicional">(2.3)</a> se obtiene que la probabilidad de que uno de los dados sea 2 si la suma es 6 es:
 <span class="math display">\[
-P \left( A \mid E \right)=\frac{P \left( A \cap E \right)}{P \left( E \right)}=\frac{\frac{2}{36}}{\frac{5}{36}}=\frac{2}{5}=0,4.
+P \left( A \mid B \right)=\frac{P \left( A \cap B \right)}{P \left( B \right)}=\frac{\frac{2}{36}}{\frac{5}{36}}=\frac{2}{5}=0,4.
 \]</span></p>
-<p>El espacio muestral <span class="math inline">\(S\)</span> para este ejemplo se puede listar con el siguiente script. Note que en la tabla <a href="nt2.html#tab:dados">2.1</a> las filas en color azul representa el evento <span class="math inline">\(E\)</span>.</p>
+<p>El espacio muestral <span class="math inline">\(S\)</span> para este ejemplo se puede listar con el siguiente script de <span style="color: blue;">R</span>. Note que en la tabla <a href="nt2.html#tab:dados">2.1</a> las filas en color azul representa el evento <span class="math inline">\(B\)</span>.</p>
 <div class="sourceCode" id="cb98"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb98-1"><a href="nt2.html#cb98-1" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">&lt;-</span> <span class="fu">urnsamples</span>(</span>
 <span id="cb98-2"><a href="nt2.html#cb98-2" aria-hidden="true" tabindex="-1"></a>  <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,</span>
 <span id="cb98-3"><a href="nt2.html#cb98-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">size =</span> <span class="dv">2</span>, <span class="at">replace =</span> T, <span class="at">ordered =</span> T</span>
@@ -1561,7 +1561,7 @@ Suma
 <div id="nt2346" class="section level4" number="2.3.4.6">
 <h4><span class="header-section-number">2.3.4.6</span> Teorema de la Multiplicación</h4>
 <div class="theorem">
-<p><span id="thm:teorema-multiplicacion" class="theorem"><strong>Teorema 2.6  (Teorema de la Multiplicación) </strong></span>Si <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> son dos eventos cualesquiera de un espacio muestral <span class="math inline">\(S\)</span> y <span class="math inline">\(P\left(A \right) \neq 0\)</span> , entonces
+<p><span id="thm:teorema-multiplicacion" class="theorem"><strong>Teorema 2.6  (Teorema de la Multiplicación para Dos Eventos) </strong></span>Si <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> son dos eventos cualesquiera de un espacio muestral <span class="math inline">\(S\)</span> y <span class="math inline">\(P\left(A \right) \neq 0\)</span>, entonces
 <span class="math display" id="eq:teorema-multiplicacion1">\[
 \begin{equation}
 P\left(A \cap B \right)=P \left(A \right) \cdot P \left( B \mid A \right).
@@ -1577,7 +1577,7 @@ P\left(A \cap B \right)=P \left(B \right) \cdot P \left( A \mid B \right).
 \]</span></p>
 </div>
 <div class="theorem">
-<p><span id="thm:teorema-multiplicacion3" class="theorem"><strong>Teorema 2.7  (Teorema de la Multiplicación para Tres Eventos) </strong></span>Si <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span> y <span class="math inline">\(C\)</span> son tres eventos cualesquiera de un espacio muestral <span class="math inline">\(S\)</span>, tal que y <span class="math inline">\(P\left(A \right) \neq 0\)</span> y <span class="math inline">\(P\left(A \cap B \right) \neq 0\)</span>, entonces
+<p><span id="thm:teorema-multiplicacion3" class="theorem"><strong>Teorema 2.7  (Teorema de la Multiplicación para Tres Eventos) </strong></span>Si <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span> y <span class="math inline">\(C\)</span> son tres eventos cualesquiera de un espacio muestral <span class="math inline">\(S\)</span>, tal que <span class="math inline">\(P\left(A \right) \neq 0\)</span> y <span class="math inline">\(P\left(A \cap B \right) \neq 0\)</span>, entonces
 <span class="math display" id="eq:teorema-multiplicacion3">\[
 \begin{equation}
 P\left(A \cap B \cap C \right)=P \left(A \right) \cdot P \left( B \mid A \right) \cdot P \left( C \mid A \cap B \right).
@@ -1595,17 +1595,19 @@ P \left(A \cap B \cap C \right) &amp; = P \left[ \left(A \cap B \right) \cap C \
 \end{align*}
 \]</span></p>
 </div>
+
 <div class="theorem">
-<p><span id="thm:teorema-multiplicacionk" class="theorem"><strong>Teorema 2.8  (Teorema de la Multiplicación para $k$ Eventos) </strong></span>Si <span class="math inline">\(A{}_1, A{}_2, \cdots A{}_k\)</span> son <span class="math inline">\(k\)</span> eventos cualesquiera de un espacio muestral <span class="math inline">\(S\)</span>, tal que y <span class="math inline">\(P\left(A{}_1 \cap A{}_2 \cap \cdots A{}_{k-1} \right) \neq 0\)</span> , entonces
-<span class="math display" id="eq:teorema-multiplicacion3">\[
-\begin{equation}
-P\left(A{}_1 \cap A{}_2 \cap \cdots \cap A{}_{k-1} \right)=P \left(A{}_1 \right) \cdot P \left( A{}_2 \mid A{}_1 \right) \cdot P \left( A{}_3 \mid A{}_1 \cap A{}_2 \right) \cdots P \left( A{}_k \mid A{}_1 \cap A{}_2 \cap \cdots \cap A{}_{k-1} \right).
-\tag{2.7}
-\end{equation}
+<p><span id="thm:teorema-multiplicacionk" class="theorem"><strong>Teorema 2.8  (Teorema de la Multiplicación para <span class="math inline">\(k\)</span> Eventos) </strong></span>Si <span class="math inline">\(A{}_1, A{}_2, \dotsc, A{}_k\)</span> son <span class="math inline">\(k\)</span> eventos cualesquiera de un espacio muestral <span class="math inline">\(S\)</span>, tal que <span class="math inline">\(P\left(A{}_1 \cap A{}_2 \cap \cdots \cap A{}_{k-1} \right) \neq 0\)</span> , entonces
+<span class="math display" id="eq:teorema-multiplicacionk">\[
+\begin{align*}
+P\left(A_1 \cap A_2 \cap \cdots \cap A_k \right)  = &amp;
+P \left(A_1 \right) \cdot P \left( A_2 \mid A_1 \right) \cdot P \left( A_3 \mid A_1 \cap A_2 \right)\\ &amp; \cdots P \left( A_k \mid A_1 \cap A_2 \cap \cdots \cap A_{k-1} \right).
+\tag{2.8}
+\end{align*}
 \]</span></p>
 </div>
 <div class="example">
-<p><span id="exm:ejemp1-teorema-multiplicacion" class="example"><strong>Ejemplo 2.11  (Teorema de la Multiplicación) </strong></span>Determine la probabilidad de tomar de manera aleatoria o al azar en sucesión dos ases de un un mazo de cartas españolas a) si las cartas se toman sin reemplazo y b) si las cartas se toman con reemplazo.</p>
+<p><span id="exm:ejemp1-teorema-multiplicacion" class="example"><strong>Ejemplo 2.11  (Teorema de la Multiplicación para Dos Eventos) </strong></span>Determine la probabilidad de tomar de manera aleatoria o al azar en sucesión dos ases de un un mazo de cartas españolas a) si las cartas se toman sin reemplazo y b) si las cartas se toman con reemplazo.</p>
 <ol style="list-style-type: lower-alpha">
 <li><p>Si <span class="math inline">\(A\)</span> es el evento de que la primera carta es un as y <span class="math inline">\(B\)</span> el evento de que la segunda carta es otro as. Entonces, la probabilidad de que las dos cartas sean ases, si el muestreo se realiza sin reemplazo, viene dado por
 <span class="math display">\[
@@ -1618,14 +1620,168 @@ P\left(A \cap B \right)=P \left(A \right) \cdot P \left( B \mid A \right)=\frac{
 </ol>
 </div>
 <div class="example">
-<p><span id="exm:ejemp2-teorema-multiplicacion" class="example"><strong>Ejemplo 2.12  (Teorema de la Multiplicación) </strong></span>Una caja de bombillos contiene 100 unidades, de los cuales 5 están defectuosos. Si se seleccionan al azar tres bombillos y se sacan de la caja en sucesión sin reemplazo, ¿cuál es la probabilidad de que los tres bombillos sean defectuosos.</p>
-<p>Sea <span class="math inline">\(A\)</span> el evento de que el primer bombillo es defectuosos, <span class="math inline">\(B\)</span> el evento de que el segundo bobillo es defectuosos y <span class="math inline">\(C\)</span> el evento de que el tercer bombillo es defectuosos. Entonces, la probabilidad de que los tres bombillos sean defectuosos, según la ecuación <a href="nt2.html#eq:teorema-multiplicacion3">(2.7)</a> dada en el teorema <a href="nt2.html#thm:teorema-multiplicacion3">2.7</a> es
+<p><span id="exm:ejemp2-teorema-multiplicacion" class="example"><strong>Ejemplo 2.12  (Teorema de la Multiplicación para Tres Eventos) </strong></span>Una caja de bombillos contiene 100 unidades, de los cuales 5 están defectuosos. Si se seleccionan al azar tres bombillos y se sacan de la caja en sucesión sin reemplazo, ¿cuál es la probabilidad de que los tres bombillos sean defectuosos.</p>
+<p>Sea <span class="math inline">\(A\)</span> el evento de que el primer bombillo es defectuosos, <span class="math inline">\(B\)</span> el evento de que el segundo bobillo es defectuosos y <span class="math inline">\(C\)</span> el evento de que el tercer bombillo es defectuosos. Entonces, la probabilidad de que los tres bombillos sean defectuosos, según
+ecuación <a href="nt2.html#eq:teorema-multiplicacion3">(2.7)</a> dada en el teorema <a href="nt2.html#thm:teorema-multiplicacion3">2.7</a> es
 <span class="math display">\[
 \begin{align*}
 P\left(A \cap B \cap C \right) &amp; = P \left(A \right) \cdot P \left( B \mid A \right) \cdot P \left( C \mid A \cap B \right) \\
 &amp;=\frac{5}{100} \cdot \frac{4}{99}\cdot \frac{3}{98}\\
 &amp;=\frac{1}{16.170} \approx 0,00006.
 \end{align*}
+\]</span></p>
+</div>
+</div>
+<div id="nt2347" class="section level4" number="2.3.4.7">
+<h4><span class="header-section-number">2.3.4.7</span> Eventos Independientes</h4>
+<p>En términos informales, se dice que dos eventos <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> son <strong>independientes</strong> si la ocurrencia de uno no afecta la ocurrencia del otro. Por ejemplo, si se lanzan dos monedas es de esperarse que la ocurrencia de un resultado en una moneda no afecte el resultado en la otra moneda. Del mismo modo, si se considera el inciso b) del ejemplo <a href="nt2.html#exm:ejemp1-teorema-multiplicacion">2.11</a> se puede ver que la ocurrencia de un as en la primera carta no afecta la ocurrencia de un as en la segunda carta, en tal sentido los eventos <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> son independientes. En contraste con lo anterior, el inciso a) muestra que los eventos <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> son dependientes dado que la ocurrencia de un as en la primera carta <span class="math inline">\(\left(P\left(A \right)=4/40 \right)\)</span> afecta la ocurrencia de un as en la segunda carta <span class="math inline">\(\left(P\left(B \right)=3/40 \right)\)</span>.</p>
+<p>Simbólicamente, dos eventos <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> son independientes si <span class="math inline">\(P \left( A \mid B \right)=P \left( A \right)\)</span> y <span class="math inline">\(P \left( B \mid A \right) = P \left(B \right)\)</span> y puede demostrarse que una u otra de estas igualdades implican a la otra cuando existen las dos probabilidades condicionales, es decir, cuando ni <span class="math inline">\(P \left( A \right)\)</span> ni <span class="math inline">\(P \left( B \right)\)</span> es igual a cero.</p>
+<p>Ahora bien, si se sustituye <span class="math inline">\(P \left(B \right)\)</span> por <span class="math inline">\(P \left( B \mid A \right)\)</span> en la formula del teorema <a href="nt2.html#thm:teorema-multiplicacion">2.6</a> se obtiene
+<span class="math display">\[
+\begin{align*}
+P\left(A \cap B\right)  &amp; =P\left(A \right) \cdot P \left( B \mid A \right)\\
+ &amp; = P\left(A \right) \cdot P\left(B \right).
+\end{align*}
+\]</span>
+De manera análoga,
+<span class="math display">\[
+\begin{align*}
+P\left(A \cap B\right) =  P\left(B \cap A \right)&amp; =P\left(B \right) \cdot P \left(A \mid B \right)\\
+ &amp; = P\left(B \right) \cdot  P \left(A \right)\\
+ &amp; = P\left(A \right) \cdot  P \left(B \right).
+\end{align*}
+\]</span>
+De donde se concluye que los eventos <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> son independientes si
+<span class="math display">\[
+P\left(A \cap B \right)=P \left(A \right) \cdot P \left( B \right).
+\]</span></p>
+<div class="definition">
+<p><span id="def:eventos-independientes2" class="definition"><strong>Definición 2.36  (Independencia de Dos Eventos) </strong></span>Dos eventos <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> cualesquiera de un espacio muestral <span class="math inline">\(S\)</span> son <em>independientes</em> si y sólo si
+<span class="math display" id="eq:eventos-independientes2">\[
+\begin{equation}
+P\left(A \cap B \right)=P \left(A \right) \cdot P \left( B \right).
+\tag{2.9}
+\end{equation}
+\]</span>
+De lo contrario, es decir, si
+<span class="math display">\[
+P\left(A \cap B \right) \neq P \left(A \right) \cdot P \left( B \right),
+\]</span>
+se dice que los eventos <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> son dependientes.</p>
+</div>
+<div class="definition">
+<p><span id="def:eventos-independientes3" class="definition"><strong>Definición 2.37  (Independencia de Tres Eventos) </strong></span>Tres eventos <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span> y <span class="math inline">\(C\)</span> cualesquiera de un espacio muestral <span class="math inline">\(S\)</span> son <em>independientes</em> si se cumplen las dos condiciones siguientes:</p>
+<ol style="list-style-type: decimal">
+<li>Son independientes por pares, es decir
+<span class="math display" id="eq:eventos-independientes3-1">\[
+\begin{align*}
+&amp; P\left(A \cap B \right)=P \left(A \right) \cdot P \left(B \right)\\
+&amp; P\left(A \cap C \right)=P \left(A \right) \cdot P \left(C \right)\\
+&amp; P\left(B \cap C \right)=P \left(B \right) \cdot P \left(C \right).
+\tag{2.10}
+\end{align*}
+\]</span></li>
+<li>La probabilidad de la intersección de los tres eventos es igual a el producto de sus probabilidades, es decir<br />
+<span class="math display" id="eq:eventos-independientes3-2">\[
+\begin{equation}
+P\left(A \cap B \cap C \right)  =P \left(A \right) \cdot P \left(B \right) \cdot P \left(C \right)
+\tag{2.11}
+\end{equation}
+\]</span></li>
+</ol>
+</div>
+
+<div class="definition">
+<p><span id="def:eventos-independientes3" class="definition"><strong>Definición 2.37  (Independencia de <span class="math inline">\(k\)</span> Eventos) </strong></span>Los eventos <span class="math inline">\(A{}_1, A{}_2, \dots, \;y\; A{}_k\)</span> son independientes si y sólo si la la probabilidad de la intersección de <span class="math inline">\(2, 3, \dots, \;o\; k\)</span> de estos eventos es igual al producto de sus respectivas probabilidades.</p>
+</div>
+<div class="theorem">
+<p><span id="thm:teorema-eventos-independientes" class="theorem"><strong>Teorema 2.9  </strong></span>Si los eventos <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> son independientes, entonces los eventos <span class="math inline">\(A\)</span> y <span class="math inline">\(B^c\)</span> también son independientes. Es decir,
+<span class="math display" id="eq:teorema-eventos-independientes2">\[
+\begin{equation}
+P\left(A \cap B^c \right)=P \left(A \right) \cdot P \left( B^c \right).
+\tag{2.12}
+\end{equation}
+\]</span></p>
+</div>
+<div class="proof">
+<p><span id="prueba-teorema-eventos-independientes2" class="proof"><em>Demostración</em>. </span>Como <span class="math inline">\(A=\left(A \cap B \right) \cup \left(A \cap B^c \right)\)</span> y <span class="math inline">\(A \cap B\)</span> y <span class="math inline">\(A \cap B^c\)</span> son mutuamente excluyentes, se tiene que
+<span class="math display">\[
+\begin{align*}
+P\left(A \right) &amp; = P\left[ \left(A \cap B \right) \cup \left(A \cap B^c \right) \right]\\
+&amp; = P \left(A \cap B \right) + P \left(A \cap B^c \right).
+\end{align*}
+\]</span>
+Por otro lado, como <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> son independientes,
+<span class="math display">\[
+P\left(A \right)=P\left(A \right) \cdot P\left(B \right) + P \left(A \cap B^c \right). 
+\]</span>
+Despejando <span class="math inline">\(P \left(A \cap B^c \right)\)</span> de la ecuación anterior, se obtiene que
+<span class="math display">\[
+\begin{align*}
+P \left(A \cap B^c \right) &amp; = P\left(A \right) - P\left(A \right) \cdot P\left(B \right)\\
+&amp; = P\left(A \right) \cdot \left[1- P\left(A \right) \right]\\
+&amp; = P\left(A \right) \cdot P\left(B^c \right)
+\end{align*}
+\]</span>
+y, por tanto, <span class="math inline">\(A\)</span> y <span class="math inline">\(B^c\)</span> son independientes.</p>
+</div>
+<div class="example">
+<p><span id="exm:ejemp1-eventos-independientes" class="example"><strong>Ejemplo 2.13  (Eventos Independietes) </strong></span>Se lanzan tres monedas equilibradas las cueles pueden resultar en cara (<span class="math inline">\(c\)</span>) o sello (<span class="math inline">\(s\)</span>). Sean los eventos <span class="math inline">\(A: \{ \textrm{en las tres monedas sale el mismo signo} \}\)</span>; <span class="math inline">\(B: \{ \textrm{por lo menos una de las tres monedas muestra cara} \}\)</span> y <span class="math inline">\(C: \{ \textrm{por lo menos salen dos caras} \}\)</span>. Determine si estos eventos son independientes por pares.</p>
+<p>De acuerdo a este experimento aleatorio, el espacio muestral <span class="math inline">\(S\)</span> está determinado por,
+<span class="math display">\[
+S=\left\{ccc, scc, csc, ssc,ccs, scs, css, sss\right\}.
+\]</span>
+Mientras que los eventos <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, <span class="math inline">\(C\)</span>, <span class="math inline">\(A \cap B\)</span>, <span class="math inline">\(A \cap C\)</span> y <span class="math inline">\(B \cap C\)</span> viene dados por <span class="math inline">\(A=\left\{ccc,sss\right\}\)</span>, <span class="math inline">\(B=\left\{ccc, scc, csc, ssc,ccs, scs, css\right\}\)</span>, <span class="math inline">\(C=\left\{ccc, scc, csc, ccs\right\}\)</span>, <span class="math inline">\(A \cap B=\left\{ccc\right\}\)</span>, <span class="math inline">\(A \cap C =\left\{ccc\right\}\)</span> y <span class="math inline">\(B \cap C =C=\left\{ccc, scc, csc, ccs\right\}\)</span>, respectivamente.</p>
+<p>De lo anterior se obtiene que:
+<span class="math display">\[
+ P \left(A \cap B \right)=\frac{1}{8} \neq P  \left(A \right)\cdot P\left(B \right)=\frac{2}{8}\cdot\frac{7}{8}=\frac{7}{32}.
+\]</span>
+De donde se deduce que los eventos <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> no son independientes, es decir, son dependientes.</p>
+<p>Por otro lado,
+<span class="math display">\[
+ P \left(A \cap C \right)=\frac{1}{8} = P  \left(A \right)\cdot P\left(C \right)=\frac{2}{8}\cdot\frac{4}{8}=\frac{1}{8}.
+\]</span>
+En consecuencia, los eventos <span class="math inline">\(A\)</span> y <span class="math inline">\(C\)</span> son independientes.</p>
+<p>De manera análoga a como se procedió en los casos anteriores,
+<span class="math display">\[
+ P \left(B \cap C \right)=\frac{4}{8}=\frac{1}{2} \neq P  \left(B \right)\cdot P\left(C \right)=\frac{7}{8}\cdot\frac{4}{8}=\frac{7}{16}.
+\]</span>
+Lo que implica que los eventos <span class="math inline">\(B\)</span> y <span class="math inline">\(C\)</span> no son independientes (son dependientes).</p>
+<p>Note de la definición <a href="nt2.html#def:eventos-independientes3">2.37</a> que estos tres eventos no son independientes, dado que los eventos <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> y <span class="math inline">\(A\)</span> y <span class="math inline">\(C\)</span> no son independientes, aunque solo basta que uno de los tres pares de eventos no sean independientes para concluir que los tres eventos no son independientes.</p>
+</div>
+</div>
+<div id="nt2348" class="section level4" number="2.3.4.8">
+<h4><span class="header-section-number">2.3.4.8</span> Ley de Probabilidad Total</h4>
+<p>Suponga que un espacio muestral <span class="math inline">\(S\)</span> es la unión de los <span class="math inline">\(k\)</span> eventos mutuamente excluyentes <span class="math inline">\(A{}_1, A{}_2, \dotsc, A{}_k\)</span>; es decir, <span class="math inline">\(A{}_1, A{}_2, \dotsc, A{}_k\)</span> forman una partición de del conjunto <span class="math inline">\(S\)</span>. Además, suponga que <span class="math inline">\(E\)</span> es cualquier subconjunto de <span class="math inline">\(S\)</span>. Entonces, como se ilustra en la figura <a href="nt2.html#fig:probabilidad-total">2.13</a> para el caso <span class="math inline">\(k=5\)</span>,
+<span class="math display">\[
+E=E \cap S=E \cap \left(A{}_1 \cup A{}_2 \cup \cdots \cup A{_k}  \right)=\left(E \cap A{_1} \right) \cup \left(E \cap A{_2} \right) \cup \cdots \cup \left(E \cap A{_k} \right).
+\]</span></p>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb99-1"><a href="nt2.html#cb99-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="at">path =</span> <span class="st">&quot;figuras/probabilidad_total.png&quot;</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:probabilidad-total"></span>
+<img src="figuras/probabilidad_total.png" alt="Probabilidad Total" width="208" />
+<p class="caption">
+Figura 2.13: Probabilidad Total
+</p>
+</div>
+<p>Como los <span class="math inline">\(k\)</span> eventos a la derecha de la ecuación anterior son también mutuamente excluyentes, esta puede reescribirse de la siguiente manera (ver el axioma 3 de los axiomas de la probabilidad <a href="nt2.html#nt2344">2.3.4.4</a>).
+<span class="math display">\[
+P \left(E \right)=P\left(E \cap A{_1} \right) + P\left(E \cap A{_2} \right) + \cdots + P\left(E \cap A{_k} \right).
+\]</span>
+Luego, utilizando el teorema de multiplicación para dos eventos <a href="nt2.html#thm:teorema-multiplicacion">2.6</a> en cada uno de los sumando de la ecuación anterior , se obtiene que
+<span class="math display">\[
+\begin{align*}
+P \left(E \right)&amp;=P \left(A{}_1 \right) \cdot P \left( E \mid A{}_1 \right) + P \left(A{}_2 \right) \cdot P \left( E \mid A{}_2 \right) + \cdots + P \left(A{}_k \right) \cdot P \left( E \mid A{}_k \right)\\
+&amp;=\sum_{i=1}^{k}P\left ( A{}_i \right ) \cdot P\left ( E \mid A{}_i \right )
+\end{align*}
+\]</span></p>
+<p>Lo anteriormente expuesto se resume en el siguiente teorema:</p>
+<div class="theorem">
+<p><span id="thm:probabilidad-total" class="theorem"><strong>Teorema 2.10  (Ley de la Probabilidad Total) </strong></span>Sea <span class="math inline">\(E\)</span> un evento en un espacio muestral <span class="math inline">\(S\)</span> y sea <span class="math inline">\(A{}_1, A{}_2, \dotsc, A{}_k\)</span> una partición de <span class="math inline">\(S\)</span>. Entonces
+<span class="math display" id="eq:probabilidad-total">\[
+\begin{equation}
+P \left(E \right)=\sum_{i=1}^{k}P\left ( A{}_i \right ) \cdot P\left ( E \mid A{}_i \right ).
+\tag{2.13}
+\end{equation}
 \]</span></p>
 </div>
 
