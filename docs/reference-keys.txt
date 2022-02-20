@@ -96,7 +96,7 @@ def:probabilidadsubjetiva
 thm:teorema1
 thm:teorema2
 thm:teorema3
-def:probabilidadcondicional
+def:probabilidad-condicional
 eq:probabilidad-condicional
 fig:probabilidad-condicional
 eq:probabilidad-condicional2
@@ -122,6 +122,11 @@ exm:ejemp1-eventos-independientes
 fig:probabilidad-total
 thm:probabilidad-total
 eq:probabilidad-total
+exm:ejemplo1-probabilidad-total
+fig:ejemplo1-probabilidad-total
+thm:teorema-bayes
+eq:teorema-bayes
+exm:ejemplo1-teorema-bayes
 nt1
 nt11
 nt12
@@ -188,4 +193,5 @@ nt2345
 nt2346
 nt2347
 nt2348
+nt2349
 dist_disc

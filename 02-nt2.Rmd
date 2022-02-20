@@ -923,7 +923,7 @@ $$
 
 #### Probabilidad Condicional {#nt2345}
 
-::: {#probabilidadcondicional .definition name="Probabilidad Condicional"}
+::: {#probabilidad-condicional .definition name="Probabilidad Condicional"}
 Suponga que $B$ es un evento en un espacio muestral $S$, tal que $P \left(B \right) > 0$, es decir $B \neq \emptyset$. La probabilidad de que ocurra un evento $A$ una vez que $B$ ha ocurrido o, en otras palabras, la _la probabilidad condicional de $A$ dado $B$_, escrita $P \left( A \mid B \right)$, se define así:
 $$
 \begin{equation}
@@ -1257,12 +1257,12 @@ Note de la definición \@ref(def:eventos-independientes3) que estos tres eventos
 
 #### Ley de Probabilidad Total {#nt2348}
 
-Suponga que un espacio muestral $S$ es la unión de los $k$ eventos mutuamente excluyentes $A{}_1, A{}_2, \dotsc, A{}_k$; es decir, $A{}_1, A{}_2, \dotsc, A{}_k$ forman una partición de del conjunto $S$. Además, suponga que $E$ es cualquier subconjunto de $S$. Entonces, como se ilustra en la figura \@ref(fig:probabilidad-total) para el caso $k=5$,
+Suponga que un espacio muestral $S$ es la unión de los $k$ eventos mutuamente excluyentes $A{}_1, A{}_2, \dotsc, A{}_k$; es decir, $A{}_1, A{}_2, \dotsc, A{}_k$ forman una partición de del conjunto $S$. Además, suponga que $E$ es cualquier subconjunto de $S$. Entonces, como se ilustra en la figura \@ref(fig:ejemplo1-probabilidad-total) para el caso $k=5$,
 $$
 E=E \cap S=E \cap \left(A{}_1 \cup A{}_2 \cup \cdots \cup A{_k}  \right)=\left(E \cap A{_1} \right) \cup \left(E \cap A{_2} \right) \cup \cdots \cup \left(E \cap A{_k} \right).
 $$
-```{r probabilidad-total, fig.cap="Probabilidad Total", class.source = "watch-out", class.output = "bg-warning"}
-knitr::include_graphics(path = "figuras/probabilidad_total.png")
+```{r probabilidad-total, fig.cap="Diagrama de Ven para la  probabilidad total", class.source = "watch-out", class.output = "bg-warning"}
+knitr::include_graphics(path = "figuras/ejemplo1_probabilidad_total.png")
 ```
 
 Como los $k$ eventos a la derecha de la ecuación anterior son también mutuamente excluyentes, esta puede reescribirse de la siguiente manera (ver el axioma 3 de los axiomas de la probabilidad \@ref(nt2344)).
@@ -1281,7 +1281,7 @@ Lo anteriormente expuesto se resume en el siguiente teorema:
 
 ::: {#probabilidad-total .theorem name="Ley de la Probabilidad Total"}
 
-Sea $E$ un evento en un espacio muestral $S$ y sean los eventos $A{}_1, A{}_2, \dotsc, A{}_k$ una partición de $S$ para los cuales se cumple que $P\left(A{}_i \right) \neq 0$ para $i=1, 2, \dotsc, k$. Entonces
+Sea $E$ un evento en un espacio muestral $S$ y sean los eventos $A{}_1, A{}_2, \dotsc, A{}_k$ una partición de $S$ para los cuales se cumple que $P\left(A{}_i \right) \neq 0$ para $i=1, 2, \dotsc, k$. Entonces,
 $$
 \begin{equation}
 P \left(E \right)=\sum_{i=1}^{k}P\left ( A{}_i \right ) \cdot P\left ( E \mid A{}_i \right ).
@@ -1289,5 +1289,81 @@ P \left(E \right)=\sum_{i=1}^{k}P\left ( A{}_i \right ) \cdot P\left ( E \mid A{
 \end{equation}
 $$
 :::
+
+::: {.example #ejemplo1-probabilidad-total name="Teorema de la Multiplicación para Dos Eventos"}
+
+Una fábrica utiliza tres máquinas $A$, $B$, $C$ para producir ciertos artículos. Supongamos qe:
+
+1.  La máquina $A$ produce el 50\% de todos los artículos, de los cuales el 3\% son defectuosos.
+2.  La máquina $B$ produce 30\% de todos los artículos, de los cuales el 4\% son defectuosos.
+3.  La máquina $C$ produce 20\% de todos los artículos, de los cuales el 5\% son defectuosos.
+
+Encuentre la probabilidad de que un artículo seleccionado aleatoriamente sea defectuoso.
+
+(ref:ejemplo1-probabilidad-total) \@ref(exm:ejemplo1-probabilidad-total)
+
+```{r ejemplo1-probabilidad-total, fig.cap="Diegrama de Venn del ejemplo (ref:ejemplo1-probabilidad-total)", class.source = "watch-out", class.output = "bg-warning"}
+knitr::include_graphics(path = "figuras/ejemplo1_probabilidad_total.png")
+```
+
+
+Sea el evento $D: \{ \textrm{el artículo seleccionado es defectuoso} \}$ . Entonces, por la ley de probabilidad total \@ref(thm:probabilidad-total) y de acuerdo con la figura \@ref(fig:ejemplo1-probabilidad-total), se obtiene que
+$$
+\begin{align*}
+P \left(D \right)&=P \left(A \right) \cdot P \left( D \mid A \right) + P \left(B \right) \cdot P \left( D \mid B \right) +  P \left(C \right) \cdot P \left( E \mid A{}_k \right)\\
+& = \left(0,5 \right) \cdot  \left( 0,03 \right) +  \left(0,3 \right) \cdot  \left( 0,04 \right) +   \left(0,2 \right) \cdot P \left( 0,05 \right)\\
+& =0,037=3,7\%.
+\end{align*}
+$$
+:::  
+
+#### Teorema de Bayes {#nt2349}
+
+Supóngase que los eventos $A{}_1, A{}_2, \dotsc, A{}_k$ forman una partición del espacio muestral $S$, y $E$ es cualquier evento de $S$. Entonces, para $1, 2, \dotsc, k$, por definición de probabilidad condicional \@ref(def:probabilidad-condicional)
+$$
+P \left( A{}_k \mid E \right)=\frac{P \left( A{}_k \cap E \right)}{P \left( E \right)},
+$$
+si $P\left(A{}_i \right) \neq 0$ para $i=1, 2, \dotsc, k$.
+Luego, por el teorema de la multiplicación para dos eventos \@ref(thm:teorema-multiplicacion) se puede establecer que
+$$
+P \left( A{}_k \mid E \right)=\frac{P \left( A{}_k \cap E \right)}{P \left( E \right)},
+$$
+Por último, haciendo uso de la ley de probabilidad total \@ref(thm:probabilidad-total) para el denominador en la ecuación anterior, se obtiene que 
+$$
+P \left( A{}_k \mid E \right)=\frac{P \left(A{}_k \right) \cdot P \left( E \mid A{}_k \right)}{\sum_{i=1}^{k}P\left ( A{}_i \right ) \cdot P\left ( E \mid A{}_i \right )}.
+$$
+El procedimiento anterior se resume en el siguiente teorema:
+
+::: {#teorema-bayes .theorem name="Teorema de Bayes"}
+
+Si los eventos $A{}_1, A{}_2, \dotsc, A{}_k$ constituyen una partición del espacio muestral $S$ y $P\left(A{}_i \right) \neq 0$ para $i=1, 2, \dotsc, k$. Entonces, para un evento $E$ cualquiera contenido en $S$ tal que $P\left(E \right) \neq 0$
+$$
+\begin{equation}
+P \left( A{}_i \mid E \right)=\frac{P \left(A{}_i \right) \cdot P \left( E \mid A{}_i \right)}{\sum_{i=1}^{k}P\left ( A{}_i \right ) \cdot P\left ( E \mid A{}_i \right )}, \textrm{para} i=1, 2, \dotsc, k.
+(\#eq:teorema-bayes)
+\end{equation}
+$$
+:::
+
+::: {.example #ejemplo1-teorema-bayes name="Teorema de Bayes"}
+
+Considere la fábrica en el ejemplo \@ref(exm:ejemplo1-probabilidad-total). Suponga que se ha encontrado un artículo defectuoso entre la producción. Encuentre la probabilidad de que este provenga de cada una de las máquinas, es decir, encuentre $P \left( A \mid D \right)$, $P \left( B \mid D \right)$ y $P \left( C \mid D \right)$. 
+
+Como se mostró en el ejemplo \@ref(exm:ejemplo1-probabilidad-total) 
+$$
+\begin{align*}
+P \left(D \right)&=P \left(A \right) \cdot P \left( D \mid A \right) + P \left(B \right) \cdot P \left( D \mid B \right) +  P \left(C \right) \cdot P \left( E \mid A{}_k \right)\\
+& = \left(0,5 \right) \cdot  \left( 0,03 \right) +  \left(0,3 \right) \cdot  \left( 0,04 \right) +   \left(0,2 \right) \cdot P \left( 0,05 \right)\\
+& =0,037=3,7\%.
+\end{align*}
+$$
+Por tanto, aplicando el teorema de Bayes en el cálculo de las probabilidades requeridas se obtiene que:
+
++  $P \left( A \mid D \right)=\frac{P \left(A \right) \cdot P \left( D \mid A \right)}{P\left ( D \right )}=\frac{ \left(0,5 \right) \cdot  \left( 0,03 \right)}{\left ( 0,037 \right )}=\frac{15}{37}=40,5\%$
++  $P \left( B \mid D \right)=\frac{P \left(B \right) \cdot P \left( D \mid B \right)}{P\left ( D \right )}=\frac{ \left(0,3 \right) \cdot  \left( 0,04 \right)}{\left ( 0,037 \right )}=\frac{12}{37}=32,5\%$
++  $P \left( C \mid D \right)=\frac{P \left(C \right) \cdot P \left( D \mid C \right)}{P\left ( D \right )}=\frac{ \left(0,2 \right) \cdot  \left( 0,05 \right)}{\left ( 0,037 \right )}=\frac{10}{37}=27\%$
+::: 
+
+
 
 

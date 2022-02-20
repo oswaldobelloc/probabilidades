@@ -1044,7 +1044,7 @@ P \left(A^c \right)=1-P \left(A \right).
 <div id="nt2345" class="section level4" number="2.3.4.5">
 <h4><span class="header-section-number">2.3.4.5</span> Probabilidad Condicional</h4>
 <div class="definition">
-<p><span id="def:probabilidadcondicional" class="definition"><strong>Definición 2.35  (Probabilidad Condicional) </strong></span>Suponga que <span class="math inline">\(B\)</span> es un evento en un espacio muestral <span class="math inline">\(S\)</span>, tal que <span class="math inline">\(P \left(B \right) &gt; 0\)</span>, es decir <span class="math inline">\(B \neq \emptyset\)</span>. La probabilidad de que ocurra un evento <span class="math inline">\(A\)</span> una vez que <span class="math inline">\(B\)</span> ha ocurrido o, en otras palabras, la <em>la probabilidad condicional de <span class="math inline">\(A\)</span> dado <span class="math inline">\(B\)</span></em>, escrita <span class="math inline">\(P \left( A \mid B \right)\)</span>, se define así:
+<p><span id="def:probabilidad-condicional" class="definition"><strong>Definición 2.35  (Probabilidad Condicional) </strong></span>Suponga que <span class="math inline">\(B\)</span> es un evento en un espacio muestral <span class="math inline">\(S\)</span>, tal que <span class="math inline">\(P \left(B \right) &gt; 0\)</span>, es decir <span class="math inline">\(B \neq \emptyset\)</span>. La probabilidad de que ocurra un evento <span class="math inline">\(A\)</span> una vez que <span class="math inline">\(B\)</span> ha ocurrido o, en otras palabras, la <em>la probabilidad condicional de <span class="math inline">\(A\)</span> dado <span class="math inline">\(B\)</span></em>, escrita <span class="math inline">\(P \left( A \mid B \right)\)</span>, se define así:
 <span class="math display" id="eq:probabilidad-condicional">\[
 \begin{equation}
 P \left( A \mid B \right)=\frac{P \left( A \cap B \right)}{P \left( B \right)}.
@@ -1752,22 +1752,22 @@ Lo que implica que los eventos <span class="math inline">\(B\)</span> y <span cl
 </div>
 <div id="nt2348" class="section level4" number="2.3.4.8">
 <h4><span class="header-section-number">2.3.4.8</span> Ley de Probabilidad Total</h4>
-<p>Suponga que un espacio muestral <span class="math inline">\(S\)</span> es la unión de los <span class="math inline">\(k\)</span> eventos mutuamente excluyentes <span class="math inline">\(A{}_1, A{}_2, \dotsc, A{}_k\)</span>; es decir, <span class="math inline">\(A{}_1, A{}_2, \dotsc, A{}_k\)</span> forman una partición de del conjunto <span class="math inline">\(S\)</span>. Además, suponga que <span class="math inline">\(E\)</span> es cualquier subconjunto de <span class="math inline">\(S\)</span>. Entonces, como se ilustra en la figura <a href="nt2.html#fig:probabilidad-total">2.13</a> para el caso <span class="math inline">\(k=5\)</span>,
+<p>Suponga que un espacio muestral <span class="math inline">\(S\)</span> es la unión de los <span class="math inline">\(k\)</span> eventos mutuamente excluyentes <span class="math inline">\(A{}_1, A{}_2, \dotsc, A{}_k\)</span>; es decir, <span class="math inline">\(A{}_1, A{}_2, \dotsc, A{}_k\)</span> forman una partición de del conjunto <span class="math inline">\(S\)</span>. Además, suponga que <span class="math inline">\(E\)</span> es cualquier subconjunto de <span class="math inline">\(S\)</span>. Entonces, como se ilustra en la figura <a href="nt2.html#fig:ejemplo1-probabilidad-total">2.14</a> para el caso <span class="math inline">\(k=5\)</span>,
 <span class="math display">\[
 E=E \cap S=E \cap \left(A{}_1 \cup A{}_2 \cup \cdots \cup A{_k}  \right)=\left(E \cap A{_1} \right) \cup \left(E \cap A{_2} \right) \cup \cdots \cup \left(E \cap A{_k} \right).
 \]</span></p>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb99-1"><a href="nt2.html#cb99-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="at">path =</span> <span class="st">&quot;figuras/probabilidad_total.png&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb99-1"><a href="nt2.html#cb99-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="at">path =</span> <span class="st">&quot;figuras/ejemplo1_probabilidad_total.png&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:probabilidad-total"></span>
-<img src="figuras/probabilidad_total.png" alt="Probabilidad Total" width="208" />
+<img src="figuras/ejemplo1_probabilidad_total.png" alt="Diagrama de Ven para la  probabilidad total" width="165" />
 <p class="caption">
-Figura 2.13: Probabilidad Total
+Figura 2.13: Diagrama de Ven para la probabilidad total
 </p>
 </div>
 <p>Como los <span class="math inline">\(k\)</span> eventos a la derecha de la ecuación anterior son también mutuamente excluyentes, esta puede reescribirse de la siguiente manera (ver el axioma 3 de los axiomas de la probabilidad <a href="nt2.html#nt2344">2.3.4.4</a>).
 <span class="math display">\[
 P \left(E \right)=P\left(E \cap A{_1} \right) + P\left(E \cap A{_2} \right) + \cdots + P\left(E \cap A{_k} \right).
 \]</span>
-Luego, utilizando el teorema de multiplicación para dos eventos <a href="nt2.html#thm:teorema-multiplicacion">2.6</a> en cada uno de los sumando de la ecuación anterior , se obtiene que
+Luego, utilizando el teorema de multiplicación para dos eventos <a href="nt2.html#thm:teorema-multiplicacion">2.6</a> en cada uno de los sumando de la ecuación anterior , bajo el supuesto de que <span class="math inline">\(P\left(A{}_i \right) \neq 0\)</span> para <span class="math inline">\(i=1, 2, \dotsc, k\)</span>, se obtiene que
 <span class="math display">\[
 \begin{align*}
 P \left(E \right)&amp;=P \left(A{}_1 \right) \cdot P \left( E \mid A{}_1 \right) + P \left(A{}_2 \right) \cdot P \left( E \mid A{}_2 \right) + \cdots + P \left(A{}_k \right) \cdot P \left( E \mid A{}_k \right)\\
@@ -1776,13 +1776,81 @@ P \left(E \right)&amp;=P \left(A{}_1 \right) \cdot P \left( E \mid A{}_1 \right)
 \]</span></p>
 <p>Lo anteriormente expuesto se resume en el siguiente teorema:</p>
 <div class="theorem">
-<p><span id="thm:probabilidad-total" class="theorem"><strong>Teorema 2.10  (Ley de la Probabilidad Total) </strong></span>Sea <span class="math inline">\(E\)</span> un evento en un espacio muestral <span class="math inline">\(S\)</span> y sea <span class="math inline">\(A{}_1, A{}_2, \dotsc, A{}_k\)</span> una partición de <span class="math inline">\(S\)</span>. Entonces
+<p><span id="thm:probabilidad-total" class="theorem"><strong>Teorema 2.10  (Ley de la Probabilidad Total) </strong></span>Sea <span class="math inline">\(E\)</span> un evento en un espacio muestral <span class="math inline">\(S\)</span> y sean los eventos <span class="math inline">\(A{}_1, A{}_2, \dotsc, A{}_k\)</span> una partición de <span class="math inline">\(S\)</span> para los cuales se cumple que <span class="math inline">\(P\left(A{}_i \right) \neq 0\)</span> para <span class="math inline">\(i=1, 2, \dotsc, k\)</span>. Entonces,
 <span class="math display" id="eq:probabilidad-total">\[
 \begin{equation}
 P \left(E \right)=\sum_{i=1}^{k}P\left ( A{}_i \right ) \cdot P\left ( E \mid A{}_i \right ).
 \tag{2.13}
 \end{equation}
 \]</span></p>
+</div>
+<div class="example">
+<p><span id="exm:ejemplo1-probabilidad-total" class="example"><strong>Ejemplo 2.14  (Teorema de la Multiplicación para Dos Eventos) </strong></span>Una fábrica utiliza tres máquinas <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, <span class="math inline">\(C\)</span> para producir ciertos artículos. Supongamos qe:</p>
+<ol style="list-style-type: decimal">
+<li>La máquina <span class="math inline">\(A\)</span> produce el 50% de todos los artículos, de los cuales el 3% son defectuosos.</li>
+<li>La máquina <span class="math inline">\(B\)</span> produce 30% de todos los artículos, de los cuales el 4% son defectuosos.</li>
+<li>La máquina <span class="math inline">\(C\)</span> produce 20% de todos los artículos, de los cuales el 5% son defectuosos.</li>
+</ol>
+<p>Encuentre la probabilidad de que un artículo seleccionado aleatoriamente sea defectuoso.</p>
+
+<div class="sourceCode" id="cb100"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb100-1"><a href="nt2.html#cb100-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="at">path =</span> <span class="st">&quot;figuras/ejemplo1_probabilidad_total.png&quot;</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:ejemplo1-probabilidad-total"></span>
+<img src="figuras/ejemplo1_probabilidad_total.png" alt="Diegrama de Venn del ejemplo 2.14" width="165" />
+<p class="caption">
+Figura 2.14: Diegrama de Venn del ejemplo <a href="nt2.html#exm:ejemplo1-probabilidad-total">2.14</a>
+</p>
+</div>
+<p>Sea el evento <span class="math inline">\(D: \{ \textrm{el artículo seleccionado es defectuoso} \}\)</span> . Entonces, por la ley de probabilidad total <a href="nt2.html#thm:probabilidad-total">2.10</a> y de acuerdo con la figura <a href="nt2.html#fig:ejemplo1-probabilidad-total">2.14</a>, se obtiene que
+<span class="math display">\[
+\begin{align*}
+P \left(D \right)&amp;=P \left(A \right) \cdot P \left( D \mid A \right) + P \left(B \right) \cdot P \left( D \mid B \right) +  P \left(C \right) \cdot P \left( E \mid A{}_k \right)\\
+&amp; = \left(0,5 \right) \cdot  \left( 0,03 \right) +  \left(0,3 \right) \cdot  \left( 0,04 \right) +   \left(0,2 \right) \cdot P \left( 0,05 \right)\\
+&amp; =0,037=3,7\%.
+\end{align*}
+\]</span></p>
+</div>
+</div>
+<div id="nt2349" class="section level4" number="2.3.4.9">
+<h4><span class="header-section-number">2.3.4.9</span> Teorema de Bayes</h4>
+<p>Supóngase que los eventos <span class="math inline">\(A{}_1, A{}_2, \dotsc, A{}_k\)</span> forman una partición del espacio muestral <span class="math inline">\(S\)</span>, y <span class="math inline">\(E\)</span> es cualquier evento de <span class="math inline">\(S\)</span>. Entonces, para <span class="math inline">\(1, 2, \dotsc, k\)</span>, por definición de probabilidad condicional <a href="nt2.html#def:probabilidad-condicional">2.35</a>
+<span class="math display">\[
+P \left( A{}_k \mid E \right)=\frac{P \left( A{}_k \cap E \right)}{P \left( E \right)},
+\]</span>
+si <span class="math inline">\(P\left(A{}_i \right) \neq 0\)</span> para <span class="math inline">\(i=1, 2, \dotsc, k\)</span>.
+Luego, por el teorema de la multiplicación para dos eventos <a href="nt2.html#thm:teorema-multiplicacion">2.6</a> se puede establecer que
+<span class="math display">\[
+P \left( A{}_k \mid E \right)=\frac{P \left( A{}_k \cap E \right)}{P \left( E \right)},
+\]</span>
+Por último, haciendo uso de la ley de probabilidad total <a href="nt2.html#thm:probabilidad-total">2.10</a> para el denominador en la ecuación anterior, se obtiene que
+<span class="math display">\[
+P \left( A{}_k \mid E \right)=\frac{P \left(A{}_k \right) \cdot P \left( E \mid A{}_k \right)}{\sum_{i=1}^{k}P\left ( A{}_i \right ) \cdot P\left ( E \mid A{}_i \right )}.
+\]</span>
+El procedimiento anterior se resume en el siguiente teorema:</p>
+<div class="theorem">
+<p><span id="thm:teorema-bayes" class="theorem"><strong>Teorema 2.11  (Teorema de Bayes) </strong></span>Si los eventos <span class="math inline">\(A{}_1, A{}_2, \dotsc, A{}_k\)</span> constituyen una partición del espacio muestral <span class="math inline">\(S\)</span> y <span class="math inline">\(P\left(A{}_i \right) \neq 0\)</span> para <span class="math inline">\(i=1, 2, \dotsc, k\)</span>. Entonces, para un evento <span class="math inline">\(E\)</span> cualquiera contenido en <span class="math inline">\(S\)</span> tal que <span class="math inline">\(P\left(E \right) \neq 0\)</span>
+<span class="math display" id="eq:teorema-bayes">\[
+\begin{equation}
+P \left( A{}_i \mid E \right)=\frac{P \left(A{}_i \right) \cdot P \left( E \mid A{}_i \right)}{\sum_{i=1}^{k}P\left ( A{}_i \right ) \cdot P\left ( E \mid A{}_i \right )}, \textrm{para} i=1, 2, \dotsc, k.
+\tag{2.14}
+\end{equation}
+\]</span></p>
+</div>
+<div class="example">
+<p><span id="exm:ejemplo1-teorema-bayes" class="example"><strong>Ejemplo 2.15  (Teorema de Bayes) </strong></span>Considere la fábrica en el ejemplo <a href="nt2.html#exm:ejemplo1-probabilidad-total">2.14</a>. Suponga que se ha encontrado un artículo defectuoso entre la producción. Encuentre la probabilidad de que este provenga de cada una de las máquinas, es decir, encuentre <span class="math inline">\(P \left( A \mid D \right)\)</span>, <span class="math inline">\(P \left( B \mid D \right)\)</span> y <span class="math inline">\(P \left( C \mid D \right)\)</span>.</p>
+<p>Como se mostró en el ejemplo <a href="nt2.html#exm:ejemplo1-probabilidad-total">2.14</a>
+<span class="math display">\[
+\begin{align*}
+P \left(D \right)&amp;=P \left(A \right) \cdot P \left( D \mid A \right) + P \left(B \right) \cdot P \left( D \mid B \right) +  P \left(C \right) \cdot P \left( E \mid A{}_k \right)\\
+&amp; = \left(0,5 \right) \cdot  \left( 0,03 \right) +  \left(0,3 \right) \cdot  \left( 0,04 \right) +   \left(0,2 \right) \cdot P \left( 0,05 \right)\\
+&amp; =0,037=3,7\%.
+\end{align*}
+\]</span>
+Por tanto, aplicando el teorema de Bayes en el cálculo de las probabilidades requeridas se obtiene que:</p>
+<ul>
+<li><span class="math inline">\(P \left( A \mid D \right)=\frac{P \left(A \right) \cdot P \left( D \mid A \right)}{P\left ( D \right )}=\frac{ \left(0,5 \right) \cdot \left( 0,03 \right)}{\left ( 0,037 \right )}=\frac{15}{37}=40,5\%\)</span></li>
+<li><span class="math inline">\(P \left( B \mid D \right)=\frac{P \left(B \right) \cdot P \left( D \mid B \right)}{P\left ( D \right )}=\frac{ \left(0,3 \right) \cdot \left( 0,04 \right)}{\left ( 0,037 \right )}=\frac{12}{37}=32,5\%\)</span></li>
+<li><span class="math inline">\(P \left( C \mid D \right)=\frac{P \left(C \right) \cdot P \left( D \mid C \right)}{P\left ( D \right )}=\frac{ \left(0,2 \right) \cdot \left( 0,05 \right)}{\left ( 0,037 \right )}=\frac{10}{37}=27\%\)</span></li>
+</ul>
 </div>
 
 </div>
