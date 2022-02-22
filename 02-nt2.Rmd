@@ -210,7 +210,7 @@ a. $A \cap A=A$. (Idempotencia)
 
 a. $A \cap B=B \cap A$. (Conmutativa)
 
-a. $(A \cap B) \cap C=A \cap (B \cap C)$. (Asociativa)
+a. $A \cap B \cap C=(A \cap B) \cap C=A \cap (B \cap C)=\left(A \cap C \right) \cap B$.  (Asociativa)
 
 a. $(A \cap B) \subseteq A$.
 
@@ -286,7 +286,7 @@ ggVennDiagram(
 La unión de dos conjuntos $A$ y $B$, representada por $A \cup B$, es el conjunto de todos los elementos que pertenecen al conjunto $A$ o al conjunto $B$ o a ambos, es decir,
 $$A∪B=\left\{x:x \in A  \textit{ o }  x \in B\right\}.$$
 
-La figura \@ref(fig:union) muestra diagramas de Venn que ilustran la intersección de los conjunto $A$ y $B$.
+La figura \@ref(fig:union) muestra diagramas de Venn que ilustran la unión de los conjunto $A$ y $B$.
 
 ```{r union, fig.cap="Diagrama de Venn para la Unión", class.source = "watch-out", class.output = "bg-warning"}
 knitr::include_graphics(path = "figuras/union.png")
@@ -303,7 +303,7 @@ a. $A \cup A=A$. (Idempotencia)
 
 a. $A \cup B=B \cup A$. (Conmutativa)
 
-a. $(A \cup B) \cup C=A \cup (B \cup C)$.  (Asociativa)
+a. $A \cup B \cup C=(A \cup B) \cup C=A \cup (B \cup C)=\left(A \cup C \right) \cup B$.  (Asociativa)
 
 a. $A \subseteq (A \cup B)$.
 
@@ -487,7 +487,7 @@ knitr::include_graphics(path = "figuras/diferenciasimetrica.png")
 
 a)	$A \oplus B=B \oplus A$ (conmutativa)
 
-b)	$(A \oplus B) \oplus C=A \oplus (B \oplus C)$ (asociativa)
+b)	$A \oplus B \oplus C=(A \oplus B) \oplus C=A \oplus (B \oplus C)=(A \oplus C) \oplus B$ (asociativa)
 
 ::: {.example #ejemp1-diferenciasimetrica name="Diferencia Simétrica"}
 
@@ -518,18 +518,36 @@ setequal(AomasB_2, BomasA_2)
 ### Principios para Determinar el Tamaño de un Conjunto {#nt226}
 
 a.	Sean $A$ y $B$ conjuntos finitos disyuntos. Entonces $A \cup B$ es finito y
-$$n \left(A \cup B \right) = n\left(A \right) + n\left(B \right).$$
+$$
+\begin{equation}
+n \left(A \cup B \right) = n\left(A \right) + n\left(B \right).
+(\#eq:tamaño-conjuntoa)
+\end{equation}
+$$
 
 b.	Sean $A$ y $B$ conjuntos finitos. Entonces
-$$n \left(A \setminus B \right)=n(A) - n(A \cap B).$$
+$$
+\begin{equation}
+n \left(A \setminus B \right)=n(A) - n(A \cap B).
+(\#eq:tamaño-conjuntob)
+\end{equation}
+$$
 
 c.	Suponiendo que $A$ es un subconjunto del conjunto Universal $\mathbb{U}$. Entonces
-$$n \left(A^c \right)=n \left(\mathbb{U} \right)-n \left(A \right).$$
+$$
+\begin{equation}
+n \left(A^c \right)=n \left(\mathbb{U} \right)-n \left(A \right).
+(\#eq:tamaño-conjuntoc)
+\end{equation}
+$$
 
 d.	**Principio de Inclusión-Exclusión**
 Sean $A$ y $B$ conjuntos finitos. Entonces $A∩B$ y $A∪B$ son finitos y
 $$
+\begin{equation}
 n \left( A \cup B \right)=n \left(A \right) + n \left(B \right) - n \left(A \cap B \right).
+(\#eq:tamaño-conjuntod)
+\end{equation}
 $$
 Es decir, el número de elementos que están en $A$ o en $B$ (o ambos) se encuentran sumando primero $n \left(A \right)$ y $n \left(B \right)$ (inclusión) y luego restando $n \left(A \cap B \right)$ (exclusión), puesto que sus elementos fueron contados dos veces. Fíjese que si los conjuntos $A$ y $B$ son disyuntos, entonces
 $$
@@ -538,27 +556,49 @@ $$
 dado que $A \cap B = \emptyset$.
 Este resultado se puede extender para tres conjuntos de la siguiente manera:
 Supongamos que $A$, $B$, $C$ son tres conjuntos finitos. Entonces $A \cup B \cup C$ es finito y
-$$n \left(A \cup B \cup C \right) = n \left(A \right) + n \left(B \right) + n \left(C \right)-n \left(A \cap B \right) - n \left(A \cap C \right) - n \left(B \cap C \right) + n \left(A \cap B \cap C \right).$$
+$$
+\begin{align*}
+n \left(A \cup B \cup C \right) =& n \left(A \right) + n \left(B \right) + n \left(C \right)-n \left(A \cap B \right)
+- n \left(A \cap C \right)\\
+&- n \left(B \cap C \right) + n \left(A \cap B \cap C \right).
+(\#eq:tamaño-conjuntod2)
+\end{align*}
+$$
 
 e.	Sean $A$ y $B$ conjuntos finitos. Entonces $A \oplus B$ es finito y
 $$
+\begin{equation}
 n \left(A \oplus B \right)=n \left(A \right) + n \left(B \right) - 2n \left(A \cap B \right).
+(\#eq:tamaño-conjuntoe)
+\end{equation}
 $$
 Se excluyen dos veces el número de elementos en $\left(A \cap B \right)$ ya que estos están contenidos en $A$ y en $B$.
 El principio anterior se puede extender a tres conjuntos de la siguiente manera:
 Supongamos que $A$, $B$, $C$ son tres conjuntos finitos. Entonces $A∪B∪C$ es finito y
 $$
-n \left( A \oplus B \oplus C \right)   = \left(A \right)+n\left(B \right)+n \left(C \right)-2n \left(A \cap B \right)-2n \left(A \cap C \right)-2n \left(B \cap C \right)+4n \left(A \cap B \cap C \right).
+\begin{align*}
+n \left( A \oplus B \oplus C \right) =& n \left(A \right)+n\left(B \right)+n \left(C \right)-2n \left(A \cap B \right)-2n \left(A \cap C \right)\\
+&-2n \left(B \cap C \right)+4n \left(A \cap B \cap C \right).
+(\#eq:tamaño-conjuntoe)
+\end{align*}
 $$
 
 f.	Supongamos que $A$, $B$, $C$ son tres conjuntos finitos. Entonces el número de elementos que están en dos de los tres conjuntos queda determinado por
 $$
-n \left[ \left(A \cap B \cap C \right) \setminus A \oplus B \oplus C \right] = n \left(A∩B \right) + n \left(A \cap C \right) + n \left(B \cap C \right) - 3n \left(A \cap B \cap C \right).
+\begin{align*}
+n \left[ \left(A \cup B \cup C \right) \setminus A \oplus B \oplus C \right] =& n \left(A \cap B \right) + n \left(A \cap C \right) + n \left(B \cap C \right)\\
+&- 3n \left(A \cap B \cap C \right).
+(\#eq:tamaño-conjuntof)
+\end{align*}
 $$
 
 g.	Supongamos que $A$, $B$, $C$ son tres conjuntos finitos. Entonces el número de elementos que están exactamente en uno de los tres conjuntos queda determinado por
 $$
-n \left(P \cup M \right)=n\left(P \right)+n \left(M \right),
+\begin{align*}
+n \left[ \left(A \oplus B \oplus C \right) \setminus \left(A \cap B \cap C \right) \right]=&n\left(A \right)+n \left(B \right)+n \left(C \right)-2n \left(A \cap B \right)-2n \left(A \cap C \right)\\
+&-2n \left(B \cap C \right)+n \left(A \cap B \cap C \right),
+(\#eq:tamaño-conjuntog)
+\end{align*}
 $$
 
 ::: {.example #ej1-cardinal name="Tamaño de un Conjunto"}
@@ -810,7 +850,7 @@ $$
 :::
 
 ::: {#nota1 .remark }
-Como se ha podido notar los eventos son conjunto por lo tanto toda la teoría de conjunto es aplicable a los eventos.
+Como se ha podido observar los eventos son conjunto por lo tanto toda la teoría de conjunto es aplicable a los eventos.
 :::
 
 ### Probabilidad {#nt234}
@@ -825,7 +865,7 @@ Si un experimento aleatorio puede ocurrir de $N$ maneras diferentes $\left(n \le
 $$
 \begin{equation}
 P\left(A \right)=\frac{n\left(A \right)}{n \left(S \right)} =\frac{n}{N}.
-(\#eq:probabilidad-clasicaa)
+(\#eq:probabilidad-clasica)
 \end{equation}
 $$
 **Ejemplo:** Supongamos que queremos conocer la probabilidad de que ocurra cara en el lanzamiento sencillo de una moneda. Dado que hay dos maneras igualmente probables como puede caer la moneda, a saber: cara o sello (suponiendo que no se pierda o caiga de canto), y de esas dos maneras puede aparecer cara de una sola forma. Sea $A$ el evento "la meoneda cae cara", entonces la probabilidad de que ocurra cara es
@@ -876,7 +916,10 @@ De estos tres axiomas se desprenden los siguientes teoremas:
 ::: {#teorema1 .theorem}
 La probabilidad de que ocurra el evento imposible es cero. Es decir,
 $$
+\begin{equation}
 P(\emptyset)=0.
+(\#eq:regla-conjunto-vacio)
+\end{equation}
 $$
 :::
 
@@ -889,7 +932,10 @@ $P \left(S \cup \emptyset \right)=P \left(S \right)+P \left( \emptyset \right)$;
 ::: {#teorema2 .theorem}
 Para cualquier evento $A \subseteq S$, se cumple que 
 $$
+\begin{equation}
 0 \le P \left(A \right) \le 1.
+(\#eq:regla-probabilidad-positiva)
+\end{equation}
 $$
 :::
 
@@ -928,7 +974,7 @@ $$
 Para dos eventos cualesquiera $A$ y $B$ del espacio muestral $S$, se cumple que
 $$
 \begin{equation}
-P\left(A \setminus B \right)=P\left(A \cap B^{c} \right)=P \left(A \right)-P\left(A \cap B^{c} \right).
+P\left(A \setminus B \right)=P \left(A \right)-P\left(A \cap B^{c} \right).
 (\#eq:regla-diferencia)
 \end{equation}
 $$
@@ -945,7 +991,7 @@ P \left(A \setminus B \right)=P \left(A\right)-P\left(A \cap B \right).
 $$
 :::
 
-```{r regla-diferencia, fig.cap="Diegrama de Venn para la regla de l diferencia", class.source = "watch-out", class.output = "bg-warning"}
+```{r regla-diferencia, fig.cap="Diegrama de Venn para la regla de la diferencia", class.source = "watch-out", class.output = "bg-warning"}
 knitr::include_graphics(
   path = "figuras/regla_diferencia.png"
 )
@@ -975,7 +1021,7 @@ P \left(A \cup B\right)&=P \left(A  \right)- P\left(A \cap B \right)+P\left( B \
 $$
 :::
 
-```{r regla-adicion, fig.cap="Diegrama de Venn para la regla de la diferencia", class.source = "watch-out", class.output = "bg-warning"}
+```{r regla-adicion, fig.cap="Diegrama de Venn para la regla de la adición", class.source = "watch-out", class.output = "bg-warning"}
 knitr::include_graphics(
   path = "figuras/regla_adicion.png"
 )
@@ -993,7 +1039,7 @@ $$
 :::
 
 ::: {#prueba-regla-adicion3 .proof}
-Al escribir $A \cup B \cup C$ como $A \cup \left(B \cup C \right)$ y utilizando la regla de la adición \@ref(thm:regla-adicion) dos veces, una vez para $P \left[A \cup \left(B \cup C \right) \right]$ y una para $P \left( B \cup C\right)$ se obtiene
+Al escribir $A \cup B \cup C$ como $A \cup \left(B \cup C \right)$, por la propiedad asociativa de la unión \@ref(nt2221), y utilizando la regla de la adición \@ref(thm:regla-adicion) dos veces, una vez para $P \left[A \cup \left(B \cup C \right) \right]$ y una para $P \left( B \cup C\right)$ se obtiene
 $$
 \begin{align*}
 P \left(A \cup B \cup C \right)&=P \left[A \cup \left(B \cup C \right) \right]\\

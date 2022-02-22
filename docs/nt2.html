@@ -412,7 +412,7 @@ Figura 2.3: Diagrama de Venn para la intersección
 <li><p><span class="math inline">\(A \cap \mathbb{U}=A\)</span>.</p></li>
 <li><p><span class="math inline">\(A \cap A=A\)</span>. (Idempotencia)</p></li>
 <li><p><span class="math inline">\(A \cap B=B \cap A\)</span>. (Conmutativa)</p></li>
-<li><p><span class="math inline">\((A \cap B) \cap C=A \cap (B \cap C)\)</span>. (Asociativa)</p></li>
+<li><p><span class="math inline">\(A \cap B \cap C=(A \cap B) \cap C=A \cap (B \cap C)=\left(A \cap C \right) \cap B\)</span>. (Asociativa)</p></li>
 <li><p><span class="math inline">\((A \cap B) \subseteq A\)</span>.</p></li>
 <li><p><span class="math inline">\((A \cap B)\subseteq B\)</span>.</p></li>
 </ol>
@@ -474,7 +474,7 @@ Figura 2.5: Diagrama de Venn para el ejemplo 2 de la intersección
 <div class="definition">
 <p><span id="def:union" class="definition"><strong>Definición 2.15  (Unión) </strong></span>La unión de dos conjuntos <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span>, representada por <span class="math inline">\(A \cup B\)</span>, es el conjunto de todos los elementos que pertenecen al conjunto <span class="math inline">\(A\)</span> o al conjunto <span class="math inline">\(B\)</span> o a ambos, es decir,
 <span class="math display">\[A∪B=\left\{x:x \in A  \textit{ o }  x \in B\right\}.\]</span></p>
-<p>La figura <a href="nt2.html#fig:union">2.6</a> muestra diagramas de Venn que ilustran la intersección de los conjunto <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span>.</p>
+<p>La figura <a href="nt2.html#fig:union">2.6</a> muestra diagramas de Venn que ilustran la unión de los conjunto <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span>.</p>
 <div class="sourceCode" id="cb78"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb78-1"><a href="nt2.html#cb78-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="at">path =</span> <span class="st">&quot;figuras/union.png&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:union"></span>
 <img src="figuras/union.PNG" alt="Diagrama de Venn para la Unión" width="270" />
@@ -490,7 +490,7 @@ Figura 2.6: Diagrama de Venn para la Unión
 <li><p><span class="math inline">\(A \cup \mathbb{U}=\mathbb{U}\)</span>.</p></li>
 <li><p><span class="math inline">\(A \cup A=A\)</span>. (Idempotencia)</p></li>
 <li><p><span class="math inline">\(A \cup B=B \cup A\)</span>. (Conmutativa)</p></li>
-<li><p><span class="math inline">\((A \cup B) \cup C=A \cup (B \cup C)\)</span>. (Asociativa)</p></li>
+<li><p><span class="math inline">\(A \cup B \cup C=(A \cup B) \cup C=A \cup (B \cup C)=\left(A \cup C \right) \cup B\)</span>. (Asociativa)</p></li>
 <li><p><span class="math inline">\(A \subseteq (A \cup B)\)</span>.</p></li>
 <li><p><span class="math inline">\(B\subseteq(A \cup B)\)</span>.</p></li>
 <li><p><span class="math inline">\(A \cap (B \cup C)=(A \cap B) \cup (A \cap C)\)</span>. (Distributiva de la intersección)</p></li>
@@ -642,7 +642,7 @@ Figura 2.9: Diagrama de Venn para la diferencia simétrica
 <h4><span class="header-section-number">2.2.5.1</span> Propiedades de la Diferencia Simétrica</h4>
 <ol style="list-style-type: lower-alpha">
 <li><p><span class="math inline">\(A \oplus B=B \oplus A\)</span> (conmutativa)</p></li>
-<li><p><span class="math inline">\((A \oplus B) \oplus C=A \oplus (B \oplus C)\)</span> (asociativa)</p></li>
+<li><p><span class="math inline">\(A \oplus B \oplus C=(A \oplus B) \oplus C=A \oplus (B \oplus C)=(A \oplus C) \oplus B\)</span> (asociativa)</p></li>
 </ol>
 <div class="example">
 <p><span id="exm:ejemp1-diferenciasimetrica" class="example"><strong>Ejemplo 2.7  (Diferencia Simétrica) </strong></span>Dados los conjuntos <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, especificados en el ejemplo <a href="nt2.html#exm:ejemp1-diferencia">2.6</a>, determine <span class="math inline">\(A \oplus B\)</span> y <span class="math inline">\(B \oplus A\)</span> y verifique la propiedad conmutativa de la diferencia simétrica.</p>
@@ -674,41 +674,85 @@ Figura 2.9: Diagrama de Venn para la diferencia simétrica
 <h3><span class="header-section-number">2.2.6</span> Principios para Determinar el Tamaño de un Conjunto</h3>
 <ol style="list-style-type: lower-alpha">
 <li><p>Sean <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> conjuntos finitos disyuntos. Entonces <span class="math inline">\(A \cup B\)</span> es finito y
-<span class="math display">\[n \left(A \cup B \right) = n\left(A \right) + n\left(B \right).\]</span></p></li>
+<span class="math display" id="eq:tamaño-conjuntoa">\[
+\begin{equation}
+n \left(A \cup B \right) = n\left(A \right) + n\left(B \right).
+\tag{2.1}
+\end{equation}
+\]</span></p></li>
 <li><p>Sean <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> conjuntos finitos. Entonces
-<span class="math display">\[n \left(A \setminus B \right)=n(A) - n(A \cap B).\]</span></p></li>
+<span class="math display" id="eq:tamaño-conjuntob">\[
+\begin{equation}
+n \left(A \setminus B \right)=n(A) - n(A \cap B).
+\tag{2.2}
+\end{equation}
+\]</span></p></li>
 <li><p>Suponiendo que <span class="math inline">\(A\)</span> es un subconjunto del conjunto Universal <span class="math inline">\(\mathbb{U}\)</span>. Entonces
-<span class="math display">\[n \left(A^c \right)=n \left(\mathbb{U} \right)-n \left(A \right).\]</span></p></li>
+<span class="math display" id="eq:tamaño-conjuntoc">\[
+\begin{equation}
+n \left(A^c \right)=n \left(\mathbb{U} \right)-n \left(A \right).
+\tag{2.3}
+\end{equation}
+\]</span></p></li>
 <li><p><strong>Principio de Inclusión-Exclusión</strong>
 Sean <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> conjuntos finitos. Entonces <span class="math inline">\(A∩B\)</span> y <span class="math inline">\(A∪B\)</span> son finitos y
-<span class="math display">\[
+<span class="math display" id="eq:tamaño-conjuntod">\[
+\begin{equation}
 n \left( A \cup B \right)=n \left(A \right) + n \left(B \right) - n \left(A \cap B \right).
+\tag{2.4}
+\end{equation}
 \]</span>
 Es decir, el número de elementos que están en <span class="math inline">\(A\)</span> o en <span class="math inline">\(B\)</span> (o ambos) se encuentran sumando primero <span class="math inline">\(n \left(A \right)\)</span> y <span class="math inline">\(n \left(B \right)\)</span> (inclusión) y luego restando <span class="math inline">\(n \left(A \cap B \right)\)</span> (exclusión), puesto que sus elementos fueron contados dos veces. Fíjese que si los conjuntos <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> son disyuntos, entonces
-<span class="math display">\[
+<span class="math display" id="eq:tamaño-conjuntod2">\[
 n \left(A \cup B \right)=n\left(A \right)+n \left(B \right),
 \]</span>
 dado que <span class="math inline">\(A \cap B = \emptyset\)</span>.
 Este resultado se puede extender para tres conjuntos de la siguiente manera:
 Supongamos que <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, <span class="math inline">\(C\)</span> son tres conjuntos finitos. Entonces <span class="math inline">\(A \cup B \cup C\)</span> es finito y
-<span class="math display">\[n \left(A \cup B \cup C \right) = n \left(A \right) + n \left(B \right) + n \left(C \right)-n \left(A \cap B \right) - n \left(A \cap C \right) - n \left(B \cap C \right) + n \left(A \cap B \cap C \right).\]</span></p></li>
+$$
+\begin{align*}
+n (A B C ) =&amp; n (A ) + n (B ) + n (C )-n (A B )</p></li>
+</ol>
+<ul>
+<li>n (A C )\
+&amp;- n (B C ) + n (A B C ).
+\tag{2.5}
+\end{align*}
+$$</li>
+</ul>
+<ol start="5" style="list-style-type: lower-alpha">
 <li><p>Sean <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> conjuntos finitos. Entonces <span class="math inline">\(A \oplus B\)</span> es finito y
-<span class="math display">\[
+<span class="math display" id="eq:tamaño-conjuntoe">\[
+\begin{equation}
 n \left(A \oplus B \right)=n \left(A \right) + n \left(B \right) - 2n \left(A \cap B \right).
+\tag{2.6}
+\end{equation}
 \]</span>
 Se excluyen dos veces el número de elementos en <span class="math inline">\(\left(A \cap B \right)\)</span> ya que estos están contenidos en <span class="math inline">\(A\)</span> y en <span class="math inline">\(B\)</span>.
 El principio anterior se puede extender a tres conjuntos de la siguiente manera:
 Supongamos que <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, <span class="math inline">\(C\)</span> son tres conjuntos finitos. Entonces <span class="math inline">\(A∪B∪C\)</span> es finito y
-<span class="math display">\[
-n \left( A \oplus B \oplus C \right)   = \left(A \right)+n\left(B \right)+n \left(C \right)-2n \left(A \cap B \right)-2n \left(A \cap C \right)-2n \left(B \cap C \right)+4n \left(A \cap B \cap C \right).
+<span class="math display" id="eq:tamaño-conjuntoe">\[
+\begin{align*}
+n \left( A \oplus B \oplus C \right) =&amp; n \left(A \right)+n\left(B \right)+n \left(C \right)-2n \left(A \cap B \right)-2n \left(A \cap C \right)\\
+&amp;-2n \left(B \cap C \right)+4n \left(A \cap B \cap C \right).
+\tag{2.6}
+\end{align*}
 \]</span></p></li>
 <li><p>Supongamos que <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, <span class="math inline">\(C\)</span> son tres conjuntos finitos. Entonces el número de elementos que están en dos de los tres conjuntos queda determinado por
-<span class="math display">\[
-n \left[ \left(A \cap B \cap C \right) \setminus A \oplus B \oplus C \right] = n \left(A∩B \right) + n \left(A \cap C \right) + n \left(B \cap C \right) - 3n \left(A \cap B \cap C \right).
+<span class="math display" id="eq:tamaño-conjuntof">\[
+\begin{align*}
+n \left[ \left(A \cup B \cup C \right) \setminus A \oplus B \oplus C \right] =&amp; n \left(A \cap B \right) + n \left(A \cap C \right) + n \left(B \cap C \right)\\
+&amp;- 3n \left(A \cap B \cap C \right).
+\tag{2.7}
+\end{align*}
 \]</span></p></li>
 <li><p>Supongamos que <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, <span class="math inline">\(C\)</span> son tres conjuntos finitos. Entonces el número de elementos que están exactamente en uno de los tres conjuntos queda determinado por
-<span class="math display">\[
-n \left(P \cup M \right)=n\left(P \right)+n \left(M \right),
+<span class="math display" id="eq:tamaño-conjuntog">\[
+\begin{align*}
+n \left[ \left(A \oplus B \oplus C \right) \setminus \left(A \cap B \cap C \right) \right]=&amp;n\left(A \right)+n \left(B \right)+n \left(C \right)-2n \left(A \cap B \right)-2n \left(A \cap C \right)\\
+&amp;-2n \left(B \cap C \right)+n \left(A \cap B \cap C \right),
+\tag{2.8}
+\end{align*}
 \]</span></p></li>
 </ol>
 <div class="example">
@@ -938,7 +982,7 @@ A \cap B \neq \emptyset.
 \]</span></p>
 </div>
 <div class="remark">
-<p><span id="nota1" class="remark"><em>Nota:</em>. </span>Como se ha podido notar los eventos son conjunto por lo tanto toda la teoría de conjunto es aplicable a los eventos.</p>
+<p><span id="nota1" class="remark"><em>Nota:</em>. </span>Como se ha podido observar los eventos son conjunto por lo tanto toda la teoría de conjunto es aplicable a los eventos.</p>
 </div>
 </div>
 </div>
@@ -951,10 +995,10 @@ A \cap B \neq \emptyset.
 <h4><span class="header-section-number">2.3.4.1</span> Enfoque Clásico (o de Laplace o a Priori) de la Probabilidad</h4>
 <div class="definition">
 <p><span id="def:probabilidadclasica" class="definition"><strong>Definición 2.32  (Enfoque Clásico de la Probabilidad) </strong></span>Si un experimento aleatorio puede ocurrir de <span class="math inline">\(N\)</span> maneras diferentes <span class="math inline">\(\left(n \left(S \right) = N \right)\)</span> igualmente probables y mutuamente excluyentes, y un evento <span class="math inline">\(A\)</span> puede ocurrir de <span class="math inline">\(n\)</span> maneras diferentes <span class="math inline">\(\left(n \left(A \right) = n \right)\)</span>. Entonces la probabilidad de que ocurra el evento <span class="math inline">\(A\)</span> viene dada por
-<span class="math display" id="eq:probabilidad-clasicaa">\[
+<span class="math display" id="eq:probabilidad-clasica">\[
 \begin{equation}
 P\left(A \right)=\frac{n\left(A \right)}{n \left(S \right)} =\frac{n}{N}.
-\tag{2.1}
+\tag{2.9}
 \end{equation}
 \]</span>
 <strong>Ejemplo:</strong> Supongamos que queremos conocer la probabilidad de que ocurra cara en el lanzamiento sencillo de una moneda. Dado que hay dos maneras igualmente probables como puede caer la moneda, a saber: cara o sello (suponiendo que no se pierda o caiga de canto), y de esas dos maneras puede aparecer cara de una sola forma. Sea <span class="math inline">\(A\)</span> el evento “la meoneda cae cara”, entonces la probabilidad de que ocurra cara es
@@ -971,11 +1015,11 @@ Para llegar a este resultado suponemos que la moneda es balanceada.</p>
 <span class="math display" id="eq:probabilidad-frecuentista">\[
 \begin{equation}
 P\left(A \right) = \lim_{N \to \infty} \frac{n}{N}.
-\tag{2.2}
+\tag{2.10}
 \end{equation}
 \]</span></p>
 <p><strong>Ejemplo:</strong> Se realiza un experimento bajo ciertas condiciones, el cual consiste en agregar un antibiótico a una cepa de bacterias. Una hora después de realizar el experimento encontramos que de 7.627 bacterias 4.036 murieron en 1 hora o antes. ¿Cuál es la probabilidad que tiene una bacteria de morir en una hora o antes?</p>
-<p>Sea <span class="math inline">\(A\)</span>: “la bacteria muere en una hora o antes”, entonces la probabilidad de que ocurra <span class="math inline">\(A\)</span>, según la ecuación <a href="nt2.html#eq:probabilidad-frecuentista">(2.2)</a>, es:
+<p>Sea <span class="math inline">\(A\)</span>: “la bacteria muere en una hora o antes”, entonces la probabilidad de que ocurra <span class="math inline">\(A\)</span>, según la ecuación <a href="nt2.html#eq:probabilidad-frecuentista">(2.10)</a>, es:
 <span class="math display">\[P\left(A \right) =\frac{4.036}{7.627}=0,5292.\]</span></p>
 </div>
 </div>
@@ -1000,8 +1044,11 @@ P(A_1 \cup A_2  \cup A_3 \cup \cdots)=P(A_1 )+P(A_2 )+P(A_3 )+ \cdots
 <p>De estos tres axiomas se desprenden los siguientes teoremas:</p>
 <div class="theorem">
 <p><span id="thm:teorema1" class="theorem"><strong>Teorema 2.3  </strong></span>La probabilidad de que ocurra el evento imposible es cero. Es decir,
-<span class="math display">\[
+<span class="math display" id="eq:regla-conjunto-vacio">\[
+\begin{equation}
 P(\emptyset)=0.
+\tag{2.11}
+\end{equation}
 \]</span></p>
 </div>
 <div class="proof">
@@ -1011,8 +1058,11 @@ Por el axioma 3,
 </div>
 <div class="theorem">
 <p><span id="thm:teorema2" class="theorem"><strong>Teorema 2.4  </strong></span>Para cualquier evento <span class="math inline">\(A \subseteq S\)</span>, se cumple que
-<span class="math display">\[
+<span class="math display" id="eq:regla-probabilidad-positiva">\[
+\begin{equation}
 0 \le P \left(A \right) \le 1.
+\tag{2.12}
+\end{equation}
 \]</span></p>
 </div>
 <div class="proof">
@@ -1030,7 +1080,7 @@ P \left(A \right) \le 1.
 <span class="math display" id="eq:regla-complemento">\[
 \begin{equation}
 P\left(A^c \right)=1-P \left(A \right).
-\tag{2.3}
+\tag{2.13}
 \end{equation}
 \]</span></p>
 </div>
@@ -1047,8 +1097,8 @@ P \left(A^c \right)=1-P \left(A \right).
 <p><span id="thm:regla-diferencia" class="theorem"><strong>Teorema 2.6  (Regla de la Diferencia) </strong></span>Para dos eventos cualesquiera <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> del espacio muestral <span class="math inline">\(S\)</span>, se cumple que
 <span class="math display" id="eq:regla-diferencia">\[
 \begin{equation}
-P\left(A \setminus B \right)=P\left(A \cap B^{c} \right)=P \left(A \right)-P\left(A \cap B^{c} \right).
-\tag{2.4}
+P\left(A \setminus B \right)=P \left(A \right)-P\left(A \cap B^{c} \right).
+\tag{2.14}
 \end{equation}
 \]</span></p>
 </div>
@@ -1076,7 +1126,7 @@ Figura 2.12: Diegrama de Venn para la regla de l diferencia
 <span class="math display" id="eq:regla-adicion">\[
 \begin{equation}
 P\left(A \cup B \right)=P \left(A \right)+P \left(B \right)-P\left(A \cap B \right).
-\tag{2.5}
+\tag{2.15}
 \end{equation}
 \]</span></p>
 </div>
@@ -1097,9 +1147,9 @@ P \left(A \cup B\right)&amp;=P \left(A  \right)- P\left(A \cap B \right)+P\left(
 <span id="cb98-2"><a href="nt2.html#cb98-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">path =</span> <span class="st">&quot;figuras/regla_adicion.png&quot;</span></span>
 <span id="cb98-3"><a href="nt2.html#cb98-3" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:regla-adicion"></span>
-<img src="figuras/regla_adicion.png" alt="Diegrama de Venn para la regla de la diferencia" width="199" />
+<img src="figuras/regla_adicion.png" alt="Diegrama de Venn para la regla de la adición" width="199" />
 <p class="caption">
-Figura 2.13: Diegrama de Venn para la regla de la diferencia
+Figura 2.13: Diegrama de Venn para la regla de la adición
 </p>
 </div>
 <div class="theorem">
@@ -1108,12 +1158,12 @@ Figura 2.13: Diegrama de Venn para la regla de la diferencia
 \begin{align*}
 P\left(A \cup B \cup C \right)=&amp;P \left(A \right)+P \left(B \right)+P \left(C \right)-P\left(A \cap B \right)\\
 &amp;-P\left(A \cap C \right) -P\left(B \cap C \right)+P\left(A \cup B \cup C \right).
-\tag{2.6}
+\tag{2.16}
 \end{align*}
 \]</span></p>
 </div>
 <div class="proof">
-<p><span id="prueba-regla-adicion3" class="proof"><em>Demostración</em>. </span>Al escribir <span class="math inline">\(A \cup B \cup C\)</span> como <span class="math inline">\(A \cup \left(B \cup C \right)\)</span> y utilizando la regla de la adición <a href="nt2.html#thm:regla-adicion">2.7</a> dos veces, una vez para <span class="math inline">\(P \left[A \cup \left(B \cup C \right) \right]\)</span> y una para <span class="math inline">\(P \left( B \cup C\right)\)</span> se obtiene
+<p><span id="prueba-regla-adicion3" class="proof"><em>Demostración</em>. </span>Al escribir <span class="math inline">\(A \cup B \cup C\)</span> como <span class="math inline">\(A \cup \left(B \cup C \right)\)</span>, por la propiedad asociativa de la unión <a href="nt2.html#nt2221">2.2.2.1</a>, y utilizando la regla de la adición <a href="nt2.html#thm:regla-adicion">2.7</a> dos veces, una vez para <span class="math inline">\(P \left[A \cup \left(B \cup C \right) \right]\)</span> y una para <span class="math inline">\(P \left( B \cup C\right)\)</span> se obtiene
 <span class="math display">\[
 \begin{align*}
 P \left(A \cup B \cup C \right)&amp;=P \left[A \cup \left(B \cup C \right) \right]\\
@@ -1145,7 +1195,7 @@ P \left(A \cup B \cup C \right)=&amp;P \left(A \right)+P \left(B \right)+P \left
 <span class="math display" id="eq:regla-adicionk">\[
 \begin{align*}
 P\left ( \bigcup_{i=1}^{k} A_{i} \right )=&amp;\sum_{i=1}^{k}P\left ( A_{i} \right )-\sum_{i&lt; j=2}^{k}P\left ( A_{i} \cap A_{j} \right )+\sum_{i&lt; j&lt; r=3}^{k}P\left ( A_{i} \cap A_{j} \cap A_{r} \right )\\ &amp;+\cdots +\left ( -1 \right )^{k-1}P\left ( \bigcap_{i=1}^{k} A_{i} \right).
-\tag{2.7}
+\tag{2.17}
 \end{align*}
 \]</span></p>
 </div>
@@ -1157,7 +1207,7 @@ P\left ( \bigcup_{i=1}^{k} A_{i} \right )=&amp;\sum_{i=1}^{k}P\left ( A_{i} \rig
 <span class="math display" id="eq:probabilidad-condicional">\[
 \begin{equation}
 P \left( A \mid B \right)=\frac{P \left( A \cap B \right)}{P \left( B \right)}.
-\tag{2.8}
+\tag{2.18}
 \end{equation}
 \]</span></p>
 </div>
@@ -1173,11 +1223,11 @@ Figura 2.14: Probabilidad Condicional
 <p><span class="math display">\[
 P \left( A \cap B \right)=\frac{n\left(A \cap B \right)}{n\left(S \right)} \; y \; P \left( B \right)=\frac{n\left( B \right)}{n\left(S \right)}.
 \]</span></p>
-<p>Luego, sustituyendo en la ecuación <a href="nt2.html#eq:probabilidad-condicional">(2.8)</a> se obtiene que:
+<p>Luego, sustituyendo en la ecuación <a href="nt2.html#eq:probabilidad-condicional">(2.18)</a> se obtiene que:
 <span class="math display" id="eq:probabilidad-condicional2">\[
 \begin{equation}
 P \left( A \cap B \right)=\frac{n\left(A \cap B \right)}{n\left(B \right)}.
-\tag{2.9}
+\tag{2.19}
 \end{equation}
 \]</span></p>
 <div class="example">
@@ -1216,7 +1266,7 @@ De lo anterior se obtiene que,
 <span class="math display">\[
 P \left( A \cap B \right)=\frac{n\left(A \cap B \right)}{n\left(S \right)}=\frac{2}{36} \; y \; P \left( B \right)=\frac{n\left( B \right)}{n\left(S \right)}=\frac{5}{36}.
 \]</span>
-Luego, sustituyendo el resultado anterior en la ecuación <a href="nt2.html#eq:probabilidad-condicional">(2.8)</a> se obtiene que la probabilidad de que uno de los dados sea 2 si la suma es 6 es:
+Luego, sustituyendo el resultado anterior en la ecuación <a href="nt2.html#eq:probabilidad-condicional">(2.18)</a> se obtiene que la probabilidad de que uno de los dados sea 2 si la suma es 6 es:
 <span class="math display">\[
 P \left( A \mid B \right)=\frac{P \left( A \cap B \right)}{P \left( B \right)}=\frac{\frac{2}{36}}{\frac{5}{36}}=\frac{2}{5}=0,4.
 \]</span></p>
@@ -1674,14 +1724,14 @@ Suma
 <span class="math display" id="eq:teorema-multiplicacion1">\[
 \begin{equation}
 P\left(A \cap B \right)=P \left(A \right) \cdot P \left( B \mid A \right).
-\tag{2.10}
+\tag{2.20}
 \end{equation}
 \]</span></p>
 <p>En forma alternativa, si <span class="math inline">\(P\left(B \right) \neq 0\)</span>, entonces
 <span class="math display" id="eq:teorema-multiplicacion2">\[
 \begin{equation}
 P\left(A \cap B \right)=P \left(B \right) \cdot P \left( A \mid B \right).
-\tag{2.11}
+\tag{2.21}
 \end{equation}
 \]</span></p>
 </div>
@@ -1690,7 +1740,7 @@ P\left(A \cap B \right)=P \left(B \right) \cdot P \left( A \mid B \right).
 <span class="math display" id="eq:teorema-multiplicacion3">\[
 \begin{equation}
 P\left(A \cap B \cap C \right)=P \left(A \right) \cdot P \left( B \mid A \right) \cdot P \left( C \mid A \cap B \right).
-\tag{2.12}
+\tag{2.22}
 \end{equation}
 \]</span></p>
 </div>
@@ -1711,7 +1761,7 @@ P \left(A \cap B \cap C \right) &amp; = P \left[ \left(A \cap B \right) \cap C \
 \begin{align*}
 P\left(A_1 \cap A_2 \cap \cdots \cap A_k \right)  = &amp;
 P \left(A_1 \right) \cdot P \left( A_2 \mid A_1 \right) \cdot P \left( A_3 \mid A_1 \cap A_2 \right)\\ &amp; \cdots P \left( A_k \mid A_1 \cap A_2 \cap \cdots \cap A_{k-1} \right).
-\tag{2.13}
+\tag{2.23}
 \end{align*}
 \]</span></p>
 </div>
@@ -1731,7 +1781,7 @@ P\left(A \cap B \right)=P \left(A \right) \cdot P \left( B \mid A \right)=\frac{
 <div class="example">
 <p><span id="exm:ejemp2-teorema-multiplicacion" class="example"><strong>Ejemplo 2.12  (Teorema de la Multiplicación para Tres Eventos) </strong></span>Una caja de bombillos contiene 100 unidades, de los cuales 5 están defectuosos. Si se seleccionan al azar tres bombillos y se sacan de la caja en sucesión sin reemplazo, ¿cuál es la probabilidad de que los tres bombillos sean defectuosos.</p>
 <p>Sea <span class="math inline">\(A\)</span> el evento de que el primer bombillo es defectuosos, <span class="math inline">\(B\)</span> el evento de que el segundo bobillo es defectuosos y <span class="math inline">\(C\)</span> el evento de que el tercer bombillo es defectuosos. Entonces, la probabilidad de que los tres bombillos sean defectuosos, según
-ecuación <a href="nt2.html#eq:teorema-multiplicacion3">(2.12)</a> dada en el teorema <a href="nt2.html#thm:teorema-multiplicacion3">2.10</a> es
+ecuación <a href="nt2.html#eq:teorema-multiplicacion3">(2.22)</a> dada en el teorema <a href="nt2.html#thm:teorema-multiplicacion3">2.10</a> es
 <span class="math display">\[
 \begin{align*}
 P\left(A \cap B \cap C \right) &amp; = P \left(A \right) \cdot P \left( B \mid A \right) \cdot P \left( C \mid A \cap B \right) \\
@@ -1769,7 +1819,7 @@ P\left(A \cap B \right)=P \left(A \right) \cdot P \left( B \right).
 <span class="math display" id="eq:eventos-independientes2">\[
 \begin{equation}
 P\left(A \cap B \right)=P \left(A \right) \cdot P \left( B \right).
-\tag{2.14}
+\tag{2.24}
 \end{equation}
 \]</span>
 De lo contrario, es decir, si
@@ -1787,14 +1837,14 @@ se dice que los eventos <span class="math inline">\(A\)</span> y <span class="ma
 &amp; P\left(A \cap B \right)=P \left(A \right) \cdot P \left(B \right)\\
 &amp; P\left(A \cap C \right)=P \left(A \right) \cdot P \left(C \right)\\
 &amp; P\left(B \cap C \right)=P \left(B \right) \cdot P \left(C \right).
-\tag{2.15}
+\tag{2.25}
 \end{align*}
 \]</span></li>
 <li>La probabilidad de la intersección de los tres eventos es igual a el producto de sus probabilidades, es decir<br />
 <span class="math display" id="eq:eventos-independientes3-2">\[
 \begin{equation}
 P\left(A \cap B \cap C \right)  =P \left(A \right) \cdot P \left(B \right) \cdot P \left(C \right)
-\tag{2.16}
+\tag{2.26}
 \end{equation}
 \]</span></li>
 </ol>
@@ -1809,7 +1859,7 @@ P\left(A \cap B \cap C \right)  =P \left(A \right) \cdot P \left(B \right) \cdot
 \begin{align*}
 a)\: &amp; P\left ( A \cap B^{c} \right )= P\left ( A \right )\cdot P\left ( B^{c} \right )\\
 b)\: &amp; P\left ( A^{c} \cap B^{c} \right )= P\left ( A^{c} \right )\cdot P\left ( B^{c} \right ).
-\tag{2.17}
+\tag{2.27}
 \end{align*}
 \]</span></p>
 </div>
@@ -1918,7 +1968,7 @@ Lo anteriormente expuesto se resume en el siguiente teorema:</p>
 <span class="math display" id="eq:probabilidad-total">\[
 \begin{equation}
 P \left(E \right)=\sum_{i=1}^{k}P\left ( A{}_i \right ) \cdot P\left ( E \mid A{}_i \right ).
-\tag{2.18}
+\tag{2.28}
 \end{equation}
 \]</span></p>
 </div>
@@ -1969,7 +2019,7 @@ El procedimiento anterior se resume en el siguiente teorema:</p>
 <span class="math display" id="eq:teorema-bayes">\[
 \begin{equation}
 P \left( A{}_i \mid E \right)=\frac{P \left(A{}_i \right) \cdot P \left( E \mid A{}_i \right)}{\sum_{i=1}^{k}P\left ( A{}_i \right ) \cdot P\left ( E \mid A{}_i \right )}, \textrm{para} i=1, 2, \dotsc, k.
-\tag{2.19}
+\tag{2.29}
 \end{equation}
 \]</span></p>
 </div>
