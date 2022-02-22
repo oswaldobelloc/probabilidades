@@ -1344,7 +1344,7 @@ $$
 
 ::: {#eventos-independientes3 .definition name="Independencia de (ref:eventos-independientes) Eventos"}
 
-Los eventos $A{}_1, A{}_2, \dots, \;\textrm{y}\; A{}_k$ son independientes si y sólo si la la probabilidad de la intersección de $2, 3, \dots, \;\textrm{o}\; k$ de estos eventos es igual al producto de sus respectivas probabilidades.
+Los eventos $A{}_1, A{}_2, \dots, \;\textrm{y}\; A{}_k$ son independientes si y sólo si la probabilidad de la intersección de $2, 3, \dots, \;\textrm{o}\; k$ de estos eventos es igual al producto de sus respectivas probabilidades.
 :::
 
 ::: {#teorema-eventos-independientes .theorem}
@@ -1443,9 +1443,9 @@ Lo que implica que los eventos $B$ y $C$ no son independientes (son dependientes
 Note de la definición \@ref(def:eventos-independientes3) que estos tres eventos no son independientes, dado que los eventos $A$ y $B$ y $A$ y $C$ no son independientes, aunque solo basta que uno de los tres pares de eventos no sean independientes para concluir que los tres eventos no son independientes.
 :::
 
-#### Ley de Probabilidad Total {#nt2348}
+#### Ley de la Probabilidad Total {#nt2348}
 
-Suponga que un espacio muestral $S$ es la unión de los $k$ eventos mutuamente excluyentes $A{}_1, A{}_2, \dotsc, A{}_k$; es decir, $A{}_1, A{}_2, \dotsc, A{}_k$ forman una partición de del conjunto $S$. Además, suponga que $E$ es cualquier subconjunto de $S$, con . Entonces, como se ilustra en la figura \@ref(fig:probabilidad-total) para el caso $k=5$,
+Suponga que un espacio muestral $S$ es la unión de los $k$ eventos mutuamente excluyentes $A{}_1, A{}_2, \dotsc, A{}_k$; es decir, $A{}_1, A{}_2, \dotsc, A{}_k$ forman una partición de del conjunto $S$. Además, suponga que $E$ es cualquier subconjunto de $S$. Entonces, como se ilustra en la figura \@ref(fig:probabilidad-total) para el caso $k=5$,
 $$
 E=E \cap S=E \cap \left(A{}_1 \cup A{}_2 \cup \cdots \cup A{_k}  \right)=\left(E \cap A{_1} \right) \cup \left(E \cap A{_2} \right) \cup \cdots \cup \left(E \cap A{_k} \right).
 $$
@@ -1494,7 +1494,7 @@ knitr::include_graphics(path = "figuras/ejemplo1_probabilidad_total.png")
 ```
 
 
-Sea el evento $D: \{ \textrm{el artículo seleccionado es defectuoso} \}$ . Entonces, por la ley de probabilidad total \@ref(thm:probabilidad-total) y de acuerdo con la figura \@ref(fig:ejemplo1-probabilidad-total), se obtiene que
+Sea el evento $D: \{ \textrm{el artículo seleccionado es defectuoso} \}$ . Entonces, por la ley de la probabilidad total \@ref(thm:probabilidad-total) y de acuerdo con la figura \@ref(fig:ejemplo1-probabilidad-total), se obtiene que
 $$
 \begin{align*}
 P \left(D \right)&=P \left(A \right) \cdot P \left( D \mid A \right) + P \left(B \right) \cdot P \left( D \mid B \right) +  P \left(C \right) \cdot P \left( E \mid A{}_k \right)\\
@@ -1515,7 +1515,7 @@ $$
 P \left( A{}_i \mid E \right)=\frac{P \left( A_i \right) \cdot P \left( E \mid A_i \right)}{P \left( E \right)},
 $$
 si $P \left(A_i \right) \neq 0$ para $i=1, 2, \dotsc, k$.
-Por último, haciendo uso de la ley de probabilidad total \@ref(thm:probabilidad-total) para el denominador en la ecuación anterior, se obtiene que 
+Por último, haciendo uso de la ley de la probabilidad total \@ref(thm:probabilidad-total) para el denominador en la ecuación anterior, se obtiene que 
 $$
 P \left( A{}_i \mid E \right)=\frac{P \left(A{}_i \right) \cdot P \left( E \mid A{}_i \right)}{\sum_{i=1}^{k}P\left ( A{}_i \right ) \cdot P\left ( E \mid A{}_i \right )}.
 $$
