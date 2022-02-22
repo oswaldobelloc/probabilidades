@@ -96,6 +96,16 @@ def:probabilidadsubjetiva
 thm:teorema1
 thm:teorema2
 thm:teorema3
+eq:regla-complemento
+thm:regla-diferencia
+eq:regla-diferencia
+fig:regla-diferencia
+thm:regla-adicion
+eq:regla-adicion
+fig:regla-adicion
+thm:regla-adicion3
+eq:regla-adicion3
+eq:regla-adicionk
 def:probabilidad-condicional
 eq:probabilidad-condicional
 fig:probabilidad-condicional

@@ -1005,7 +1005,7 @@ P(\emptyset)=0.
 \]</span></p>
 </div>
 <div class="proof">
-<p><span id="pruebateorema1" class="proof"><em>Demostración</em>. </span><span class="math inline">\(S \cup \emptyset=S\)</span> y <span class="math inline">\(S \cap \emptyset=\emptyset\)</span>.
+<p><span id="prueba-teorema1" class="proof"><em>Demostración</em>. </span><span class="math inline">\(S \cup \emptyset=S\)</span> y <span class="math inline">\(S \cap \emptyset=\emptyset\)</span>.
 Por el axioma 3,
 <span class="math inline">\(P \left(S \cup \emptyset \right)=P \left(S \right)+P \left( \emptyset \right)\)</span>; pero por el axioma 2, <span class="math inline">\(P \left(S \right)=1\)</span>, y de esta manera <span class="math inline">\(P(\emptyset)=0\)</span>.</p>
 </div>
@@ -1016,7 +1016,7 @@ Por el axioma 3,
 \]</span></p>
 </div>
 <div class="proof">
-<p><span id="pruebateorema2" class="proof"><em>Demostración</em>. </span>Por el axioma 1 <span class="math inline">\(P(A) \ge 0\)</span>; de aquí que solo es necesario probar que <span class="math inline">\(P(A) \le 1\)</span>.
+<p><span id="prueba-teorema2" class="proof"><em>Demostración</em>. </span>Por el axioma 1 <span class="math inline">\(P(A) \ge 0\)</span>; de aquí que solo es necesario probar que <span class="math inline">\(P(A) \le 1\)</span>.
 <span class="math inline">\(A \cup A^c = S\)</span> y <span class="math inline">\(A \cap A^c = \emptyset\)</span>.
 Por los axiomas 2 y 3,
 <span class="math inline">\(P \left(A \cup A^c \right)=P \left(A \right)+P \left(A^c \right)=P \left(S \right)=1\)</span>;
@@ -1027,17 +1027,126 @@ P \left(A \right) \le 1.
 </div>
 <div class="theorem">
 <p><span id="thm:teorema3" class="theorem"><strong>Teorema 2.5  (Regla del Complemento) </strong></span>Para cualquier evento <span class="math inline">\(A\)</span>, se tiene
-<span class="math display">\[
+<span class="math display" id="eq:regla-complemento">\[
+\begin{equation}
 P\left(A^c \right)=1-P \left(A \right).
+\tag{2.3}
+\end{equation}
 \]</span></p>
 </div>
 <div class="proof">
-<p><span id="pruebateorema3" class="proof"><em>Demostración</em>. </span>Como <span class="math inline">\(A \cup A^c = S\)</span> y <span class="math inline">\(A \cap A^c= \emptyset\)</span>.
+<p><span id="prueba-teorema3" class="proof"><em>Demostración</em>. </span>Como <span class="math inline">\(A \cup A^c = S\)</span> y <span class="math inline">\(A \cap A^c= \emptyset\)</span>.
 Por los axiomas 2 y 3,
 <span class="math inline">\(P \left(A \cup A^c \right)=P \left(A \right)+P \left(A^c \right)=P \left(S \right)=1\)</span>;
 De aquí que
 <span class="math display">\[
 P \left(A^c \right)=1-P \left(A \right).
+\]</span></p>
+</div>
+<div class="theorem">
+<p><span id="thm:regla-diferencia" class="theorem"><strong>Teorema 2.6  (Regla de la Diferencia) </strong></span>Para dos eventos cualesquiera <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> del espacio muestral <span class="math inline">\(S\)</span>, se cumple que
+<span class="math display" id="eq:regla-diferencia">\[
+\begin{equation}
+P\left(A \setminus B \right)=P\left(A \cap B^{c} \right)=P \left(A \right)-P\left(A \cap B^{c} \right).
+\tag{2.4}
+\end{equation}
+\]</span></p>
+</div>
+<div class="proof">
+<p><span id="prueba-regla-diferencia" class="proof"><em>Demostración</em>. </span>Como se muestra en la figura <a href="nt2.html#fig:regla-diferencia">2.12</a>, <span class="math inline">\(A=\left(A\setminus B \right) \cup \left(A \cap B \right)\)</span> donde <span class="math inline">\(A \setminus B\)</span> y <span class="math inline">\(A \cap B\)</span> son mutuamente excluyentes. En consecuencia, por el tercer axioma de la probabilidad definido en la sección <a href="nt2.html#nt2344">2.3.4.4</a>,
+<span class="math display">\[
+P \left(A\right)=P \left(A \setminus B \right)+P\left(A \cap B \right).
+\]</span>
+De donde se obtiene,
+<span class="math display">\[
+P \left(A \setminus B \right)=P \left(A\right)-P\left(A \cap B \right).
+\]</span></p>
+</div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb97-1"><a href="nt2.html#cb97-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(</span>
+<span id="cb97-2"><a href="nt2.html#cb97-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">path =</span> <span class="st">&quot;figuras/regla_diferencia.png&quot;</span></span>
+<span id="cb97-3"><a href="nt2.html#cb97-3" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:regla-diferencia"></span>
+<img src="figuras/regla_diferencia.png" alt="Diegrama de Venn para la regla de l diferencia" width="204" />
+<p class="caption">
+Figura 2.12: Diegrama de Venn para la regla de l diferencia
+</p>
+</div>
+<div class="theorem">
+<p><span id="thm:regla-adicion" class="theorem"><strong>Teorema 2.7  (Regla de la Adición) </strong></span>Para dos eventos cualesquiera <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> del espacio muestral <span class="math inline">\(S\)</span>, se cumple que
+<span class="math display" id="eq:regla-adicion">\[
+\begin{equation}
+P\left(A \cup B \right)=P \left(A \right)+P \left(B \right)-P\left(A \cap B \right).
+\tag{2.5}
+\end{equation}
+\]</span></p>
+</div>
+<div class="proof">
+<p><span id="prueba-regla-adicion" class="proof"><em>Demostración</em>. </span>Como se muestra en la figura <a href="nt2.html#fig:regla-adicion">2.13</a>, <span class="math inline">\(A\cup B = \left(A \setminus B \right) \cup B\)</span> donde <span class="math inline">\(A \setminus B\)</span> y <span class="math inline">\(B\)</span> son conjuntos mutuamente excluyentes. En consecuencia, por el tercer axioma de la probabilidad definido en la sección <a href="nt2.html#nt2344">2.3.4.4</a>,
+<span class="math display">\[
+P \left(A \cup B\right)=P \left(A \setminus B \right)+P\left( B \right).
+\]</span>
+De donde se obtiene, por la regla de la diferencia <a href="nt2.html#thm:regla-diferencia">2.6</a>
+<span class="math display">\[
+\begin{align*}
+P \left(A \cup B\right)&amp;=P \left(A  \right)- P\left(A \cap B \right)+P\left( B \right)\\
+&amp;=P \left(A  \right)+P\left( B \right)- P\left(A \cap B \right).
+\end{align*}
+\]</span></p>
+</div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb98-1"><a href="nt2.html#cb98-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(</span>
+<span id="cb98-2"><a href="nt2.html#cb98-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">path =</span> <span class="st">&quot;figuras/regla_adicion.png&quot;</span></span>
+<span id="cb98-3"><a href="nt2.html#cb98-3" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:regla-adicion"></span>
+<img src="figuras/regla_adicion.png" alt="Diegrama de Venn para la regla de la diferencia" width="199" />
+<p class="caption">
+Figura 2.13: Diegrama de Venn para la regla de la diferencia
+</p>
+</div>
+<div class="theorem">
+<p><span id="thm:regla-adicion3" class="theorem"><strong>Teorema 2.8  (Regla de la Adición para Tres Eventos) </strong></span>Si <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span> y <span class="math inline">\(C\)</span> son tres eventos cualesquiera del espacio muestral <span class="math inline">\(S\)</span>, entonces
+<span class="math display" id="eq:regla-adicion3">\[
+\begin{align*}
+P\left(A \cup B \cup C \right)=&amp;P \left(A \right)+P \left(B \right)+P \left(C \right)-P\left(A \cap B \right)\\
+&amp;-P\left(A \cap C \right) -P\left(B \cap C \right)+P\left(A \cup B \cup C \right).
+\tag{2.6}
+\end{align*}
+\]</span></p>
+</div>
+<div class="proof">
+<p><span id="prueba-regla-adicion3" class="proof"><em>Demostración</em>. </span>Al escribir <span class="math inline">\(A \cup B \cup C\)</span> como <span class="math inline">\(A \cup \left(B \cup C \right)\)</span> y utilizando la regla de la adición <a href="nt2.html#thm:regla-adicion">2.7</a> dos veces, una vez para <span class="math inline">\(P \left[A \cup \left(B \cup C \right) \right]\)</span> y una para <span class="math inline">\(P \left( B \cup C\right)\)</span> se obtiene
+<span class="math display">\[
+\begin{align*}
+P \left(A \cup B \cup C \right)&amp;=P \left[A \cup \left(B \cup C \right) \right]\\
+&amp;=P \left(A \right)+P \left(B \cup C \right)-P \left[A \cap \left(B \cup C \right) \right]\\
+&amp;=P \left(A \right)+P \left(B \right)+P \left(C \right)-P \left(B \cap C \right)-P \left[A \cap \left(B \cup C \right) \right]\\.
+\end{align*}
+\]</span>
+De la propiedad distributiva de la intersección descrita en <a href="nt2.html#nt2221">2.2.2.1</a>, se sigue que
+<span class="math display">\[
+\begin{align*}
+P \left[A \cap \left(B \cup C \right) \right]&amp;=P \left[ \left(A \cap B \right) \cup \left(A \cap C \right) \right]\\
+&amp;=P\left(A \cap B \right) + P\left(A \cap C \right)-P \left[ \left(A \cap B \right) \cap \left(B \cap C \right) \right]\\
+&amp;=P\left(A \cap B \right) + P\left(A \cap C \right)-P\left(A \cap B \cap C \right)
+\end{align*}
+\]</span>
+y por tanto, que
+<span class="math display">\[
+\begin{align*}
+P \left(A \cup B \cup C \right)=&amp;P \left(A \right)+P \left(B \right)+P \left(C \right)-P \left(B \cap C \right)\\
+&amp;-\left[P\left(A \cap B \right) + P\left(A \cap C \right)-P\left(A \cap B \cap C \right) \right]\\
+=&amp;P \left(A \right)+P \left(B \right)+P \left(C \right)-P \left(A \cap B \right)-P \left(A \cap C \right)\\
+&amp;-P \left(C \cap B \right)+P\left(A \cap B \cap C \right)
+\end{align*}
+\]</span></p>
+</div>
+
+<div class="theorem">
+<p><span id="thm:regla-adicion3" class="theorem"><strong>Teorema 2.8  (Regla de la Adición para <span class="math inline">\(k\)</span> Eventos) </strong></span>Sean <span class="math inline">\(A_1, A_2, \dotsc, A_k\)</span> <span class="math inline">\(k\)</span> sucesos cualesquiera del espacio muestral <span class="math inline">\(S\)</span>. Entonces
+<span class="math display" id="eq:regla-adicionk">\[
+\begin{align*}
+P\left ( \bigcup_{i=1}^{k} A_{i} \right )=&amp;\sum_{i=1}^{k}P\left ( A_{i} \right )-\sum_{i&lt; j=2}^{k}P\left ( A_{i} \cap A_{j} \right )+\sum_{i&lt; j&lt; r=3}^{k}P\left ( A_{i} \cap A_{j} \cap A_{r} \right )\\ &amp;+\cdots +\left ( -1 \right )^{k-1}P\left ( \bigcap_{i=1}^{k} A_{i} \right).
+\tag{2.7}
+\end{align*}
 \]</span></p>
 </div>
 </div>
@@ -1048,27 +1157,27 @@ P \left(A^c \right)=1-P \left(A \right).
 <span class="math display" id="eq:probabilidad-condicional">\[
 \begin{equation}
 P \left( A \mid B \right)=\frac{P \left( A \cap B \right)}{P \left( B \right)}.
-\tag{2.3}
+\tag{2.8}
 \end{equation}
 \]</span></p>
 </div>
-<p>Como se ilustra en el diagrama de Venn en la figura <a href="nt2.html#fig:probabilidad-condicional">2.12</a>, <span class="math inline">\(P \left( A \mid B \right)\)</span> mide, en cierto sentido, la probabilidad relativa de <span class="math inline">\(A\)</span> con respecto al espacio reducido <span class="math inline">\(B\)</span>.</p>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb97-1"><a href="nt2.html#cb97-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="at">path =</span> <span class="st">&quot;figuras/probabilidad_condicional.png&quot;</span>)</span></code></pre></div>
+<p>Como se ilustra en el diagrama de Venn en la figura <a href="nt2.html#fig:probabilidad-condicional">2.14</a>, <span class="math inline">\(P \left( A \mid B \right)\)</span> mide, en cierto sentido, la probabilidad relativa de <span class="math inline">\(A\)</span> con respecto al espacio reducido <span class="math inline">\(B\)</span>.</p>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb99-1"><a href="nt2.html#cb99-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="at">path =</span> <span class="st">&quot;figuras/probabilidad_condicional.png&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:probabilidad-condicional"></span>
 <img src="figuras/probabilidad_condicional.png" alt="Probabilidad Condicional" width="163" />
 <p class="caption">
-Figura 2.12: Probabilidad Condicional
+Figura 2.14: Probabilidad Condicional
 </p>
 </div>
 <p>Ahora, suponga que <span class="math inline">\(S\)</span> es un espacio equiprobable y sea <span class="math inline">\(n\left(A\right)\)</span> el número de elementos en el evento <span class="math inline">\(A\)</span>. Entonces,</p>
 <p><span class="math display">\[
 P \left( A \cap B \right)=\frac{n\left(A \cap B \right)}{n\left(S \right)} \; y \; P \left( B \right)=\frac{n\left( B \right)}{n\left(S \right)}.
 \]</span></p>
-<p>Luego, sustituyendo en la ecuación <a href="nt2.html#eq:probabilidad-condicional">(2.3)</a> se obtiene que:
+<p>Luego, sustituyendo en la ecuación <a href="nt2.html#eq:probabilidad-condicional">(2.8)</a> se obtiene que:
 <span class="math display" id="eq:probabilidad-condicional2">\[
 \begin{equation}
 P \left( A \cap B \right)=\frac{n\left(A \cap B \right)}{n\left(B \right)}.
-\tag{2.4}
+\tag{2.9}
 \end{equation}
 \]</span></p>
 <div class="example">
@@ -1107,37 +1216,37 @@ De lo anterior se obtiene que,
 <span class="math display">\[
 P \left( A \cap B \right)=\frac{n\left(A \cap B \right)}{n\left(S \right)}=\frac{2}{36} \; y \; P \left( B \right)=\frac{n\left( B \right)}{n\left(S \right)}=\frac{5}{36}.
 \]</span>
-Luego, sustituyendo el resultado anterior en la ecuación <a href="nt2.html#eq:probabilidad-condicional">(2.3)</a> se obtiene que la probabilidad de que uno de los dados sea 2 si la suma es 6 es:
+Luego, sustituyendo el resultado anterior en la ecuación <a href="nt2.html#eq:probabilidad-condicional">(2.8)</a> se obtiene que la probabilidad de que uno de los dados sea 2 si la suma es 6 es:
 <span class="math display">\[
 P \left( A \mid B \right)=\frac{P \left( A \cap B \right)}{P \left( B \right)}=\frac{\frac{2}{36}}{\frac{5}{36}}=\frac{2}{5}=0,4.
 \]</span></p>
 <p>El espacio muestral <span class="math inline">\(S\)</span> para este ejemplo se puede listar con el siguiente script de <span style="color: blue;">R</span>. Note que en la tabla <a href="nt2.html#tab:dados">2.1</a> las filas en color azul representa el evento <span class="math inline">\(B\)</span>.</p>
-<div class="sourceCode" id="cb98"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb98-1"><a href="nt2.html#cb98-1" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">&lt;-</span> <span class="fu">urnsamples</span>(</span>
-<span id="cb98-2"><a href="nt2.html#cb98-2" aria-hidden="true" tabindex="-1"></a>  <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,</span>
-<span id="cb98-3"><a href="nt2.html#cb98-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">size =</span> <span class="dv">2</span>, <span class="at">replace =</span> T, <span class="at">ordered =</span> T</span>
-<span id="cb98-4"><a href="nt2.html#cb98-4" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
-<span id="cb98-5"><a href="nt2.html#cb98-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb98-6"><a href="nt2.html#cb98-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb98-7"><a href="nt2.html#cb98-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">suma =</span> X1 <span class="sc">+</span> X2</span>
-<span id="cb98-8"><a href="nt2.html#cb98-8" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb98-9"><a href="nt2.html#cb98-9" aria-hidden="true" tabindex="-1"></a>kableExtra<span class="sc">::</span><span class="fu">kbl</span>(</span>
-<span id="cb98-10"><a href="nt2.html#cb98-10" aria-hidden="true" tabindex="-1"></a>  dados,</span>
-<span id="cb98-11"><a href="nt2.html#cb98-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">&quot;Dado 1&quot;</span>, <span class="st">&quot;Dado 2&quot;</span>, <span class="st">&quot;Suma&quot;</span>),</span>
-<span id="cb98-12"><a href="nt2.html#cb98-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">format.args =</span> <span class="fu">list</span>(<span class="at">decimal.mark =</span> <span class="st">&quot;,&quot;</span>, <span class="at">big.mark =</span> <span class="st">&quot;.&quot;</span>),</span>
-<span id="cb98-13"><a href="nt2.html#cb98-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">booktabs =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb98-14"><a href="nt2.html#cb98-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">caption =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">label{tab2:dados}Lanzamiento de dos dados&quot;</span>,</span>
-<span id="cb98-15"><a href="nt2.html#cb98-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">escape =</span> <span class="cn">FALSE</span></span>
-<span id="cb98-16"><a href="nt2.html#cb98-16" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
-<span id="cb98-17"><a href="nt2.html#cb98-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(</span>
-<span id="cb98-18"><a href="nt2.html#cb98-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">bootstrap_options =</span> <span class="st">&quot;striped&quot;</span>,</span>
-<span id="cb98-19"><a href="nt2.html#cb98-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">full_width =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb98-20"><a href="nt2.html#cb98-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">fixed_thead =</span> T</span>
-<span id="cb98-21"><a href="nt2.html#cb98-21" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb98-22"><a href="nt2.html#cb98-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">row_spec</span>(</span>
-<span id="cb98-23"><a href="nt2.html#cb98-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">which</span>(dados<span class="sc">$</span>suma <span class="sc">==</span> <span class="st">&quot;6&quot;</span>), <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">strikeout =</span> F</span>
-<span id="cb98-24"><a href="nt2.html#cb98-24" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
-<span id="cb98-25"><a href="nt2.html#cb98-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_classic_2</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb98-26"><a href="nt2.html#cb98-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scroll_box</span>(<span class="at">width =</span> <span class="st">&quot;100%&quot;</span>, <span class="at">height =</span> <span class="st">&quot;400px&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb100-1"><a href="nt2.html#cb100-1" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">&lt;-</span> <span class="fu">urnsamples</span>(</span>
+<span id="cb100-2"><a href="nt2.html#cb100-2" aria-hidden="true" tabindex="-1"></a>  <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,</span>
+<span id="cb100-3"><a href="nt2.html#cb100-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">size =</span> <span class="dv">2</span>, <span class="at">replace =</span> T, <span class="at">ordered =</span> T</span>
+<span id="cb100-4"><a href="nt2.html#cb100-4" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
+<span id="cb100-5"><a href="nt2.html#cb100-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb100-6"><a href="nt2.html#cb100-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb100-7"><a href="nt2.html#cb100-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">suma =</span> X1 <span class="sc">+</span> X2</span>
+<span id="cb100-8"><a href="nt2.html#cb100-8" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb100-9"><a href="nt2.html#cb100-9" aria-hidden="true" tabindex="-1"></a>kableExtra<span class="sc">::</span><span class="fu">kbl</span>(</span>
+<span id="cb100-10"><a href="nt2.html#cb100-10" aria-hidden="true" tabindex="-1"></a>  dados,</span>
+<span id="cb100-11"><a href="nt2.html#cb100-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">&quot;Dado 1&quot;</span>, <span class="st">&quot;Dado 2&quot;</span>, <span class="st">&quot;Suma&quot;</span>),</span>
+<span id="cb100-12"><a href="nt2.html#cb100-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">format.args =</span> <span class="fu">list</span>(<span class="at">decimal.mark =</span> <span class="st">&quot;,&quot;</span>, <span class="at">big.mark =</span> <span class="st">&quot;.&quot;</span>),</span>
+<span id="cb100-13"><a href="nt2.html#cb100-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">booktabs =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb100-14"><a href="nt2.html#cb100-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">caption =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">label{tab2:dados}Lanzamiento de dos dados&quot;</span>,</span>
+<span id="cb100-15"><a href="nt2.html#cb100-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">escape =</span> <span class="cn">FALSE</span></span>
+<span id="cb100-16"><a href="nt2.html#cb100-16" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
+<span id="cb100-17"><a href="nt2.html#cb100-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(</span>
+<span id="cb100-18"><a href="nt2.html#cb100-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">bootstrap_options =</span> <span class="st">&quot;striped&quot;</span>,</span>
+<span id="cb100-19"><a href="nt2.html#cb100-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">full_width =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb100-20"><a href="nt2.html#cb100-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">fixed_thead =</span> T</span>
+<span id="cb100-21"><a href="nt2.html#cb100-21" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb100-22"><a href="nt2.html#cb100-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">row_spec</span>(</span>
+<span id="cb100-23"><a href="nt2.html#cb100-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">which</span>(dados<span class="sc">$</span>suma <span class="sc">==</span> <span class="st">&quot;6&quot;</span>), <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">strikeout =</span> F</span>
+<span id="cb100-24"><a href="nt2.html#cb100-24" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
+<span id="cb100-25"><a href="nt2.html#cb100-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_classic_2</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb100-26"><a href="nt2.html#cb100-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scroll_box</span>(<span class="at">width =</span> <span class="st">&quot;100%&quot;</span>, <span class="at">height =</span> <span class="st">&quot;400px&quot;</span>)</span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:400px; overflow-x: scroll; width:100%; ">
 <table class="table table-striped lightable-classic-2" style="width: auto !important; margin-left: auto; margin-right: auto; font-family: &quot;Arial Narrow&quot;, &quot;Source Sans Pro&quot;, sans-serif; margin-left: auto; margin-right: auto;">
 <caption>
@@ -1561,32 +1670,32 @@ Suma
 <div id="nt2346" class="section level4" number="2.3.4.6">
 <h4><span class="header-section-number">2.3.4.6</span> Teorema de la Multiplicación</h4>
 <div class="theorem">
-<p><span id="thm:teorema-multiplicacion" class="theorem"><strong>Teorema 2.6  (Teorema de la Multiplicación para Dos Eventos) </strong></span>Si <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> son dos eventos cualesquiera de un espacio muestral <span class="math inline">\(S\)</span> y <span class="math inline">\(P\left(A \right) \neq 0\)</span>, entonces
+<p><span id="thm:teorema-multiplicacion" class="theorem"><strong>Teorema 2.9  (Teorema de la Multiplicación para Dos Eventos) </strong></span>Si <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> son dos eventos cualesquiera de un espacio muestral <span class="math inline">\(S\)</span> y <span class="math inline">\(P\left(A \right) \neq 0\)</span>, entonces
 <span class="math display" id="eq:teorema-multiplicacion1">\[
 \begin{equation}
 P\left(A \cap B \right)=P \left(A \right) \cdot P \left( B \mid A \right).
-\tag{2.5}
+\tag{2.10}
 \end{equation}
 \]</span></p>
 <p>En forma alternativa, si <span class="math inline">\(P\left(B \right) \neq 0\)</span>, entonces
 <span class="math display" id="eq:teorema-multiplicacion2">\[
 \begin{equation}
 P\left(A \cap B \right)=P \left(B \right) \cdot P \left( A \mid B \right).
-\tag{2.6}
+\tag{2.11}
 \end{equation}
 \]</span></p>
 </div>
 <div class="theorem">
-<p><span id="thm:teorema-multiplicacion3" class="theorem"><strong>Teorema 2.7  (Teorema de la Multiplicación para Tres Eventos) </strong></span>Si <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span> y <span class="math inline">\(C\)</span> son tres eventos cualesquiera de un espacio muestral <span class="math inline">\(S\)</span>, tal que <span class="math inline">\(P\left(A \right) \neq 0\)</span> y <span class="math inline">\(P\left(A \cap B \right) \neq 0\)</span>, entonces
+<p><span id="thm:teorema-multiplicacion3" class="theorem"><strong>Teorema 2.10  (Teorema de la Multiplicación para Tres Eventos) </strong></span>Si <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span> y <span class="math inline">\(C\)</span> son tres eventos cualesquiera de un espacio muestral <span class="math inline">\(S\)</span>, tal que <span class="math inline">\(P\left(A \right) \neq 0\)</span> y <span class="math inline">\(P\left(A \cap B \right) \neq 0\)</span>, entonces
 <span class="math display" id="eq:teorema-multiplicacion3">\[
 \begin{equation}
 P\left(A \cap B \cap C \right)=P \left(A \right) \cdot P \left( B \mid A \right) \cdot P \left( C \mid A \cap B \right).
-\tag{2.7}
+\tag{2.12}
 \end{equation}
 \]</span></p>
 </div>
 <div class="proof">
-<p><span id="prueba-teorema-multiplicacion3" class="proof"><em>Demostración</em>. </span>Al escribir <span class="math inline">\(A \cap B \cap C\)</span> como <span class="math inline">\(\left(A \cap B \right) \cap C\)</span> y utilizando la fórmula del teorema <a href="nt2.html#thm:teorema-multiplicacion">2.6</a> dos veces, se obtiene
+<p><span id="prueba-teorema-multiplicacion3" class="proof"><em>Demostración</em>. </span>Al escribir <span class="math inline">\(A \cap B \cap C\)</span> como <span class="math inline">\(\left(A \cap B \right) \cap C\)</span> y utilizando la fórmula del teorema <a href="nt2.html#thm:teorema-multiplicacion">2.9</a> dos veces, se obtiene
 <span class="math display">\[
 \begin{align*}
 P \left(A \cap B \cap C \right) &amp; = P \left[ \left(A \cap B \right) \cap C \right] \\  
@@ -1597,12 +1706,12 @@ P \left(A \cap B \cap C \right) &amp; = P \left[ \left(A \cap B \right) \cap C \
 </div>
 
 <div class="theorem">
-<p><span id="thm:teorema-multiplicacionk" class="theorem"><strong>Teorema 2.8  (Teorema de la Multiplicación para <span class="math inline">\(k\)</span> Eventos) </strong></span>Si <span class="math inline">\(A{}_1, A{}_2, \dotsc, A{}_k\)</span> son <span class="math inline">\(k\)</span> eventos cualesquiera de un espacio muestral <span class="math inline">\(S\)</span>, tal que <span class="math inline">\(P\left(A{}_1 \cap A{}_2 \cap \cdots \cap A{}_{k-1} \right) \neq 0\)</span> , entonces
+<p><span id="thm:teorema-multiplicacionk" class="theorem"><strong>Teorema 2.11  (Teorema de la Multiplicación para <span class="math inline">\(k\)</span> Eventos) </strong></span>Si <span class="math inline">\(A{}_1, A{}_2, \dotsc, A{}_k\)</span> son <span class="math inline">\(k\)</span> eventos cualesquiera de un espacio muestral <span class="math inline">\(S\)</span>, tal que <span class="math inline">\(P\left(A{}_1 \cap A{}_2 \cap \cdots \cap A{}_{k-1} \right) \neq 0\)</span> , entonces
 <span class="math display" id="eq:teorema-multiplicacionk">\[
 \begin{align*}
 P\left(A_1 \cap A_2 \cap \cdots \cap A_k \right)  = &amp;
 P \left(A_1 \right) \cdot P \left( A_2 \mid A_1 \right) \cdot P \left( A_3 \mid A_1 \cap A_2 \right)\\ &amp; \cdots P \left( A_k \mid A_1 \cap A_2 \cap \cdots \cap A_{k-1} \right).
-\tag{2.8}
+\tag{2.13}
 \end{align*}
 \]</span></p>
 </div>
@@ -1622,7 +1731,7 @@ P\left(A \cap B \right)=P \left(A \right) \cdot P \left( B \mid A \right)=\frac{
 <div class="example">
 <p><span id="exm:ejemp2-teorema-multiplicacion" class="example"><strong>Ejemplo 2.12  (Teorema de la Multiplicación para Tres Eventos) </strong></span>Una caja de bombillos contiene 100 unidades, de los cuales 5 están defectuosos. Si se seleccionan al azar tres bombillos y se sacan de la caja en sucesión sin reemplazo, ¿cuál es la probabilidad de que los tres bombillos sean defectuosos.</p>
 <p>Sea <span class="math inline">\(A\)</span> el evento de que el primer bombillo es defectuosos, <span class="math inline">\(B\)</span> el evento de que el segundo bobillo es defectuosos y <span class="math inline">\(C\)</span> el evento de que el tercer bombillo es defectuosos. Entonces, la probabilidad de que los tres bombillos sean defectuosos, según
-ecuación <a href="nt2.html#eq:teorema-multiplicacion3">(2.7)</a> dada en el teorema <a href="nt2.html#thm:teorema-multiplicacion3">2.7</a> es
+ecuación <a href="nt2.html#eq:teorema-multiplicacion3">(2.12)</a> dada en el teorema <a href="nt2.html#thm:teorema-multiplicacion3">2.10</a> es
 <span class="math display">\[
 \begin{align*}
 P\left(A \cap B \cap C \right) &amp; = P \left(A \right) \cdot P \left( B \mid A \right) \cdot P \left( C \mid A \cap B \right) \\
@@ -1636,7 +1745,7 @@ P\left(A \cap B \cap C \right) &amp; = P \left(A \right) \cdot P \left( B \mid A
 <h4><span class="header-section-number">2.3.4.7</span> Eventos Independientes</h4>
 <p>En términos informales, se dice que dos eventos <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> son <strong>independientes</strong> si la ocurrencia de uno no afecta la ocurrencia del otro. Por ejemplo, si se lanzan dos monedas es de esperarse que la ocurrencia de un resultado en una moneda no afecte el resultado en la otra moneda. Del mismo modo, si se considera el inciso b) del ejemplo <a href="nt2.html#exm:ejemp1-teorema-multiplicacion">2.11</a> se puede ver que la ocurrencia de un as en la primera carta no afecta la ocurrencia de un as en la segunda carta, en tal sentido los eventos <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> son independientes. En contraste con lo anterior, el inciso a) muestra que los eventos <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> son dependientes dado que la ocurrencia de un as en la primera carta <span class="math inline">\(\left(P\left(A \right)=4/40 \right)\)</span> afecta la ocurrencia de un as en la segunda carta <span class="math inline">\(\left(P\left(B \right)=3/40 \right)\)</span>.</p>
 <p>Simbólicamente, dos eventos <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> son independientes si <span class="math inline">\(P \left( A \mid B \right)=P \left( A \right)\)</span> y <span class="math inline">\(P \left( B \mid A \right) = P \left(B \right)\)</span> y puede demostrarse que una u otra de estas igualdades implican a la otra cuando existen las dos probabilidades condicionales, es decir, cuando ni <span class="math inline">\(P \left( A \right)\)</span> ni <span class="math inline">\(P \left( B \right)\)</span> es igual a cero.</p>
-<p>Ahora bien, si se sustituye <span class="math inline">\(P \left(B \right)\)</span> por <span class="math inline">\(P \left( B \mid A \right)\)</span> en la formula del teorema <a href="nt2.html#thm:teorema-multiplicacion">2.6</a> se obtiene
+<p>Ahora bien, si se sustituye <span class="math inline">\(P \left(B \right)\)</span> por <span class="math inline">\(P \left( B \mid A \right)\)</span> en la formula del teorema <a href="nt2.html#thm:teorema-multiplicacion">2.9</a> se obtiene
 <span class="math display">\[
 \begin{align*}
 P\left(A \cap B\right)  &amp; =P\left(A \right) \cdot P \left( B \mid A \right)\\
@@ -1660,7 +1769,7 @@ P\left(A \cap B \right)=P \left(A \right) \cdot P \left( B \right).
 <span class="math display" id="eq:eventos-independientes2">\[
 \begin{equation}
 P\left(A \cap B \right)=P \left(A \right) \cdot P \left( B \right).
-\tag{2.9}
+\tag{2.14}
 \end{equation}
 \]</span>
 De lo contrario, es decir, si
@@ -1678,29 +1787,30 @@ se dice que los eventos <span class="math inline">\(A\)</span> y <span class="ma
 &amp; P\left(A \cap B \right)=P \left(A \right) \cdot P \left(B \right)\\
 &amp; P\left(A \cap C \right)=P \left(A \right) \cdot P \left(C \right)\\
 &amp; P\left(B \cap C \right)=P \left(B \right) \cdot P \left(C \right).
-\tag{2.10}
+\tag{2.15}
 \end{align*}
 \]</span></li>
 <li>La probabilidad de la intersección de los tres eventos es igual a el producto de sus probabilidades, es decir<br />
 <span class="math display" id="eq:eventos-independientes3-2">\[
 \begin{equation}
 P\left(A \cap B \cap C \right)  =P \left(A \right) \cdot P \left(B \right) \cdot P \left(C \right)
-\tag{2.11}
+\tag{2.16}
 \end{equation}
 \]</span></li>
 </ol>
 </div>
 
 <div class="definition">
-<p><span id="def:eventos-independientes3" class="definition"><strong>Definición 2.37  (Independencia de <span class="math inline">\(k\)</span> Eventos) </strong></span>Los eventos <span class="math inline">\(A{}_1, A{}_2, \dots, \;y\; A{}_k\)</span> son independientes si y sólo si la la probabilidad de la intersección de <span class="math inline">\(2, 3, \dots, \;o\; k\)</span> de estos eventos es igual al producto de sus respectivas probabilidades.</p>
+<p><span id="def:eventos-independientes3" class="definition"><strong>Definición 2.37  (Independencia de <span class="math inline">\(k\)</span> Eventos) </strong></span>Los eventos <span class="math inline">\(A{}_1, A{}_2, \dots, \;\textrm{y}\; A{}_k\)</span> son independientes si y sólo si la la probabilidad de la intersección de <span class="math inline">\(2, 3, \dots, \;\textrm{o}\; k\)</span> de estos eventos es igual al producto de sus respectivas probabilidades.</p>
 </div>
 <div class="theorem">
-<p><span id="thm:teorema-eventos-independientes" class="theorem"><strong>Teorema 2.9  </strong></span>Si los eventos <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> son independientes, entonces los eventos <span class="math inline">\(A\)</span> y <span class="math inline">\(B^c\)</span> también son independientes. Es decir,
+<p><span id="thm:teorema-eventos-independientes" class="theorem"><strong>Teorema 2.12  </strong></span>Si los eventos <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> son independientes, entonces también lo son: <span class="math inline">\(a)\; A \;\textrm{y}\; B^c\)</span>, <span class="math inline">\(b)\; A^c \;\textrm{y}\; B^c\)</span>. Es decir,
 <span class="math display" id="eq:teorema-eventos-independientes2">\[
-\begin{equation}
-P\left(A \cap B^c \right)=P \left(A \right) \cdot P \left( B^c \right).
-\tag{2.12}
-\end{equation}
+\begin{align*}
+a)\: &amp; P\left ( A \cap B^{c} \right )= P\left ( A \right )\cdot P\left ( B^{c} \right )\\
+b)\: &amp; P\left ( A^{c} \cap B^{c} \right )= P\left ( A^{c} \right )\cdot P\left ( B^{c} \right ).
+\tag{2.17}
+\end{align*}
 \]</span></p>
 </div>
 <div class="proof">
@@ -1724,6 +1834,34 @@ P \left(A \cap B^c \right) &amp; = P\left(A \right) - P\left(A \right) \cdot P\l
 \end{align*}
 \]</span>
 y, por tanto, <span class="math inline">\(A\)</span> y <span class="math inline">\(B^c\)</span> son independientes.</p>
+<p>Por las leyes de Morgan <a href="nt2.html#nt2231">2.2.3.1</a> <span class="math inline">\(A^c \cap B^c=\left(A \cup B\right)^c\)</span>. Por tanto,
+<span class="math display">\[
+P\left ( A^{c} \cap B^{c} \right )=P \left[ \left(A \cup B\right)^c \right].
+\]</span>
+Luego, por la regla del complemento <a href="nt2.html#thm:teorema3">2.5</a>
+<span class="math display">\[
+P\left ( A^{c} \cap B^{c} \right )=1-P\left ( A \cup B \right ).
+\]</span>
+Por la regla de la unión de dos conjunto <a href="nt2.html#thm:regla-adicion">2.7</a>
+<span class="math display">\[
+\begin{align*}
+P\left ( A^{c} \cap B^{c} \right )&amp;=1-\left[P\left ( A  \right )+P\left ( B  \right )-P\left ( A \cap B  \right ) \right]\\
+&amp;=1-P\left ( A  \right )-P\left (  B \right )+P\left ( A \cap B \right ).
+\end{align*}
+\]</span>
+Como <span class="math inline">\(A \;y\;B\)</span> son independientes, entonces
+<span class="math display">\[
+P\left ( A^{c} \cap B^{c} \right )=1-P\left ( A  \right )-P\left (  B \right )+P\left ( A \right ) \cdot P\left ( B \right ).
+\]</span>
+Operando algebraicamente en el miembro derecho de la ecuación anterior se obtiene que
+<span class="math display">\[
+P\left ( A^{c} \cap B^{c} \right )=\left [ 1-P\left ( A \right ) \right ]\cdot \left [ 1-P\left ( B \right ) \right ].
+\]</span>
+Por último, por la regla del complemento <a href="nt2.html#thm:teorema3">2.5</a>, se obtiene que
+<span class="math display">\[
+P\left ( A^{c} \cap B^{c} \right )= P\left ( A^{c} \right )\cdot P\left ( B^{c} \right ).
+\]</span>
+De donde se concluye que los eventos <span class="math inline">\(A^{c} \;\textrm{y}\; B^{c}\)</span> son independientes si <span class="math inline">\(A \;\textrm{y}\; B\)</span> lo son.</p>
 </div>
 <div class="example">
 <p><span id="exm:ejemp1-eventos-independientes" class="example"><strong>Ejemplo 2.13  (Eventos Independietes) </strong></span>Se lanzan tres monedas equilibradas las cueles pueden resultar en cara (<span class="math inline">\(c\)</span>) o sello (<span class="math inline">\(s\)</span>). Sean los eventos <span class="math inline">\(A: \{ \textrm{en las tres monedas sale el mismo signo} \}\)</span>; <span class="math inline">\(B: \{ \textrm{por lo menos una de las tres monedas muestra cara} \}\)</span> y <span class="math inline">\(C: \{ \textrm{por lo menos salen dos caras} \}\)</span>. Determine si estos eventos son independientes por pares.</p>
@@ -1752,40 +1890,40 @@ Lo que implica que los eventos <span class="math inline">\(B\)</span> y <span cl
 </div>
 <div id="nt2348" class="section level4" number="2.3.4.8">
 <h4><span class="header-section-number">2.3.4.8</span> Ley de Probabilidad Total</h4>
-<p>Suponga que un espacio muestral <span class="math inline">\(S\)</span> es la unión de los <span class="math inline">\(k\)</span> eventos mutuamente excluyentes <span class="math inline">\(A{}_1, A{}_2, \dotsc, A{}_k\)</span>; es decir, <span class="math inline">\(A{}_1, A{}_2, \dotsc, A{}_k\)</span> forman una partición de del conjunto <span class="math inline">\(S\)</span>. Además, suponga que <span class="math inline">\(E\)</span> es cualquier subconjunto de <span class="math inline">\(S\)</span>. Entonces, como se ilustra en la figura <a href="nt2.html#fig:ejemplo1-probabilidad-total">2.14</a> para el caso <span class="math inline">\(k=5\)</span>,
+<p>Suponga que un espacio muestral <span class="math inline">\(S\)</span> es la unión de los <span class="math inline">\(k\)</span> eventos mutuamente excluyentes <span class="math inline">\(A{}_1, A{}_2, \dotsc, A{}_k\)</span>; es decir, <span class="math inline">\(A{}_1, A{}_2, \dotsc, A{}_k\)</span> forman una partición de del conjunto <span class="math inline">\(S\)</span>. Además, suponga que <span class="math inline">\(E\)</span> es cualquier subconjunto de <span class="math inline">\(S\)</span>, con . Entonces, como se ilustra en la figura <a href="nt2.html#fig:probabilidad-total">2.15</a> para el caso <span class="math inline">\(k=5\)</span>,
 <span class="math display">\[
 E=E \cap S=E \cap \left(A{}_1 \cup A{}_2 \cup \cdots \cup A{_k}  \right)=\left(E \cap A{_1} \right) \cup \left(E \cap A{_2} \right) \cup \cdots \cup \left(E \cap A{_k} \right).
 \]</span></p>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb99-1"><a href="nt2.html#cb99-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="at">path =</span> <span class="st">&quot;figuras/ejemplo1_probabilidad_total.png&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb101-1"><a href="nt2.html#cb101-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="at">path =</span> <span class="st">&quot;figuras/probabilidad_total.png&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:probabilidad-total"></span>
-<img src="figuras/ejemplo1_probabilidad_total.png" alt="Diagrama de Ven para la  probabilidad total" width="165" />
+<img src="figuras/probabilidad_total.png" alt="Diagrama de Ven para la  probabilidad total" width="204" />
 <p class="caption">
-Figura 2.13: Diagrama de Ven para la probabilidad total
+Figura 2.15: Diagrama de Ven para la probabilidad total
 </p>
 </div>
 <p>Como los <span class="math inline">\(k\)</span> eventos a la derecha de la ecuación anterior son también mutuamente excluyentes, esta puede reescribirse de la siguiente manera (ver el axioma 3 de los axiomas de la probabilidad <a href="nt2.html#nt2344">2.3.4.4</a>).
 <span class="math display">\[
 P \left(E \right)=P\left(E \cap A{_1} \right) + P\left(E \cap A{_2} \right) + \cdots + P\left(E \cap A{_k} \right).
 \]</span>
-Luego, utilizando el teorema de multiplicación para dos eventos <a href="nt2.html#thm:teorema-multiplicacion">2.6</a> en cada uno de los sumando de la ecuación anterior , bajo el supuesto de que <span class="math inline">\(P\left(A{}_i \right) \neq 0\)</span> para <span class="math inline">\(i=1, 2, \dotsc, k\)</span>, se obtiene que
+Luego, utilizando el teorema de multiplicación para dos eventos <a href="nt2.html#thm:teorema-multiplicacion">2.9</a> en cada uno de los sumando de la ecuación anterior , bajo el supuesto de que <span class="math inline">\(P\left(A{}_i \right) \neq 0\)</span> para <span class="math inline">\(i=1, 2, \dotsc, k\)</span>, se obtiene que
 <span class="math display">\[
 \begin{align*}
 P \left(E \right)&amp;=P \left(A{}_1 \right) \cdot P \left( E \mid A{}_1 \right) + P \left(A{}_2 \right) \cdot P \left( E \mid A{}_2 \right) + \cdots + P \left(A{}_k \right) \cdot P \left( E \mid A{}_k \right)\\
 &amp;=\sum_{i=1}^{k}P\left ( A{}_i \right ) \cdot P\left ( E \mid A{}_i \right )
 \end{align*}
-\]</span></p>
-<p>Lo anteriormente expuesto se resume en el siguiente teorema:</p>
+\]</span>
+Lo anteriormente expuesto se resume en el siguiente teorema:</p>
 <div class="theorem">
-<p><span id="thm:probabilidad-total" class="theorem"><strong>Teorema 2.10  (Ley de la Probabilidad Total) </strong></span>Sea <span class="math inline">\(E\)</span> un evento en un espacio muestral <span class="math inline">\(S\)</span> y sean los eventos <span class="math inline">\(A{}_1, A{}_2, \dotsc, A{}_k\)</span> una partición de <span class="math inline">\(S\)</span> para los cuales se cumple que <span class="math inline">\(P\left(A{}_i \right) \neq 0\)</span> para <span class="math inline">\(i=1, 2, \dotsc, k\)</span>. Entonces,
+<p><span id="thm:probabilidad-total" class="theorem"><strong>Teorema 2.13  (Ley de la Probabilidad Total) </strong></span>Sea <span class="math inline">\(E\)</span> un evento en un espacio muestral <span class="math inline">\(S\)</span> y sean los eventos <span class="math inline">\(A{}_1, A{}_2, \dotsc, A{}_k\)</span> una partición de <span class="math inline">\(S\)</span> para los cuales se cumple que <span class="math inline">\(P\left(A{}_i \right) \neq 0\)</span> para <span class="math inline">\(i=1, 2, \dotsc, k\)</span>. Entonces,
 <span class="math display" id="eq:probabilidad-total">\[
 \begin{equation}
 P \left(E \right)=\sum_{i=1}^{k}P\left ( A{}_i \right ) \cdot P\left ( E \mid A{}_i \right ).
-\tag{2.13}
+\tag{2.18}
 \end{equation}
 \]</span></p>
 </div>
 <div class="example">
-<p><span id="exm:ejemplo1-probabilidad-total" class="example"><strong>Ejemplo 2.14  (Teorema de la Multiplicación para Dos Eventos) </strong></span>Una fábrica utiliza tres máquinas <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, <span class="math inline">\(C\)</span> para producir ciertos artículos. Supongamos qe:</p>
+<p><span id="exm:ejemplo1-probabilidad-total" class="example"><strong>Ejemplo 2.14  (Ley de la Probabilidad Total) </strong></span>Una fábrica utiliza tres máquinas <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, <span class="math inline">\(C\)</span> para producir ciertos artículos. Supongamos qe:</p>
 <ol style="list-style-type: decimal">
 <li>La máquina <span class="math inline">\(A\)</span> produce el 50% de todos los artículos, de los cuales el 3% son defectuosos.</li>
 <li>La máquina <span class="math inline">\(B\)</span> produce 30% de todos los artículos, de los cuales el 4% son defectuosos.</li>
@@ -1793,14 +1931,14 @@ P \left(E \right)=\sum_{i=1}^{k}P\left ( A{}_i \right ) \cdot P\left ( E \mid A{
 </ol>
 <p>Encuentre la probabilidad de que un artículo seleccionado aleatoriamente sea defectuoso.</p>
 
-<div class="sourceCode" id="cb100"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb100-1"><a href="nt2.html#cb100-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="at">path =</span> <span class="st">&quot;figuras/ejemplo1_probabilidad_total.png&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb102-1"><a href="nt2.html#cb102-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="at">path =</span> <span class="st">&quot;figuras/ejemplo1_probabilidad_total.png&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:ejemplo1-probabilidad-total"></span>
 <img src="figuras/ejemplo1_probabilidad_total.png" alt="Diegrama de Venn del ejemplo 2.14" width="165" />
 <p class="caption">
-Figura 2.14: Diegrama de Venn del ejemplo <a href="nt2.html#exm:ejemplo1-probabilidad-total">2.14</a>
+Figura 2.16: Diegrama de Venn del ejemplo <a href="nt2.html#exm:ejemplo1-probabilidad-total">2.14</a>
 </p>
 </div>
-<p>Sea el evento <span class="math inline">\(D: \{ \textrm{el artículo seleccionado es defectuoso} \}\)</span> . Entonces, por la ley de probabilidad total <a href="nt2.html#thm:probabilidad-total">2.10</a> y de acuerdo con la figura <a href="nt2.html#fig:ejemplo1-probabilidad-total">2.14</a>, se obtiene que
+<p>Sea el evento <span class="math inline">\(D: \{ \textrm{el artículo seleccionado es defectuoso} \}\)</span> . Entonces, por la ley de probabilidad total <a href="nt2.html#thm:probabilidad-total">2.13</a> y de acuerdo con la figura <a href="nt2.html#fig:ejemplo1-probabilidad-total">2.16</a>, se obtiene que
 <span class="math display">\[
 \begin{align*}
 P \left(D \right)&amp;=P \left(A \right) \cdot P \left( D \mid A \right) + P \left(B \right) \cdot P \left( D \mid B \right) +  P \left(C \right) \cdot P \left( E \mid A{}_k \right)\\
@@ -1812,26 +1950,26 @@ P \left(D \right)&amp;=P \left(A \right) \cdot P \left( D \mid A \right) + P \le
 </div>
 <div id="nt2349" class="section level4" number="2.3.4.9">
 <h4><span class="header-section-number">2.3.4.9</span> Teorema de Bayes</h4>
-<p>Supóngase que los eventos <span class="math inline">\(A{}_1, A{}_2, \dotsc, A{}_k\)</span> forman una partición del espacio muestral <span class="math inline">\(S\)</span>, y <span class="math inline">\(E\)</span> es cualquier evento de <span class="math inline">\(S\)</span>. Entonces, para <span class="math inline">\(1, 2, \dotsc, k\)</span>, por definición de probabilidad condicional <a href="nt2.html#def:probabilidad-condicional">2.35</a>
+<p>Supóngase que los eventos <span class="math inline">\(A{}_1, A{}_2, \dotsc, A{}_k\)</span> forman una partición del espacio muestral <span class="math inline">\(S\)</span>, y <span class="math inline">\(E\)</span> es cualquier evento de <span class="math inline">\(S\)</span>. Entonces, para <span class="math inline">\(i=1, 2, \dotsc, k\)</span>, por definición de probabilidad condicional <a href="nt2.html#def:probabilidad-condicional">2.35</a>
 <span class="math display">\[
-P \left( A{}_k \mid E \right)=\frac{P \left( A{}_k \cap E \right)}{P \left( E \right)},
+P \left( A{}_i \mid E \right)=\frac{P \left( A{}_i \cap E \right)}{P \left( E \right)},
 \]</span>
-si <span class="math inline">\(P\left(A{}_i \right) \neq 0\)</span> para <span class="math inline">\(i=1, 2, \dotsc, k\)</span>.
-Luego, por el teorema de la multiplicación para dos eventos <a href="nt2.html#thm:teorema-multiplicacion">2.6</a> se puede establecer que
+si <span class="math inline">\(P\left(E \right) \neq 0\)</span>. Luego, aplicando el teorema de la multiplicación para dos eventos <a href="nt2.html#thm:teorema-multiplicacion">2.9</a> en el numerador de la ecuación anterior se puede establecer que
 <span class="math display">\[
-P \left( A{}_k \mid E \right)=\frac{P \left( A{}_k \cap E \right)}{P \left( E \right)},
+P \left( A{}_i \mid E \right)=\frac{P \left( A_i \right) \cdot P \left( E \mid A_i \right)}{P \left( E \right)},
 \]</span>
-Por último, haciendo uso de la ley de probabilidad total <a href="nt2.html#thm:probabilidad-total">2.10</a> para el denominador en la ecuación anterior, se obtiene que
+si <span class="math inline">\(P \left(A_i \right) \neq 0\)</span> para <span class="math inline">\(i=1, 2, \dotsc, k\)</span>.
+Por último, haciendo uso de la ley de probabilidad total <a href="nt2.html#thm:probabilidad-total">2.13</a> para el denominador en la ecuación anterior, se obtiene que
 <span class="math display">\[
-P \left( A{}_k \mid E \right)=\frac{P \left(A{}_k \right) \cdot P \left( E \mid A{}_k \right)}{\sum_{i=1}^{k}P\left ( A{}_i \right ) \cdot P\left ( E \mid A{}_i \right )}.
+P \left( A{}_i \mid E \right)=\frac{P \left(A{}_i \right) \cdot P \left( E \mid A{}_i \right)}{\sum_{i=1}^{k}P\left ( A{}_i \right ) \cdot P\left ( E \mid A{}_i \right )}.
 \]</span>
 El procedimiento anterior se resume en el siguiente teorema:</p>
 <div class="theorem">
-<p><span id="thm:teorema-bayes" class="theorem"><strong>Teorema 2.11  (Teorema de Bayes) </strong></span>Si los eventos <span class="math inline">\(A{}_1, A{}_2, \dotsc, A{}_k\)</span> constituyen una partición del espacio muestral <span class="math inline">\(S\)</span> y <span class="math inline">\(P\left(A{}_i \right) \neq 0\)</span> para <span class="math inline">\(i=1, 2, \dotsc, k\)</span>. Entonces, para un evento <span class="math inline">\(E\)</span> cualquiera contenido en <span class="math inline">\(S\)</span> tal que <span class="math inline">\(P\left(E \right) \neq 0\)</span>
+<p><span id="thm:teorema-bayes" class="theorem"><strong>Teorema 2.14  (Teorema de Bayes) </strong></span>Si los eventos <span class="math inline">\(A{}_1, A{}_2, \dotsc, A{}_k\)</span> constituyen una partición del espacio muestral <span class="math inline">\(S\)</span> y <span class="math inline">\(P\left(A{}_i \right) \neq 0\)</span> para <span class="math inline">\(i=1, 2, \dotsc, k\)</span>. Entonces, para un evento <span class="math inline">\(E\)</span> cualquiera contenido en <span class="math inline">\(S\)</span> tal que <span class="math inline">\(P\left(E \right) \neq 0\)</span>
 <span class="math display" id="eq:teorema-bayes">\[
 \begin{equation}
 P \left( A{}_i \mid E \right)=\frac{P \left(A{}_i \right) \cdot P \left( E \mid A{}_i \right)}{\sum_{i=1}^{k}P\left ( A{}_i \right ) \cdot P\left ( E \mid A{}_i \right )}, \textrm{para} i=1, 2, \dotsc, k.
-\tag{2.14}
+\tag{2.19}
 \end{equation}
 \]</span></p>
 </div>
@@ -1847,9 +1985,15 @@ P \left(D \right)&amp;=P \left(A \right) \cdot P \left( D \mid A \right) + P \le
 \]</span>
 Por tanto, aplicando el teorema de Bayes en el cálculo de las probabilidades requeridas se obtiene que:</p>
 <ul>
-<li><span class="math inline">\(P \left( A \mid D \right)=\frac{P \left(A \right) \cdot P \left( D \mid A \right)}{P\left ( D \right )}=\frac{ \left(0,5 \right) \cdot \left( 0,03 \right)}{\left ( 0,037 \right )}=\frac{15}{37}=40,5\%\)</span></li>
-<li><span class="math inline">\(P \left( B \mid D \right)=\frac{P \left(B \right) \cdot P \left( D \mid B \right)}{P\left ( D \right )}=\frac{ \left(0,3 \right) \cdot \left( 0,04 \right)}{\left ( 0,037 \right )}=\frac{12}{37}=32,5\%\)</span></li>
-<li><span class="math inline">\(P \left( C \mid D \right)=\frac{P \left(C \right) \cdot P \left( D \mid C \right)}{P\left ( D \right )}=\frac{ \left(0,2 \right) \cdot \left( 0,05 \right)}{\left ( 0,037 \right )}=\frac{10}{37}=27\%\)</span></li>
+<li>La probabilidad de que el artículo sea producido por la máquina <span class="math inline">\(A\)</span> dado que este defectuoso se obtiene de la siguiente manera
+<span class="math display">\[P \left( A \mid D \right)=\frac{P \left(A \right) \cdot P \left( D \mid A \right)}{P\left ( D \right )}=\frac{ \left(0,5 \right) \cdot  \left( 0,03 \right)}{\left ( 0,037 \right )}=\frac{15}{37}=40,5\%.
+\]</span></li>
+<li>La probabilidad de que el artículo sea producido por la máquina <span class="math inline">\(B\)</span> dado que este defectuoso es
+<span class="math display">\[P \left( B \mid D \right)=\frac{P \left(B \right) \cdot P \left( D \mid B \right)}{P\left ( D \right )}=\frac{ \left(0,3 \right) \cdot  \left( 0,04 \right)}{\left ( 0,037 \right )}=\frac{12}{37}=32,5\%.
+\]</span></li>
+<li>La probabilidad de que el artículo sea producido por la máquina <span class="math inline">\(C\)</span> dado que este defectuoso viene dado por
+<span class="math display">\[P \left( C \mid D \right)=\frac{P \left(C \right) \cdot P \left( D \mid C \right)}{P\left ( D \right )}=\frac{ \left(0,2 \right) \cdot  \left( 0,05 \right)}{\left ( 0,037 \right )}=\frac{10}{37}=27\%.
+\]</span></li>
 </ul>
 </div>
 

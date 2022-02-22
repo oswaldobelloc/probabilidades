@@ -880,7 +880,7 @@ P(\emptyset)=0.
 $$
 :::
 
-::: {#pruebateorema1 .proof}
+::: {#prueba-teorema1 .proof}
 $S \cup \emptyset=S$ y $S \cap \emptyset=\emptyset$.
 Por el axioma 3,
 $P \left(S \cup \emptyset \right)=P \left(S \right)+P \left( \emptyset \right)$; pero por el axioma 2, $P \left(S \right)=1$, y de esta manera $P(\emptyset)=0$.
@@ -893,7 +893,7 @@ $$
 $$
 :::
 
-::: {#pruebateorema2 .proof}
+::: {#prueba-teorema2 .proof}
 Por el axioma 1 $P(A) \ge 0$; de aquí que solo es necesario probar que $P(A) \le 1$.
 $A \cup A^c = S$ y $A \cap A^c = \emptyset$.
 Por los axiomas 2 y 3,
@@ -907,11 +907,14 @@ $$
 ::: {#teorema3 .theorem name="Regla del Complemento"}
 Para cualquier evento $A$, se tiene
 $$
+\begin{equation}
 P\left(A^c \right)=1-P \left(A \right).
+(\#eq:regla-complemento)
+\end{equation}
 $$
 :::
 
-::: {#pruebateorema3 .proof}
+::: {#prueba-teorema3 .proof}
 Como $A \cup A^c = S$ y $A \cap A^c= \emptyset$.
 Por los axiomas 2 y 3,
 $P \left(A \cup A^c \right)=P \left(A \right)+P \left(A^c \right)=P \left(S \right)=1$;
@@ -920,6 +923,115 @@ $$
 P \left(A^c \right)=1-P \left(A \right).
 $$
 :::
+
+::: {#regla-diferencia .theorem name="Regla de la Diferencia"}
+Para dos eventos cualesquiera $A$ y $B$ del espacio muestral $S$, se cumple que
+$$
+\begin{equation}
+P\left(A \setminus B \right)=P\left(A \cap B^{c} \right)=P \left(A \right)-P\left(A \cap B^{c} \right).
+(\#eq:regla-diferencia)
+\end{equation}
+$$
+:::
+
+::: {#prueba-regla-diferencia .proof}
+Como se muestra en la figura \@ref(fig:regla-diferencia), $A=\left(A\setminus B \right) \cup \left(A \cap B \right)$ donde $A \setminus B$ y $A \cap B$ son mutuamente excluyentes. En consecuencia, por el tercer axioma de la probabilidad definido en la sección \@ref(nt2344),
+$$
+P \left(A\right)=P \left(A \setminus B \right)+P\left(A \cap B \right).
+$$
+De donde se obtiene,
+$$
+P \left(A \setminus B \right)=P \left(A\right)-P\left(A \cap B \right).
+$$
+:::
+
+```{r regla-diferencia, fig.cap="Diegrama de Venn para la regla de l diferencia", class.source = "watch-out", class.output = "bg-warning"}
+knitr::include_graphics(
+  path = "figuras/regla_diferencia.png"
+)
+```
+
+::: {#regla-adicion .theorem name="Regla de la Adición"}
+Para dos eventos cualesquiera $A$ y $B$ del espacio muestral $S$, se cumple que
+$$
+\begin{equation}
+P\left(A \cup B \right)=P \left(A \right)+P \left(B \right)-P\left(A \cap B \right).
+(\#eq:regla-adicion)
+\end{equation}
+$$
+:::
+
+::: {#prueba-regla-adicion .proof}
+Como se muestra en la figura \@ref(fig:regla-adicion), $A\cup B = \left(A \setminus B \right) \cup B$ donde $A \setminus B$ y $B$ son conjuntos mutuamente excluyentes. En consecuencia, por el tercer axioma de la probabilidad definido en la sección \@ref(nt2344),
+$$
+P \left(A \cup B\right)=P \left(A \setminus B \right)+P\left( B \right).
+$$
+De donde se obtiene, por la regla de la diferencia \@ref(thm:regla-diferencia) 
+$$
+\begin{align*}
+P \left(A \cup B\right)&=P \left(A  \right)- P\left(A \cap B \right)+P\left( B \right)\\
+&=P \left(A  \right)+P\left( B \right)- P\left(A \cap B \right).
+\end{align*}
+$$
+:::
+
+```{r regla-adicion, fig.cap="Diegrama de Venn para la regla de la diferencia", class.source = "watch-out", class.output = "bg-warning"}
+knitr::include_graphics(
+  path = "figuras/regla_adicion.png"
+)
+```
+
+::: {#regla-adicion3 .theorem name="Regla de la Adición para Tres Eventos"}
+Si $A$, $B$ y $C$ son tres eventos cualesquiera del espacio muestral $S$, entonces
+$$
+\begin{align*}
+P\left(A \cup B \cup C \right)=&P \left(A \right)+P \left(B \right)+P \left(C \right)-P\left(A \cap B \right)\\
+&-P\left(A \cap C \right) -P\left(B \cap C \right)+P\left(A \cup B \cup C \right).
+(\#eq:regla-adicion3)
+\end{align*}
+$$
+:::
+
+::: {#prueba-regla-adicion3 .proof}
+Al escribir $A \cup B \cup C$ como $A \cup \left(B \cup C \right)$ y utilizando la regla de la adición \@ref(thm:regla-adicion) dos veces, una vez para $P \left[A \cup \left(B \cup C \right) \right]$ y una para $P \left( B \cup C\right)$ se obtiene
+$$
+\begin{align*}
+P \left(A \cup B \cup C \right)&=P \left[A \cup \left(B \cup C \right) \right]\\
+&=P \left(A \right)+P \left(B \cup C \right)-P \left[A \cap \left(B \cup C \right) \right]\\
+&=P \left(A \right)+P \left(B \right)+P \left(C \right)-P \left(B \cap C \right)-P \left[A \cap \left(B \cup C \right) \right]\\.
+\end{align*}
+$$
+De la propiedad distributiva de la intersección descrita en \@ref(nt2221), se sigue que
+$$
+\begin{align*}
+P \left[A \cap \left(B \cup C \right) \right]&=P \left[ \left(A \cap B \right) \cup \left(A \cap C \right) \right]\\
+&=P\left(A \cap B \right) + P\left(A \cap C \right)-P \left[ \left(A \cap B \right) \cap \left(B \cap C \right) \right]\\
+&=P\left(A \cap B \right) + P\left(A \cap C \right)-P\left(A \cap B \cap C \right)
+\end{align*}
+$$
+y por tanto, que
+$$
+\begin{align*}
+P \left(A \cup B \cup C \right)=&P \left(A \right)+P \left(B \right)+P \left(C \right)-P \left(B \cap C \right)\\
+&-\left[P\left(A \cap B \right) + P\left(A \cap C \right)-P\left(A \cap B \cap C \right) \right]\\
+=&P \left(A \right)+P \left(B \right)+P \left(C \right)-P \left(A \cap B \right)-P \left(A \cap C \right)\\
+&-P \left(C \cap B \right)+P\left(A \cap B \cap C \right)
+\end{align*}
+$$
+:::
+
+(ref:regla-adicionk) $k$
+
+::: {#regla-adicion3 .theorem name="Regla de la Adición para (ref:regla-adicionk) Eventos"}
+Sean $A_1, A_2, \dotsc, A_k$ $k$ sucesos cualesquiera del espacio muestral $S$. Entonces
+$$
+\begin{align*}
+P\left ( \bigcup_{i=1}^{k} A_{i} \right )=&\sum_{i=1}^{k}P\left ( A_{i} \right )-\sum_{i< j=2}^{k}P\left ( A_{i} \cap A_{j} \right )+\sum_{i< j< r=3}^{k}P\left ( A_{i} \cap A_{j} \cap A_{r} \right )\\ &+\cdots +\left ( -1 \right )^{k-1}P\left ( \bigcap_{i=1}^{k} A_{i} \right).
+(\#eq:regla-adicionk)
+\end{align*}
+$$
+:::
+
 
 #### Probabilidad Condicional {#nt2345}
 
@@ -1186,17 +1298,18 @@ $$
 
 ::: {#eventos-independientes3 .definition name="Independencia de (ref:eventos-independientes) Eventos"}
 
-Los eventos $A{}_1, A{}_2, \dots, \;y\; A{}_k$ son independientes si y sólo si la la probabilidad de la intersección de $2, 3, \dots, \;o\; k$ de estos eventos es igual al producto de sus respectivas probabilidades.
+Los eventos $A{}_1, A{}_2, \dots, \;\textrm{y}\; A{}_k$ son independientes si y sólo si la la probabilidad de la intersección de $2, 3, \dots, \;\textrm{o}\; k$ de estos eventos es igual al producto de sus respectivas probabilidades.
 :::
 
 ::: {#teorema-eventos-independientes .theorem}
 
-Si los eventos $A$ y $B$ son independientes, entonces los eventos $A$ y $B^c$ también son independientes. Es decir,
+Si los eventos $A$ y $B$ son independientes, entonces también lo son: $a)\; A \;\textrm{y}\; B^c$, $b)\; A^c \;\textrm{y}\; B^c$. Es decir,
 $$
-\begin{equation}
-P\left(A \cap B^c \right)=P \left(A \right) \cdot P \left( B^c \right).
+\begin{align*}
+a)\: & P\left ( A \cap B^{c} \right )= P\left ( A \right )\cdot P\left ( B^{c} \right )\\
+b)\: & P\left ( A^{c} \cap B^{c} \right )= P\left ( A^{c} \right )\cdot P\left ( B^{c} \right ).
 (\#eq:teorema-eventos-independientes2)
-\end{equation}
+\end{align*}
 $$
 :::
 
@@ -1222,6 +1335,35 @@ P \left(A \cap B^c \right) & = P\left(A \right) - P\left(A \right) \cdot P\left(
 \end{align*}
 $$
 y, por tanto, $A$ y $B^c$ son independientes.
+
+Por las leyes de Morgan \@ref(nt2231) $A^c \cap B^c=\left(A \cup B\right)^c$. Por tanto,
+$$
+P\left ( A^{c} \cap B^{c} \right )=P \left[ \left(A \cup B\right)^c \right].
+$$
+Luego, por la regla del complemento \@ref(thm:teorema3)
+$$
+P\left ( A^{c} \cap B^{c} \right )=1-P\left ( A \cup B \right ).
+$$
+Por la regla de la unión de dos conjunto \@ref(thm:regla-adicion)
+$$
+\begin{align*}
+P\left ( A^{c} \cap B^{c} \right )&=1-\left[P\left ( A  \right )+P\left ( B  \right )-P\left ( A \cap B  \right ) \right]\\
+&=1-P\left ( A  \right )-P\left (  B \right )+P\left ( A \cap B \right ).
+\end{align*}
+$$
+Como $A \;y\;B$ son independientes, entonces
+$$
+P\left ( A^{c} \cap B^{c} \right )=1-P\left ( A  \right )-P\left (  B \right )+P\left ( A \right ) \cdot P\left ( B \right ).
+$$
+Operando algebraicamente en el miembro derecho de la ecuación anterior se obtiene que
+$$
+P\left ( A^{c} \cap B^{c} \right )=\left [ 1-P\left ( A \right ) \right ]\cdot \left [ 1-P\left ( B \right ) \right ].
+$$
+Por último, por la regla del complemento \@ref(thm:teorema3), se obtiene que
+$$
+P\left ( A^{c} \cap B^{c} \right )= P\left ( A^{c} \right )\cdot P\left ( B^{c} \right ).
+$$
+De donde se concluye que los eventos $A^{c} \;\textrm{y}\; B^{c}$ son independientes si $A \;\textrm{y}\; B$ lo son.
 :::
 
 ::: {.example #ejemp1-eventos-independientes name="Eventos Independietes"}
@@ -1257,12 +1399,12 @@ Note de la definición \@ref(def:eventos-independientes3) que estos tres eventos
 
 #### Ley de Probabilidad Total {#nt2348}
 
-Suponga que un espacio muestral $S$ es la unión de los $k$ eventos mutuamente excluyentes $A{}_1, A{}_2, \dotsc, A{}_k$; es decir, $A{}_1, A{}_2, \dotsc, A{}_k$ forman una partición de del conjunto $S$. Además, suponga que $E$ es cualquier subconjunto de $S$. Entonces, como se ilustra en la figura \@ref(fig:ejemplo1-probabilidad-total) para el caso $k=5$,
+Suponga que un espacio muestral $S$ es la unión de los $k$ eventos mutuamente excluyentes $A{}_1, A{}_2, \dotsc, A{}_k$; es decir, $A{}_1, A{}_2, \dotsc, A{}_k$ forman una partición de del conjunto $S$. Además, suponga que $E$ es cualquier subconjunto de $S$, con . Entonces, como se ilustra en la figura \@ref(fig:probabilidad-total) para el caso $k=5$,
 $$
 E=E \cap S=E \cap \left(A{}_1 \cup A{}_2 \cup \cdots \cup A{_k}  \right)=\left(E \cap A{_1} \right) \cup \left(E \cap A{_2} \right) \cup \cdots \cup \left(E \cap A{_k} \right).
 $$
 ```{r probabilidad-total, fig.cap="Diagrama de Ven para la  probabilidad total", class.source = "watch-out", class.output = "bg-warning"}
-knitr::include_graphics(path = "figuras/ejemplo1_probabilidad_total.png")
+knitr::include_graphics(path = "figuras/probabilidad_total.png")
 ```
 
 Como los $k$ eventos a la derecha de la ecuación anterior son también mutuamente excluyentes, esta puede reescribirse de la siguiente manera (ver el axioma 3 de los axiomas de la probabilidad \@ref(nt2344)).
@@ -1276,7 +1418,6 @@ P \left(E \right)&=P \left(A{}_1 \right) \cdot P \left( E \mid A{}_1 \right) + P
 &=\sum_{i=1}^{k}P\left ( A{}_i \right ) \cdot P\left ( E \mid A{}_i \right )
 \end{align*}
 $$
-
 Lo anteriormente expuesto se resume en el siguiente teorema:
 
 ::: {#probabilidad-total .theorem name="Ley de la Probabilidad Total"}
@@ -1290,7 +1431,7 @@ P \left(E \right)=\sum_{i=1}^{k}P\left ( A{}_i \right ) \cdot P\left ( E \mid A{
 $$
 :::
 
-::: {.example #ejemplo1-probabilidad-total name="Teorema de la Multiplicación para Dos Eventos"}
+::: {.example #ejemplo1-probabilidad-total name="Ley de la Probabilidad Total"}
 
 Una fábrica utiliza tres máquinas $A$, $B$, $C$ para producir ciertos artículos. Supongamos qe:
 
@@ -1319,18 +1460,18 @@ $$
 
 #### Teorema de Bayes {#nt2349}
 
-Supóngase que los eventos $A{}_1, A{}_2, \dotsc, A{}_k$ forman una partición del espacio muestral $S$, y $E$ es cualquier evento de $S$. Entonces, para $1, 2, \dotsc, k$, por definición de probabilidad condicional \@ref(def:probabilidad-condicional)
+Supóngase que los eventos $A{}_1, A{}_2, \dotsc, A{}_k$ forman una partición del espacio muestral $S$, y $E$ es cualquier evento de $S$. Entonces, para $i=1, 2, \dotsc, k$, por definición de probabilidad condicional \@ref(def:probabilidad-condicional)
 $$
-P \left( A{}_k \mid E \right)=\frac{P \left( A{}_k \cap E \right)}{P \left( E \right)},
+P \left( A{}_i \mid E \right)=\frac{P \left( A{}_i \cap E \right)}{P \left( E \right)},
 $$
-si $P\left(A{}_i \right) \neq 0$ para $i=1, 2, \dotsc, k$.
-Luego, por el teorema de la multiplicación para dos eventos \@ref(thm:teorema-multiplicacion) se puede establecer que
+si $P\left(E \right) \neq 0$. Luego, aplicando el teorema de la multiplicación para dos eventos \@ref(thm:teorema-multiplicacion) en el numerador de la ecuación anterior se puede establecer que
 $$
-P \left( A{}_k \mid E \right)=\frac{P \left( A{}_k \cap E \right)}{P \left( E \right)},
+P \left( A{}_i \mid E \right)=\frac{P \left( A_i \right) \cdot P \left( E \mid A_i \right)}{P \left( E \right)},
 $$
+si $P \left(A_i \right) \neq 0$ para $i=1, 2, \dotsc, k$.
 Por último, haciendo uso de la ley de probabilidad total \@ref(thm:probabilidad-total) para el denominador en la ecuación anterior, se obtiene que 
 $$
-P \left( A{}_k \mid E \right)=\frac{P \left(A{}_k \right) \cdot P \left( E \mid A{}_k \right)}{\sum_{i=1}^{k}P\left ( A{}_i \right ) \cdot P\left ( E \mid A{}_i \right )}.
+P \left( A{}_i \mid E \right)=\frac{P \left(A{}_i \right) \cdot P \left( E \mid A{}_i \right)}{\sum_{i=1}^{k}P\left ( A{}_i \right ) \cdot P\left ( E \mid A{}_i \right )}.
 $$
 El procedimiento anterior se resume en el siguiente teorema:
 
@@ -1359,9 +1500,15 @@ P \left(D \right)&=P \left(A \right) \cdot P \left( D \mid A \right) + P \left(B
 $$
 Por tanto, aplicando el teorema de Bayes en el cálculo de las probabilidades requeridas se obtiene que:
 
-+  $P \left( A \mid D \right)=\frac{P \left(A \right) \cdot P \left( D \mid A \right)}{P\left ( D \right )}=\frac{ \left(0,5 \right) \cdot  \left( 0,03 \right)}{\left ( 0,037 \right )}=\frac{15}{37}=40,5\%$
-+  $P \left( B \mid D \right)=\frac{P \left(B \right) \cdot P \left( D \mid B \right)}{P\left ( D \right )}=\frac{ \left(0,3 \right) \cdot  \left( 0,04 \right)}{\left ( 0,037 \right )}=\frac{12}{37}=32,5\%$
-+  $P \left( C \mid D \right)=\frac{P \left(C \right) \cdot P \left( D \mid C \right)}{P\left ( D \right )}=\frac{ \left(0,2 \right) \cdot  \left( 0,05 \right)}{\left ( 0,037 \right )}=\frac{10}{37}=27\%$
++  La probabilidad de que el artículo sea producido por la máquina $A$ dado que este defectuoso se obtiene de la siguiente manera
+$$P \left( A \mid D \right)=\frac{P \left(A \right) \cdot P \left( D \mid A \right)}{P\left ( D \right )}=\frac{ \left(0,5 \right) \cdot  \left( 0,03 \right)}{\left ( 0,037 \right )}=\frac{15}{37}=40,5\%.
+$$
++  La probabilidad de que el artículo sea producido por la máquina $B$ dado que este defectuoso es
+$$P \left( B \mid D \right)=\frac{P \left(B \right) \cdot P \left( D \mid B \right)}{P\left ( D \right )}=\frac{ \left(0,3 \right) \cdot  \left( 0,04 \right)}{\left ( 0,037 \right )}=\frac{12}{37}=32,5\%.
+$$
++  La probabilidad de que el artículo sea producido por la máquina $C$ dado que este defectuoso viene dado por
+$$P \left( C \mid D \right)=\frac{P \left(C \right) \cdot P \left( D \mid C \right)}{P\left ( D \right )}=\frac{ \left(0,2 \right) \cdot  \left( 0,05 \right)}{\left ( 0,037 \right )}=\frac{10}{37}=27\%.
+$$
 ::: 
 
 
