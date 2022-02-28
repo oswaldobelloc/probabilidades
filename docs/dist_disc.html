@@ -211,7 +211,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.3.4" data-path="nt2.html"><a href="nt2.html#nt234"><i class="fa fa-check"></i><b>2.3.4</b> Probabilidad</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="dist_disc.html"><a href="dist_disc.html"><i class="fa fa-check"></i><b>3</b> Disribuciones Discretas de Probabilidades</a></li>
+<li class="chapter" data-level="3" data-path="dist_disc.html"><a href="dist_disc.html"><i class="fa fa-check"></i><b>3</b> Disribuciones Discretas de Probabilidades</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="dist_disc.html"><a href="dist_disc.html#variable-aleatoria"><i class="fa fa-check"></i><b>3.1</b> Variable Aleatoria</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="dist_disc.html"><a href="dist_disc.html#recorrido"><i class="fa fa-check"></i><b>3.1.1</b> Recorrido de una Variable Aleatoria</a></li>
+<li class="chapter" data-level="3.1.2" data-path="dist_disc.html"><a href="dist_disc.html#variable-discreta"><i class="fa fa-check"></i><b>3.1.2</b> Variable Aleatoria Discreta</a></li>
+<li class="chapter" data-level="3.1.3" data-path="dist_disc.html"><a href="dist_disc.html#variable-continua"><i class="fa fa-check"></i><b>3.1.3</b> Variable Aleatoria Continua</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="dist_disc.html"><a href="dist_disc.html#funcion-probabilidad"><i class="fa fa-check"></i><b>3.2</b> Función de Probabilidad</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Publicado con bookdown</a></li>
 
@@ -234,7 +243,444 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="dist_disc" class="section level1" number="3">
 <h1><span class="header-section-number">Núcleo Temático 3</span> Disribuciones Discretas de Probabilidades</h1>
+<p>El siguiente bloque de código permite instalar y cargar los paquetes de <span style="color: blue;">R</span> que se usaran en esta sección.</p>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb103-1"><a href="dist_disc.html#cb103-1" aria-hidden="true" tabindex="-1"></a>packages <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb103-2"><a href="dist_disc.html#cb103-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;ggplot2&quot;</span>, <span class="st">&quot;ggstatsplot&quot;</span>, <span class="st">&quot;tidyverse&quot;</span>,</span>
+<span id="cb103-3"><a href="dist_disc.html#cb103-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;kableExtra&quot;</span></span>
+<span id="cb103-4"><a href="dist_disc.html#cb103-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb103-5"><a href="dist_disc.html#cb103-5" aria-hidden="true" tabindex="-1"></a>package.check <span class="ot">&lt;-</span> <span class="fu">lapply</span>(packages, <span class="at">FUN =</span> <span class="cf">function</span>(x) {</span>
+<span id="cb103-6"><a href="dist_disc.html#cb103-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(x, <span class="at">character.only =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb103-7"><a href="dist_disc.html#cb103-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">install.packages</span>(x, <span class="at">dependencies =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb103-8"><a href="dist_disc.html#cb103-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">library</span>(x, <span class="at">character.only =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb103-9"><a href="dist_disc.html#cb103-9" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb103-10"><a href="dist_disc.html#cb103-10" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
+<div id="variable-aleatoria" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> Variable Aleatoria</h2>
+<div class="definition">
+<p><span id="def:variable-aleatoria" class="definition"><strong>Definición 3.1  (Variable Aleatoria) </strong></span>Sea un experimento aleatorio <span class="math inline">\(\varepsilon\)</span> y <span class="math inline">\(S\)</span> el espacio muestral asociado con el experimento. Una función <span class="math inline">\(X\)</span> que asigna a cada uno de los elementos <span class="math inline">\(s\)</span> de <span class="math inline">\(S\)</span>, un número real <span class="math inline">\(X \left(s \right)\)</span>, se llama <em>variable aleatoria</em>.</p>
+</div>
+<div id="recorrido" class="section level3" number="3.1.1">
+<h3><span class="header-section-number">3.1.1</span> Recorrido de una Variable Aleatoria</h3>
+<div class="definition">
+<p><span id="def:recorrido" class="definition"><strong>Definición 3.2  (Recorrido de una Variable Aleatoria) </strong></span>Sea <span class="math inline">\(X\)</span> una variable aleatoria, al conjunto de todos los posibles valores de <span class="math inline">\(X\)</span> se llama <em>recorrido de</em> <span class="math inline">\(X\)</span> y se denota <span class="math inline">\(R_X\)</span>.</p>
+</div>
+<div class="example">
+<p><span id="exm:variable-aleatoria" class="example"><strong>Ejemplo 3.1  (Variable Aleatoria) </strong></span>Suponga que lanzamos dos monedas (<span class="math inline">\(\varepsilon\)</span>), los posibles resultados de este experimento aleatorio <span class="math inline">\(S\)</span> será
+<span class="math display">\[
+S=\left\{cc, cs, sc, ss \right\}.
+\]</span>
+Ahora, sobre este espacio muestra se define la variable aleatoria <span class="math inline">\(X\)</span> como sigue: <span class="math inline">\(X\)</span> es el número de caras obtenidas en los dos lanzamientos. Por lo tanto <span class="math inline">\(X \left(cc \right)=2\)</span>, <span class="math inline">\(X \left(cs \right)=X \left(sc \right)=1\)</span>, y <span class="math inline">\(X \left(ss \right)=0\)</span>.</p>
+<p>En este ejemplo <span class="math inline">\(R_X =0,1,2\)</span>.</p>
+</div>
+</div>
+<div id="variable-discreta" class="section level3" number="3.1.2">
+<h3><span class="header-section-number">3.1.2</span> Variable Aleatoria Discreta</h3>
+<div class="definition">
+<p><span id="def:variable-discreta" class="definition"><strong>Definición 3.3  (Variable Aleatoria Discreta) </strong></span>Sea <span class="math inline">\(X\)</span> una variable aleatoria. Si el número de valores posibles de <span class="math inline">\(X\)</span>, es decir <span class="math inline">\(R_X\)</span>, es finito o infinito numerable, se llama a <span class="math inline">\(X\)</span> una <em>variable aleatoria discreta</em>. Esto es, se pueden anotar los valores de <span class="math inline">\(X\)</span> como <span class="math inline">\(x_1, x_2, \dotsc, x_n, \dots\)</span> En el caso finito la lista termina y en el caso infinito numerable la lista continúa indefinidamente.</p>
+</div>
+<div class="example">
+<p><span id="exm:variable-discreta" class="example"><strong>Ejemplo 3.2  (Variable Aleatoria) </strong></span>Considere el experimento aleatorio <span class="math inline">\(\varepsilon\)</span> lanzar una moneda hasta que aparece una cara. En tal caso, el espacio muestral <span class="math inline">\(S\)</span> queda definido por,
+<span class="math display">\[
+S=\left\{c, sc, ssc, sssc, ssssc, \dotsc \right\}.
+\]</span>
+Si sobre este espacio muestral se define la variable aleatoria <span class="math inline">\(X=\textrm{número de lanzamientos hata que aparece una cara}\)</span>. Entonces el recorrido de <span class="math inline">\(X\)</span>, es decir <span class="math inline">\(R_X\)</span>, viene definido por <span class="math inline">\(R_X=1, 2, 3, \dotsc\)</span>. Dado que el recorrido de <span class="math inline">\(X\)</span> es infinito numerable se concluye que <span class="math inline">\(X\)</span> es una variable discreta.</p>
+<p>Con respecto al ejemplo <a href="dist_disc.html#exm:variable-discreta">3.2</a>, la variable aleatoria <span class="math inline">\(X=\textrm{el número de caras obtenidas en los dos lanzamientos}\)</span> es discreta ya que esta toma solo cuatro valores, <span class="math inline">\(R_X =\left\{0, 1, 2, 3 \right\}\)</span>. Es decir, el recorrido de <span class="math inline">\(X\)</span> es finito.</p>
+</div>
+</div>
+<div id="variable-continua" class="section level3" number="3.1.3">
+<h3><span class="header-section-number">3.1.3</span> Variable Aleatoria Continua</h3>
+<div class="definition">
+<p><span id="def:variable-continua" class="definition"><strong>Definición 3.4  (Variable Aleatoria Continua) </strong></span>Se dice que una variable aleatoria es <em>continua</em> si su recorrido <span class="math inline">\(R_X\)</span> consiste en uno o más intervalos de la recta de los reales.</p>
+</div>
+<div class="example">
+<p><span id="exm:variable-continua" class="example"><strong>Ejemplo 3.3  (Variable Aleatoria Continua) </strong></span>Se selecciona de manera aleatoria un punto en un círculo <span class="math inline">\(C\)</span> de radio <span class="math inline">\(r\)</span>. Sea <span class="math inline">\(X\)</span> la distancia del punto al centro del círculo. Entonces, <span class="math inline">\(X\)</span> es una variable aleatoria cuyo valor puede ser cualquier número entre 0 y <span class="math inline">\(r\)</span>, inclusive. por tanto, el recorrido <span class="math inline">\(R_X\)</span> de <span class="math inline">\(X\)</span> es un intervalo cerrado:
+<span class="math display">\[
+R_X=\left[ 0,r\right]=\left\{x:0\le x \le r \right\}.
+\]</span>
+Aquí, <span class="math inline">\(X\)</span> es una variable aleatoria continua.</p>
+</div>
+</div>
+</div>
+<div id="funcion-probabilidad" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> Función de Probabilidad</h2>
+<div class="definition">
+<p><span id="def:funcion-probabilidad" class="definition"><strong>Definición 3.5  (Función de Probabilidad) </strong></span>Sea <span class="math inline">\(X\)</span> una variable aleatoria discreta con recorrido <span class="math inline">\(R_X=\left\{x_1, x_2, \dotsc \right\}\)</span>. Tal que, la probabilidad de que <span class="math inline">\(X=x_i\)</span> es <span class="math inline">\(p \left(x_i \right)\)</span>, es decir, <span class="math inline">\(P \left(X=x_i \right)=p \left(x_i \right)\)</span>, para <span class="math inline">\(i=1,2, \dotsc\)</span>. Entonces la función <span class="math inline">\(p\)</span> es una <em>función de probabilidad</em> si cumple las siguientes condiciones:
+<span class="math display" id="eq:funcion-probabilidad">\[
+\begin{align*}
+i)&amp; \: p \left(x_i \right) \ge 0,\, para \: i= 1, 2, \dotsc\\
+ii)&amp; \: \sum_{i=1}^{\infty }p\left ( x_i \right )=1.
+\tag{3.1}
+\end{align*}
+\]</span></p>
+</div>
+<div class="example">
+<p><span id="exm:distribucion-probabilidad1" class="example"><strong>Ejemplo 3.4  (Variable Aleatoria Continua) </strong></span>Sea el experimento aleatorio que consiste en lanzar un par de dados equilibrados y <span class="math inline">\(X\)</span> la variable aleatoria representada por la suma de los resultados en cada dado. Como se mostró en ejemplo <a href="nt2.html#exm:ejemp1-probcond">2.10</a>, el espacio muestral viene dado por
+<span class="math display">\[
+S=\begin{Bmatrix}
+(1,1);&amp;(1,2);&amp;(1,3);&amp;(1,4);&amp;(1,5);&amp;(1,6);\\
+(2,1);&amp;(2,2);&amp;(2,3);&amp;(2,4);&amp;(2,5);&amp;(2,6);\\
+(3,1);&amp;(3,2);&amp;(3,3);&amp;(3,4);&amp;(3,5);&amp;(3,6);\\
+(4,1);&amp;(4,2);&amp;(4,3);&amp;(4,4);&amp;(4,5);&amp;(4,6);\\
+(5,1);&amp;(5,2);&amp;(5,3);&amp;(5,4);&amp;(5,5);&amp;(5,6);\\
+(6,1);&amp;(6,2);&amp;(6,3);&amp;(6,4);&amp;(6,5);&amp;(6,6)\\
+\end{Bmatrix}.
+\]</span>
+Por lo que, el Recorrido de <span class="math inline">\(X\)</span> es
+<span class="math inline">\(R_X=\left\{2, 3, 4, 5, 6, 7, 8, 9 10, 11, 12 \right\}\)</span>, luego las probabilidades asociadas a cada <span class="math inline">\(x_i\)</span>, es decir la función de probabilidad, se muestran en la tabla <a href="dist_disc.html#tab:distribucion-probabilidad1">3.1</a>.</p>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb104-1"><a href="dist_disc.html#cb104-1" aria-hidden="true" tabindex="-1"></a>dp_ej1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb104-2"><a href="dist_disc.html#cb104-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">S =</span> <span class="fu">c</span>(</span>
+<span id="cb104-3"><a href="dist_disc.html#cb104-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;$</span><span class="sc">\\</span><span class="st">left(1, 1 </span><span class="sc">\\</span><span class="st">right)$&quot;</span>,</span>
+<span id="cb104-4"><a href="dist_disc.html#cb104-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;$</span><span class="sc">\\</span><span class="st">left(1, 2 </span><span class="sc">\\</span><span class="st">right), </span><span class="sc">\\</span><span class="st">left(2, 1</span></span>
+<span id="cb104-5"><a href="dist_disc.html#cb104-5" aria-hidden="true" tabindex="-1"></a><span class="st">        </span><span class="sc">\\</span><span class="st">right)$&quot;</span>,</span>
+<span id="cb104-6"><a href="dist_disc.html#cb104-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;$</span><span class="sc">\\</span><span class="st">left(1, 3 </span><span class="sc">\\</span><span class="st">right), </span><span class="sc">\\</span><span class="st">left(2, 2</span></span>
+<span id="cb104-7"><a href="dist_disc.html#cb104-7" aria-hidden="true" tabindex="-1"></a><span class="st">        </span><span class="sc">\\</span><span class="st">right), </span><span class="sc">\\</span><span class="st">left(3, 1 </span><span class="sc">\\</span><span class="st">right)$&quot;</span>,</span>
+<span id="cb104-8"><a href="dist_disc.html#cb104-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;$</span><span class="sc">\\</span><span class="st">left(1, 4 </span><span class="sc">\\</span><span class="st">right), </span><span class="sc">\\</span><span class="st">left(2, 3</span></span>
+<span id="cb104-9"><a href="dist_disc.html#cb104-9" aria-hidden="true" tabindex="-1"></a><span class="st">        </span><span class="sc">\\</span><span class="st">right), </span><span class="sc">\\</span><span class="st">left(3, 2 </span><span class="sc">\\</span><span class="st">right),</span></span>
+<span id="cb104-10"><a href="dist_disc.html#cb104-10" aria-hidden="true" tabindex="-1"></a><span class="st">        </span><span class="sc">\\</span><span class="st">left(4, 1 </span><span class="sc">\\</span><span class="st">right)$&quot;</span>,</span>
+<span id="cb104-11"><a href="dist_disc.html#cb104-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;$</span><span class="sc">\\</span><span class="st">left(1, 5</span><span class="sc">\\</span><span class="st">right), </span><span class="sc">\\</span><span class="st">left(2, 4</span></span>
+<span id="cb104-12"><a href="dist_disc.html#cb104-12" aria-hidden="true" tabindex="-1"></a><span class="st">        </span><span class="sc">\\</span><span class="st">right), </span><span class="sc">\\</span><span class="st">left(3, 3 </span><span class="sc">\\</span><span class="st">right), </span></span>
+<span id="cb104-13"><a href="dist_disc.html#cb104-13" aria-hidden="true" tabindex="-1"></a><span class="st">        </span><span class="sc">\\</span><span class="st">left(4, 2 </span><span class="sc">\\</span><span class="st">right),</span><span class="sc">\\</span><span class="st">left(5,</span></span>
+<span id="cb104-14"><a href="dist_disc.html#cb104-14" aria-hidden="true" tabindex="-1"></a><span class="st">        1</span><span class="sc">\\</span><span class="st">right)$&quot;</span>,</span>
+<span id="cb104-15"><a href="dist_disc.html#cb104-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;$</span><span class="sc">\\</span><span class="st">left(1, 6</span><span class="sc">\\</span><span class="st">right), </span><span class="sc">\\</span><span class="st">left(2, 5</span></span>
+<span id="cb104-16"><a href="dist_disc.html#cb104-16" aria-hidden="true" tabindex="-1"></a><span class="st">        </span><span class="sc">\\</span><span class="st">right), </span><span class="sc">\\</span><span class="st">left(3, 4 </span><span class="sc">\\</span><span class="st">right), </span></span>
+<span id="cb104-17"><a href="dist_disc.html#cb104-17" aria-hidden="true" tabindex="-1"></a><span class="st">        </span><span class="sc">\\</span><span class="st">left(4, 3 </span><span class="sc">\\</span><span class="st">right),</span><span class="sc">\\</span><span class="st">left(5,</span></span>
+<span id="cb104-18"><a href="dist_disc.html#cb104-18" aria-hidden="true" tabindex="-1"></a><span class="st">        2</span><span class="sc">\\</span><span class="st">right),</span><span class="sc">\\</span><span class="st">left(6, 1</span><span class="sc">\\</span><span class="st">right)$&quot;</span>,</span>
+<span id="cb104-19"><a href="dist_disc.html#cb104-19" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;$</span><span class="sc">\\</span><span class="st">left(2, 6</span><span class="sc">\\</span><span class="st">right), </span><span class="sc">\\</span><span class="st">left(3, 5</span></span>
+<span id="cb104-20"><a href="dist_disc.html#cb104-20" aria-hidden="true" tabindex="-1"></a><span class="st">        </span><span class="sc">\\</span><span class="st">right), </span><span class="sc">\\</span><span class="st">left(4, 4 </span><span class="sc">\\</span><span class="st">right), </span></span>
+<span id="cb104-21"><a href="dist_disc.html#cb104-21" aria-hidden="true" tabindex="-1"></a><span class="st">        </span><span class="sc">\\</span><span class="st">left(5, 3 </span><span class="sc">\\</span><span class="st">right),</span><span class="sc">\\</span><span class="st">left(6,</span></span>
+<span id="cb104-22"><a href="dist_disc.html#cb104-22" aria-hidden="true" tabindex="-1"></a><span class="st">        2</span><span class="sc">\\</span><span class="st">right)$&quot;</span>,</span>
+<span id="cb104-23"><a href="dist_disc.html#cb104-23" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;$</span><span class="sc">\\</span><span class="st">left(3, 6 </span><span class="sc">\\</span><span class="st">right), </span><span class="sc">\\</span><span class="st">left(4, 5</span></span>
+<span id="cb104-24"><a href="dist_disc.html#cb104-24" aria-hidden="true" tabindex="-1"></a><span class="st">        </span><span class="sc">\\</span><span class="st">right), </span><span class="sc">\\</span><span class="st">left(5, 4 </span><span class="sc">\\</span><span class="st">right),</span></span>
+<span id="cb104-25"><a href="dist_disc.html#cb104-25" aria-hidden="true" tabindex="-1"></a><span class="st">        </span><span class="sc">\\</span><span class="st">left(6, 3 </span><span class="sc">\\</span><span class="st">right)$&quot;</span>,</span>
+<span id="cb104-26"><a href="dist_disc.html#cb104-26" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;$</span><span class="sc">\\</span><span class="st">left(4, 6 </span><span class="sc">\\</span><span class="st">right), </span><span class="sc">\\</span><span class="st">left(5, 5</span></span>
+<span id="cb104-27"><a href="dist_disc.html#cb104-27" aria-hidden="true" tabindex="-1"></a><span class="st">        </span><span class="sc">\\</span><span class="st">right), </span><span class="sc">\\</span><span class="st">left(6, 4 </span><span class="sc">\\</span><span class="st">right)$&quot;</span>,</span>
+<span id="cb104-28"><a href="dist_disc.html#cb104-28" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;$</span><span class="sc">\\</span><span class="st">left(5, 6 </span><span class="sc">\\</span><span class="st">right), </span><span class="sc">\\</span><span class="st">left(6, 5</span></span>
+<span id="cb104-29"><a href="dist_disc.html#cb104-29" aria-hidden="true" tabindex="-1"></a><span class="st">        </span><span class="sc">\\</span><span class="st">right)$&quot;</span>,</span>
+<span id="cb104-30"><a href="dist_disc.html#cb104-30" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;$</span><span class="sc">\\</span><span class="st">left(6, 6 </span><span class="sc">\\</span><span class="st">right)$&quot;</span></span>
+<span id="cb104-31"><a href="dist_disc.html#cb104-31" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb104-32"><a href="dist_disc.html#cb104-32" aria-hidden="true" tabindex="-1"></a>  <span class="at">xi =</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">12</span>,</span>
+<span id="cb104-33"><a href="dist_disc.html#cb104-33" aria-hidden="true" tabindex="-1"></a>  <span class="at">numero_ocurrencia =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="dv">5</span><span class="sc">:</span><span class="dv">1</span>)</span>
+<span id="cb104-34"><a href="dist_disc.html#cb104-34" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
+<span id="cb104-35"><a href="dist_disc.html#cb104-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb104-36"><a href="dist_disc.html#cb104-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">p_xi =</span> <span class="fu">c</span>(</span>
+<span id="cb104-37"><a href="dist_disc.html#cb104-37" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;$</span><span class="sc">\\</span><span class="st">frac{1}{36}$&quot;</span>, <span class="st">&quot;$</span><span class="sc">\\</span><span class="st">frac{2}{36}$&quot;</span>,</span>
+<span id="cb104-38"><a href="dist_disc.html#cb104-38" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;$</span><span class="sc">\\</span><span class="st">frac{3}{36}$&quot;</span>, <span class="st">&quot;$</span><span class="sc">\\</span><span class="st">frac{4}{36}$&quot;</span>,</span>
+<span id="cb104-39"><a href="dist_disc.html#cb104-39" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;$</span><span class="sc">\\</span><span class="st">frac{5}{36}$&quot;</span>, <span class="st">&quot;$</span><span class="sc">\\</span><span class="st">frac{6}{36}$&quot;</span>,</span>
+<span id="cb104-40"><a href="dist_disc.html#cb104-40" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;$</span><span class="sc">\\</span><span class="st">frac{5}{36}$&quot;</span>, <span class="st">&quot;$</span><span class="sc">\\</span><span class="st">frac{4}{36}$&quot;</span>,</span>
+<span id="cb104-41"><a href="dist_disc.html#cb104-41" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;$</span><span class="sc">\\</span><span class="st">frac{3}{36}$&quot;</span>, <span class="st">&quot;$</span><span class="sc">\\</span><span class="st">frac{2}{36}$&quot;</span>,</span>
+<span id="cb104-42"><a href="dist_disc.html#cb104-42" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;$</span><span class="sc">\\</span><span class="st">frac{1}{36}$&quot;</span></span>
+<span id="cb104-43"><a href="dist_disc.html#cb104-43" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb104-44"><a href="dist_disc.html#cb104-44" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb104-45"><a href="dist_disc.html#cb104-45" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb104-46"><a href="dist_disc.html#cb104-46" aria-hidden="true" tabindex="-1"></a>  dp_ej1,</span>
+<span id="cb104-47"><a href="dist_disc.html#cb104-47" aria-hidden="true" tabindex="-1"></a>  <span class="at">booktabs =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb104-48"><a href="dist_disc.html#cb104-48" aria-hidden="true" tabindex="-1"></a>  <span class="at">row.names =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb104-49"><a href="dist_disc.html#cb104-49" aria-hidden="true" tabindex="-1"></a>  <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">&quot;Espacio Muestral&quot;</span>, <span class="st">&quot;$x_i$&quot;</span>, <span class="st">&quot;Número de ocurrencia&quot;</span>, <span class="st">&quot;$p</span><span class="sc">\\</span><span class="st">left(x_i </span><span class="sc">\\</span><span class="st">right)$&quot;</span>),</span>
+<span id="cb104-50"><a href="dist_disc.html#cb104-50" aria-hidden="true" tabindex="-1"></a>  <span class="at">align =</span> <span class="fu">c</span>(<span class="st">&quot;lccc&quot;</span>),</span>
+<span id="cb104-51"><a href="dist_disc.html#cb104-51" aria-hidden="true" tabindex="-1"></a>  <span class="at">format.args =</span> <span class="fu">list</span>(<span class="at">decimal.mark =</span> <span class="st">&quot;,&quot;</span>, <span class="at">big.mark =</span> <span class="st">&quot;.&quot;</span>),</span>
+<span id="cb104-52"><a href="dist_disc.html#cb104-52" aria-hidden="true" tabindex="-1"></a>  <span class="at">caption =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">label{tab2:distribucion-probabilidad1}Distribución de probabilidad de la suma de las caras de dos dados&quot;</span>,</span>
+<span id="cb104-53"><a href="dist_disc.html#cb104-53" aria-hidden="true" tabindex="-1"></a>  <span class="at">escape =</span> <span class="cn">FALSE</span></span>
+<span id="cb104-54"><a href="dist_disc.html#cb104-54" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
+<span id="cb104-55"><a href="dist_disc.html#cb104-55" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(</span>
+<span id="cb104-56"><a href="dist_disc.html#cb104-56" aria-hidden="true" tabindex="-1"></a>    <span class="at">bootstrap_options =</span> <span class="st">&quot;striped&quot;</span>,</span>
+<span id="cb104-57"><a href="dist_disc.html#cb104-57" aria-hidden="true" tabindex="-1"></a>    <span class="at">full_width =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb104-58"><a href="dist_disc.html#cb104-58" aria-hidden="true" tabindex="-1"></a>    <span class="at">fixed_thead =</span> T</span>
+<span id="cb104-59"><a href="dist_disc.html#cb104-59" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb104-60"><a href="dist_disc.html#cb104-60" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_classic_2</span>()</span>
+<span id="cb104-61"><a href="dist_disc.html#cb104-61" aria-hidden="true" tabindex="-1"></a>   </span></code></pre></div>
+<table class="table table-striped lightable-classic-2" style="width: auto !important; margin-left: auto; margin-right: auto; font-family: &quot;Arial Narrow&quot;, &quot;Source Sans Pro&quot;, sans-serif; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:distribucion-probabilidad1">Tabla 3.1: </span>Distribución de probabilidad de la suma de las caras de dos dados
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+Espacio Muestral
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+<span class="math inline">\(x_i\)</span>
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+Número de ocurrencia
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+<span class="math inline">\(p\left(x_i \right)\)</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(\left(1, 1 \right)\)</span>
+</td>
+<td style="text-align:center;">
+2
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+<span class="math inline">\(\frac{1}{36}\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(\left(1, 2 \right), \left(2, 1  \right)\)</span>
+</td>
+<td style="text-align:center;">
+3
+</td>
+<td style="text-align:center;">
+2
+</td>
+<td style="text-align:center;">
+<span class="math inline">\(\frac{2}{36}\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(\left(1, 3 \right), \left(2, 2  \right), \left(3, 1 \right)\)</span>
+</td>
+<td style="text-align:center;">
+4
+</td>
+<td style="text-align:center;">
+3
+</td>
+<td style="text-align:center;">
+<span class="math inline">\(\frac{3}{36}\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(\left(1, 4 \right), \left(2, 3  \right), \left(3, 2 \right),  \left(4, 1 \right)\)</span>
+</td>
+<td style="text-align:center;">
+5
+</td>
+<td style="text-align:center;">
+4
+</td>
+<td style="text-align:center;">
+<span class="math inline">\(\frac{4}{36}\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(\left(1, 5\right), \left(2, 4  \right), \left(3, 3 \right),  \left(4, 2 \right),\left(5,  1\right)\)</span>
+</td>
+<td style="text-align:center;">
+6
+</td>
+<td style="text-align:center;">
+5
+</td>
+<td style="text-align:center;">
+<span class="math inline">\(\frac{5}{36}\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+6
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(\left(1, 6\right), \left(2, 5  \right), \left(3, 4 \right),  \left(4, 3 \right),\left(5,  2\right),\left(6, 1\right)\)</span>
+</td>
+<td style="text-align:center;">
+7
+</td>
+<td style="text-align:center;">
+6
+</td>
+<td style="text-align:center;">
+<span class="math inline">\(\frac{6}{36}\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+7
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(\left(2, 6\right), \left(3, 5  \right), \left(4, 4 \right),  \left(5, 3 \right),\left(6,  2\right)\)</span>
+</td>
+<td style="text-align:center;">
+8
+</td>
+<td style="text-align:center;">
+5
+</td>
+<td style="text-align:center;">
+<span class="math inline">\(\frac{5}{36}\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+8
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(\left(3, 6 \right), \left(4, 5  \right), \left(5, 4 \right),  \left(6, 3 \right)\)</span>
+</td>
+<td style="text-align:center;">
+9
+</td>
+<td style="text-align:center;">
+4
+</td>
+<td style="text-align:center;">
+<span class="math inline">\(\frac{4}{36}\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+9
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(\left(4, 6 \right), \left(5, 5  \right), \left(6, 4 \right)\)</span>
+</td>
+<td style="text-align:center;">
+10
+</td>
+<td style="text-align:center;">
+3
+</td>
+<td style="text-align:center;">
+<span class="math inline">\(\frac{3}{36}\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+10
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(\left(5, 6 \right), \left(6, 5  \right)\)</span>
+</td>
+<td style="text-align:center;">
+11
+</td>
+<td style="text-align:center;">
+2
+</td>
+<td style="text-align:center;">
+<span class="math inline">\(\frac{2}{36}\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+11
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(\left(6, 6 \right)\)</span>
+</td>
+<td style="text-align:center;">
+12
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+<span class="math inline">\(\frac{1}{36}\)</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>En algunos casos es posible expresar la función de probabilidad a través de una expresión matemática dada en términos de la variable aleatoria. En este caso, la función de probabilidad queda determinada por la siguiente expresión:
+<span class="math display" id="eq:funcion-probabilidad1">\[
+p\left ( x \right )= \begin{cases}
+\frac{6-\left|x-7 \right|}{36} &amp; \text{si } x= 2, 3, \cdots ,12\\
+0 &amp; \text{en otros casos }.
+\tag{3.2}
+\end{cases}
+\]</span></p>
+<p>Con la ecuación <a href="dist_disc.html#eq:funcion-probabilidad1">(3.2)</a> también se pueden calcular las probabilidades dadas en la tabla <a href="dist_disc.html#tab:distribucion-probabilidad1">3.1</a>, tal como se muestra a continuación:
+<span class="math display">\[
+\begin{align*}
+ P(X=2)&amp;=p\left (2  \right )= \frac{6-\left|2- 7\right|}{36}=\frac{1}{36}\\
+ P(X=3)&amp;=p\left (3  \right )= \frac{6-\left|3- 7\right|}{36}=\frac{2}{36} \\
+ P(X=4)&amp;=p\left (4  \right )= \frac{6-\left|4- 7\right|}{36}=\frac{3}{36} \\
+ P(X=5)&amp;=p\left (5  \right )= \frac{6-\left|5- 7\right|}{36}=\frac{4}{36} \\
+ P(X=6)&amp;=p\left (6  \right )= \frac{6-\left|6- 7\right|}{36}=\frac{5}{36} \\
+ P(X=7)&amp;=p\left (7  \right )= \frac{6-\left|7- 7\right|}{36}=\frac{6}{36} \\
+ P(X=8)&amp;=p\left (8  \right )= \frac{6-\left|8- 7\right|}{36}=\frac{5}{36} \\
+ P(X=9)&amp;=p\left (9  \right )= \frac{6-\left|9- 7\right|}{36}=\frac{4}{36} \\
+ P(X=10)&amp;=p\left (10  \right )= \frac{6-\left|10- 7\right|}{36}=\frac{3}{36} \\
+ P(X=11)&amp;=p\left (11  \right )= \frac{6-\left|11- 7\right|}{36}=\frac{2}{36} \\
+ P(X=12)&amp;=p\left (12  \right )= \frac{6-\left|12- 7\right|}{36}=\frac{1}{36} \\. 
+ \end{align*}
+\]</span>
+Como se puede notar, las probabilidades determinadas con esta ecuación se corresponden con las que se muestran en la tabla <a href="dist_disc.html#tab:distribucion-probabilidad1">3.1</a>.</p>
+<p>Una forma de visualizar de manera rápida las probabilidades asociadas a cada valor de la variable aleatoria es a través de una gráfica de líneas verticales que comienzan en cada valor de la variable <span class="math inline">\(x_i\)</span> y cuya altura está determinada por sus probabilidades <span class="math inline">\(p\left (x_i \right )\)</span>. El gráfico de la función de probabilidad para la suma de las caras en el lanzamiento de los dos dados se muestra en la figura <a href="dist_disc.html#fig:grafico-distribucion-probabilidad1">3.1</a>.</p>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb105-1"><a href="dist_disc.html#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
+<span id="cb105-2"><a href="dist_disc.html#cb105-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> dp_ej1,</span>
+<span id="cb105-3"><a href="dist_disc.html#cb105-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> xi, <span class="at">y =</span> numero_ocurrencia <span class="sc">/</span> <span class="dv">36</span>)</span>
+<span id="cb105-4"><a href="dist_disc.html#cb105-4" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb105-5"><a href="dist_disc.html#cb105-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(</span>
+<span id="cb105-6"><a href="dist_disc.html#cb105-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(</span>
+<span id="cb105-7"><a href="dist_disc.html#cb105-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> xi, <span class="at">xend =</span> xi, <span class="at">y =</span> <span class="dv">0</span>,</span>
+<span id="cb105-8"><a href="dist_disc.html#cb105-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">yend =</span> numero_ocurrencia <span class="sc">/</span> <span class="dv">36</span></span>
+<span id="cb105-9"><a href="dist_disc.html#cb105-9" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb105-10"><a href="dist_disc.html#cb105-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">&quot;blue&quot;</span></span>
+<span id="cb105-11"><a href="dist_disc.html#cb105-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb105-12"><a href="dist_disc.html#cb105-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb105-13"><a href="dist_disc.html#cb105-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="dv">3</span>, <span class="at">color =</span> <span class="st">&quot;red&quot;</span></span>
+<span id="cb105-14"><a href="dist_disc.html#cb105-14" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb105-15"><a href="dist_disc.html#cb105-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">2</span>, <span class="dv">12</span>, <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb105-16"><a href="dist_disc.html#cb105-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span> </span>
+<span id="cb105-17"><a href="dist_disc.html#cb105-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Suma de las caras (X)&quot;</span>) <span class="sc">+</span></span>
+<span id="cb105-18"><a href="dist_disc.html#cb105-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Función de probabilidad&quot;</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:grafico-distribucion-probabilidad1"></span>
+<img src="_main_files/figure-html/grafico-distribucion-probabilidad1-1.png" alt="Probabilidad de la suma de las caras de dos dados" width="672" />
+<p class="caption">
+Figura 3.1: Probabilidad de la suma de las caras de dos dados
+</p>
+</div>
+<ol style="list-style-type: decimal">
+<li><p>Variable aleatorias unidimensionales
+1.1 Definición
+1.2 Tipos de variables aleatorias
+1.2.1 Discreta
+1.2.2 Continua</p></li>
+<li><p>Función de probabilidad
+2.1 Definición
+2.2 Propiedades
+2.3 Gráfica
+2.4 Función de distribución acumulativa
+2.4.1 Propiedades
+2.4.2 Gráfica
+2.5 Cálculo probabilístico de que una variable aleatoria discreta tome determinados valores</p>
+<p>2.6 Esperanza matemática
+2.6.1 Definición
+2.6.2 Propiedades
+2.6.3 Cálculo de la esperanza matemática de una variable aleatoria discreta</p>
+<p>2.7 Varianza de una variable aleatoria
+2.7.1 Definición
+2.7.2 Propiedades
+2.7.3 Cálculo de la varianza de una variable aleatoria discreta.
+2.8 Función generadora de momentos
+2.8.1 Definición
+2.8.2 Propiedades
+2.8.3 Cálculo de la esperanza y varianza de una variable aleatoria discreta mediante la función generadora de momentos.
+2.8.4 Determinación de la propiedad reproductiva para variables aleatorias discretas</p></li>
+</ol>
 
+</div>
 </div>
             </section>
 

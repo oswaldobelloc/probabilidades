@@ -211,7 +211,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.3.4" data-path="nt2.html"><a href="nt2.html#nt234"><i class="fa fa-check"></i><b>2.3.4</b> Probabilidad</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="dist_disc.html"><a href="dist_disc.html"><i class="fa fa-check"></i><b>3</b> Disribuciones Discretas de Probabilidades</a></li>
+<li class="chapter" data-level="3" data-path="dist_disc.html"><a href="dist_disc.html"><i class="fa fa-check"></i><b>3</b> Disribuciones Discretas de Probabilidades</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="dist_disc.html"><a href="dist_disc.html#variable-aleatoria"><i class="fa fa-check"></i><b>3.1</b> Variable Aleatoria</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="dist_disc.html"><a href="dist_disc.html#recorrido"><i class="fa fa-check"></i><b>3.1.1</b> Recorrido de una Variable Aleatoria</a></li>
+<li class="chapter" data-level="3.1.2" data-path="dist_disc.html"><a href="dist_disc.html#variable-discreta"><i class="fa fa-check"></i><b>3.1.2</b> Variable Aleatoria Discreta</a></li>
+<li class="chapter" data-level="3.1.3" data-path="dist_disc.html"><a href="dist_disc.html#variable-continua"><i class="fa fa-check"></i><b>3.1.3</b> Variable Aleatoria Continua</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="dist_disc.html"><a href="dist_disc.html#funcion-probabilidad"><i class="fa fa-check"></i><b>3.2</b> Función de Probabilidad</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Publicado con bookdown</a></li>
 
@@ -1116,9 +1125,9 @@ P \left(A \setminus B \right)=P \left(A\right)-P\left(A \cap B \right).
 <span id="cb97-2"><a href="nt2.html#cb97-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">path =</span> <span class="st">&quot;figuras/regla_diferencia.png&quot;</span></span>
 <span id="cb97-3"><a href="nt2.html#cb97-3" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:regla-diferencia"></span>
-<img src="figuras/regla_diferencia.png" alt="Diegrama de Venn para la regla de l diferencia" width="204" />
+<img src="figuras/regla_diferencia.png" alt="Diegrama de Venn para la regla de la diferencia" width="204" />
 <p class="caption">
-Figura 2.12: Diegrama de Venn para la regla de l diferencia
+Figura 2.12: Diegrama de Venn para la regla de la diferencia
 </p>
 </div>
 <div class="theorem">
@@ -1851,7 +1860,7 @@ P\left(A \cap B \cap C \right)  =P \left(A \right) \cdot P \left(B \right) \cdot
 </div>
 
 <div class="definition">
-<p><span id="def:eventos-independientes3" class="definition"><strong>Definición 2.37  (Independencia de <span class="math inline">\(k\)</span> Eventos) </strong></span>Los eventos <span class="math inline">\(A{}_1, A{}_2, \dots, \;\textrm{y}\; A{}_k\)</span> son independientes si y sólo si la la probabilidad de la intersección de <span class="math inline">\(2, 3, \dots, \;\textrm{o}\; k\)</span> de estos eventos es igual al producto de sus respectivas probabilidades.</p>
+<p><span id="def:eventos-independientes3" class="definition"><strong>Definición 2.37  (Independencia de <span class="math inline">\(k\)</span> Eventos) </strong></span>Los eventos <span class="math inline">\(A{}_1, A{}_2, \dots, \;\textrm{y}\; A{}_k\)</span> son independientes si y sólo si la probabilidad de la intersección de <span class="math inline">\(2, 3, \dots, \;\textrm{o}\; k\)</span> de estos eventos es igual al producto de sus respectivas probabilidades.</p>
 </div>
 <div class="theorem">
 <p><span id="thm:teorema-eventos-independientes" class="theorem"><strong>Teorema 2.12  </strong></span>Si los eventos <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> son independientes, entonces también lo son: <span class="math inline">\(a)\; A \;\textrm{y}\; B^c\)</span>, <span class="math inline">\(b)\; A^c \;\textrm{y}\; B^c\)</span>. Es decir,
@@ -1939,8 +1948,8 @@ Lo que implica que los eventos <span class="math inline">\(B\)</span> y <span cl
 </div>
 </div>
 <div id="nt2348" class="section level4" number="2.3.4.8">
-<h4><span class="header-section-number">2.3.4.8</span> Ley de Probabilidad Total</h4>
-<p>Suponga que un espacio muestral <span class="math inline">\(S\)</span> es la unión de los <span class="math inline">\(k\)</span> eventos mutuamente excluyentes <span class="math inline">\(A{}_1, A{}_2, \dotsc, A{}_k\)</span>; es decir, <span class="math inline">\(A{}_1, A{}_2, \dotsc, A{}_k\)</span> forman una partición de del conjunto <span class="math inline">\(S\)</span>. Además, suponga que <span class="math inline">\(E\)</span> es cualquier subconjunto de <span class="math inline">\(S\)</span>, con . Entonces, como se ilustra en la figura <a href="nt2.html#fig:probabilidad-total">2.15</a> para el caso <span class="math inline">\(k=5\)</span>,
+<h4><span class="header-section-number">2.3.4.8</span> Ley de la Probabilidad Total</h4>
+<p>Suponga que un espacio muestral <span class="math inline">\(S\)</span> es la unión de los <span class="math inline">\(k\)</span> eventos mutuamente excluyentes <span class="math inline">\(A{}_1, A{}_2, \dotsc, A{}_k\)</span>; es decir, <span class="math inline">\(A{}_1, A{}_2, \dotsc, A{}_k\)</span> forman una partición de del conjunto <span class="math inline">\(S\)</span>. Además, suponga que <span class="math inline">\(E\)</span> es cualquier subconjunto de <span class="math inline">\(S\)</span>. Entonces, como se ilustra en la figura <a href="nt2.html#fig:probabilidad-total">2.15</a> para el caso <span class="math inline">\(k=5\)</span>,
 <span class="math display">\[
 E=E \cap S=E \cap \left(A{}_1 \cup A{}_2 \cup \cdots \cup A{_k}  \right)=\left(E \cap A{_1} \right) \cup \left(E \cap A{_2} \right) \cup \cdots \cup \left(E \cap A{_k} \right).
 \]</span></p>
@@ -1988,7 +1997,7 @@ P \left(E \right)=\sum_{i=1}^{k}P\left ( A{}_i \right ) \cdot P\left ( E \mid A{
 Figura 2.16: Diegrama de Venn del ejemplo <a href="nt2.html#exm:ejemplo1-probabilidad-total">2.14</a>
 </p>
 </div>
-<p>Sea el evento <span class="math inline">\(D: \{ \textrm{el artículo seleccionado es defectuoso} \}\)</span> . Entonces, por la ley de probabilidad total <a href="nt2.html#thm:probabilidad-total">2.13</a> y de acuerdo con la figura <a href="nt2.html#fig:ejemplo1-probabilidad-total">2.16</a>, se obtiene que
+<p>Sea el evento <span class="math inline">\(D: \{ \textrm{el artículo seleccionado es defectuoso} \}\)</span> . Entonces, por la ley de la probabilidad total <a href="nt2.html#thm:probabilidad-total">2.13</a> y de acuerdo con la figura <a href="nt2.html#fig:ejemplo1-probabilidad-total">2.16</a>, se obtiene que
 <span class="math display">\[
 \begin{align*}
 P \left(D \right)&amp;=P \left(A \right) \cdot P \left( D \mid A \right) + P \left(B \right) \cdot P \left( D \mid B \right) +  P \left(C \right) \cdot P \left( E \mid A{}_k \right)\\
@@ -2009,7 +2018,7 @@ si <span class="math inline">\(P\left(E \right) \neq 0\)</span>. Luego, aplicand
 P \left( A{}_i \mid E \right)=\frac{P \left( A_i \right) \cdot P \left( E \mid A_i \right)}{P \left( E \right)},
 \]</span>
 si <span class="math inline">\(P \left(A_i \right) \neq 0\)</span> para <span class="math inline">\(i=1, 2, \dotsc, k\)</span>.
-Por último, haciendo uso de la ley de probabilidad total <a href="nt2.html#thm:probabilidad-total">2.13</a> para el denominador en la ecuación anterior, se obtiene que
+Por último, haciendo uso de la ley de la probabilidad total <a href="nt2.html#thm:probabilidad-total">2.13</a> para el denominador en la ecuación anterior, se obtiene que
 <span class="math display">\[
 P \left( A{}_i \mid E \right)=\frac{P \left(A{}_i \right) \cdot P \left( E \mid A{}_i \right)}{\sum_{i=1}^{k}P\left ( A{}_i \right ) \cdot P\left ( E \mid A{}_i \right )}.
 \]</span>
