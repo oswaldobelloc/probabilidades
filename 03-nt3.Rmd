@@ -56,7 +56,7 @@ Con respecto al ejemplo \@ref(exm:variable-discreta), la variable aleatoria $X=\
 ### Variable Aleatoria Continua {#variable-continua}
 
 ::: {#variable-continua .definition name="Variable Aleatoria Continua"}
-Se dice que una variable aleatoria es _continua_ si su recorrido $R_X$ consiste en uno o más intervalos de la recta de los reales.
+Se dice que una _variable aleatoria es continua_ si su recorrido $R_X$ consiste en uno o más intervalos de la recta de los reales.
 
 :::
 
@@ -71,7 +71,7 @@ Aquí, $X$ es una variable aleatoria continua.
 ## Función de Probabilidad {#funcion-probabilidad}
 
 ::: {#funcion-probabilidad .definition name="Función de Probabilidad"}
-Sea $X$ una variable aleatoria discreta con recorrido $R_X=\left\{x_1, x_2, \dotsc \right\}$. Tal que, la probabilidad de que $X=x_i$ es $p \left(x_i \right)$, es decir, $P \left(X=x_i \right)=p \left(x_i \right)$, para $i=1,2, \dotsc$. Entonces la función $p$ es una _función de probabilidad_ si cumple las siguientes condiciones:
+Sea $X$ una variable aleatoria discreta con recorrido $R_X=\left\{x_1, x_2, \dotsc \right\}$. Tal que, la probabilidad de que $X=x_i$ es $p \left(x_i \right)$, es decir, $P \left(X=x_i \right)=p \left(x_i \right)$, para $i=1,2, \dotsc$. Entonces, la función $p$ es una _función de probabilidad_ si cumple las siguientes condiciones:
 $$
 \begin{align*}
 i)& \: p \left(x_i \right) \ge 0,\, para \: i= 1, 2, \dotsc\\
@@ -81,8 +81,10 @@ ii)& \: \sum_{i=1}^{\infty }p\left ( x_i \right )=1.
 $$
 :::
 
-::: {.example #distribucion-probabilidad1 name="Variable Aleatoria Continua"}
-Sea el experimento aleatorio que consiste en lanzar un par de dados equilibrados y $X$ la variable aleatoria representada por la suma de los resultados en cada dado. Como se mostró en ejemplo \@ref(exm:ejemp1-probcond), el espacio muestral viene dado por
+::: {.example #funcion-probabilidad1 name="Función de Probabilidad"}
+Sea el experimento aleatorio que consiste en lanzar un par de dados equilibrados y $X$ la variable aleatoria representada por la suma de los resultados en cada dado.
+
+Como se mostró en el ejemplo \@ref(exm:ejemp1-probcond), el espacio muestral viene dado por
 $$
 S=\begin{Bmatrix}
 (1,1);&(1,2);&(1,3);&(1,4);&(1,5);&(1,6);\\
@@ -161,6 +163,20 @@ knitr::kable(
 ```
 
 :::
+
+Como se oberva en la tabla \@ref(tab:distribucion-probabilidad1) $p\left ( x_i \right )$ es una auténtica función de probabilidad dado que se cumplen las dos condiciones requeridas en la definición \@ref(def:funcion-probabilidad). Es decir,
+$$
+i) \: p \left(x_i \right) \ge 0,\, para \: i= 1, 2, \dotsc 11; y
+$$
+
+$$
+\begin{align*}
+ii) \: \sum_{i=1}^{11 }p\left ( x_i \right )=& \frac{1}{36}+\frac{2}{36}+\frac{3}{36}+\frac{4}{36}+\frac{5}{36}+\frac{6}{36}\\
+& +\frac{5}{36}+\frac{4}{36}+\frac{3}{36}+\frac{2}{36}+\frac{1}{36}\\
+&=1.
+\end{align*}
+$$
+
 En algunos casos es posible expresar la función de probabilidad a través de una expresión matemática dada en términos de la variable aleatoria. En este caso, la función de probabilidad queda determinada por la siguiente expresión:
 $$
 p\left ( x \right )= \begin{cases}
@@ -190,7 +206,7 @@ Como se puede notar, las probabilidades determinadas con esta ecuación se corre
 
 Una forma de visualizar de manera rápida las probabilidades asociadas a cada valor de la variable aleatoria es a través de una gráfica de líneas verticales que comienzan en cada valor de la variable $x_i$ y cuya altura está determinada por sus probabilidades $p\left (x_i  \right )$. El gráfico de la función de  probabilidad para la suma de las caras en el lanzamiento de los dos dados se muestra en la figura \@ref(fig:grafico-distribucion-probabilidad1).
 
-```{r grafico-distribucion-probabilidad1, fig.cap = "Probabilidad de la suma de las caras de dos dados", class.source = "watch-out"}
+```{r grafico-distribucion-probabilidad1, fig.cap = "Gráfica de la función de probabilidad de la suma de las caras de dos dados", class.source = "watch-out"}
 ggplot(
   data = dp_ej1,
   aes(x = xi, y = numero_ocurrencia / 36)
@@ -209,8 +225,209 @@ ggplot(
   theme_classic() + 
   xlab("Suma de las caras (X)") +
   ylab("Función de probabilidad")
-    
 ```
+
+
+## Función de Distribución Acumulativa de Probabilidad {#funcion-distribucion}
+Existen muchos problemas en los que es necesario calcular la probabilidad de que el valor observado de una variable aleatoria $X$ sea menor o igual que algún número real $x$. Al escribir $F \left(x \right) = P \left(X \leq x \right)$ para cualquier número real $x$, se define $F \left(x \right)$ como la función de distribución acumulativa de probabilidad de la variable aleatoria $X$. De manera formal, la función de distribución acumulativa de probabilidad se define de la siguiente manera:
+
+::: {#funcion-probabilidad .definition name="Función de Distribución Acumulativa de Probabilidad"}
+Sea $X$ una variable aleatoria discreta con función de probabilidad $p \left(x_i \right)$. Entonces, la función de distribución acumulativa de probabilidad de $X$, denotada como $F \left(X \right)$, viene dada por:
+$$
+\begin{equation}
+F\left ( x \right )=P\left ( X \leq x \right )=\sum_{t=x_1}^{x} p\left ( t \right ), \, \textrm{ para} \:\, t \leq x.
+(\#eq:distribucion-probabilidad)
+\end{equation}
+$$
+:::
+
+### Propiedades de la Función de Distribución Acumulativa de Probabilidad {#propiedades-funcion-distribucion}
+
+Dentro de las propiedades más importantes de la función de distribución acumulativa de probabilidad se pueden mencionar las siguientes:
+$$
+\begin{align*}
+i)& \: 0 \leq F\left ( x \right ) \leq 1 \:\: \textrm{par cualquier}\:x; \\
+ii)& \:\displaystyle \lim_{x \to - \infty }F\left ( x \right )=0\\
+iii)& \:\displaystyle \lim_{x \to  \infty }F\left ( x \right )=1\\
+iv)& \: F\left ( x_{j} \right ) \geq F\left ( x_{i} \right ) \:\: \textrm{si} \: x_{j}> x_{i};\\
+v)& \: F\left ( x_{i} \right ) = F\left ( x_{i-1} \right ) + p\left ( x_{i} \right );\\
+vi)& \: P\left ( X > x_{i} \right ) = 1 - F\left ( x_{i} \right ); \\
+vii)& \: P\left ( X <  x_{i} \right ) = F\left ( x_{i-1} \right ); \\
+viii)& \: P\left ( X \geq  x_{i} \right ) = 1 - F\left ( x_{i-1} \right ); \\
+ix)& \: P\left ( X=x_{i} \right )=F\left ( x_{i} \right )-F\left ( x_{i-1} \right ); \\
+x)& \: P\left ( x_{i} \leq X \leq x_{j} \right )=F\left ( x_{j} \right )-F\left ( x_{i-1} \right );\\
+xi)& \: P\left ( x_{i} <  X \leq x_{j} \right )=F\left ( x_{j} \right )-F\left ( x_{i} \right );\\ 
+xii)& \: P\left ( x_{i} \leq   X <  x_{j} \right )=F\left ( x_{j-1} \right )-F\left ( x_{i-1} \right ).\\
+\end{align*}
+$$
+
+::: {.example #funcion-probabilidad1 name="Función de Distribución Acumulativa"}
+Determine la función de distribución acumulativa de probabilidad del ejemplo \@ref(exm:funcion-probabilidad1).
+
+La función de distribución acumulativa de probabilidad en este caso viene dada por:
+$$
+\begin{align*}
+ F(2)&=P\left ( X \leq 2 \right )=p\left (2  \right )= \frac{1}{36}\\
+ F(3)&=P\left ( X \leq 3 \right )= p\left (2  \right )+p\left (3  \right )= \frac{1}{36} + \frac{2}{36} =\frac{3}{36} \\
+F(4)&=P\left ( X \leq 4 \right )= p\left (2  \right )+p\left (3  \right )+p\left (4  \right )\\&= \frac{1}{36} + \frac{2}{36} + \frac{3}{36}=\frac{6}{36} \\
+F(5)&=P\left ( X \leq 5 \right )= p\left (2  \right )+p\left (3  \right )+p\left (4  \right )+p\left (5  \right )\\&= \frac{1}{36} + \frac{2}{36} + \frac{3}{36}+ \frac{4}{36}=\frac{10}{36} \\
+F(6)&=P\left ( X \leq 6 \right )= p\left (2  \right )+p\left (3  \right )+p\left (4  \right )+p\left (5  \right )+p\left (6  \right )\\&= \frac{1}{36} + \frac{2}{36} + \frac{3}{36}+ \frac{4}{36}+ \frac{5}{36}=\frac{15}{36} \\
+F(7)&=P\left ( X \leq 7 \right )= p\left (2  \right )+p\left (3  \right )+p\left (4  \right )+p\left (5  \right )+p\left (6  \right )+p\left (7  \right )\\&= \frac{1}{36} + \frac{2}{36} + \frac{3}{36}+ \frac{4}{36}+ \frac{5}{36}+ \frac{6}{36}=\frac{21}{36} \\
+F(8)&=P\left ( X \leq 8 \right )= p\left (2  \right )+p\left (3  \right )+p\left (4  \right )+p\left (5  \right )+p\left (6  \right )+p\left (7  \right )\\&+p\left (8  \right )\\&= \frac{1}{36} + \frac{2}{36} + \frac{3}{36}+ \frac{4}{36}+ \frac{5}{36}+ \frac{6}{36}+ \frac{5}{36}=\frac{26}{36} \\
+F(9)&=P\left ( X \leq 9 \right )= p\left (2  \right )+p\left (3  \right )+p\left (4  \right )+p\left (5  \right )+p\left (6  \right )+p\left (7  \right )\\&+p\left (8  \right )+p\left (9  \right )\\&= \frac{1}{36} + \frac{2}{36} + \frac{3}{36}+ \frac{4}{36}+ \frac{5}{36}+ \frac{6}{36}+ \frac{5}{36}+ \frac{4}{36}=\frac{30}{36} \\
+F(10)&=P\left ( X \leq 10 \right )= p\left (2  \right )+p\left (3  \right )+p\left (4  \right )+p\left (5  \right )+p\left (6  \right )+p\left (7  \right )\\&+p\left (8  \right )+p\left (9  \right )+p\left (10  \right )\\&= \frac{1}{36} + \frac{2}{36} + \frac{3}{36}+ \frac{4}{36}+ \frac{5}{36}+ \frac{6}{36}+ \frac{5}{36}+ \frac{4}{36}+ \frac{3}{36}\\&=\frac{33}{36} \\
+F(11)&=P\left ( X \leq 11 \right )= p\left (2  \right )+p\left (3  \right )+p\left (4  \right )+p\left (5  \right )+p\left (6  \right )+p\left (7  \right )\\&+p\left (8  \right )+p\left (9  \right )+p\left (10  \right )+p\left (11  \right )\\&= \frac{1}{36} + \frac{2}{36} + \frac{3}{36}+ \frac{4}{36}+ \frac{5}{36}+ \frac{6}{36}+ \frac{5}{36}+ \frac{4}{36}+ \frac{3}{36}\\&+ \frac{2}{36}=\frac{35}{36} \\
+F(12)&=P\left ( X \leq 12 \right )= p\left (2  \right )+p\left (3  \right )+p\left (4  \right )+p\left (5  \right )+p\left (6  \right )+p\left (7  \right )\\&+p\left (8  \right )+p\left (9  \right )+p\left (10  \right )+p\left (11  \right )+p\left (12  \right)\\&= \frac{1}{36} + \frac{2}{36} + \frac{3}{36}+ \frac{4}{36}+ \frac{5}{36}+ \frac{6}{36}+ \frac{5}{36}+ \frac{4}{36}+ \frac{3}{36}\\&+ \frac{2}{36}+ \frac{1}{36}=\frac{36}{36}=1 \\.   
+\end{align*}
+$$
+
+Los resultados anteriores pueden resumirse en la tabla \@ref(tab:distribucion-acumulada1).
+
+```{r distribucion-acumulada1, class.source="watch-out", class.source = "watch-out"}
+da_ej1 <- data.frame(
+  S = c(
+    "$\\left(1, 1 \\right)$",
+    "$\\left(1, 2 \\right), \\left(2, 1
+        \\right)$",
+    "$\\left(1, 3 \\right), \\left(2, 2
+        \\right), \\left(3, 1 \\right)$",
+    "$\\left(1, 4 \\right), \\left(2, 3
+        \\right), \\left(3, 2 \\right),
+        \\left(4, 1 \\right)$",
+    "$\\left(1, 5\\right), \\left(2, 4
+        \\right), \\left(3, 3 \\right), 
+        \\left(4, 2 \\right),\\left(5,
+        1\\right)$",
+    "$\\left(1, 6\\right), \\left(2, 5
+        \\right), \\left(3, 4 \\right), 
+        \\left(4, 3 \\right),\\left(5,
+        2\\right),\\left(6, 1\\right)$",
+    "$\\left(2, 6\\right), \\left(3, 5
+        \\right), \\left(4, 4 \\right), 
+        \\left(5, 3 \\right),\\left(6,
+        2\\right)$",
+    "$\\left(3, 6 \\right), \\left(4, 5
+        \\right), \\left(5, 4 \\right),
+        \\left(6, 3 \\right)$",
+    "$\\left(4, 6 \\right), \\left(5, 5
+        \\right), \\left(6, 4 \\right)$",
+    "$\\left(5, 6 \\right), \\left(6, 5
+        \\right)$",
+    "$\\left(6, 6 \\right)$"
+  ),
+  xi = 2:12,
+  numero_ocurrencia = c(1:6, 5:1)
+) %>%
+  mutate(
+    p_xi = c(
+      "$\\frac{1}{36}$", "$\\frac{2}{36}$",
+      "$\\frac{3}{36}$", "$\\frac{4}{36}$",
+      "$\\frac{5}{36}$", "$\\frac{6}{36}$",
+      "$\\frac{5}{36}$", "$\\frac{4}{36}$",
+      "$\\frac{3}{36}$", "$\\frac{2}{36}$",
+      "$\\frac{1}{36}$"
+    ),
+    F_xi = c(
+      "$\\frac{1}{36}$", "$\\frac{3}{36}$",
+      "$\\frac{6}{36}$", "$\\frac{10}{36}$",
+      "$\\frac{15}{36}$", "$\\frac{21}{36}$",
+      "$\\frac{26}{36}$", "$\\frac{30}{36}$",
+      "$\\frac{33}{36}$", "$\\frac{35}{36}$",
+      "$\\frac{36}{36}$"
+      )
+  )
+knitr::kable(
+  da_ej1,
+  booktabs = TRUE,
+  row.names = TRUE,
+  col.names = c("Espacio Muestral", "$x_i$", "Número de ocurrencia", "$p\\left(x_i \\right)$", "$F\\left(x_i \\right)$"),
+  align = c("lccc"),
+  format.args = list(decimal.mark = ",", big.mark = "."),
+  caption = "\\label{tab2:distribucion-acumulada1}Función de distribución acumulativa de la suma de las caras de dos dados",
+  escape = FALSE
+) %>%
+  kable_styling(
+    bootstrap_options = "striped",
+    full_width = FALSE,
+    fixed_thead = T
+  ) %>%
+  kable_classic_2()
+   
+```
+
+Cuando se conoce la expresión que define la función de probabilidad, la cual, en este caso está dada por la ecuación \@ref(eq:funcion-probabilidad1), se puede determinar una expresión matemática que defina la función de distribución acumulativa de probabilidad. A continuación se ejecuta un procedimiento para hallar esta ecuación.
+$$
+\begin{align*}
+F\left ( x \right )=\sum_{t=2}^{x}p\left ( x \right ) =\sum_{t=2}^{x}\frac{6-\left|7-x \right|}{36}. 
+\end{align*}
+$$
+
+Como la expresión $\left|7-x \right|$ es positiva si $x=2, 3, \dotsc, 7$ y negativa si $x=8, 9, \dotsc, 12$. Entonces, se derivan expresiones para  $F\left ( x \right )$ en cada uno de estos casos.
+
+1.  si $x=2, 3, \dotsc, 7$
+$$
+\begin{align*}
+ F\left ( x \right )&= \sum_{t=2}^{x}\frac{6-\left|7-x \right|}{36}=\frac{1}{36}\sum_{t=2}^{x}\left ( 6-7+x \right )=\frac{1}{36}\sum_{t=2}^{x}\left ( t-1 \right )\\
+&=\frac{1}{36}\left [ \sum_{t=2}^{x}t-\sum_{t=2}^{x}1 \right ]=\frac{1}{36}\left [ \left ( 2+3+\cdots +x \right )-\left ( x-1 \right ) \right ]\\
+&=\frac{1}{36}\left [ \left ( \frac{2+x}{2} \right )\left ( x-1 \right )-\left ( x-1 \right ) \right ] = \frac{1}{36}\left ( x-1 \right )\left ( \frac{2+x}{2} -1 \right )\\
+&=\frac{1}{36}\left ( x-1 \right )\left ( \frac{2+x-2}{2} \right )=\frac{1}{72}x\left ( x-1 \right ).
+\end{align*}
+$$
+2.  si $x=8, 9, \dotsc, 12$
+$$
+\begin{align*}
+ F\left ( x \right )&=\sum_{t=8}^{x}\frac{6-\left|7-x \right|}{36}=\frac{1}{36}\sum_{t=8}^{x}\left ( 6+7-x \right )\\
+&=\frac{1}{36}\sum_{t=8}^{x}\left ( 13-x \right )=\frac{1}{36}\left [ \sum_{t=8}^{x}13-\sum_{t=8}^{x}x \right ]\\
+&=\frac{1}{36}\left [ 13\left ( x-7 \right )-\left ( \frac{8+x}{2} \right )\left ( x-7 \right ) \right ]\\
+&=\frac{1}{36}\left [ \left ( x-7 \right )\left ( 13-\left ( \frac{8+x}{2} \right ) \right ) \right ]\\
+&=\frac{1}{36}\left [ \left ( x-7 \right )\left ( \frac{26-8-x}{2} \right ) \right ]=\frac{1}{72}\left ( x-7 \right )\left ( x-8 \right ).
+\end{align*}
+$$
+
+En resumen, la función de distribución acumulada puede expresarse de la siguiente manera:
+$$
+F\left ( x \right )=
+\begin{cases}
+0 & \textrm{ si } x< 2 \\
+\frac{1}{72}x\left ( x-1 \right ) & \textrm{ si } x=2, 3,\dotsc,7 \\
+\frac{42}{72}+\frac{1}{72}\left ( x-7 \right )\left ( 18-x \right ) & \textrm{ si } x=8, 9, \dotsc,12 \\
+1 & \textrm{ si } x>1. 
+(\#eq:funcion-dictribucion1)
+\end{cases}
+$$
+
+Se puede verificar que los valores de $F\left ( x \right )$  dados en la tabla \@ref(tab:distribucion-acumulada1) se corresponden con los que se obtienen con la ecuación \@ref(eq:funcion-dictribucion1). Por ejemplo:
+$$
+\begin{align*}
+a)& \: F\left ( 7 \right )=\frac{1}{72}7\left ( 7-1 \right )=\frac{42}{72}=\frac{42}{72}\\
+b)& \: F\left ( 10 \right )=\frac{42}{72}+\frac{1}{72}\left ( 10-7 \right )\left ( 18-10\right)=\frac{42}{72}+\frac{24}{72}=\frac{66}{72}=\frac{33}{36}.
+\end{align*}
+$$
+:::
+
+La figura \@ref(fig:grafico-distribucion-acumulada1) muestra la gráfica de la función de distribución acumulativa de la suma de las caras de los dados. Note que esta gráfica es escalonada. 
+
+```{r grafico-distribucion-acumulada1, fig.cap = "Gráfica de la función de distribución acumulativa de la suma de las caras de dos dados", class.source = "watch-out"}
+dp_ej1 <- dp_ej1 %>%
+  mutate(
+    F_xi = cumsum(numero_ocurrencia) / 36,
+    xi_end = c(3:12, NA),
+    F_xiend = F_xi
+  )
+ggplot(
+  dp_ej1, aes(
+    x = xi, y = F_xi, xend = xi_end, yend = F_xiend
+  )
+) +
+  geom_point() +
+  geom_point(aes(x = xi_end, y = F_xi), shape = 1) +
+  geom_segment(color = "blue") +
+  scale_x_continuous(breaks = seq(2, 12, 1)) +
+  theme_classic() +
+  xlab("Suma de las caras (X)") +
+  ylab("Función de distribución acumulativa")
+```
+
 
 
 1. Variable aleatorias unidimensionales

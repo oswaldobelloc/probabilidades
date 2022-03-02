@@ -156,10 +156,14 @@ def:variable-continua
 exm:variable-continua
 def:funcion-probabilidad
 eq:funcion-probabilidad
-exm:distribucion-probabilidad1
+exm:funcion-probabilidad1
 tab:distribucion-probabilidad1
 eq:funcion-probabilidad1
 fig:grafico-distribucion-probabilidad1
+eq:distribucion-probabilidad
+tab:distribucion-acumulada1
+eq:funcion-dictribucion1
+fig:grafico-distribucion-acumulada1
 nt1
 nt11
 nt12
@@ -233,3 +237,5 @@ recorrido
 variable-discreta
 variable-continua
 funcion-probabilidad
+funcion-distribucion
+propiedades-funcion-distribucion
