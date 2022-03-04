@@ -428,35 +428,115 @@ ggplot(
   ylab("Función de distribución acumulativa")
 ```
 
+## Esperanza Mateática de Una Variable Aleatoria Discreta {#esperanza-matematica}
+
+::: {#esperanza .definition name="Esperanza Matemática"}
+Sea $X$ una variable aleatoria discreta con la función de probabilidad $p \left(x \right)$. Entonces la
+esperanza matemática, media o valor esperado de$X$, denotado por $E \left(x \right)$, se define como
+$$
+\begin{equation}
+E \left(X \right)=\sum_{x}x p \left(x \right).
+(\#eq:esperanza)
+\end{equation}
+$$
+:::
+
+::: {.example #esperanza name="Función de Probabilidad"}
+Calcule el valor esperado de la variable aleatoria $X$  representada por la suma de los resultados del lanzamiento de dos dados descrita en el ejemplo \@ref(exm:funcion-probabilidad1).
+
+De acuerdo con la definición \@ref(def:esperanza), en este caso la esperanza viene dada por:
+$$
+\begin{align*}
+ii) \: \sum_{x=2}^{11 }p\left ( x \right )=& 2 \left(\frac{1}{36}\right)+3\left(\frac{2}{36}\right)+4\left(\frac{3}{36}\right)+5\left(\frac{4}{36}\right)+6\left(\frac{5}{36}\right)+7\left(\frac{6}{36}\right) \\
+& +8\left(\frac{5}{36}\right)+9\left(\frac{4}{36}\right)+10\left(\frac{3}{36}\right)+11\left(\frac{2}{36}\right)+12\left(\frac{1}{36}\right)\\
+&=7.
+\end{align*}
+$$
+Este valor significa que si se lanzan los dos dados un número significativamente grande de veces, el promedio de la suma de las caras va estar próximo a 7. 
+:::
+
+En muchos problemas de estadística no solo es de interés el valor esperado de la variable $X$, como se definió en \@ref(def:esperanza), sino también el valor esperado de alguna variable $Y$ que es una transformación de $X$, es decir $g\left(x \right)$. Por ejemplo, $y=g\left(x \right)=x^2$. En tal sentido, se establece el teorema siguiente:
+
+::: {#esperanza-transformacion .theorem}
+Si $X$ es una variable aleatoria discreta con función de probabilidad $p\left(x \right)$. Entonces, el valor esperado de la variable aleatoria $g\left(x \right)$ está dado por
+$$
+\begin{equation}
+E \left[g\left(x \right) \right]=\sum_{x}g\left(x \right) p \left(x \right).
+(\#eq:esperanza-transformacion)
+\end{equation}
+$$
+:::
+
+En algunos casos el calculo de esperanzas matemáticas se simplifican mediante el uso de los siguientes teoremas, los cuales permiten calcular valores esperados a partir de otras esperanzas conocidas o que se determinan con menor dificultad. 
+
+::: {#esperanza-transformacion-lineal .theorem}
+Si $X$ es una variable aleatoria discreta con función de probabilidad $p\left(x \right)$ y sean $a$ y $b$ constantes. Entonces,
+$$
+\begin{equation}
+E \left( ax+b \right)=a.E \left( x \right)+b.
+(\#eq:esperanza-transformacion-lineal)
+\end{equation}
+$$
+:::
+
+Note que si se hace $a=0$ en el teorema \@ref(thm:esperanza-transformacion) se obtiene el siguiente corolario:
+
+::: {#corolario1 .corollary}
+Si $X$ es una variable aleatoria discreta con función de probabilidad $p\left(x \right)$ y $a$ una constantes. Entonces,
+$$
+\begin{equation}
+E \left( ax \right)=aE \left( x \right).
+(\#eq:corolario1)
+\end{equation}
+$$
+:::
+
+Mientras que si se hace $b=0$ en el teorema \@ref(thm:esperanza-transformacion) se obtiene este otro: 
+
+::: {#corolario2 .corollary}
+Si $X$ es una variable aleatoria discreta con función de probabilidad $p\left(x \right)$ y $b$ una constantes. Entonces,
+$$
+\begin{equation}
+E \left( b \right)=b.
+(\#eq:corolario2)
+\end{equation}
+$$
+:::
+
+Observe que si se escribe $E \left( b \right)$, la constante $b$ se puede ver como una variable aleatoria que siempre toma el valor $b$.
+
+Otro teorema importante relacionado con la esperanza de transformaciones de variables aleatoria es el siguiente:
+
+::: {#esperanza-suma-transformaciones .theorem}
+Si $X$ es una variable aleatoria discreta con función de probabilidad $p\left(x \right)$. Además, considere que $c_1, c_2, \dotsc, c_n$ son constantes y $g_1\left(x \right), g_2\left(x \right), \dotsc, g_n\left(x \right)$ transformaciones de $X$. Entonces,
+$$
+\begin{equation}
+E \left[\sum_{i=1}^{n}c_i g_i\left(x \right) \right]=\sum_{i=1}^{n}c_iE \left[ g_i\left(x \right) \right].
+(\#eq:esperanza-suma-transformaciones)
+\end{equation}
+$$
+:::
 
 
-1. Variable aleatorias unidimensionales
-     1.1 Definición
-     1.2 Tipos de variables aleatorias
-            1.2.1 Discreta
-            1.2.2 Continua
+## Varianza de Una Variable Aleatoria Discreta {#varianza}
 
-2. Función de probabilidad
-    2.1 Definición
-    2.2 Propiedades
-    2.3 Gráfica
-    2.4 Función de distribución acumulativa
-          2.4.1 Propiedades
-          2.4.2 Gráfica
-    2.5 Cálculo probabilístico de que una variable aleatoria discreta tome determinados valores
 
-    2.6 Esperanza matemática
-           2.6.1 Definición
-           2.6.2 Propiedades
-           2.6.3 Cálculo de la esperanza matemática de una variable aleatoria discreta
+## Función Generadora de Momentos de Una Variable Aleatoria Discreta {#funcion-generadora-momentos}
 
-    2.7 Varianza de una variable aleatoria
-           2.7.1 Definición
-           2.7.2 Propiedades
-           2.7.3 Cálculo de la varianza de una variable aleatoria discreta.
-2.8 Función generadora de momentos
-          2.8.1 Definición
-          2.8.2 Propiedades
-          2.8.3 Cálculo de la esperanza y varianza de una variable aleatoria discreta mediante la función generadora de momentos.
-          2.8.4 Determinación de la propiedad reproductiva para variables aleatorias discretas
+
+## Distribuciones de Probabilidad Notables {#distribuciones-notables}
+
+
+### Distribució Binomial {#distribuciones-binomial}
+
+
+### Distribuciones Hipergeométrica {#distribuciones-binomial}
+
+
+### Distribuciones de Poisson {#distribuciones-poisson}
+
+
+
+
+
 

@@ -224,6 +224,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="3.3.1" data-path="dist_disc.html"><a href="dist_disc.html#propiedades-funcion-distribucion"><i class="fa fa-check"></i><b>3.3.1</b> Propiedades de la Función de Distribución Acumulativa de Probabilidad</a></li>
 </ul></li>
+<li class="chapter" data-level="3.4" data-path="dist_disc.html"><a href="dist_disc.html#esperanza-matematica"><i class="fa fa-check"></i><b>3.4</b> Esperanza Mateática de Una Variable Aleatoria Discreta</a></li>
+<li class="chapter" data-level="3.5" data-path="dist_disc.html"><a href="dist_disc.html#varianza"><i class="fa fa-check"></i><b>3.5</b> Varianza de Una Variable Aleatoria Discreta</a></li>
+<li class="chapter" data-level="3.6" data-path="dist_disc.html"><a href="dist_disc.html#funcion-generadora-momentos"><i class="fa fa-check"></i><b>3.6</b> Función Generadora de Momentos de Una Variable Aleatoria Discreta</a></li>
+<li class="chapter" data-level="3.7" data-path="dist_disc.html"><a href="dist_disc.html#distribuciones-notables"><i class="fa fa-check"></i><b>3.7</b> Distribuciones de Probabilidad Notables</a>
+<ul>
+<li class="chapter" data-level="3.7.1" data-path="dist_disc.html"><a href="dist_disc.html#distribuciones-binomial"><i class="fa fa-check"></i><b>3.7.1</b> Distribució Binomial</a></li>
+<li class="chapter" data-level="3.7.2" data-path="dist_disc.html"><a href="dist_disc.html#distribuciones-binomial"><i class="fa fa-check"></i><b>3.7.2</b> Distribuciones Hipergeométrica</a></li>
+<li class="chapter" data-level="3.7.3" data-path="dist_disc.html"><a href="dist_disc.html#distribuciones-poisson"><i class="fa fa-check"></i><b>3.7.3</b> Distribuciones de Poisson</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Publicado con bookdown</a></li>
@@ -716,24 +725,19 @@ n \left( A \cup B \right)=n \left(A \right) + n \left(B \right) - n \left(A \cap
 \end{equation}
 \]</span>
 Es decir, el número de elementos que están en <span class="math inline">\(A\)</span> o en <span class="math inline">\(B\)</span> (o ambos) se encuentran sumando primero <span class="math inline">\(n \left(A \right)\)</span> y <span class="math inline">\(n \left(B \right)\)</span> (inclusión) y luego restando <span class="math inline">\(n \left(A \cap B \right)\)</span> (exclusión), puesto que sus elementos fueron contados dos veces. Fíjese que si los conjuntos <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> son disyuntos, entonces
-<span class="math display" id="eq:tamaño-conjuntod2">\[
+<span class="math display">\[
 n \left(A \cup B \right)=n\left(A \right)+n \left(B \right),
 \]</span>
 dado que <span class="math inline">\(A \cap B = \emptyset\)</span>.
 Este resultado se puede extender para tres conjuntos de la siguiente manera:
 Supongamos que <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, <span class="math inline">\(C\)</span> son tres conjuntos finitos. Entonces <span class="math inline">\(A \cup B \cup C\)</span> es finito y
-$$
+<span class="math display" id="eq:tamaño-conjuntod2">\[
 \begin{align*}
-n (A B C ) =&amp; n (A ) + n (B ) + n (C )-n (A B )</p></li>
-</ol>
-<ul>
-<li>n (A C )\
-&amp;- n (B C ) + n (A B C ).
+n \left(A \cup B \cup C \right) = \:\: &amp; n \left(A \right) + n \left(B \right) + n \left(C \right) - n \left(A \cap B \right) - n \left(A \cap C \right)\\
+&amp;- n \left(B \cap C \right) + n \left(A \cap B \cap C \right).
 \tag{2.5}
 \end{align*}
-$$</li>
-</ul>
-<ol start="5" style="list-style-type: lower-alpha">
+\]</span></p></li>
 <li><p>Sean <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> conjuntos finitos. Entonces <span class="math inline">\(A \oplus B\)</span> es finito y
 <span class="math display" id="eq:tamaño-conjuntoe">\[
 \begin{equation}
@@ -746,7 +750,7 @@ El principio anterior se puede extender a tres conjuntos de la siguiente manera:
 Supongamos que <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, <span class="math inline">\(C\)</span> son tres conjuntos finitos. Entonces <span class="math inline">\(A∪B∪C\)</span> es finito y
 <span class="math display" id="eq:tamaño-conjuntoe">\[
 \begin{align*}
-n \left( A \oplus B \oplus C \right) =&amp; n \left(A \right)+n\left(B \right)+n \left(C \right)-2n \left(A \cap B \right)-2n \left(A \cap C \right)\\
+n \left( A \oplus B \oplus C \right) =\:\: &amp; n \left(A \right)+n\left(B \right)+n \left(C \right)-2n \left(A \cap B \right)-2n \left(A \cap C \right)\\
 &amp;-2n \left(B \cap C \right)+4n \left(A \cap B \cap C \right).
 \tag{2.6}
 \end{align*}
@@ -754,7 +758,7 @@ n \left( A \oplus B \oplus C \right) =&amp; n \left(A \right)+n\left(B \right)+n
 <li><p>Supongamos que <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, <span class="math inline">\(C\)</span> son tres conjuntos finitos. Entonces el número de elementos que están en dos de los tres conjuntos queda determinado por
 <span class="math display" id="eq:tamaño-conjuntof">\[
 \begin{align*}
-n \left[ \left(A \cup B \cup C \right) \setminus A \oplus B \oplus C \right] =&amp; n \left(A \cap B \right) + n \left(A \cap C \right) + n \left(B \cap C \right)\\
+n \left[ \left(A \cup B \cup C \right) \setminus A \oplus B \oplus C \right] = \:\: &amp; n \left(A \cap B \right) + n \left(A \cap C \right) + n \left(B \cap C \right)\\
 &amp;- 3n \left(A \cap B \cap C \right).
 \tag{2.7}
 \end{align*}
@@ -762,7 +766,7 @@ n \left[ \left(A \cup B \cup C \right) \setminus A \oplus B \oplus C \right] =&a
 <li><p>Supongamos que <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, <span class="math inline">\(C\)</span> son tres conjuntos finitos. Entonces el número de elementos que están exactamente en uno de los tres conjuntos queda determinado por
 <span class="math display" id="eq:tamaño-conjuntog">\[
 \begin{align*}
-n \left[ \left(A \oplus B \oplus C \right) \setminus \left(A \cap B \cap C \right) \right]=&amp;n\left(A \right)+n \left(B \right)+n \left(C \right)-2n \left(A \cap B \right)-2n \left(A \cap C \right)\\
+n \left[ \left(A \oplus B \oplus C \right) \setminus \left(A \cap B \cap C \right) \right] = \:\: &amp; n\left(A \right)+n \left(B \right)+n \left(C \right)-2n \left(A \cap B \right)-2n \left(A \cap C \right)\\
 &amp;-2n \left(B \cap C \right)+n \left(A \cap B \cap C \right),
 \tag{2.8}
 \end{align*}
@@ -772,7 +776,7 @@ n \left[ \left(A \oplus B \oplus C \right) \setminus \left(A \cap B \cap C \righ
 <p><span id="exm:ej1-cardinal" class="example"><strong>Ejemplo 2.8  (Tamaño de un Conjunto) </strong></span>Los estudiantes de Licenciatura en Estadísticas deben aprobar las asignaturas Matemáticas II y Probabilidades. Se les aplicó una encuesta a 50 estudiantes que cursan la carrera carrera para ver si ellos habían cursado estas materias y se obtuvo la siguientes respuesta: 25 estudiantes aprobaron Matemáticas II, 20 estudiantes aprobaron Probabilidades y cinco estudiantes aprobaron ambas asignaturas. Encuentre el número de estudiantes que: a) aprobaron Probabilidades solamente, b) no aprobaron Probabilidades, c) aprobaron Matemáticas II o Probabilidades (o ambas), d) no aprobaron ninguna de las dos asignaturas y e) aprobaron una de las asignaturas.</p>
 <p>Sea <span class="math inline">\(\mathbb{U}\)</span> el conjunto universal formado por los 50 alumnos encuestados, <span class="math inline">\(M\)</span> el conjunto de los alumnos que aprobaron Matemáticas II y <span class="math inline">\(P\)</span> los alumnos que aprobaron probabilidades. Entonces los datos anteriores se pueden expresar de la siguiente manera: <span class="math inline">\(\mathbb{U} = 50\)</span>, <span class="math inline">\(M = 25\)</span>, <span class="math inline">\(P = 20\)</span> y <span class="math inline">\(M \cap P = 5\)</span>.</p>
 <ol style="list-style-type: lower-alpha">
-<li>El número de estudiantes que aprobaron Probabilidades solamente es:</li>
+<li>El número de estudiantes que aprobaron probabilidades solamente es:</li>
 </ol>
 <p><span class="math display">\[
 \begin{align*}
@@ -796,7 +800,7 @@ n \left(M \cup P \right) &amp; = n\left (M \right ) + n\left( P \right ) - n\lef
 \end{align*}
 \]</span></p>
 <ol start="4" style="list-style-type: lower-alpha">
-<li>El número de estudiantes que no aprobaron aprobaron ninguna de las dos asignaturas es:</li>
+<li>El número de estudiantes que no aprobaron ninguna de las dos asignaturas es:</li>
 </ol>
 <p><span class="math display">\[
 \begin{align*}
@@ -804,7 +808,7 @@ n \left(M^c \cap P^c \right) &amp; = n\left ( \left (M \cup P \right )^c \right 
 \end{align*}
 \]</span></p>
 <ol start="4" style="list-style-type: lower-alpha">
-<li>El número de estudiantes que no aprobaron una de las asignaturas:</li>
+<li>El número de estudiantes que aprobaron una de las asignaturas:</li>
 </ol>
 <p><span class="math display">\[
 \begin{align*}
@@ -813,7 +817,7 @@ n \left(M \oplus P \right) &amp; = n\left (M \right ) + n\left( P \right ) - 2n\
 \]</span></p>
 <p>Los resultados anteriores se resumen en el siguiente diagrama de Venn, el cual se muestra en la figura <a href="nt2.html#fig:ej1-cardinal">2.10</a> . Este diagrama se ha generado con la función <code>ggVennDiagra</code> del paquete <code>ggVennDiagra</code>.</p>
 <div class="sourceCode" id="cb95"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb95-1"><a href="nt2.html#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggVennDiagram</span>(</span>
-<span id="cb95-2"><a href="nt2.html#cb95-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">list</span>(<span class="at">P =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">25</span>, <span class="at">M =</span> <span class="dv">21</span><span class="sc">:</span><span class="dv">40</span>), <span class="at">color =</span> <span class="st">&quot;black&quot;</span>, </span>
+<span id="cb95-2"><a href="nt2.html#cb95-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">list</span>(<span class="at">M =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">25</span>, <span class="at">P =</span> <span class="dv">21</span><span class="sc">:</span><span class="dv">40</span>), <span class="at">color =</span> <span class="st">&quot;black&quot;</span>, </span>
 <span id="cb95-3"><a href="nt2.html#cb95-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">lwd =</span> <span class="fl">0.8</span>, <span class="at">lty =</span> <span class="dv">1</span>, <span class="at">category.names =</span> <span class="fu">c</span>(<span class="st">&quot;P&quot;</span>, <span class="st">&quot;M&quot;</span>),</span>
 <span id="cb95-4"><a href="nt2.html#cb95-4" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
 <span id="cb95-5"><a href="nt2.html#cb95-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> <span class="st">&quot;#F4FAFE&quot;</span>, <span class="at">high =</span> <span class="st">&quot;#4981BF&quot;</span>)</span></code></pre></div>

@@ -558,8 +558,7 @@ Este resultado se puede extender para tres conjuntos de la siguiente manera:
 Supongamos que $A$, $B$, $C$ son tres conjuntos finitos. Entonces $A \cup B \cup C$ es finito y
 $$
 \begin{align*}
-n \left(A \cup B \cup C \right) =& n \left(A \right) + n \left(B \right) + n \left(C \right)-n \left(A \cap B \right)
-- n \left(A \cap C \right)\\
+n \left(A \cup B \cup C \right) = \:\: & n \left(A \right) + n \left(B \right) + n \left(C \right) - n \left(A \cap B \right) - n \left(A \cap C \right)\\
 &- n \left(B \cap C \right) + n \left(A \cap B \cap C \right).
 (\#eq:tamaño-conjuntod2)
 \end{align*}
@@ -577,7 +576,7 @@ El principio anterior se puede extender a tres conjuntos de la siguiente manera:
 Supongamos que $A$, $B$, $C$ son tres conjuntos finitos. Entonces $A∪B∪C$ es finito y
 $$
 \begin{align*}
-n \left( A \oplus B \oplus C \right) =& n \left(A \right)+n\left(B \right)+n \left(C \right)-2n \left(A \cap B \right)-2n \left(A \cap C \right)\\
+n \left( A \oplus B \oplus C \right) =\:\: & n \left(A \right)+n\left(B \right)+n \left(C \right)-2n \left(A \cap B \right)-2n \left(A \cap C \right)\\
 &-2n \left(B \cap C \right)+4n \left(A \cap B \cap C \right).
 (\#eq:tamaño-conjuntoe)
 \end{align*}
@@ -586,7 +585,7 @@ $$
 f.	Supongamos que $A$, $B$, $C$ son tres conjuntos finitos. Entonces el número de elementos que están en dos de los tres conjuntos queda determinado por
 $$
 \begin{align*}
-n \left[ \left(A \cup B \cup C \right) \setminus A \oplus B \oplus C \right] =& n \left(A \cap B \right) + n \left(A \cap C \right) + n \left(B \cap C \right)\\
+n \left[ \left(A \cup B \cup C \right) \setminus A \oplus B \oplus C \right] = \:\: & n \left(A \cap B \right) + n \left(A \cap C \right) + n \left(B \cap C \right)\\
 &- 3n \left(A \cap B \cap C \right).
 (\#eq:tamaño-conjuntof)
 \end{align*}
@@ -595,7 +594,7 @@ $$
 g.	Supongamos que $A$, $B$, $C$ son tres conjuntos finitos. Entonces el número de elementos que están exactamente en uno de los tres conjuntos queda determinado por
 $$
 \begin{align*}
-n \left[ \left(A \oplus B \oplus C \right) \setminus \left(A \cap B \cap C \right) \right]=&n\left(A \right)+n \left(B \right)+n \left(C \right)-2n \left(A \cap B \right)-2n \left(A \cap C \right)\\
+n \left[ \left(A \oplus B \oplus C \right) \setminus \left(A \cap B \cap C \right) \right] = \:\: & n\left(A \right)+n \left(B \right)+n \left(C \right)-2n \left(A \cap B \right)-2n \left(A \cap C \right)\\
 &-2n \left(B \cap C \right)+n \left(A \cap B \cap C \right),
 (\#eq:tamaño-conjuntog)
 \end{align*}
@@ -607,7 +606,7 @@ Los estudiantes de Licenciatura en Estadísticas deben aprobar las asignaturas M
 
 Sea $\mathbb{U}$ el conjunto universal formado por los 50 alumnos encuestados, $M$ el conjunto de los alumnos que aprobaron Matemáticas II y $P$ los alumnos que aprobaron probabilidades. Entonces los datos anteriores se pueden expresar de la siguiente manera: $\mathbb{U} = 50$, $M = 25$, $P = 20$ y $M \cap P = 5$.
 
-a. El número de estudiantes que aprobaron Probabilidades solamente es:
+a. El número de estudiantes que aprobaron probabilidades solamente es:
 
 $$
 \begin{align*}
@@ -631,7 +630,7 @@ n \left(M \cup P \right) & = n\left (M \right ) + n\left( P \right ) - n\left (M
 \end{align*}
 $$
 
-d. El número de estudiantes que no aprobaron aprobaron ninguna de las dos asignaturas es:
+d. El número de estudiantes que no aprobaron ninguna de las dos asignaturas es:
 
 $$
 \begin{align*}
@@ -639,7 +638,7 @@ n \left(M^c \cap P^c \right) & = n\left ( \left (M \cup P \right )^c \right )= n
 \end{align*}
 $$
 
-d. El número de estudiantes que no aprobaron una de las asignaturas:
+d. El número de estudiantes que aprobaron una de las asignaturas:
 
 $$
 \begin{align*}
@@ -651,7 +650,7 @@ Los resultados anteriores se resumen en el siguiente diagrama de Venn, el cual s
 
 ```{r ej1-cardinal, fig.cap="Diagrama de Venn del Ejemplo \\@ref(exm:ej1-cardinal)", class.source = "watch-out", class.output = "bg-warning"}
 ggVennDiagram(
-  x = list(P = 1:25, M = 21:40), color = "black", 
+  x = list(M = 1:25, P = 21:40), color = "black", 
   lwd = 0.8, lty = 1, category.names = c("P", "M"),
   ) + 
   scale_fill_gradient(low = "#F4FAFE", high = "#4981BF")
