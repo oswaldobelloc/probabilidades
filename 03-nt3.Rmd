@@ -50,7 +50,7 @@ S=\left\{c, sc, ssc, sssc, ssssc, \dotsc \right\}.
 $$
 Si sobre este espacio muestral se define la variable aleatoria $X=\textrm{número de lanzamientos hata que aparece una cara}$. Entonces el recorrido de $X$, es decir $R_X$, viene definido por $R_X=1, 2, 3, \dotsc$. Dado que el recorrido de $X$ es infinito numerable se concluye que $X$ es una variable discreta.
 
-Con respecto al ejemplo \@ref(exm:variable-discreta), la variable aleatoria $X=\textrm{el número de caras obtenidas en los dos lanzamientos}$ es discreta ya que esta toma solo cuatro valores, $R_X =\left\{0, 1, 2, 3 \right\}$. Es decir, el recorrido de $X$ es finito.
+Con respecto al ejemplo \@ref(exm:variable-discreta), la variable aleatoria $X=\textrm{el número de caras obtenidas en los dos lanzamientos}$ es discreta ya que esta toma solo cuatro valores, $R_X =\left\{0, 1, 2 \right\}$. Es decir, el recorrido de $X$ es finito.
 :::
 
 ### Variable Aleatoria Continua {#variable-continua}
@@ -247,9 +247,9 @@ Dentro de las propiedades más importantes de la función de distribución acumu
 $$
 \begin{align*}
 i)& \: 0 \leq F\left ( x \right ) \leq 1 \:\: \textrm{par cualquier}\:x; \\
-ii)& \:\displaystyle \lim_{x \to - \infty }F\left ( x \right )=0\\
-iii)& \:\displaystyle \lim_{x \to  \infty }F\left ( x \right )=1\\
-iv)& \: F\left ( x_{j} \right ) \geq F\left ( x_{i} \right ) \:\: \textrm{si} \: x_{j}> x_{i};\\
+ii)& \:\displaystyle \lim_{x \to - \infty }F\left ( x \right )=0;\\
+iii)& \:\displaystyle \lim_{x \to  \infty }F\left ( x \right )=1;\\
+iv)& \: F\left ( x_{j} \right ) \geq F\left ( x_{i} \right ) \:\: \textrm{si} \: x_{j} \geq x_{i};\\
 v)& \: F\left ( x_{i} \right ) = F\left ( x_{i-1} \right ) + p\left ( x_{i} \right );\\
 vi)& \: P\left ( X > x_{i} \right ) = 1 - F\left ( x_{i} \right ); \\
 vii)& \: P\left ( X <  x_{i} \right ) = F\left ( x_{i-1} \right ); \\
@@ -430,29 +430,37 @@ ggplot(
 
 ## Esperanza Mateática de Una Variable Aleatoria Discreta {#esperanza-matematica}
 
-::: {#esperanza .definition name="Esperanza Matemática"}
+::: {#esperanza .definition name="Esperanza Mateática de Una Variable Aleatoria Discreta"}
 Sea $X$ una variable aleatoria discreta con la función de probabilidad $p \left(x \right)$. Entonces la
-esperanza matemática, media o valor esperado de$X$, denotado por $E \left(x \right)$, se define como
+esperanza matemática, media o valor esperado de$X$, denotado por $E \left(x \right)$ o simplemente $\mu$, se define como
 $$
 \begin{equation}
-E \left(X \right)=\sum_{x}x p \left(x \right).
+\mu=E \left(X \right)=\sum_{x}x p \left(x \right).
 (\#eq:esperanza)
 \end{equation}
 $$
 :::
 
-::: {.example #esperanza name="Función de Probabilidad"}
+::: {.example #esperanza name="Esperanza Matemática de Una Variable Aleatoria discreta"}
 Calcule el valor esperado de la variable aleatoria $X$  representada por la suma de los resultados del lanzamiento de dos dados descrita en el ejemplo \@ref(exm:funcion-probabilidad1).
 
 De acuerdo con la definición \@ref(def:esperanza), en este caso la esperanza viene dada por:
 $$
 \begin{align*}
-ii) \: \sum_{x=2}^{11 }p\left ( x \right )=& 2 \left(\frac{1}{36}\right)+3\left(\frac{2}{36}\right)+4\left(\frac{3}{36}\right)+5\left(\frac{4}{36}\right)+6\left(\frac{5}{36}\right)+7\left(\frac{6}{36}\right) \\
+\mu=&E\left(X \right)=\sum_{x=2}^{12 }xp\left ( x \right )= 2 \left(\frac{1}{36}\right)+3\left(\frac{2}{36}\right)+4\left(\frac{3}{36}\right)+5\left(\frac{4}{36}\right)+6\left(\frac{5}{36}\right)+7\left(\frac{6}{36}\right) \\
 & +8\left(\frac{5}{36}\right)+9\left(\frac{4}{36}\right)+10\left(\frac{3}{36}\right)+11\left(\frac{2}{36}\right)+12\left(\frac{1}{36}\right)\\
 &=7.
 \end{align*}
 $$
 Este valor significa que si se lanzan los dos dados un número significativamente grande de veces, el promedio de la suma de las caras va estar próximo a 7. 
+
+En `r colorize("R", "blue")`, el resultado anterior se puede obtener con el siguiente script.
+```{r esperanza}
+x <- 2:12
+p_x <- c(1:6,5:1) / 36
+(media <- sum(x * p_x))
+```
+
 :::
 
 En muchos problemas de estadística no solo es de interés el valor esperado de la variable $X$, como se definió en \@ref(def:esperanza), sino también el valor esperado de alguna variable $Y$ que es una transformación de $X$, es decir $g\left(x \right)$. Por ejemplo, $y=g\left(x \right)=x^2$. En tal sentido, se establece el teorema siguiente:
@@ -485,7 +493,7 @@ Note que si se hace $a=0$ en el teorema \@ref(thm:esperanza-transformacion) se o
 Si $X$ es una variable aleatoria discreta con función de probabilidad $p\left(x \right)$ y $a$ una constantes. Entonces,
 $$
 \begin{equation}
-E \left( ax \right)=aE \left( x \right).
+E \left( ax \right) = aE \left( x \right).
 (\#eq:corolario1)
 \end{equation}
 $$
@@ -497,7 +505,7 @@ Mientras que si se hace $b=0$ en el teorema \@ref(thm:esperanza-transformacion) 
 Si $X$ es una variable aleatoria discreta con función de probabilidad $p\left(x \right)$ y $b$ una constantes. Entonces,
 $$
 \begin{equation}
-E \left( b \right)=b.
+E \left( b \right) = b.
 (\#eq:corolario2)
 \end{equation}
 $$
@@ -520,12 +528,99 @@ $$
 
 ## Varianza de Una Variable Aleatoria Discreta {#varianza}
 
+::: {#varianza .definition name="Varianza de Una Variable Aleatoria Discreta"}
+Sea $X$ una variable aleatoria con distribución de probabilidad $p \left(x \right)$ y media $\mu$. La varianza
+de $X$, denotado por $\sigma^2$ o $E \left[\left(X −μ \right)^2 \right]$ es
+
+$$
+\begin{equation}
+\sigma^2=E \left[\left(X −μ \right)^2 \right]=\sum_{x}\left(X −μ \right)^2 p \left(x \right).
+(\#eq:varianza)
+\end{equation}
+$$
+La raíz cuadrada positiva de la varianza, $\sigma$, se llama desviación estándar de $X$.
+:::
+
+Una ecuación alternativa para la varianza se obtiene de la siguiente manera. Primero, se desarrolla la expresión $\left(X −μ \right)^2$ dada en la ecuación \@ref(eq:varianza), como sigue.
+$$
+\sigma^2=E \left[\left(X −μ \right)^2 \right]=E\left(X^2-2\mu X +\mu^2 \right).
+$$
+Luego, por el teorema \@ref(thm:esperanza-suma-transformaciones) y el corolario \@ref(cor:corolario1), se obtiene
+$$
+\sigma^2=E \left[\left(X −μ \right)^2 \right]=E\left(X^2 \right)-2\mu E \left(X \right) +\mu^2 .
+$$
+Como $E \left(X \right)=\mu$, entonces
+$$
+\begin{equation}
+\sigma^2=E \left[\left(X −μ \right)^2 \right]=E\left(X^2 \right)-\mu^2.
+(\#eq:varianza2)
+\end{equation}
+$$
+
+::: {.example #varianza name="Varianza de Una Variable Aleatoria Discreta"}
+Calcule el valor esperado de la variable aleatoria $X$  representada por la suma de los resultados del lanzamiento de dos dados descrita en el ejemplo \@ref(exm:funcion-probabilidad1).
+
+De acuerdo con la definición \@ref(def:varianza), la varianza de la suma delas caras de los dados es:
+
+
+$$
+\begin{align*}
+\sigma^2=&\sum_{x=2}^{12}\left(X −μ \right)^2p\left ( x \right )= \left(2-7 \right)^2 \left(\frac{1}{36}\right)+\left(3-7 \right)^2\left(\frac{2}{36}\right)+\left(4-7 \right)^2\left(\frac{3}{36}\right)+\left(5-7 \right)^2\left(\frac{4}{36}\right)+\left(6-7 \right)^2\left(\frac{5}{36}\right)+\left(7-7 \right)^2\left(\frac{6}{36}\right) \\
+& +\left(8-7 \right)^2\left(\frac{5}{36}\right)+\left(9-7 \right)^2\left(\frac{4}{36}\right)+\left(10-7 \right)^2\left(\frac{3}{36}\right)+\left(11-7 \right)^2\left(\frac{2}{36}\right)+\left(12-7 \right)^2\left(\frac{1}{3
+6}\right)\\
+&=\frac{35}{6} \approx 5,83.
+\end{align*}
+$$
+Mientras que la desviación estándar es,
+$$
+\sigma = \sqrt{\frac{35}{6}} \approx 2,42.
+$$
+Usando la ecuación alternativa para la varianza dada en la ecuación \@ref(eq:varianza2), el valor de este parámetro se se obtiene como sigue
+$$
+\begin{align*}
+\sigma^2=&\sum_{x=2}^{12}x^2p\left ( x \right )-\mu^2= \left(2 \right)^2 \left(\frac{1}{36}\right)+\left(3 \right)^2\left(\frac{2}{36}\right)+\left(4 \right)^2\left(\frac{3}{36}\right)+\left(5 \right)^2\left(\frac{4}{36}\right)+\left(6 \right)^2\left(\frac{5}{36}\right)+\left(7 \right)^2\left(\frac{6}{36}\right) \\
+& +\left(8 \right)^2\left(\frac{5}{36}\right)+\left(9 \right)^2\left(\frac{4}{36}\right)+\left(10 \right)^2\left(\frac{3}{36}\right)+\left(11 \right)^2\left(\frac{2}{36}\right)+\left(12 \right)^2\left(\frac{1}{3
+6}\right) - \left(7 \right)^2 \\
+&=\frac{329}{6} - 49=\frac{35}{6} \approx 5,83.
+\end{align*}
+$$
+
+El valor de la varianza y la desviación estándar obtenidos anteriormente se pueden calcular en `r colorize("R", "blue")` con el siguiente script.
+```{r varianza}
+(varianza <-  sum((x - media) ^ 2 * p_x))
+(desviacion <- sqrt(varianza))
+```
+:::
 
 ## Función Generadora de Momentos de Una Variable Aleatoria Discreta {#funcion-generadora-momentos}
 
+::: {#funcion-generadora-momentos .definition name="Función Generadora de Momentos de Una Variable Aleatoria Discreta"}
+Sea $X$ una variable aleatoria discreta con función de probabilidad $p \left(x \right)$. El valor esperado de $e^{tx}$ recibe el nombre de _función generadora de momentos_, y se denota por $m_x \left(t \right)$
+de $X$, si el valor esperado existe en algún intervalo $-c<t<c$ en donde $c$ es un entero positivo. En otros términos:
+
+$$
+\begin{equation}
+m_x \left(t \right)=E \left(e^{tx} \right) =\sum_{x}e^{tx} p \left(x \right), \:si\: -c<t<c.
+(\#eq:funcion-generadora-momentos)
+\end{equation}
+$$
+:::
+
+::: {#funcion-generadora-momentos .theorem}
+Si $X$ es una variable aleatoria con función generadora de momentos $m_x \left(t \right)$. Entonces,
+$$
+\begin{equation}
+\frac{d^{k}m_{x}\left ( t \right )}{dt^{k}} \left|\begin{matrix}
+ \\
+t=0\\
+\end{matrix}={\mu}^{'}_k \right.
+(\#eq:funcion-generadora-momentos)
+\end{equation}
+$$
+:::
 
 ## Distribuciones de Probabilidad Notables {#distribuciones-notables}
-
+En esta sección se definen algunas distribuciones de probabilidad de gran importancia por sus múltiples aplicaciones en la descripción de fenómenos que ocurren en la vida diaria, tales como: la _distribución binomial_, la _distribución hipergeométrica_ y la _distribución de Poisson_.
 
 ### Distribució Binomial {#distribuciones-binomial}
 

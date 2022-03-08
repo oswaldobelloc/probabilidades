@@ -297,7 +297,7 @@ Ahora, sobre este espacio muestra se define la variable aleatoria <span class="m
 S=\left\{c, sc, ssc, sssc, ssssc, \dotsc \right\}.
 \]</span>
 Si sobre este espacio muestral se define la variable aleatoria <span class="math inline">\(X=\textrm{número de lanzamientos hata que aparece una cara}\)</span>. Entonces el recorrido de <span class="math inline">\(X\)</span>, es decir <span class="math inline">\(R_X\)</span>, viene definido por <span class="math inline">\(R_X=1, 2, 3, \dotsc\)</span>. Dado que el recorrido de <span class="math inline">\(X\)</span> es infinito numerable se concluye que <span class="math inline">\(X\)</span> es una variable discreta.</p>
-<p>Con respecto al ejemplo <a href="dist_disc.html#exm:variable-discreta">3.2</a>, la variable aleatoria <span class="math inline">\(X=\textrm{el número de caras obtenidas en los dos lanzamientos}\)</span> es discreta ya que esta toma solo cuatro valores, <span class="math inline">\(R_X =\left\{0, 1, 2, 3 \right\}\)</span>. Es decir, el recorrido de <span class="math inline">\(X\)</span> es finito.</p>
+<p>Con respecto al ejemplo <a href="dist_disc.html#exm:variable-discreta">3.2</a>, la variable aleatoria <span class="math inline">\(X=\textrm{el número de caras obtenidas en los dos lanzamientos}\)</span> es discreta ya que esta toma solo cuatro valores, <span class="math inline">\(R_X =\left\{0, 1, 2 \right\}\)</span>. Es decir, el recorrido de <span class="math inline">\(X\)</span> es finito.</p>
 </div>
 </div>
 <div id="variable-continua" class="section level3" number="3.1.3">
@@ -695,9 +695,9 @@ F\left ( x \right )=P\left ( X \leq x \right )=\sum_{t=x_1}^{x} p\left ( t \righ
 <span class="math display">\[
 \begin{align*}
 i)&amp; \: 0 \leq F\left ( x \right ) \leq 1 \:\: \textrm{par cualquier}\:x; \\
-ii)&amp; \:\displaystyle \lim_{x \to - \infty }F\left ( x \right )=0\\
-iii)&amp; \:\displaystyle \lim_{x \to  \infty }F\left ( x \right )=1\\
-iv)&amp; \: F\left ( x_{j} \right ) \geq F\left ( x_{i} \right ) \:\: \textrm{si} \: x_{j}&gt; x_{i};\\
+ii)&amp; \:\displaystyle \lim_{x \to - \infty }F\left ( x \right )=0;\\
+iii)&amp; \:\displaystyle \lim_{x \to  \infty }F\left ( x \right )=1;\\
+iv)&amp; \: F\left ( x_{j} \right ) \geq F\left ( x_{i} \right ) \:\: \textrm{si} \: x_{j} \geq x_{i};\\
 v)&amp; \: F\left ( x_{i} \right ) = F\left ( x_{i-1} \right ) + p\left ( x_{i} \right );\\
 vi)&amp; \: P\left ( X &gt; x_{i} \right ) = 1 - F\left ( x_{i} \right ); \\
 vii)&amp; \: P\left ( X &lt;  x_{i} \right ) = F\left ( x_{i-1} \right ); \\
@@ -1121,26 +1121,31 @@ Figura 3.2: Gráfica de la función de distribución acumulativa de la suma de l
 <div id="esperanza-matematica" class="section level2" number="3.4">
 <h2><span class="header-section-number">3.4</span> Esperanza Mateática de Una Variable Aleatoria Discreta</h2>
 <div class="definition">
-<p><span id="def:esperanza" class="definition"><strong>Definición 3.6  (Esperanza Matemática) </strong></span>Sea <span class="math inline">\(X\)</span> una variable aleatoria discreta con la función de probabilidad <span class="math inline">\(p \left(x \right)\)</span>. Entonces la
-esperanza matemática, media o valor esperado de<span class="math inline">\(X\)</span>, denotado por <span class="math inline">\(E \left(x \right)\)</span>, se define como
+<p><span id="def:esperanza" class="definition"><strong>Definición 3.6  (Esperanza Mateática de Una Variable Aleatoria Discreta) </strong></span>Sea <span class="math inline">\(X\)</span> una variable aleatoria discreta con la función de probabilidad <span class="math inline">\(p \left(x \right)\)</span>. Entonces la
+esperanza matemática, media o valor esperado de<span class="math inline">\(X\)</span>, denotado por <span class="math inline">\(E \left(x \right)\)</span> o simplemente <span class="math inline">\(\mu\)</span>, se define como
 <span class="math display" id="eq:esperanza">\[
 \begin{equation}
-E \left(X \right)=\sum_{x}x p \left(x \right).
+\mu=E \left(X \right)=\sum_{x}x p \left(x \right).
 \tag{3.5}
 \end{equation}
 \]</span></p>
 </div>
 <div class="example">
-<p><span id="exm:esperanza" class="example"><strong>Ejemplo 3.5  (Función de Probabilidad) </strong></span>Calcule el valor esperado de la variable aleatoria <span class="math inline">\(X\)</span> representada por la suma de los resultados del lanzamiento de dos dados descrita en el ejemplo <a href="dist_disc.html#exm:funcion-probabilidad1">3.4</a>.</p>
+<p><span id="exm:esperanza" class="example"><strong>Ejemplo 3.5  (Esperanza Matemática de Una Variable Aleatoria discreta) </strong></span>Calcule el valor esperado de la variable aleatoria <span class="math inline">\(X\)</span> representada por la suma de los resultados del lanzamiento de dos dados descrita en el ejemplo <a href="dist_disc.html#exm:funcion-probabilidad1">3.4</a>.</p>
 <p>De acuerdo con la definición <a href="dist_disc.html#def:esperanza">3.6</a>, en este caso la esperanza viene dada por:
 <span class="math display">\[
 \begin{align*}
-ii) \: \sum_{x=2}^{11 }p\left ( x \right )=&amp; 2 \left(\frac{1}{36}\right)+3\left(\frac{2}{36}\right)+4\left(\frac{3}{36}\right)+5\left(\frac{4}{36}\right)+6\left(\frac{5}{36}\right)+7\left(\frac{6}{36}\right) \\
+\mu=&amp;E\left(X \right)=\sum_{x=2}^{12 }xp\left ( x \right )= 2 \left(\frac{1}{36}\right)+3\left(\frac{2}{36}\right)+4\left(\frac{3}{36}\right)+5\left(\frac{4}{36}\right)+6\left(\frac{5}{36}\right)+7\left(\frac{6}{36}\right) \\
 &amp; +8\left(\frac{5}{36}\right)+9\left(\frac{4}{36}\right)+10\left(\frac{3}{36}\right)+11\left(\frac{2}{36}\right)+12\left(\frac{1}{36}\right)\\
 &amp;=7.
 \end{align*}
 \]</span>
 Este valor significa que si se lanzan los dos dados un número significativamente grande de veces, el promedio de la suma de las caras va estar próximo a 7.</p>
+<p>En <span style="color: blue;">R</span>, el resultado anterior se puede obtener con el siguiente script.</p>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="dist_disc.html#cb108-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">12</span></span>
+<span id="cb108-2"><a href="dist_disc.html#cb108-2" aria-hidden="true" tabindex="-1"></a>p_x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,<span class="dv">5</span><span class="sc">:</span><span class="dv">1</span>) <span class="sc">/</span> <span class="dv">36</span></span>
+<span id="cb108-3"><a href="dist_disc.html#cb108-3" aria-hidden="true" tabindex="-1"></a>(media <span class="ot">&lt;-</span> <span class="fu">sum</span>(x <span class="sc">*</span> p_x))</span></code></pre></div>
+<pre><code>#&gt; [1] 7</code></pre>
 </div>
 <p>En muchos problemas de estadística no solo es de interés el valor esperado de la variable <span class="math inline">\(X\)</span>, como se definió en <a href="dist_disc.html#def:esperanza">3.6</a>, sino también el valor esperado de alguna variable <span class="math inline">\(Y\)</span> que es una transformación de <span class="math inline">\(X\)</span>, es decir <span class="math inline">\(g\left(x \right)\)</span>. Por ejemplo, <span class="math inline">\(y=g\left(x \right)=x^2\)</span>. En tal sentido, se establece el teorema siguiente:</p>
 <div class="theorem">
@@ -1167,7 +1172,7 @@ E \left( ax+b \right)=a.E \left( x \right)+b.
 <p><span id="cor:corolario1" class="corollary"><strong>Corolario 3.1  </strong></span>Si <span class="math inline">\(X\)</span> es una variable aleatoria discreta con función de probabilidad <span class="math inline">\(p\left(x \right)\)</span> y <span class="math inline">\(a\)</span> una constantes. Entonces,
 <span class="math display" id="eq:corolario1">\[
 \begin{equation}
-E \left( ax \right)=aE \left( x \right).
+E \left( ax \right) = aE \left( x \right).
 \tag{3.8}
 \end{equation}
 \]</span></p>
@@ -1177,7 +1182,7 @@ E \left( ax \right)=aE \left( x \right).
 <p><span id="cor:corolario2" class="corollary"><strong>Corolario 3.2  </strong></span>Si <span class="math inline">\(X\)</span> es una variable aleatoria discreta con función de probabilidad <span class="math inline">\(p\left(x \right)\)</span> y <span class="math inline">\(b\)</span> una constantes. Entonces,
 <span class="math display" id="eq:corolario2">\[
 \begin{equation}
-E \left( b \right)=b.
+E \left( b \right) = b.
 \tag{3.9}
 \end{equation}
 \]</span></p>
@@ -1196,12 +1201,91 @@ E \left[\sum_{i=1}^{n}c_i g_i\left(x \right) \right]=\sum_{i=1}^{n}c_iE \left[ g
 </div>
 <div id="varianza" class="section level2" number="3.5">
 <h2><span class="header-section-number">3.5</span> Varianza de Una Variable Aleatoria Discreta</h2>
+<div class="definition">
+<p><span id="def:varianza" class="definition"><strong>Definición 3.7  (Varianza de Una Variable Aleatoria Discreta) </strong></span>Sea <span class="math inline">\(X\)</span> una variable aleatoria con distribución de probabilidad <span class="math inline">\(p \left(x \right)\)</span> y media <span class="math inline">\(\mu\)</span>. La varianza
+de <span class="math inline">\(X\)</span>, denotado por <span class="math inline">\(\sigma^2\)</span> o <span class="math inline">\(E \left[\left(X −μ \right)^2 \right]\)</span> es</p>
+<p><span class="math display" id="eq:varianza">\[
+\begin{equation}
+\sigma^2=E \left[\left(X −μ \right)^2 \right]=\sum_{x}\left(X −μ \right)^2 p \left(x \right).
+\tag{3.11}
+\end{equation}
+\]</span>
+La raíz cuadrada positiva de la varianza, <span class="math inline">\(\sigma\)</span>, se llama desviación estándar de <span class="math inline">\(X\)</span>.</p>
+</div>
+<p>Una ecuación alternativa para la varianza se obtiene de la siguiente manera. Primero, se desarrolla la expresión <span class="math inline">\(\left(X −μ \right)^2\)</span> dada en la ecuación <a href="dist_disc.html#eq:varianza">(3.11)</a>, como sigue.
+<span class="math display">\[
+\sigma^2=E \left[\left(X −μ \right)^2 \right]=E\left(X^2-2\mu X +\mu^2 \right).
+\]</span>
+Luego, por el teorema <a href="dist_disc.html#thm:esperanza-suma-transformaciones">3.3</a> y el corolario <a href="dist_disc.html#cor:corolario1">3.1</a>, se obtiene
+<span class="math display">\[
+\sigma^2=E \left[\left(X −μ \right)^2 \right]=E\left(X^2 \right)-2\mu E \left(X \right) +\mu^2 .
+\]</span>
+Como <span class="math inline">\(E \left(X \right)=\mu\)</span>, entonces
+<span class="math display" id="eq:varianza2">\[
+\begin{equation}
+\sigma^2=E \left[\left(X −μ \right)^2 \right]=E\left(X^2 \right)-\mu^2.
+\tag{3.12}
+\end{equation}
+\]</span></p>
+<div class="example">
+<p><span id="exm:varianza" class="example"><strong>Ejemplo 3.6  (Varianza de Una Variable Aleatoria Discreta) </strong></span>Calcule el valor esperado de la variable aleatoria <span class="math inline">\(X\)</span> representada por la suma de los resultados del lanzamiento de dos dados descrita en el ejemplo <a href="dist_disc.html#exm:funcion-probabilidad1">3.4</a>.</p>
+<p>De acuerdo con la definición <a href="dist_disc.html#def:varianza">3.7</a>, la varianza de la suma delas caras de los dados es:</p>
+<p><span class="math display">\[
+\begin{align*}
+\sigma^2=&amp;\sum_{x=2}^{12}\left(X −μ \right)^2p\left ( x \right )= \left(2-7 \right)^2 \left(\frac{1}{36}\right)+\left(3-7 \right)^2\left(\frac{2}{36}\right)+\left(4-7 \right)^2\left(\frac{3}{36}\right)+\left(5-7 \right)^2\left(\frac{4}{36}\right)+\left(6-7 \right)^2\left(\frac{5}{36}\right)+\left(7-7 \right)^2\left(\frac{6}{36}\right) \\
+&amp; +\left(8-7 \right)^2\left(\frac{5}{36}\right)+\left(9-7 \right)^2\left(\frac{4}{36}\right)+\left(10-7 \right)^2\left(\frac{3}{36}\right)+\left(11-7 \right)^2\left(\frac{2}{36}\right)+\left(12-7 \right)^2\left(\frac{1}{3
+6}\right)\\
+&amp;=\frac{35}{6} \approx 5,83.
+\end{align*}
+\]</span>
+Mientras que la desviación estándar es,
+<span class="math display">\[
+\sigma = \sqrt{\frac{35}{6}} \approx 2,42.
+\]</span>
+Usando la ecuación alternativa para la varianza dada en la ecuación <a href="dist_disc.html#eq:varianza2">(3.12)</a>, el valor de este parámetro se se obtiene como sigue
+<span class="math display">\[
+\begin{align*}
+\sigma^2=&amp;\sum_{x=2}^{12}x^2p\left ( x \right )-\mu^2= \left(2 \right)^2 \left(\frac{1}{36}\right)+\left(3 \right)^2\left(\frac{2}{36}\right)+\left(4 \right)^2\left(\frac{3}{36}\right)+\left(5 \right)^2\left(\frac{4}{36}\right)+\left(6 \right)^2\left(\frac{5}{36}\right)+\left(7 \right)^2\left(\frac{6}{36}\right) \\
+&amp; +\left(8 \right)^2\left(\frac{5}{36}\right)+\left(9 \right)^2\left(\frac{4}{36}\right)+\left(10 \right)^2\left(\frac{3}{36}\right)+\left(11 \right)^2\left(\frac{2}{36}\right)+\left(12 \right)^2\left(\frac{1}{3
+6}\right) - \left(7 \right)^2 \\
+&amp;=\frac{329}{6} - 49=\frac{35}{6} \approx 5,83.
+\end{align*}
+\]</span></p>
+<p>El valor de la varianza y la desviación estándar obtenidos anteriormente se pueden calcular en <span style="color: blue;">R</span> con el siguiente script.</p>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="dist_disc.html#cb110-1" aria-hidden="true" tabindex="-1"></a>(varianza <span class="ot">&lt;-</span>  <span class="fu">sum</span>((x <span class="sc">-</span> media) <span class="sc">^</span> <span class="dv">2</span> <span class="sc">*</span> p_x))</span>
+<span id="cb110-2"><a href="dist_disc.html#cb110-2" aria-hidden="true" tabindex="-1"></a>(desviacion <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(varianza))</span></code></pre></div>
+<pre><code>#&gt; [1] 5.833333
+#&gt; [1] 2.415229</code></pre>
+</div>
 </div>
 <div id="funcion-generadora-momentos" class="section level2" number="3.6">
 <h2><span class="header-section-number">3.6</span> Función Generadora de Momentos de Una Variable Aleatoria Discreta</h2>
+<div class="definition">
+<p><span id="def:funcion-generadora-momentos" class="definition"><strong>Definición 3.8  (Función Generadora de Momentos de Una Variable Aleatoria Discreta) </strong></span>Sea <span class="math inline">\(X\)</span> una variable aleatoria discreta con función de probabilidad <span class="math inline">\(p \left(x \right)\)</span>. El valor esperado de <span class="math inline">\(e^{tx}\)</span> recibe el nombre de <em>función generadora de momentos</em>, y se denota por <span class="math inline">\(m_x \left(t \right)\)</span>
+de <span class="math inline">\(X\)</span>, si el valor esperado existe en algún intervalo <span class="math inline">\(-c&lt;t&lt;c\)</span> en donde <span class="math inline">\(c\)</span> es un entero positivo. En otros términos:</p>
+<p><span class="math display" id="eq:funcion-generadora-momentos">\[
+\begin{equation}
+m_x \left(t \right)=E \left(e^{tx} \right) =\sum_{x}e^{tx} p \left(x \right), \:si\: -c&lt;t&lt;c.
+\tag{3.13}
+\end{equation}
+\]</span></p>
+</div>
+<div class="theorem">
+<p><span id="thm:funcion-generadora-momentos" class="theorem"><strong>Teorema 3.4  </strong></span>Si <span class="math inline">\(X\)</span> es una variable aleatoria con función generadora de momentos <span class="math inline">\(m_x \left(t \right)\)</span>. Entonces,
+<span class="math display" id="eq:funcion-generadora-momentos">\[
+\begin{equation}
+\frac{d^{k}m_{x}\left ( t \right )}{dt^{k}} \left|\begin{matrix}
+ \\
+t=0\\
+\end{matrix}={\mu}^{&#39;}_k \right.
+\tag{3.13}
+\end{equation}
+\]</span></p>
+</div>
 </div>
 <div id="distribuciones-notables" class="section level2" number="3.7">
 <h2><span class="header-section-number">3.7</span> Distribuciones de Probabilidad Notables</h2>
+<p>En esta sección se definen algunas distribuciones de probabilidad de gran importancia por sus múltiples aplicaciones en la descripción de fenómenos que ocurren en la vida diaria, tales como: la <em>distribución binomial</em>, la <em>distribución hipergeométrica</em> y la <em>distribución de Poisson</em>.</p>
 <div id="distribuciones-binomial" class="section level3" number="3.7.1">
 <h3><span class="header-section-number">3.7.1</span> Distribució Binomial</h3>
 </div>

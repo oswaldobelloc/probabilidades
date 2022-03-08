@@ -177,6 +177,13 @@ cor:corolario2
 eq:corolario2
 thm:esperanza-suma-transformaciones
 eq:esperanza-suma-transformaciones
+def:varianza
+eq:varianza
+eq:varianza2
+exm:varianza
+def:funcion-generadora-momentos
+eq:funcion-generadora-momentos
+thm:funcion-generadora-momentos
 nt1
 nt11
 nt12
