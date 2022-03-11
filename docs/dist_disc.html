@@ -71,6 +71,11 @@ set in the _output.yml file.</p>" />
 <script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<script src="libs/plotly-binding-4.10.0/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
+<script src="libs/plotly-locale-es-2.5.1/es.js"></script>
 
 
 <style type="text/css">
@@ -229,7 +234,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.6" data-path="dist_disc.html"><a href="dist_disc.html#funcion-generadora-momentos"><i class="fa fa-check"></i><b>3.6</b> Función Generadora de Momentos de Una Variable Aleatoria Discreta</a></li>
 <li class="chapter" data-level="3.7" data-path="dist_disc.html"><a href="dist_disc.html#distribuciones-notables"><i class="fa fa-check"></i><b>3.7</b> Distribuciones de Probabilidad Notables</a>
 <ul>
-<li class="chapter" data-level="3.7.1" data-path="dist_disc.html"><a href="dist_disc.html#distribuciones-binomial"><i class="fa fa-check"></i><b>3.7.1</b> Distribució Binomial</a></li>
+<li class="chapter" data-level="3.7.1" data-path="dist_disc.html"><a href="dist_disc.html#distribucion-binomial"><i class="fa fa-check"></i><b>3.7.1</b> Distribución Binomial</a></li>
 <li class="chapter" data-level="3.7.2" data-path="dist_disc.html"><a href="dist_disc.html#distribuciones-binomial"><i class="fa fa-check"></i><b>3.7.2</b> Distribuciones Hipergeométrica</a></li>
 <li class="chapter" data-level="3.7.3" data-path="dist_disc.html"><a href="dist_disc.html#distribuciones-poisson"><i class="fa fa-check"></i><b>3.7.3</b> Distribuciones de Poisson</a></li>
 </ul></li>
@@ -259,7 +264,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>El siguiente bloque de código permite instalar y cargar los paquetes de <span style="color: blue;">R</span> que se usaran en esta sección.</p>
 <div class="sourceCode" id="cb103"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb103-1"><a href="dist_disc.html#cb103-1" aria-hidden="true" tabindex="-1"></a>packages <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
 <span id="cb103-2"><a href="dist_disc.html#cb103-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;ggplot2&quot;</span>, <span class="st">&quot;ggstatsplot&quot;</span>, <span class="st">&quot;tidyverse&quot;</span>,</span>
-<span id="cb103-3"><a href="dist_disc.html#cb103-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;kableExtra&quot;</span></span>
+<span id="cb103-3"><a href="dist_disc.html#cb103-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;kableExtra&quot;</span>, <span class="st">&quot;plotly&quot;</span></span>
 <span id="cb103-4"><a href="dist_disc.html#cb103-4" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb103-5"><a href="dist_disc.html#cb103-5" aria-hidden="true" tabindex="-1"></a>package.check <span class="ot">&lt;-</span> <span class="fu">lapply</span>(packages, <span class="at">FUN =</span> <span class="cf">function</span>(x) {</span>
 <span id="cb103-6"><a href="dist_disc.html#cb103-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(x, <span class="at">character.only =</span> <span class="cn">TRUE</span>)) {</span>
@@ -681,7 +686,7 @@ Figura 3.1: Gráfica de la función de probabilidad de la suma de las caras de d
 <h2><span class="header-section-number">3.3</span> Función de Distribución Acumulativa de Probabilidad</h2>
 <p>Existen muchos problemas en los que es necesario calcular la probabilidad de que el valor observado de una variable aleatoria <span class="math inline">\(X\)</span> sea menor o igual que algún número real <span class="math inline">\(x\)</span>. Al escribir <span class="math inline">\(F \left(x \right) = P \left(X \leq x \right)\)</span> para cualquier número real <span class="math inline">\(x\)</span>, se define <span class="math inline">\(F \left(x \right)\)</span> como la función de distribución acumulativa de probabilidad de la variable aleatoria <span class="math inline">\(X\)</span>. De manera formal, la función de distribución acumulativa de probabilidad se define de la siguiente manera:</p>
 <div class="definition">
-<p><span id="def:funcion-probabilidad" class="definition"><strong>Definición 3.5  (Función de Distribución Acumulativa de Probabilidad) </strong></span>Sea <span class="math inline">\(X\)</span> una variable aleatoria discreta con función de probabilidad <span class="math inline">\(p \left(x_i \right)\)</span>. Entonces, la función de distribución acumulativa de probabilidad de <span class="math inline">\(X\)</span>, denotada como <span class="math inline">\(F \left(X \right)\)</span>, viene dada por:
+<p><span id="def:funcion-acumulativa-probabilidad" class="definition"><strong>Definición 3.6  (Función de Distribución Acumulativa de Probabilidad) </strong></span>Sea <span class="math inline">\(X\)</span> una variable aleatoria discreta con función de probabilidad <span class="math inline">\(p \left(x_i \right)\)</span>. Entonces, la función de distribución acumulativa de probabilidad de <span class="math inline">\(X\)</span>, denotada como <span class="math inline">\(F \left(X \right)\)</span>, viene dada por:
 <span class="math display" id="eq:distribucion-probabilidad">\[
 \begin{equation}
 F\left ( x \right )=P\left ( X \leq x \right )=\sum_{t=x_1}^{x} p\left ( t \right ), \, \textrm{ para} \:\, t \leq x.
@@ -710,7 +715,7 @@ xii)&amp; \: P\left ( x_{i} \leq   X &lt;  x_{j} \right )=F\left ( x_{j-1} \righ
 \]</span></p>
 <div class="example">
 <p><span id="exm:funcion-probabilidad1" class="example"><strong>Ejemplo 3.4  (Función de Distribución Acumulativa) </strong></span>Determine la función de distribución acumulativa de probabilidad del ejemplo <a href="dist_disc.html#exm:funcion-probabilidad1">3.4</a>.</p>
-<p>La función de distribución acumulativa de probabilidad en este caso viene dada por:
+<p>La función de distribución acumulativa de probabilidad en este caso viene dada, de acuerdo con la definición <a href="dist_disc.html#def:funcion-acumulativa-probabilidad">3.6</a>, por:
 <span class="math display">\[
 \begin{align*}
  F(2)&amp;=P\left ( X \leq 2 \right )=p\left (2  \right )= \frac{1}{36}\\
@@ -794,8 +799,7 @@ F(12)&amp;=P\left ( X \leq 12 \right )= p\left (2  \right )+p\left (3  \right )+
 <span id="cb106-65"><a href="dist_disc.html#cb106-65" aria-hidden="true" tabindex="-1"></a>    <span class="at">full_width =</span> <span class="cn">FALSE</span>,</span>
 <span id="cb106-66"><a href="dist_disc.html#cb106-66" aria-hidden="true" tabindex="-1"></a>    <span class="at">fixed_thead =</span> T</span>
 <span id="cb106-67"><a href="dist_disc.html#cb106-67" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb106-68"><a href="dist_disc.html#cb106-68" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_classic_2</span>()</span>
-<span id="cb106-69"><a href="dist_disc.html#cb106-69" aria-hidden="true" tabindex="-1"></a>   </span></code></pre></div>
+<span id="cb106-68"><a href="dist_disc.html#cb106-68" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_classic_2</span>()</span></code></pre></div>
 <table class="table table-striped lightable-classic-2" style="width: auto !important; margin-left: auto; margin-right: auto; font-family: &quot;Arial Narrow&quot;, &quot;Source Sans Pro&quot;, sans-serif; margin-left: auto; margin-right: auto;">
 <caption>
 <span id="tab:distribucion-acumulada1">Tabla 3.2: </span>Función de distribución acumulativa de la suma de las caras de dos dados
@@ -1121,7 +1125,7 @@ Figura 3.2: Gráfica de la función de distribución acumulativa de la suma de l
 <div id="esperanza-matematica" class="section level2" number="3.4">
 <h2><span class="header-section-number">3.4</span> Esperanza Mateática de Una Variable Aleatoria Discreta</h2>
 <div class="definition">
-<p><span id="def:esperanza" class="definition"><strong>Definición 3.6  (Esperanza Mateática de Una Variable Aleatoria Discreta) </strong></span>Sea <span class="math inline">\(X\)</span> una variable aleatoria discreta con la función de probabilidad <span class="math inline">\(p \left(x \right)\)</span>. Entonces la
+<p><span id="def:esperanza" class="definition"><strong>Definición 3.7  (Esperanza Mateática de Una Variable Aleatoria Discreta) </strong></span>Sea <span class="math inline">\(X\)</span> una variable aleatoria discreta con la función de probabilidad <span class="math inline">\(p \left(x \right)\)</span>. Entonces la
 esperanza matemática, media o valor esperado de<span class="math inline">\(X\)</span>, denotado por <span class="math inline">\(E \left(x \right)\)</span> o simplemente <span class="math inline">\(\mu\)</span>, se define como
 <span class="math display" id="eq:esperanza">\[
 \begin{equation}
@@ -1132,7 +1136,7 @@ esperanza matemática, media o valor esperado de<span class="math inline">\(X\)<
 </div>
 <div class="example">
 <p><span id="exm:esperanza" class="example"><strong>Ejemplo 3.5  (Esperanza Matemática de Una Variable Aleatoria discreta) </strong></span>Calcule el valor esperado de la variable aleatoria <span class="math inline">\(X\)</span> representada por la suma de los resultados del lanzamiento de dos dados descrita en el ejemplo <a href="dist_disc.html#exm:funcion-probabilidad1">3.4</a>.</p>
-<p>De acuerdo con la definición <a href="dist_disc.html#def:esperanza">3.6</a>, en este caso la esperanza viene dada por:
+<p>De acuerdo con la definición <a href="dist_disc.html#def:esperanza">3.7</a>, en este caso la esperanza viene dada por:
 <span class="math display">\[
 \begin{align*}
 \mu=&amp;E\left(X \right)=\sum_{x=2}^{12 }xp\left ( x \right )= 2 \left(\frac{1}{36}\right)+3\left(\frac{2}{36}\right)+4\left(\frac{3}{36}\right)+5\left(\frac{4}{36}\right)+6\left(\frac{5}{36}\right)+7\left(\frac{6}{36}\right) \\
@@ -1147,7 +1151,7 @@ Este valor significa que si se lanzan los dos dados un número significativament
 <span id="cb108-3"><a href="dist_disc.html#cb108-3" aria-hidden="true" tabindex="-1"></a>(media <span class="ot">&lt;-</span> <span class="fu">sum</span>(x <span class="sc">*</span> p_x))</span></code></pre></div>
 <pre><code>#&gt; [1] 7</code></pre>
 </div>
-<p>En muchos problemas de estadística no solo es de interés el valor esperado de la variable <span class="math inline">\(X\)</span>, como se definió en <a href="dist_disc.html#def:esperanza">3.6</a>, sino también el valor esperado de alguna variable <span class="math inline">\(Y\)</span> que es una transformación de <span class="math inline">\(X\)</span>, es decir <span class="math inline">\(g\left(x \right)\)</span>. Por ejemplo, <span class="math inline">\(y=g\left(x \right)=x^2\)</span>. En tal sentido, se establece el teorema siguiente:</p>
+<p>En muchos problemas de estadística no solo es de interés el valor esperado de la variable <span class="math inline">\(X\)</span>, como se definió en <a href="dist_disc.html#def:esperanza">3.7</a>, sino también el valor esperado de alguna variable <span class="math inline">\(Y\)</span> que es una transformación de <span class="math inline">\(X\)</span>, es decir <span class="math inline">\(g\left(x \right)\)</span>. Por ejemplo, <span class="math inline">\(y=g\left(x \right)=x^2\)</span>. En tal sentido, se establece el teorema siguiente:</p>
 <div class="theorem">
 <p><span id="thm:esperanza-transformacion" class="theorem"><strong>Teorema 3.1  </strong></span>Si <span class="math inline">\(X\)</span> es una variable aleatoria discreta con función de probabilidad <span class="math inline">\(p\left(x \right)\)</span>. Entonces, el valor esperado de la variable aleatoria <span class="math inline">\(g\left(x \right)\)</span> está dado por
 <span class="math display" id="eq:esperanza-transformacion">\[
@@ -1202,7 +1206,7 @@ E \left[\sum_{i=1}^{n}c_i g_i\left(x \right) \right]=\sum_{i=1}^{n}c_iE \left[ g
 <div id="varianza" class="section level2" number="3.5">
 <h2><span class="header-section-number">3.5</span> Varianza de Una Variable Aleatoria Discreta</h2>
 <div class="definition">
-<p><span id="def:varianza" class="definition"><strong>Definición 3.7  (Varianza de Una Variable Aleatoria Discreta) </strong></span>Sea <span class="math inline">\(X\)</span> una variable aleatoria con distribución de probabilidad <span class="math inline">\(p \left(x \right)\)</span> y media <span class="math inline">\(\mu\)</span>. La varianza
+<p><span id="def:varianza" class="definition"><strong>Definición 3.8  (Varianza de Una Variable Aleatoria Discreta) </strong></span>Sea <span class="math inline">\(X\)</span> una variable aleatoria con distribución de probabilidad <span class="math inline">\(p \left(x \right)\)</span> y media <span class="math inline">\(\mu\)</span>. La varianza
 de <span class="math inline">\(X\)</span>, denotado por <span class="math inline">\(\sigma^2\)</span> o <span class="math inline">\(E \left[\left(X −μ \right)^2 \right]\)</span> es</p>
 <p><span class="math display" id="eq:varianza">\[
 \begin{equation}
@@ -1229,11 +1233,12 @@ Como <span class="math inline">\(E \left(X \right)=\mu\)</span>, entonces
 \]</span></p>
 <div class="example">
 <p><span id="exm:varianza" class="example"><strong>Ejemplo 3.6  (Varianza de Una Variable Aleatoria Discreta) </strong></span>Calcule el valor esperado de la variable aleatoria <span class="math inline">\(X\)</span> representada por la suma de los resultados del lanzamiento de dos dados descrita en el ejemplo <a href="dist_disc.html#exm:funcion-probabilidad1">3.4</a>.</p>
-<p>De acuerdo con la definición <a href="dist_disc.html#def:varianza">3.7</a>, la varianza de la suma delas caras de los dados es:</p>
+<p>De acuerdo con la definición <a href="dist_disc.html#def:varianza">3.8</a>, la varianza de la suma delas caras de los dados es:</p>
 <p><span class="math display">\[
 \begin{align*}
-\sigma^2=&amp;\sum_{x=2}^{12}\left(X −μ \right)^2p\left ( x \right )= \left(2-7 \right)^2 \left(\frac{1}{36}\right)+\left(3-7 \right)^2\left(\frac{2}{36}\right)+\left(4-7 \right)^2\left(\frac{3}{36}\right)+\left(5-7 \right)^2\left(\frac{4}{36}\right)+\left(6-7 \right)^2\left(\frac{5}{36}\right)+\left(7-7 \right)^2\left(\frac{6}{36}\right) \\
-&amp; +\left(8-7 \right)^2\left(\frac{5}{36}\right)+\left(9-7 \right)^2\left(\frac{4}{36}\right)+\left(10-7 \right)^2\left(\frac{3}{36}\right)+\left(11-7 \right)^2\left(\frac{2}{36}\right)+\left(12-7 \right)^2\left(\frac{1}{3
+\sigma^2=&amp;\sum_{x=2}^{12}\left(x −μ \right)^2p\left ( x \right )= \left(2-7 \right)^2 \left(\frac{1}{36}\right)+\left(3-7 \right)^2\left(\frac{2}{36}\right)+\left(4-7 \right)^2\left(\frac{3}{36}\right)+\left(5-7 \right)^2\left(\frac{4}{36}\right) \\
+&amp;+\left(6-7 \right)^2\left(\frac{5}{36}\right)+\left(7-7 \right)^2\left(\frac{6}{36}\right) +\left(8-7 \right)^2\left(\frac{5}{36}\right)+\left(9-7 \right)^2\left(\frac{4}{36}\right)+\left(10-7 \right)^2\left(\frac{3}{36}\right) \\
+&amp;+\left(11-7 \right)^2\left(\frac{2}{36}\right)+\left(12-7 \right)^2\left(\frac{1}{3
 6}\right)\\
 &amp;=\frac{35}{6} \approx 5,83.
 \end{align*}
@@ -1245,10 +1250,11 @@ Mientras que la desviación estándar es,
 Usando la ecuación alternativa para la varianza dada en la ecuación <a href="dist_disc.html#eq:varianza2">(3.12)</a>, el valor de este parámetro se se obtiene como sigue
 <span class="math display">\[
 \begin{align*}
-\sigma^2=&amp;\sum_{x=2}^{12}x^2p\left ( x \right )-\mu^2= \left(2 \right)^2 \left(\frac{1}{36}\right)+\left(3 \right)^2\left(\frac{2}{36}\right)+\left(4 \right)^2\left(\frac{3}{36}\right)+\left(5 \right)^2\left(\frac{4}{36}\right)+\left(6 \right)^2\left(\frac{5}{36}\right)+\left(7 \right)^2\left(\frac{6}{36}\right) \\
-&amp; +\left(8 \right)^2\left(\frac{5}{36}\right)+\left(9 \right)^2\left(\frac{4}{36}\right)+\left(10 \right)^2\left(\frac{3}{36}\right)+\left(11 \right)^2\left(\frac{2}{36}\right)+\left(12 \right)^2\left(\frac{1}{3
-6}\right) - \left(7 \right)^2 \\
-&amp;=\frac{329}{6} - 49=\frac{35}{6} \approx 5,83.
+\sigma^2=&amp;\sum_{x=2}^{12}x^2p\left ( x \right )-\mu^2= \left(2 \right)^2 \left(\frac{1}{36}\right)+\left(3 \right)^2\left(\frac{2}{36}\right)+\left(4 \right)^2\left(\frac{3}{36}\right)+\left(5 \right)^2\left(\frac{4}{36}\right)\\
+&amp;+\left(6 \right)^2\left(\frac{5}{36}\right) +\left(7 \right)^2\left(\frac{6}{36}\right) +\left(8 \right)^2\left(\frac{5}{36}\right)+\left(9 \right)^2\left(\frac{4}{36}\right)+\left(10 \right)^2\left(\frac{3}{36}\right)+\left(11 \right)^2\left(\frac{2}{36}\right)\\
+&amp;+\left(12 \right)^2\left(\frac{1}{3
+6}\right) - \left(7 \right)^2\\
+&amp; =\frac{329}{6} - 49=\frac{35}{6} \approx 5,83.
 \end{align*}
 \]</span></p>
 <p>El valor de la varianza y la desviación estándar obtenidos anteriormente se pueden calcular en <span style="color: blue;">R</span> con el siguiente script.</p>
@@ -1261,7 +1267,7 @@ Usando la ecuación alternativa para la varianza dada en la ecuación <a href="d
 <div id="funcion-generadora-momentos" class="section level2" number="3.6">
 <h2><span class="header-section-number">3.6</span> Función Generadora de Momentos de Una Variable Aleatoria Discreta</h2>
 <div class="definition">
-<p><span id="def:funcion-generadora-momentos" class="definition"><strong>Definición 3.8  (Función Generadora de Momentos de Una Variable Aleatoria Discreta) </strong></span>Sea <span class="math inline">\(X\)</span> una variable aleatoria discreta con función de probabilidad <span class="math inline">\(p \left(x \right)\)</span>. El valor esperado de <span class="math inline">\(e^{tx}\)</span> recibe el nombre de <em>función generadora de momentos</em>, y se denota por <span class="math inline">\(m_x \left(t \right)\)</span>
+<p><span id="def:funcion-generadora-momentos" class="definition"><strong>Definición 3.9  (Función Generadora de Momentos de Una Variable Aleatoria Discreta) </strong></span>Sea <span class="math inline">\(X\)</span> una variable aleatoria discreta con función de probabilidad <span class="math inline">\(p \left(x \right)\)</span>. El valor esperado de <span class="math inline">\(e^{tx}\)</span> recibe el nombre de <em>función generadora de momentos</em>, y se denota por <span class="math inline">\(m_x \left(t \right)\)</span>
 de <span class="math inline">\(X\)</span>, si el valor esperado existe en algún intervalo <span class="math inline">\(-c&lt;t&lt;c\)</span> en donde <span class="math inline">\(c\)</span> es un entero positivo. En otros términos:</p>
 <p><span class="math display" id="eq:funcion-generadora-momentos">\[
 \begin{equation}
@@ -1274,7 +1280,7 @@ m_x \left(t \right)=E \left(e^{tx} \right) =\sum_{x}e^{tx} p \left(x \right), \:
 <p><span id="thm:funcion-generadora-momentos" class="theorem"><strong>Teorema 3.4  </strong></span>Si <span class="math inline">\(X\)</span> es una variable aleatoria con función generadora de momentos <span class="math inline">\(m_x \left(t \right)\)</span>. Entonces,
 <span class="math display" id="eq:funcion-generadora-momentos">\[
 \begin{equation}
-\frac{d^{k}m_{x}\left ( t \right )}{dt^{k}} \left|\begin{matrix}
+\frac{\mathrm{d}^{k}m_{x}\left ( t \right )}{\mathrm{d}t^{k}} \left|\begin{matrix}
  \\
 t=0\\
 \end{matrix}={\mu}^{&#39;}_k \right.
@@ -1282,12 +1288,763 @@ t=0\\
 \end{equation}
 \]</span></p>
 </div>
+<p>En muchas situaciones cundo se trabaja con variables aleatorias se definen transformaciones lineales sobre estas variables. En tales casos, si se conoce la función generadora de momentos de estas variables se pueden obtener las funciones generadoras de momentos de esas transformaciones por medio del teorema que sigue:</p>
+<div class="theorem">
+<p><span id="thm:funcion-generadora-momentos" class="theorem"><strong>Teorema 3.4  </strong></span>Si <span class="math inline">\(X\)</span> es una variable aleatoria con función generadora de momentos <span class="math inline">\(m_x \left(t \right)\)</span>. Entonces,
+<span class="math display" id="eq:teorema-funcion-generadora-momentos">\[
+\begin{align*}
+i)&amp;\:m_{x+a}\left ( t \right )= E\left [ e^{\left ( x+a \right )t} \right ]=e^{at} \cdot m_{x}\left ( t \right )\\
+ii)&amp;\: m_{bx}\left ( t \right )= E\left ( e^{bxt} \right )=m_{x}\left ( bt \right )\\
+iii)&amp;\: m_{\frac{x+a}{b}} =E\left [ e^{\left ( \frac{x+a}{b} \right )t} \right ] =e^{\frac{a}{b}t} \cdot m_{x}\left ( \frac{t}{b} \right ).
+\tag{3.14}
+\end{align*}
+\]</span></p>
+</div>
 </div>
 <div id="distribuciones-notables" class="section level2" number="3.7">
 <h2><span class="header-section-number">3.7</span> Distribuciones de Probabilidad Notables</h2>
 <p>En esta sección se definen algunas distribuciones de probabilidad de gran importancia por sus múltiples aplicaciones en la descripción de fenómenos que ocurren en la vida diaria, tales como: la <em>distribución binomial</em>, la <em>distribución hipergeométrica</em> y la <em>distribución de Poisson</em>.</p>
-<div id="distribuciones-binomial" class="section level3" number="3.7.1">
-<h3><span class="header-section-number">3.7.1</span> Distribució Binomial</h3>
+<div id="distribucion-binomial" class="section level3" number="3.7.1">
+<h3><span class="header-section-number">3.7.1</span> Distribución Binomial</h3>
+<div class="definition">
+<p><span id="def:distribucion-binomial" class="definition"><strong>Definición 3.10  (Distribución Binomial) </strong></span>Sea <span class="math inline">\(X\)</span> una variable aleatoria que representa el número de éxitos en <span class="math inline">\(n\)</span> ensayos y <span class="math inline">\(p\)</span> la probabilidad de éxito en cualquiera de éstos. Se dice que <span class="math inline">\(X\)</span> tiene una <em>distribución binomial</em> con parámetros <span class="math inline">\(n\)</span> y <span class="math inline">\(p\)</span>, y se escribe <span class="math inline">\(X\sim Bin\left ( n, p \right )\)</span>, con función de probabilidad.
+<span class="math display" id="eq:funcion-probabilidad-binomial">\[
+p\left ( x;n,p \right )=\begin{cases}
+\binom{n}{x}p^{x}\left ( 1-p \right )^{n-x} &amp; \text{ si } x= 0, 1, 2, \dotsc, n;\: 0\leq p\leq 1 \text{ y }n \in \mathbb{N}\\
+0 &amp; \text{ en cualquier otro caso }.
+\tag{3.15}
+\end{cases}
+\]</span></p>
+</div>
+<p>La figura <a href="dist_disc.html#fig:grafico-distribucion-binomial">3.3</a> muestra la gráfica de la función de probabilidad binomial para <span class="math inline">\(n=10\)</span> y <span class="math inline">\(p\)</span> igual a 0,2; 0,5 y 0,8. Como se observa en esta gráfica la distribución binomial es asimétrica positiva para <span class="math inline">\(p = 0,1\)</span>; simétrica para $ p = 0,5$ y asimétrica negativa para <span class="math inline">\(p = 0,8\)</span>. De manera general, esta distribución de probabilidad es asimétrica positiva para <span class="math inline">\(p &lt; 0,5\)</span>, simétrica si <span class="math inline">\(p = 0,5\)</span> y asimétrica negativa si <span class="math inline">\(p &gt; 0,5\)</span>.</p>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb112-1"><a href="dist_disc.html#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_ly</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb112-2"><a href="dist_disc.html#cb112-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_segments</span>(</span>
+<span id="cb112-3"><a href="dist_disc.html#cb112-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="sc">~</span><span class="fu">c</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>), <span class="at">y =</span> <span class="sc">~</span><span class="fu">rep</span>(<span class="at">x =</span> <span class="dv">0</span>, <span class="at">times =</span> <span class="dv">11</span>),</span>
+<span id="cb112-4"><a href="dist_disc.html#cb112-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">xend =</span> <span class="sc">~</span><span class="fu">c</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>), <span class="at">yend =</span> <span class="sc">~</span><span class="fu">dbinom</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">10</span>, <span class="fl">0.2</span>), </span>
+<span id="cb112-5"><a href="dist_disc.html#cb112-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="fu">I</span>(<span class="st">&quot;red&quot;</span>), <span class="at">showlegend =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb112-6"><a href="dist_disc.html#cb112-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="st">&quot;n = 10, p = 0,2&quot;</span></span>
+<span id="cb112-7"><a href="dist_disc.html#cb112-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb112-8"><a href="dist_disc.html#cb112-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_markers</span>(</span>
+<span id="cb112-9"><a href="dist_disc.html#cb112-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="sc">~</span><span class="fu">c</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>), <span class="at">y =</span> <span class="sc">~</span><span class="fu">dbinom</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">10</span>, <span class="fl">0.2</span>), </span>
+<span id="cb112-10"><a href="dist_disc.html#cb112-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="fu">I</span>(<span class="st">&quot;red&quot;</span>), <span class="at">showlegend =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb112-11"><a href="dist_disc.html#cb112-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="st">&quot;n = 10, p = 0,2&quot;</span></span>
+<span id="cb112-12"><a href="dist_disc.html#cb112-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb112-13"><a href="dist_disc.html#cb112-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_segments</span>(</span>
+<span id="cb112-14"><a href="dist_disc.html#cb112-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="sc">~</span><span class="fu">c</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>), <span class="at">y =</span> <span class="sc">~</span><span class="fu">rep</span>(<span class="at">x =</span> <span class="dv">0</span>, <span class="at">times =</span> <span class="dv">11</span>),</span>
+<span id="cb112-15"><a href="dist_disc.html#cb112-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">xend =</span> <span class="sc">~</span><span class="fu">c</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>), <span class="at">yend =</span> <span class="sc">~</span><span class="fu">dbinom</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">10</span>, <span class="fl">0.5</span>), </span>
+<span id="cb112-16"><a href="dist_disc.html#cb112-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="fu">I</span>(<span class="st">&quot;blue&quot;</span>), <span class="at">showlegend =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb112-17"><a href="dist_disc.html#cb112-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="st">&quot;n = 10, p = 0,5&quot;</span></span>
+<span id="cb112-18"><a href="dist_disc.html#cb112-18" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb112-19"><a href="dist_disc.html#cb112-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_markers</span>(</span>
+<span id="cb112-20"><a href="dist_disc.html#cb112-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="sc">~</span><span class="fu">c</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>), <span class="at">y =</span> <span class="sc">~</span><span class="fu">dbinom</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">10</span>, <span class="fl">0.5</span>), </span>
+<span id="cb112-21"><a href="dist_disc.html#cb112-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="fu">I</span>(<span class="st">&quot;blue&quot;</span>), <span class="at">showlegend =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb112-22"><a href="dist_disc.html#cb112-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="st">&quot;n = 10, p = 0,5&quot;</span></span>
+<span id="cb112-23"><a href="dist_disc.html#cb112-23" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb112-24"><a href="dist_disc.html#cb112-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_segments</span>(</span>
+<span id="cb112-25"><a href="dist_disc.html#cb112-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="sc">~</span><span class="fu">c</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>), <span class="at">y =</span> <span class="sc">~</span><span class="fu">rep</span>(<span class="at">x =</span> <span class="dv">0</span>, <span class="at">times =</span> <span class="dv">11</span>),</span>
+<span id="cb112-26"><a href="dist_disc.html#cb112-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">xend =</span> <span class="sc">~</span><span class="fu">c</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>), <span class="at">yend =</span> <span class="sc">~</span><span class="fu">dbinom</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">10</span>, <span class="fl">0.8</span>), </span>
+<span id="cb112-27"><a href="dist_disc.html#cb112-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="fu">I</span>(<span class="st">&quot;green&quot;</span>), <span class="at">showlegend =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb112-28"><a href="dist_disc.html#cb112-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="st">&quot;n = 10, p = 0,8&quot;</span></span>
+<span id="cb112-29"><a href="dist_disc.html#cb112-29" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb112-30"><a href="dist_disc.html#cb112-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_markers</span>(</span>
+<span id="cb112-31"><a href="dist_disc.html#cb112-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="sc">~</span><span class="fu">c</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>), <span class="at">y =</span> <span class="sc">~</span><span class="fu">dbinom</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">10</span>, <span class="fl">0.8</span>), </span>
+<span id="cb112-32"><a href="dist_disc.html#cb112-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="fu">I</span>(<span class="st">&quot;green&quot;</span>), <span class="at">showlegend =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb112-33"><a href="dist_disc.html#cb112-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="st">&quot;n = 10, p = 0,8&quot;</span></span>
+<span id="cb112-34"><a href="dist_disc.html#cb112-34" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb112-35"><a href="dist_disc.html#cb112-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">layout</span>(</span>
+<span id="cb112-36"><a href="dist_disc.html#cb112-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">xaxis =</span> <span class="fu">list</span>(</span>
+<span id="cb112-37"><a href="dist_disc.html#cb112-37" aria-hidden="true" tabindex="-1"></a>      <span class="at">title =</span> <span class="st">&quot;x&quot;</span>, </span>
+<span id="cb112-38"><a href="dist_disc.html#cb112-38" aria-hidden="true" tabindex="-1"></a>      <span class="at">zeroline =</span> F, </span>
+<span id="cb112-39"><a href="dist_disc.html#cb112-39" aria-hidden="true" tabindex="-1"></a>      <span class="at">showgrid =</span> T,</span>
+<span id="cb112-40"><a href="dist_disc.html#cb112-40" aria-hidden="true" tabindex="-1"></a>      <span class="at">showline =</span> T, </span>
+<span id="cb112-41"><a href="dist_disc.html#cb112-41" aria-hidden="true" tabindex="-1"></a>      <span class="at">linewidth =</span> <span class="dv">1</span>, </span>
+<span id="cb112-42"><a href="dist_disc.html#cb112-42" aria-hidden="true" tabindex="-1"></a>      <span class="at">linecolor =</span> <span class="st">&#39;black&#39;</span>,</span>
+<span id="cb112-43"><a href="dist_disc.html#cb112-43" aria-hidden="true" tabindex="-1"></a>      <span class="at">showticklabels =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb112-44"><a href="dist_disc.html#cb112-44" aria-hidden="true" tabindex="-1"></a>      <span class="at">tickwidth =</span> <span class="fl">0.5</span></span>
+<span id="cb112-45"><a href="dist_disc.html#cb112-45" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb112-46"><a href="dist_disc.html#cb112-46" aria-hidden="true" tabindex="-1"></a>    <span class="at">yaxis =</span> <span class="fu">list</span>(</span>
+<span id="cb112-47"><a href="dist_disc.html#cb112-47" aria-hidden="true" tabindex="-1"></a>      <span class="at">title =</span> <span class="st">&quot;p(x)&quot;</span>,</span>
+<span id="cb112-48"><a href="dist_disc.html#cb112-48" aria-hidden="true" tabindex="-1"></a>      <span class="at">showgrid =</span> T,</span>
+<span id="cb112-49"><a href="dist_disc.html#cb112-49" aria-hidden="true" tabindex="-1"></a>      <span class="at">showline =</span> T, </span>
+<span id="cb112-50"><a href="dist_disc.html#cb112-50" aria-hidden="true" tabindex="-1"></a>      <span class="at">linewidth =</span> <span class="dv">1</span>, </span>
+<span id="cb112-51"><a href="dist_disc.html#cb112-51" aria-hidden="true" tabindex="-1"></a>      <span class="at">linecolor =</span> <span class="st">&#39;black&#39;</span>,</span>
+<span id="cb112-52"><a href="dist_disc.html#cb112-52" aria-hidden="true" tabindex="-1"></a>      <span class="at">showticklabels =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb112-53"><a href="dist_disc.html#cb112-53" aria-hidden="true" tabindex="-1"></a>      <span class="at">tickwidth =</span> <span class="fl">0.5</span></span>
+<span id="cb112-54"><a href="dist_disc.html#cb112-54" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb112-55"><a href="dist_disc.html#cb112-55" aria-hidden="true" tabindex="-1"></a>    <span class="at">showlegend =</span> <span class="cn">TRUE</span></span>
+<span id="cb112-56"><a href="dist_disc.html#cb112-56" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb112-57"><a href="dist_disc.html#cb112-57" aria-hidden="true" tabindex="-1"></a>  <span class="fu">config</span>(<span class="at">locale =</span> <span class="st">&quot;es&quot;</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:grafico-distribucion-binomial"></span>
+<div id="htmlwidget-6a0691b5f9ab1301016b" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-6a0691b5f9ab1301016b">{"x":{"visdat":{"21e427575db1":["function () ","plotlyVisDat"]},"cur_data":"21e427575db1","attrs":{"21e427575db1":{"alpha":0.5,"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"x":{},"y":{},"xend":{},"yend":{},"type":"scatter","mode":"lines","color":["red"],"showlegend":true,"name":"n = 10, p = 0,2","inherit":true},"21e427575db1.1":{"alpha":0.5,"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"x":{},"y":{},"type":"scatter","mode":"markers","color":["red"],"showlegend":true,"name":"n = 10, p = 0,2","inherit":true},"21e427575db1.2":{"alpha":0.5,"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"x":{},"y":{},"xend":{},"yend":{},"type":"scatter","mode":"lines","color":["blue"],"showlegend":true,"name":"n = 10, p = 0,5","inherit":true},"21e427575db1.3":{"alpha":0.5,"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"x":{},"y":{},"type":"scatter","mode":"markers","color":["blue"],"showlegend":true,"name":"n = 10, p = 0,5","inherit":true},"21e427575db1.4":{"alpha":0.5,"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"x":{},"y":{},"xend":{},"yend":{},"type":"scatter","mode":"lines","color":["green"],"showlegend":true,"name":"n = 10, p = 0,8","inherit":true},"21e427575db1.5":{"alpha":0.5,"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"x":{},"y":{},"type":"scatter","mode":"markers","color":["green"],"showlegend":true,"name":"n = 10, p = 0,8","inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"title":"x","zeroline":false,"showgrid":true,"showline":true,"linewidth":1,"linecolor":"black","showticklabels":true,"tickwidth":0.5},"yaxis":{"domain":[0,1],"automargin":true,"title":"p(x)","showgrid":true,"showline":true,"linewidth":1,"linecolor":"black","showticklabels":true,"tickwidth":0.5},"showlegend":true,"hovermode":"closest"},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false,"locale":"es"},"data":[{"x":[0,0,null,1,1,null,2,2,null,3,3,null,4,4,null,5,5,null,6,6,null,7,7,null,8,8,null,9,9,null,10,10],"y":[0,0.1073741824,null,0,0.268435456,null,0,0.301989888,null,0,0.201326592,null,0,0.088080384,null,0,0.0264241152,null,0,0.005505024,null,0,0.000786432,null,0,7.37280000000002e-05,null,0,4.09599999999999e-06,null,0,1.024e-07],"type":"scatter","mode":"lines","showlegend":true,"name":"n = 10, p = 0,2","marker":{"color":"rgba(255,0,0,0.5)","line":{"color":"rgba(255,0,0,1)"}},"textfont":{"color":"rgba(255,0,0,0.5)"},"error_y":{"color":"rgba(255,0,0,0.5)"},"error_x":{"color":"rgba(255,0,0,0.5)"},"line":{"color":"rgba(255,0,0,0.5)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[0,1,2,3,4,5,6,7,8,9,10],"y":[0.1073741824,0.268435456,0.301989888,0.201326592,0.088080384,0.0264241152,0.005505024,0.000786432,7.37280000000002e-05,4.09599999999999e-06,1.024e-07],"type":"scatter","mode":"markers","showlegend":true,"name":"n = 10, p = 0,2","marker":{"color":"rgba(255,0,0,0.5)","line":{"color":"rgba(255,0,0,1)"}},"textfont":{"color":"rgba(255,0,0,0.5)"},"error_y":{"color":"rgba(255,0,0,0.5)"},"error_x":{"color":"rgba(255,0,0,0.5)"},"line":{"color":"rgba(255,0,0,0.5)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[0,0,null,1,1,null,2,2,null,3,3,null,4,4,null,5,5,null,6,6,null,7,7,null,8,8,null,9,9,null,10,10],"y":[0,0.0009765625,null,0,0.009765625,null,0,0.0439453125,null,0,0.1171875,null,0,0.205078125,null,0,0.24609375,null,0,0.205078125,null,0,0.1171875,null,0,0.0439453125,null,0,0.009765625,null,0,0.0009765625],"type":"scatter","mode":"lines","showlegend":true,"name":"n = 10, p = 0,5","marker":{"color":"rgba(0,0,255,0.5)","line":{"color":"rgba(0,0,255,1)"}},"textfont":{"color":"rgba(0,0,255,0.5)"},"error_y":{"color":"rgba(0,0,255,0.5)"},"error_x":{"color":"rgba(0,0,255,0.5)"},"line":{"color":"rgba(0,0,255,0.5)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[0,1,2,3,4,5,6,7,8,9,10],"y":[0.0009765625,0.009765625,0.0439453125,0.1171875,0.205078125,0.24609375,0.205078125,0.1171875,0.0439453125,0.009765625,0.0009765625],"type":"scatter","mode":"markers","showlegend":true,"name":"n = 10, p = 0,5","marker":{"color":"rgba(0,0,255,0.5)","line":{"color":"rgba(0,0,255,1)"}},"textfont":{"color":"rgba(0,0,255,0.5)"},"error_y":{"color":"rgba(0,0,255,0.5)"},"error_x":{"color":"rgba(0,0,255,0.5)"},"line":{"color":"rgba(0,0,255,0.5)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[0,0,null,1,1,null,2,2,null,3,3,null,4,4,null,5,5,null,6,6,null,7,7,null,8,8,null,9,9,null,10,10],"y":[0,1.024e-07,null,0,4.09599999999999e-06,null,0,7.37279999999999e-05,null,0,0.000786431999999999,null,0,0.00550502399999999,null,0,0.0264241152,null,0,0.088080384,null,0,0.201326592,null,0,0.301989888,null,0,0.268435456,null,0,0.1073741824],"type":"scatter","mode":"lines","showlegend":true,"name":"n = 10, p = 0,8","marker":{"color":"rgba(0,255,0,0.5)","line":{"color":"rgba(0,255,0,1)"}},"textfont":{"color":"rgba(0,255,0,0.5)"},"error_y":{"color":"rgba(0,255,0,0.5)"},"error_x":{"color":"rgba(0,255,0,0.5)"},"line":{"color":"rgba(0,255,0,0.5)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[0,1,2,3,4,5,6,7,8,9,10],"y":[1.024e-07,4.09599999999999e-06,7.37279999999999e-05,0.000786431999999999,0.00550502399999999,0.0264241152,0.088080384,0.201326592,0.301989888,0.268435456,0.1073741824],"type":"scatter","mode":"markers","showlegend":true,"name":"n = 10, p = 0,8","marker":{"color":"rgba(0,255,0,0.5)","line":{"color":"rgba(0,255,0,1)"}},"textfont":{"color":"rgba(0,255,0,0.5)"},"error_y":{"color":"rgba(0,255,0,0.5)"},"error_x":{"color":"rgba(0,255,0,0.5)"},"line":{"color":"rgba(0,255,0,0.5)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<p class="caption">
+Figura 3.3: Gráfica de la función de probabilidad binomial para <span class="math inline">\(n = 10\)</span> y <span class="math inline">\(p = 0,2; 0,5; 0,8\)</span>
+</p>
+</div>
+<div class="example">
+<p><span id="exm:ejemplo-funcion-probabilidad-binomial" class="example"><strong>Ejemplo 3.7  (Función de probabilidad binomial) </strong></span>Todos los días se seleccionan, de manera aleatoria, 15 artículos de un proceso de producción con el propósito de vigilar la fracción de artículos defectuosos que produce el proceso. Con base en información pasada, la probabilidad de que el proceso produzca un artículo defectuoso es 0,05. Determine la probabilidad de que se encuentren dos artículos defectuosos en la muestra.</p>
+<p>Dado que <span class="math inline">\(X\)</span> representa el número de artículo defectuosos encontrados en la muestra de tamaño 15 (<span class="math inline">\(n=15\)</span>) y que la probabilidad de encontrar un artículo defectuoso en la muestra es 0,05 (<span class="math inline">\(p = 0,05\)</span>). Entonces, de acuerdo con la definición <a href="dist_disc.html#def:distribucion-binomial">3.10</a>, <span class="math inline">\(X\)</span> tiene distribución binomial con parámetros <span class="math inline">\(n = 15\)</span> y <span class="math inline">\(p = 0,05\)</span>, es decir, <span class="math inline">\(X \sim Bin\left(n = 15, p = 0,05 \right)\)</span>. Por lo tanto, de acuerdo con la ecuación <a href="dist_disc.html#eq:funcion-probabilidad-binomial">(3.15)</a>,</p>
+<p><span class="math display">\[
+P\left(X = 2 \right)=p\left ( x = 2;n = 15,p = 0,05 \right )=
+\binom{15}{2}\left(0,05 \right)^{2}\left ( 1- 0,05 \right )^{15-2} \approx 0,1348.
+\]</span>
+La función <code>dbinom(x, size, prob, log = FALSE)</code> de la distribución base de <span style="color: blue;">R</span> permite evaluar la función de probabilidad binomial dada por la ecuación <a href="dist_disc.html#eq:funcion-probabilidad-binomial">(3.15)</a>. El siguiente script permite obtener el resultado anterior.</p>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="dist_disc.html#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbinom</span>(<span class="at">x =</span> <span class="dv">2</span>, <span class="at">size =</span> <span class="dv">15</span>, <span class="at">prob =</span> <span class="fl">0.05</span>, <span class="at">log =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<pre><code>#&gt; [1] 0.1347523</code></pre>
+</div>
+<div id="distribucion-acumulada-binomial" class="section level4" number="3.7.1.1">
+<h4><span class="header-section-number">3.7.1.1</span> Distribución Binomial</h4>
+<p>La probabilidad de que una variable aleatoria binomial <span class="math inline">\(X\)</span> sea menor o igual que un valor específico <span class="math inline">\(x\)</span> o dicho de otra manera la probabilidad de encontrar a los más <span class="math inline">\(x\)</span> éxitos en los <span class="math inline">\(n\)</span> ensayos, o lo que es igual,la función de distribución acumulativa de probabilidad binomial, queda deterinada, de acuerdo con la definición <a href="dist_disc.html#def:funcion-acumulativa-probabilidad">3.6</a> por:</p>
+<div class="definition">
+<p><span id="def:distribucion-acumulada-binomial" class="definition"><strong>Definición 3.11  (Función Generadora de Momentos de Una Variable Aleatoria Discreta) </strong></span>Sea <span class="math inline">\(X\)</span> una variable aleatoria con distribución binomial. Entonces, la <em>función de distribución acumulativa de probabilidad binomial</em> viene dada por:
+<span class="math display" id="eq:funcion-acumulativa-binomial">\[
+F\left ( x;n,p \right )=\begin{cases}
+0 &amp; \text{ si } x &lt; 0\\
+ \sum_{t=0}^{x } \binom{n}{t}p^{t}\left ( 1-p \right )^{n-t} &amp; \text{ si } x= 0, 1, 2, \dotsc, n;\: 0\leq p\leq 1 \text{ y }n \in \mathbb{N}\\
+1 &amp; \text{ si } x &gt; n.
+\tag{3.16}
+\end{cases}
+\]</span></p>
+</div>
+<p>La figura <a href="dist_disc.html#fig:grafico-distribucion-binomial">3.3</a> muestra la función de distribución acumulativa de probabilidad para una variable binomial con parámetros <span class="math inline">\(n = 10\)</span> y <span class="math inline">\(p = 0,2; 0,5 \, \text{y} \, 0,8\)</span>.</p>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb115-1"><a href="dist_disc.html#cb115-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">13</span>)</span>
+<span id="cb115-2"><a href="dist_disc.html#cb115-2" aria-hidden="true" tabindex="-1"></a>px1  <span class="ot">&lt;-</span>  <span class="fu">dbinom</span>(<span class="at">x =</span> x, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">prob =</span> <span class="fl">0.2</span>)</span>
+<span id="cb115-3"><a href="dist_disc.html#cb115-3" aria-hidden="true" tabindex="-1"></a>Fx1  <span class="ot">&lt;-</span>  <span class="fu">pbinom</span>(<span class="at">q =</span> x, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">prob =</span> <span class="fl">0.2</span>)</span>
+<span id="cb115-4"><a href="dist_disc.html#cb115-4" aria-hidden="true" tabindex="-1"></a>px2  <span class="ot">&lt;-</span>  <span class="fu">dbinom</span>(<span class="at">x =</span> x, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">prob =</span> <span class="fl">0.5</span>)</span>
+<span id="cb115-5"><a href="dist_disc.html#cb115-5" aria-hidden="true" tabindex="-1"></a>Fx2  <span class="ot">&lt;-</span>  <span class="fu">pbinom</span>(<span class="at">q =</span> x, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">prob =</span> <span class="fl">0.5</span>)</span>
+<span id="cb115-6"><a href="dist_disc.html#cb115-6" aria-hidden="true" tabindex="-1"></a>px3  <span class="ot">&lt;-</span>  <span class="fu">dbinom</span>(<span class="at">x =</span> x, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">prob =</span> <span class="fl">0.8</span>)</span>
+<span id="cb115-7"><a href="dist_disc.html#cb115-7" aria-hidden="true" tabindex="-1"></a>Fx3  <span class="ot">&lt;-</span>  <span class="fu">pbinom</span>(<span class="at">q =</span> x, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">prob =</span> <span class="fl">0.8</span>)</span>
+<span id="cb115-8"><a href="dist_disc.html#cb115-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_ly</span>(<span class="at">x =</span> x, <span class="at">y =</span> Fx1, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb115-9"><a href="dist_disc.html#cb115-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_segments</span>(</span>
+<span id="cb115-10"><a href="dist_disc.html#cb115-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="sc">~</span>x[<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>], </span>
+<span id="cb115-11"><a href="dist_disc.html#cb115-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="sc">~</span>Fx1[<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>],</span>
+<span id="cb115-12"><a href="dist_disc.html#cb115-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">xend =</span> <span class="sc">~</span>x[<span class="dv">2</span><span class="sc">:</span><span class="dv">13</span>], </span>
+<span id="cb115-13"><a href="dist_disc.html#cb115-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">yend =</span> <span class="sc">~</span>Fx1[<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>], </span>
+<span id="cb115-14"><a href="dist_disc.html#cb115-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="fu">I</span>(<span class="st">&quot;red&quot;</span>),</span>
+<span id="cb115-15"><a href="dist_disc.html#cb115-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="st">&quot;n = 10, p = 0,2&quot;</span>,</span>
+<span id="cb115-16"><a href="dist_disc.html#cb115-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">showlegend =</span> <span class="cn">TRUE</span></span>
+<span id="cb115-17"><a href="dist_disc.html#cb115-17" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb115-18"><a href="dist_disc.html#cb115-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_markers</span>(</span>
+<span id="cb115-19"><a href="dist_disc.html#cb115-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="sc">~</span>x[<span class="dv">2</span><span class="sc">:</span><span class="dv">12</span>], </span>
+<span id="cb115-20"><a href="dist_disc.html#cb115-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="sc">~</span>Fx1[<span class="dv">2</span><span class="sc">:</span><span class="dv">12</span>], </span>
+<span id="cb115-21"><a href="dist_disc.html#cb115-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="fu">I</span>(<span class="st">&quot;red&quot;</span>),</span>
+<span id="cb115-22"><a href="dist_disc.html#cb115-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="st">&quot;n = 10, p = 0,2&quot;</span>,</span>
+<span id="cb115-23"><a href="dist_disc.html#cb115-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">showlegend =</span> <span class="cn">TRUE</span></span>
+<span id="cb115-24"><a href="dist_disc.html#cb115-24" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb115-25"><a href="dist_disc.html#cb115-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_markers</span>(</span>
+<span id="cb115-26"><a href="dist_disc.html#cb115-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="sc">~</span>x[<span class="dv">2</span><span class="sc">:</span><span class="dv">12</span>], </span>
+<span id="cb115-27"><a href="dist_disc.html#cb115-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="sc">~</span>Fx1[<span class="dv">1</span><span class="sc">:</span><span class="dv">11</span>], </span>
+<span id="cb115-28"><a href="dist_disc.html#cb115-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="fu">I</span>(<span class="st">&quot;red&quot;</span>),</span>
+<span id="cb115-29"><a href="dist_disc.html#cb115-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">marker =</span> <span class="fu">list</span>(<span class="at">symbol =</span> <span class="st">&quot;circle-open&quot;</span>),</span>
+<span id="cb115-30"><a href="dist_disc.html#cb115-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="st">&quot;n = 10, p = 0,2&quot;</span>,</span>
+<span id="cb115-31"><a href="dist_disc.html#cb115-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">showlegend =</span> <span class="cn">TRUE</span></span>
+<span id="cb115-32"><a href="dist_disc.html#cb115-32" aria-hidden="true" tabindex="-1"></a>  )  <span class="sc">%&gt;%</span></span>
+<span id="cb115-33"><a href="dist_disc.html#cb115-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_segments</span>(</span>
+<span id="cb115-34"><a href="dist_disc.html#cb115-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="sc">~</span>x[<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>], </span>
+<span id="cb115-35"><a href="dist_disc.html#cb115-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="sc">~</span>Fx2[<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>],</span>
+<span id="cb115-36"><a href="dist_disc.html#cb115-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">xend =</span> <span class="sc">~</span>x[<span class="dv">2</span><span class="sc">:</span><span class="dv">13</span>], </span>
+<span id="cb115-37"><a href="dist_disc.html#cb115-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">yend =</span> <span class="sc">~</span>Fx2[<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>], </span>
+<span id="cb115-38"><a href="dist_disc.html#cb115-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="fu">I</span>(<span class="st">&quot;blue&quot;</span>), </span>
+<span id="cb115-39"><a href="dist_disc.html#cb115-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="st">&quot;n = 10, p = 0,5&quot;</span>,</span>
+<span id="cb115-40"><a href="dist_disc.html#cb115-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">showlegend =</span> <span class="cn">TRUE</span></span>
+<span id="cb115-41"><a href="dist_disc.html#cb115-41" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb115-42"><a href="dist_disc.html#cb115-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_markers</span>(</span>
+<span id="cb115-43"><a href="dist_disc.html#cb115-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="sc">~</span>x[<span class="dv">2</span><span class="sc">:</span><span class="dv">12</span>], </span>
+<span id="cb115-44"><a href="dist_disc.html#cb115-44" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="sc">~</span>Fx2[<span class="dv">2</span><span class="sc">:</span><span class="dv">12</span>], </span>
+<span id="cb115-45"><a href="dist_disc.html#cb115-45" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="fu">I</span>(<span class="st">&quot;blue&quot;</span>),</span>
+<span id="cb115-46"><a href="dist_disc.html#cb115-46" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="st">&quot;n = 10, p = 0,5&quot;</span>,</span>
+<span id="cb115-47"><a href="dist_disc.html#cb115-47" aria-hidden="true" tabindex="-1"></a>    <span class="at">showlegend =</span> <span class="cn">TRUE</span></span>
+<span id="cb115-48"><a href="dist_disc.html#cb115-48" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb115-49"><a href="dist_disc.html#cb115-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_markers</span>(</span>
+<span id="cb115-50"><a href="dist_disc.html#cb115-50" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="sc">~</span>x[<span class="dv">2</span><span class="sc">:</span><span class="dv">12</span>], </span>
+<span id="cb115-51"><a href="dist_disc.html#cb115-51" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="sc">~</span>Fx2[<span class="dv">1</span><span class="sc">:</span><span class="dv">11</span>], </span>
+<span id="cb115-52"><a href="dist_disc.html#cb115-52" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="fu">I</span>(<span class="st">&quot;blue&quot;</span>),</span>
+<span id="cb115-53"><a href="dist_disc.html#cb115-53" aria-hidden="true" tabindex="-1"></a>    <span class="at">marker =</span> <span class="fu">list</span>(<span class="at">symbol =</span> <span class="st">&quot;circle-open&quot;</span>),</span>
+<span id="cb115-54"><a href="dist_disc.html#cb115-54" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="st">&quot;n = 10, p = 0,5&quot;</span>,</span>
+<span id="cb115-55"><a href="dist_disc.html#cb115-55" aria-hidden="true" tabindex="-1"></a>    <span class="at">showlegend =</span> <span class="cn">TRUE</span></span>
+<span id="cb115-56"><a href="dist_disc.html#cb115-56" aria-hidden="true" tabindex="-1"></a>  )  <span class="sc">%&gt;%</span></span>
+<span id="cb115-57"><a href="dist_disc.html#cb115-57" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_segments</span>(</span>
+<span id="cb115-58"><a href="dist_disc.html#cb115-58" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="sc">~</span>x[<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>], </span>
+<span id="cb115-59"><a href="dist_disc.html#cb115-59" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="sc">~</span>Fx3[<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>],</span>
+<span id="cb115-60"><a href="dist_disc.html#cb115-60" aria-hidden="true" tabindex="-1"></a>    <span class="at">xend =</span> <span class="sc">~</span>x[<span class="dv">2</span><span class="sc">:</span><span class="dv">13</span>], </span>
+<span id="cb115-61"><a href="dist_disc.html#cb115-61" aria-hidden="true" tabindex="-1"></a>    <span class="at">yend =</span> <span class="sc">~</span>Fx3[<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>], </span>
+<span id="cb115-62"><a href="dist_disc.html#cb115-62" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="fu">I</span>(<span class="st">&quot;green&quot;</span>),</span>
+<span id="cb115-63"><a href="dist_disc.html#cb115-63" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="st">&quot;n = 10, p = 0,8&quot;</span>,</span>
+<span id="cb115-64"><a href="dist_disc.html#cb115-64" aria-hidden="true" tabindex="-1"></a>    <span class="at">showlegend =</span> <span class="cn">TRUE</span></span>
+<span id="cb115-65"><a href="dist_disc.html#cb115-65" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb115-66"><a href="dist_disc.html#cb115-66" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_markers</span>(</span>
+<span id="cb115-67"><a href="dist_disc.html#cb115-67" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="sc">~</span>x[<span class="dv">2</span><span class="sc">:</span><span class="dv">12</span>], </span>
+<span id="cb115-68"><a href="dist_disc.html#cb115-68" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="sc">~</span>Fx3[<span class="dv">2</span><span class="sc">:</span><span class="dv">12</span>], </span>
+<span id="cb115-69"><a href="dist_disc.html#cb115-69" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="fu">I</span>(<span class="st">&quot;green&quot;</span>),</span>
+<span id="cb115-70"><a href="dist_disc.html#cb115-70" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="st">&quot;n = 10, p = 0,8&quot;</span>,</span>
+<span id="cb115-71"><a href="dist_disc.html#cb115-71" aria-hidden="true" tabindex="-1"></a>    <span class="at">showlegend =</span> <span class="cn">TRUE</span></span>
+<span id="cb115-72"><a href="dist_disc.html#cb115-72" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb115-73"><a href="dist_disc.html#cb115-73" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_markers</span>(</span>
+<span id="cb115-74"><a href="dist_disc.html#cb115-74" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="sc">~</span>x[<span class="dv">2</span><span class="sc">:</span><span class="dv">12</span>], </span>
+<span id="cb115-75"><a href="dist_disc.html#cb115-75" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="sc">~</span>Fx3[<span class="dv">1</span><span class="sc">:</span><span class="dv">11</span>], </span>
+<span id="cb115-76"><a href="dist_disc.html#cb115-76" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="fu">I</span>(<span class="st">&quot;green&quot;</span>),</span>
+<span id="cb115-77"><a href="dist_disc.html#cb115-77" aria-hidden="true" tabindex="-1"></a>    <span class="at">marker =</span> <span class="fu">list</span>(<span class="at">symbol =</span> <span class="st">&quot;circle-open&quot;</span>),</span>
+<span id="cb115-78"><a href="dist_disc.html#cb115-78" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="st">&quot;n = 10, p = 0,8&quot;</span>,</span>
+<span id="cb115-79"><a href="dist_disc.html#cb115-79" aria-hidden="true" tabindex="-1"></a>    <span class="at">showlegend =</span> <span class="cn">TRUE</span></span>
+<span id="cb115-80"><a href="dist_disc.html#cb115-80" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb115-81"><a href="dist_disc.html#cb115-81" aria-hidden="true" tabindex="-1"></a>  <span class="fu">layout</span>(</span>
+<span id="cb115-82"><a href="dist_disc.html#cb115-82" aria-hidden="true" tabindex="-1"></a>    <span class="at">xaxis =</span> <span class="fu">list</span>(</span>
+<span id="cb115-83"><a href="dist_disc.html#cb115-83" aria-hidden="true" tabindex="-1"></a>      <span class="at">title =</span> <span class="st">&quot;x&quot;</span>, </span>
+<span id="cb115-84"><a href="dist_disc.html#cb115-84" aria-hidden="true" tabindex="-1"></a>      <span class="at">zeroline =</span> F, </span>
+<span id="cb115-85"><a href="dist_disc.html#cb115-85" aria-hidden="true" tabindex="-1"></a>      <span class="at">showgrid =</span> T,</span>
+<span id="cb115-86"><a href="dist_disc.html#cb115-86" aria-hidden="true" tabindex="-1"></a>      <span class="at">showline =</span> T, </span>
+<span id="cb115-87"><a href="dist_disc.html#cb115-87" aria-hidden="true" tabindex="-1"></a>      <span class="at">linewidth =</span> <span class="dv">1</span>, </span>
+<span id="cb115-88"><a href="dist_disc.html#cb115-88" aria-hidden="true" tabindex="-1"></a>      <span class="at">linecolor =</span> <span class="st">&#39;black&#39;</span>,</span>
+<span id="cb115-89"><a href="dist_disc.html#cb115-89" aria-hidden="true" tabindex="-1"></a>      <span class="at">showticklabels =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb115-90"><a href="dist_disc.html#cb115-90" aria-hidden="true" tabindex="-1"></a>      <span class="at">tickwidth =</span> <span class="fl">0.5</span></span>
+<span id="cb115-91"><a href="dist_disc.html#cb115-91" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb115-92"><a href="dist_disc.html#cb115-92" aria-hidden="true" tabindex="-1"></a>    <span class="at">yaxis =</span> <span class="fu">list</span>(</span>
+<span id="cb115-93"><a href="dist_disc.html#cb115-93" aria-hidden="true" tabindex="-1"></a>      <span class="at">title =</span> <span class="st">&quot;F(x)&quot;</span>,</span>
+<span id="cb115-94"><a href="dist_disc.html#cb115-94" aria-hidden="true" tabindex="-1"></a>      <span class="at">showgrid =</span> T,</span>
+<span id="cb115-95"><a href="dist_disc.html#cb115-95" aria-hidden="true" tabindex="-1"></a>      <span class="at">showline =</span> T, </span>
+<span id="cb115-96"><a href="dist_disc.html#cb115-96" aria-hidden="true" tabindex="-1"></a>      <span class="at">linewidth =</span> <span class="dv">1</span>, </span>
+<span id="cb115-97"><a href="dist_disc.html#cb115-97" aria-hidden="true" tabindex="-1"></a>      <span class="at">linecolor =</span> <span class="st">&#39;black&#39;</span>,</span>
+<span id="cb115-98"><a href="dist_disc.html#cb115-98" aria-hidden="true" tabindex="-1"></a>      <span class="at">showticklabels =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb115-99"><a href="dist_disc.html#cb115-99" aria-hidden="true" tabindex="-1"></a>      <span class="at">tickwidth =</span> <span class="fl">0.5</span></span>
+<span id="cb115-100"><a href="dist_disc.html#cb115-100" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb115-101"><a href="dist_disc.html#cb115-101" aria-hidden="true" tabindex="-1"></a>    <span class="at">showlegend =</span> <span class="cn">TRUE</span></span>
+<span id="cb115-102"><a href="dist_disc.html#cb115-102" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb115-103"><a href="dist_disc.html#cb115-103" aria-hidden="true" tabindex="-1"></a>  <span class="fu">config</span>(<span class="at">locale =</span> <span class="st">&quot;es&quot;</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:grafico-acumulativa-binomial"></span>
+<div id="htmlwidget-6ee535f5a06e89a26cf2" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-6ee535f5a06e89a26cf2">{"x":{"visdat":{"21e46f2839b4":["function () ","plotlyVisDat"]},"cur_data":"21e46f2839b4","attrs":{"21e46f2839b4":{"x":{},"y":{},"alpha":0.5,"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"xend":{},"yend":{},"type":"scatter","mode":"lines","color":["red"],"name":"n = 10, p = 0,2","showlegend":true,"inherit":true},"21e46f2839b4.1":{"x":{},"y":{},"alpha":0.5,"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter","mode":"markers","color":["red"],"name":"n = 10, p = 0,2","showlegend":true,"inherit":true},"21e46f2839b4.2":{"x":{},"y":{},"alpha":0.5,"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter","mode":"markers","color":["red"],"marker":{"symbol":"circle-open"},"name":"n = 10, p = 0,2","showlegend":true,"inherit":true},"21e46f2839b4.3":{"x":{},"y":{},"alpha":0.5,"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"xend":{},"yend":{},"type":"scatter","mode":"lines","color":["blue"],"name":"n = 10, p = 0,5","showlegend":true,"inherit":true},"21e46f2839b4.4":{"x":{},"y":{},"alpha":0.5,"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter","mode":"markers","color":["blue"],"name":"n = 10, p = 0,5","showlegend":true,"inherit":true},"21e46f2839b4.5":{"x":{},"y":{},"alpha":0.5,"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter","mode":"markers","color":["blue"],"marker":{"symbol":"circle-open"},"name":"n = 10, p = 0,5","showlegend":true,"inherit":true},"21e46f2839b4.6":{"x":{},"y":{},"alpha":0.5,"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"xend":{},"yend":{},"type":"scatter","mode":"lines","color":["green"],"name":"n = 10, p = 0,8","showlegend":true,"inherit":true},"21e46f2839b4.7":{"x":{},"y":{},"alpha":0.5,"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter","mode":"markers","color":["green"],"name":"n = 10, p = 0,8","showlegend":true,"inherit":true},"21e46f2839b4.8":{"x":{},"y":{},"alpha":0.5,"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter","mode":"markers","color":["green"],"marker":{"symbol":"circle-open"},"name":"n = 10, p = 0,8","showlegend":true,"inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"title":"x","zeroline":false,"showgrid":true,"showline":true,"linewidth":1,"linecolor":"black","showticklabels":true,"tickwidth":0.5},"yaxis":{"domain":[0,1],"automargin":true,"title":"F(x)","showgrid":true,"showline":true,"linewidth":1,"linecolor":"black","showticklabels":true,"tickwidth":0.5},"showlegend":true,"hovermode":"closest"},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false,"locale":"es"},"data":[{"x":[-3,0,null,0,1,null,1,2,null,2,3,null,3,4,null,4,5,null,5,6,null,6,7,null,7,8,null,8,9,null,9,10,null,10,13],"y":[0,0,null,0.1073741824,0.1073741824,null,0.3758096384,0.3758096384,null,0.6777995264,0.6777995264,null,0.8791261184,0.8791261184,null,0.9672065024,0.9672065024,null,0.9936306176,0.9936306176,null,0.9991356416,0.9991356416,null,0.9999220736,0.9999220736,null,0.9999958016,0.9999958016,null,0.9999998976,0.9999998976,null,1,1],"type":"scatter","mode":"lines","name":"n = 10, p = 0,2","showlegend":true,"marker":{"color":"rgba(255,0,0,0.5)","line":{"color":"rgba(255,0,0,1)"}},"textfont":{"color":"rgba(255,0,0,0.5)"},"error_y":{"color":"rgba(255,0,0,0.5)"},"error_x":{"color":"rgba(255,0,0,0.5)"},"line":{"color":"rgba(255,0,0,0.5)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[0,1,2,3,4,5,6,7,8,9,10],"y":[0.1073741824,0.3758096384,0.6777995264,0.8791261184,0.9672065024,0.9936306176,0.9991356416,0.9999220736,0.9999958016,0.9999998976,1],"type":"scatter","mode":"markers","name":"n = 10, p = 0,2","showlegend":true,"marker":{"color":"rgba(255,0,0,0.5)","line":{"color":"rgba(255,0,0,1)"}},"textfont":{"color":"rgba(255,0,0,0.5)"},"error_y":{"color":"rgba(255,0,0,0.5)"},"error_x":{"color":"rgba(255,0,0,0.5)"},"line":{"color":"rgba(255,0,0,0.5)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[0,1,2,3,4,5,6,7,8,9,10],"y":[0,0.1073741824,0.3758096384,0.6777995264,0.8791261184,0.9672065024,0.9936306176,0.9991356416,0.9999220736,0.9999958016,0.9999998976],"type":"scatter","mode":"markers","marker":{"color":"rgba(255,0,0,0.5)","symbol":"circle-open","line":{"color":"rgba(255,0,0,1)"}},"name":"n = 10, p = 0,2","showlegend":true,"textfont":{"color":"rgba(255,0,0,0.5)"},"error_y":{"color":"rgba(255,0,0,0.5)"},"error_x":{"color":"rgba(255,0,0,0.5)"},"line":{"color":"rgba(255,0,0,0.5)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[-3,0,null,0,1,null,1,2,null,2,3,null,3,4,null,4,5,null,5,6,null,6,7,null,7,8,null,8,9,null,9,10,null,10,13],"y":[0,0,null,0.0009765625,0.0009765625,null,0.0107421875,0.0107421875,null,0.0546875,0.0546875,null,0.171875,0.171875,null,0.376953125,0.376953125,null,0.623046875,0.623046875,null,0.828125,0.828125,null,0.9453125,0.9453125,null,0.9892578125,0.9892578125,null,0.9990234375,0.9990234375,null,1,1],"type":"scatter","mode":"lines","name":"n = 10, p = 0,5","showlegend":true,"marker":{"color":"rgba(0,0,255,0.5)","line":{"color":"rgba(0,0,255,1)"}},"textfont":{"color":"rgba(0,0,255,0.5)"},"error_y":{"color":"rgba(0,0,255,0.5)"},"error_x":{"color":"rgba(0,0,255,0.5)"},"line":{"color":"rgba(0,0,255,0.5)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[0,1,2,3,4,5,6,7,8,9,10],"y":[0.0009765625,0.0107421875,0.0546875,0.171875,0.376953125,0.623046875,0.828125,0.9453125,0.9892578125,0.9990234375,1],"type":"scatter","mode":"markers","name":"n = 10, p = 0,5","showlegend":true,"marker":{"color":"rgba(0,0,255,0.5)","line":{"color":"rgba(0,0,255,1)"}},"textfont":{"color":"rgba(0,0,255,0.5)"},"error_y":{"color":"rgba(0,0,255,0.5)"},"error_x":{"color":"rgba(0,0,255,0.5)"},"line":{"color":"rgba(0,0,255,0.5)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[0,1,2,3,4,5,6,7,8,9,10],"y":[0,0.0009765625,0.0107421875,0.0546875,0.171875,0.376953125,0.623046875,0.828125,0.9453125,0.9892578125,0.9990234375],"type":"scatter","mode":"markers","marker":{"color":"rgba(0,0,255,0.5)","symbol":"circle-open","line":{"color":"rgba(0,0,255,1)"}},"name":"n = 10, p = 0,5","showlegend":true,"textfont":{"color":"rgba(0,0,255,0.5)"},"error_y":{"color":"rgba(0,0,255,0.5)"},"error_x":{"color":"rgba(0,0,255,0.5)"},"line":{"color":"rgba(0,0,255,0.5)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[-3,0,null,0,1,null,1,2,null,2,3,null,3,4,null,4,5,null,5,6,null,6,7,null,7,8,null,8,9,null,9,10,null,10,13],"y":[0,0,null,1.024e-07,1.024e-07,null,4.1984e-06,4.1984e-06,null,7.79263999999999e-05,7.79263999999999e-05,null,0.0008643584,0.0008643584,null,0.0063693824,0.0063693824,null,0.0327934976,0.0327934976,null,0.1208738816,0.1208738816,null,0.3222004736,0.3222004736,null,0.6241903616,0.6241903616,null,0.8926258176,0.8926258176,null,1,1],"type":"scatter","mode":"lines","name":"n = 10, p = 0,8","showlegend":true,"marker":{"color":"rgba(0,255,0,0.5)","line":{"color":"rgba(0,255,0,1)"}},"textfont":{"color":"rgba(0,255,0,0.5)"},"error_y":{"color":"rgba(0,255,0,0.5)"},"error_x":{"color":"rgba(0,255,0,0.5)"},"line":{"color":"rgba(0,255,0,0.5)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[0,1,2,3,4,5,6,7,8,9,10],"y":[1.024e-07,4.1984e-06,7.79263999999999e-05,0.0008643584,0.0063693824,0.0327934976,0.1208738816,0.3222004736,0.6241903616,0.8926258176,1],"type":"scatter","mode":"markers","name":"n = 10, p = 0,8","showlegend":true,"marker":{"color":"rgba(0,255,0,0.5)","line":{"color":"rgba(0,255,0,1)"}},"textfont":{"color":"rgba(0,255,0,0.5)"},"error_y":{"color":"rgba(0,255,0,0.5)"},"error_x":{"color":"rgba(0,255,0,0.5)"},"line":{"color":"rgba(0,255,0,0.5)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[0,1,2,3,4,5,6,7,8,9,10],"y":[0,1.024e-07,4.1984e-06,7.79263999999999e-05,0.0008643584,0.0063693824,0.0327934976,0.1208738816,0.3222004736,0.6241903616,0.8926258176],"type":"scatter","mode":"markers","marker":{"color":"rgba(0,255,0,0.5)","symbol":"circle-open","line":{"color":"rgba(0,255,0,1)"}},"name":"n = 10, p = 0,8","showlegend":true,"textfont":{"color":"rgba(0,255,0,0.5)"},"error_y":{"color":"rgba(0,255,0,0.5)"},"error_x":{"color":"rgba(0,255,0,0.5)"},"line":{"color":"rgba(0,255,0,0.5)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<p class="caption">
+Figura 3.4: Gráfica de la función de distribución acumulativa de probabilidad binomial para <span class="math inline">\(n = 15\)</span> y <span class="math inline">\(p = 0,2;0,5;0,8\)</span>
+</p>
+</div>
+<div class="example">
+<p><span id="exm:ejemplo-distribucion-acumulada-binomial" class="example"><strong>Ejemplo 3.8  (Función de Distribución Acumulativa de Probabilidad Binomial) </strong></span>suponga en el ejemplo <a href="dist_disc.html#exm:ejemplo-funcion-probabilidad-binomial">3.7</a> que la gerencia de control de calidad de la fábrica ha decidido detener la producción cada vez que en una muestra de 15 unidades tenga dos o más artículos defectuosos ¿Cuál es la probabilidad de que, en cualquier día, la se detenga?</p>
+<p>Dado que la probabilidad de que la producción se detenga es igual a la probabilidad de que <span class="math inline">\(X\)</span> sea igual o mayor que dos. De esta manera:</p>
+<p><span class="math display">\[
+\begin{align*}
+P \left(X \geq 2 \right) =&amp; 1 - P \left(X \leq 1
+\right)=  1 - F \left( x = 1;n = 15,p = 0,05 \right ) = 1 - \sum_{t=0}^{1 } \binom{15}{t} \left( 0,05 \right)^{t} \left( 1-0,05 \right )^{15-t}\\
+=&amp; \binom{15}{0}\left(0,05 \right)^{0} \left( 1- 0,05 \right)^{15-0}+ \binom{15}{1}\left(0,05 \right)^{1} \left( 1- 0,05 \right)^{15-1}\\ \approx &amp;  0.1709525.
+\end{align*}
+\]</span></p>
+<p>La función <code>pbinom(q, size, prob, lower.tail = TRUE, log.p = FALSE)</code> de la distribución base de <span style="color: blue;">R</span> permite evaluar la función de distribución acumulativa de probabilidad binomial dada por la ecuación <a href="dist_disc.html#eq:funcion-acumulativa-binomial">(3.16)</a>. El siguiente script permite obtener el resultado anterior.</p>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="dist_disc.html#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">pbinom</span>(</span>
+<span id="cb116-2"><a href="dist_disc.html#cb116-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">q =</span> <span class="dv">1</span>, <span class="at">size =</span> <span class="dv">15</span>, <span class="at">prob =</span> <span class="fl">0.05</span>, <span class="at">lower.tail =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb116-3"><a href="dist_disc.html#cb116-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">log.p =</span> <span class="cn">FALSE</span></span>
+<span id="cb116-4"><a href="dist_disc.html#cb116-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code>#&gt; [1] 0.1709525</code></pre>
+</div>
+<p>La figura <a href="dist_disc.html#fig:grafico-ejemplo-distribucion-acumulada-binomial">3.5</a> muestra la gráfica de la función de distribución acumulativa del número de artículos defectuosos en una muestra de 15 artículos <span class="math inline">\(X\)</span>. La cual, como se sabe, tiene distribución binomial con parámetros <span class="math inline">\(n = 15\)</span> y <span class="math inline">\(p= 0,05\)</span>.</p>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb118-1"><a href="dist_disc.html#cb118-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">0</span><span class="sc">:</span><span class="dv">15</span>, <span class="dv">18</span>)</span>
+<span id="cb118-2"><a href="dist_disc.html#cb118-2" aria-hidden="true" tabindex="-1"></a>px  <span class="ot">&lt;-</span>  <span class="fu">dbinom</span>(<span class="at">x =</span> x, <span class="at">size =</span> <span class="dv">15</span>, <span class="at">prob =</span> <span class="fl">0.05</span>)</span>
+<span id="cb118-3"><a href="dist_disc.html#cb118-3" aria-hidden="true" tabindex="-1"></a>Fx  <span class="ot">&lt;-</span>  <span class="fu">pbinom</span>(<span class="at">q =</span> x, <span class="at">size =</span> <span class="dv">15</span>, <span class="at">prob =</span> <span class="fl">0.05</span>)</span>
+<span id="cb118-4"><a href="dist_disc.html#cb118-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_ly</span>(<span class="at">x =</span> x, <span class="at">y =</span> Fx, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb118-5"><a href="dist_disc.html#cb118-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_segments</span>(</span>
+<span id="cb118-6"><a href="dist_disc.html#cb118-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="sc">~</span>x[<span class="dv">1</span><span class="sc">:</span><span class="dv">17</span>], </span>
+<span id="cb118-7"><a href="dist_disc.html#cb118-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="sc">~</span>Fx[<span class="dv">1</span><span class="sc">:</span><span class="dv">17</span>],</span>
+<span id="cb118-8"><a href="dist_disc.html#cb118-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">xend =</span> <span class="sc">~</span>x[<span class="dv">2</span><span class="sc">:</span><span class="dv">18</span>], </span>
+<span id="cb118-9"><a href="dist_disc.html#cb118-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">yend =</span> <span class="sc">~</span>Fx[<span class="dv">1</span><span class="sc">:</span><span class="dv">17</span>], </span>
+<span id="cb118-10"><a href="dist_disc.html#cb118-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="fu">I</span>(<span class="st">&quot;blue&quot;</span>),</span>
+<span id="cb118-11"><a href="dist_disc.html#cb118-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="st">&quot;n = 15, p = 0,05&quot;</span>,</span>
+<span id="cb118-12"><a href="dist_disc.html#cb118-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">showlegend =</span> <span class="cn">TRUE</span></span>
+<span id="cb118-13"><a href="dist_disc.html#cb118-13" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb118-14"><a href="dist_disc.html#cb118-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_markers</span>(</span>
+<span id="cb118-15"><a href="dist_disc.html#cb118-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="sc">~</span>x[<span class="dv">2</span><span class="sc">:</span><span class="dv">17</span>], </span>
+<span id="cb118-16"><a href="dist_disc.html#cb118-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="sc">~</span>Fx[<span class="dv">2</span><span class="sc">:</span><span class="dv">17</span>], </span>
+<span id="cb118-17"><a href="dist_disc.html#cb118-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="fu">I</span>(<span class="st">&quot;red&quot;</span>),</span>
+<span id="cb118-18"><a href="dist_disc.html#cb118-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="st">&quot;n = 15, p = 0,05&quot;</span></span>
+<span id="cb118-19"><a href="dist_disc.html#cb118-19" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb118-20"><a href="dist_disc.html#cb118-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_markers</span>(</span>
+<span id="cb118-21"><a href="dist_disc.html#cb118-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="sc">~</span>x[<span class="dv">2</span><span class="sc">:</span><span class="dv">17</span>], </span>
+<span id="cb118-22"><a href="dist_disc.html#cb118-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="sc">~</span>Fx[<span class="dv">1</span><span class="sc">:</span><span class="dv">16</span>], </span>
+<span id="cb118-23"><a href="dist_disc.html#cb118-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="fu">I</span>(<span class="st">&quot;red&quot;</span>),</span>
+<span id="cb118-24"><a href="dist_disc.html#cb118-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">marker =</span> <span class="fu">list</span>(<span class="at">symbol =</span> <span class="st">&quot;circle-open&quot;</span>),</span>
+<span id="cb118-25"><a href="dist_disc.html#cb118-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="st">&quot;n = 15, p = 0,05&quot;</span></span>
+<span id="cb118-26"><a href="dist_disc.html#cb118-26" aria-hidden="true" tabindex="-1"></a>  )  <span class="sc">%&gt;%</span> </span>
+<span id="cb118-27"><a href="dist_disc.html#cb118-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">layout</span>(</span>
+<span id="cb118-28"><a href="dist_disc.html#cb118-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">xaxis =</span> <span class="fu">list</span>(</span>
+<span id="cb118-29"><a href="dist_disc.html#cb118-29" aria-hidden="true" tabindex="-1"></a>      <span class="at">title =</span> <span class="st">&quot;x&quot;</span>, </span>
+<span id="cb118-30"><a href="dist_disc.html#cb118-30" aria-hidden="true" tabindex="-1"></a>      <span class="at">zeroline =</span> F, </span>
+<span id="cb118-31"><a href="dist_disc.html#cb118-31" aria-hidden="true" tabindex="-1"></a>      <span class="at">showgrid =</span> T,</span>
+<span id="cb118-32"><a href="dist_disc.html#cb118-32" aria-hidden="true" tabindex="-1"></a>      <span class="at">showline =</span> T, </span>
+<span id="cb118-33"><a href="dist_disc.html#cb118-33" aria-hidden="true" tabindex="-1"></a>      <span class="at">linewidth =</span> <span class="dv">1</span>, </span>
+<span id="cb118-34"><a href="dist_disc.html#cb118-34" aria-hidden="true" tabindex="-1"></a>      <span class="at">linecolor =</span> <span class="st">&#39;black&#39;</span>,</span>
+<span id="cb118-35"><a href="dist_disc.html#cb118-35" aria-hidden="true" tabindex="-1"></a>      <span class="at">showticklabels =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb118-36"><a href="dist_disc.html#cb118-36" aria-hidden="true" tabindex="-1"></a>      <span class="at">tickwidth =</span> <span class="fl">0.5</span></span>
+<span id="cb118-37"><a href="dist_disc.html#cb118-37" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb118-38"><a href="dist_disc.html#cb118-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">yaxis =</span> <span class="fu">list</span>(</span>
+<span id="cb118-39"><a href="dist_disc.html#cb118-39" aria-hidden="true" tabindex="-1"></a>      <span class="at">title =</span> <span class="st">&quot;F(x)&quot;</span>,</span>
+<span id="cb118-40"><a href="dist_disc.html#cb118-40" aria-hidden="true" tabindex="-1"></a>      <span class="at">showline =</span> T, </span>
+<span id="cb118-41"><a href="dist_disc.html#cb118-41" aria-hidden="true" tabindex="-1"></a>      <span class="at">linewidth =</span> <span class="dv">1</span>, </span>
+<span id="cb118-42"><a href="dist_disc.html#cb118-42" aria-hidden="true" tabindex="-1"></a>      <span class="at">linecolor =</span> <span class="st">&#39;black&#39;</span>,</span>
+<span id="cb118-43"><a href="dist_disc.html#cb118-43" aria-hidden="true" tabindex="-1"></a>      <span class="at">showticklabels =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb118-44"><a href="dist_disc.html#cb118-44" aria-hidden="true" tabindex="-1"></a>      <span class="at">tickwidth =</span> <span class="fl">0.5</span></span>
+<span id="cb118-45"><a href="dist_disc.html#cb118-45" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb118-46"><a href="dist_disc.html#cb118-46" aria-hidden="true" tabindex="-1"></a>    <span class="at">showlegend =</span> <span class="cn">TRUE</span></span>
+<span id="cb118-47"><a href="dist_disc.html#cb118-47" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb118-48"><a href="dist_disc.html#cb118-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">config</span>(<span class="at">locale =</span> <span class="st">&quot;es&quot;</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:grafico-ejemplo-distribucion-acumulada-binomial"></span>
+<div id="htmlwidget-cd6de433af54dbe0530d" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-cd6de433af54dbe0530d">{"x":{"visdat":{"21e43ecc6636":["function () ","plotlyVisDat"]},"cur_data":"21e43ecc6636","attrs":{"21e43ecc6636":{"x":{},"y":{},"alpha":0.5,"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"xend":{},"yend":{},"type":"scatter","mode":"lines","color":["blue"],"name":"n = 15, p = 0,05","showlegend":true,"inherit":true},"21e43ecc6636.1":{"x":{},"y":{},"alpha":0.5,"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter","mode":"markers","color":["red"],"name":"n = 15, p = 0,05","inherit":true},"21e43ecc6636.2":{"x":{},"y":{},"alpha":0.5,"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter","mode":"markers","color":["red"],"marker":{"symbol":"circle-open"},"name":"n = 15, p = 0,05","inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"title":"x","zeroline":false,"showgrid":true,"showline":true,"linewidth":1,"linecolor":"black","showticklabels":true,"tickwidth":0.5},"yaxis":{"domain":[0,1],"automargin":true,"title":"F(x)","showline":true,"linewidth":1,"linecolor":"black","showticklabels":true,"tickwidth":0.5},"showlegend":true,"hovermode":"closest"},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false,"locale":"es"},"data":[{"x":[-3,0,null,0,1,null,1,2,null,2,3,null,3,4,null,4,5,null,5,6,null,6,7,null,7,8,null,8,9,null,9,10,null,10,11,null,11,12,null,12,13,null,13,14,null,14,15,null,15,18],"y":[0,0,null,0.463291230159753,0.463291230159753,null,0.829047464496401,0.829047464496401,null,0.963799761357271,0.963799761357271,null,0.994532741343083,0.994532741343083,null,0.999385317130317,0.999385317130317,null,0.999947194326733,0.999947194326733,null,0.999996481800103,0.999996481800103,null,0.999999817042662,0.999999817042662,null,0.999999992581744,0.999999992581744,null,0.999999999767555,0.999999999767555,null,0.999999999994475,0.999999999994475,null,0.999999999999904,0.999999999999904,null,0.999999999999999,0.999999999999999,null,1,1,null,1,1,null,1,1],"type":"scatter","mode":"lines","name":"n = 15, p = 0,05","showlegend":true,"marker":{"color":"rgba(0,0,255,0.5)","line":{"color":"rgba(0,0,255,1)"}},"textfont":{"color":"rgba(0,0,255,0.5)"},"error_y":{"color":"rgba(0,0,255,0.5)"},"error_x":{"color":"rgba(0,0,255,0.5)"},"line":{"color":"rgba(0,0,255,0.5)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],"y":[0.463291230159753,0.829047464496401,0.963799761357271,0.994532741343083,0.999385317130317,0.999947194326733,0.999996481800103,0.999999817042662,0.999999992581744,0.999999999767555,0.999999999994475,0.999999999999904,0.999999999999999,1,1,1],"type":"scatter","mode":"markers","name":"n = 15, p = 0,05","marker":{"color":"rgba(255,0,0,0.5)","line":{"color":"rgba(255,0,0,1)"}},"textfont":{"color":"rgba(255,0,0,0.5)"},"error_y":{"color":"rgba(255,0,0,0.5)"},"error_x":{"color":"rgba(255,0,0,0.5)"},"line":{"color":"rgba(255,0,0,0.5)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],"y":[0,0.463291230159753,0.829047464496401,0.963799761357271,0.994532741343083,0.999385317130317,0.999947194326733,0.999996481800103,0.999999817042662,0.999999992581744,0.999999999767555,0.999999999994475,0.999999999999904,0.999999999999999,1,1],"type":"scatter","mode":"markers","marker":{"color":"rgba(255,0,0,0.5)","symbol":"circle-open","line":{"color":"rgba(255,0,0,1)"}},"name":"n = 15, p = 0,05","textfont":{"color":"rgba(255,0,0,0.5)"},"error_y":{"color":"rgba(255,0,0,0.5)"},"error_x":{"color":"rgba(255,0,0,0.5)"},"line":{"color":"rgba(255,0,0,0.5)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<p class="caption">
+Figura 3.5: Gráfica de la función de distribución acumulativa de probabilidad binomial para <span class="math inline">\(n = 15\)</span> y <span class="math inline">\(p = 0,05\)</span>
+</p>
+</div>
+<p>La tabla <a href="dist_disc.html#tab:distribucion-acumulada2">3.3</a> muestra la función de probabilidad y la función de distribución acumulativa de probabilidad de una variable binomial con parámetros <span class="math inline">\(n = 15\)</span> y <span class="math inline">\(p = 0,05\)</span>.</p>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb119-1"><a href="dist_disc.html#cb119-1" aria-hidden="true" tabindex="-1"></a>da_ej2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb119-2"><a href="dist_disc.html#cb119-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">15</span>,</span>
+<span id="cb119-3"><a href="dist_disc.html#cb119-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">px =</span> <span class="fu">dbinom</span>(<span class="at">x =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">15</span>, <span class="at">size =</span> <span class="dv">15</span>, <span class="at">prob =</span> <span class="fl">0.05</span>),</span>
+<span id="cb119-4"><a href="dist_disc.html#cb119-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Fx =</span>  <span class="fu">pbinom</span>(<span class="at">q =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">15</span>, <span class="at">size =</span> <span class="dv">15</span>, <span class="at">prob =</span> <span class="fl">0.05</span>)</span>
+<span id="cb119-5"><a href="dist_disc.html#cb119-5" aria-hidden="true" tabindex="-1"></a>) </span>
+<span id="cb119-6"><a href="dist_disc.html#cb119-6" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb119-7"><a href="dist_disc.html#cb119-7" aria-hidden="true" tabindex="-1"></a>  da_ej2,</span>
+<span id="cb119-8"><a href="dist_disc.html#cb119-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">booktabs =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb119-9"><a href="dist_disc.html#cb119-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">row.names =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb119-10"><a href="dist_disc.html#cb119-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">digits =</span> <span class="dv">4</span>,</span>
+<span id="cb119-11"><a href="dist_disc.html#cb119-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">col.names =</span> <span class="fu">c</span>(</span>
+<span id="cb119-12"><a href="dist_disc.html#cb119-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;$X_i$&quot;</span>, </span>
+<span id="cb119-13"><a href="dist_disc.html#cb119-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;$p</span><span class="sc">\\</span><span class="st">left(x_i </span><span class="sc">\\</span><span class="st">right)$&quot;</span>, </span>
+<span id="cb119-14"><a href="dist_disc.html#cb119-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;$F</span><span class="sc">\\</span><span class="st">left(x_i </span><span class="sc">\\</span><span class="st">right)$&quot;</span></span>
+<span id="cb119-15"><a href="dist_disc.html#cb119-15" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb119-16"><a href="dist_disc.html#cb119-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">align =</span> <span class="fu">c</span>(<span class="st">&quot;ccc&quot;</span>),</span>
+<span id="cb119-17"><a href="dist_disc.html#cb119-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">format.args =</span> <span class="fu">list</span>(<span class="at">decimal.mark =</span> <span class="st">&quot;,&quot;</span>, <span class="at">big.mark =</span> <span class="st">&quot;.&quot;</span>),</span>
+<span id="cb119-18"><a href="dist_disc.html#cb119-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">caption =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">label{tab2:distribucion-acumulada2}Distribución de probabilidad del número de artículos defectuosos en una muestra de 15 artículos&quot;</span>,</span>
+<span id="cb119-19"><a href="dist_disc.html#cb119-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">escape =</span> <span class="cn">FALSE</span></span>
+<span id="cb119-20"><a href="dist_disc.html#cb119-20" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
+<span id="cb119-21"><a href="dist_disc.html#cb119-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(</span>
+<span id="cb119-22"><a href="dist_disc.html#cb119-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">bootstrap_options =</span> <span class="st">&quot;striped&quot;</span>,</span>
+<span id="cb119-23"><a href="dist_disc.html#cb119-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">full_width =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb119-24"><a href="dist_disc.html#cb119-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">fixed_thead =</span> T</span>
+<span id="cb119-25"><a href="dist_disc.html#cb119-25" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb119-26"><a href="dist_disc.html#cb119-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_classic_2</span>()</span></code></pre></div>
+<table class="table table-striped lightable-classic-2" style="width: auto !important; margin-left: auto; margin-right: auto; font-family: &quot;Arial Narrow&quot;, &quot;Source Sans Pro&quot;, sans-serif; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:distribucion-acumulada2">Tabla 3.3: </span>Distribución de probabilidad del número de artículos defectuosos en una muestra de 15 artículos
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+<span class="math inline">\(X_i\)</span>
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+<span class="math inline">\(p\left(x_i \right)\)</span>
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+<span class="math inline">\(F\left(x_i \right)\)</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:center;">
+0
+</td>
+<td style="text-align:center;">
+0,4633
+</td>
+<td style="text-align:center;">
+0,4633
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+0,3658
+</td>
+<td style="text-align:center;">
+0,8290
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:center;">
+2
+</td>
+<td style="text-align:center;">
+0,1348
+</td>
+<td style="text-align:center;">
+0,9638
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:center;">
+3
+</td>
+<td style="text-align:center;">
+0,0307
+</td>
+<td style="text-align:center;">
+0,9945
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:center;">
+4
+</td>
+<td style="text-align:center;">
+0,0049
+</td>
+<td style="text-align:center;">
+0,9994
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+6
+</td>
+<td style="text-align:center;">
+5
+</td>
+<td style="text-align:center;">
+0,0006
+</td>
+<td style="text-align:center;">
+0,9999
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+7
+</td>
+<td style="text-align:center;">
+6
+</td>
+<td style="text-align:center;">
+0,0000
+</td>
+<td style="text-align:center;">
+1,0000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+8
+</td>
+<td style="text-align:center;">
+7
+</td>
+<td style="text-align:center;">
+0,0000
+</td>
+<td style="text-align:center;">
+1,0000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+9
+</td>
+<td style="text-align:center;">
+8
+</td>
+<td style="text-align:center;">
+0,0000
+</td>
+<td style="text-align:center;">
+1,0000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+10
+</td>
+<td style="text-align:center;">
+9
+</td>
+<td style="text-align:center;">
+0,0000
+</td>
+<td style="text-align:center;">
+1,0000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+11
+</td>
+<td style="text-align:center;">
+10
+</td>
+<td style="text-align:center;">
+0,0000
+</td>
+<td style="text-align:center;">
+1,0000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+12
+</td>
+<td style="text-align:center;">
+11
+</td>
+<td style="text-align:center;">
+0,0000
+</td>
+<td style="text-align:center;">
+1,0000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+13
+</td>
+<td style="text-align:center;">
+12
+</td>
+<td style="text-align:center;">
+0,0000
+</td>
+<td style="text-align:center;">
+1,0000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+14
+</td>
+<td style="text-align:center;">
+13
+</td>
+<td style="text-align:center;">
+0,0000
+</td>
+<td style="text-align:center;">
+1,0000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+15
+</td>
+<td style="text-align:center;">
+14
+</td>
+<td style="text-align:center;">
+0,0000
+</td>
+<td style="text-align:center;">
+1,0000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+16
+</td>
+<td style="text-align:center;">
+15
+</td>
+<td style="text-align:center;">
+0,0000
+</td>
+<td style="text-align:center;">
+1,0000
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="media-binomial" class="section level4" number="3.7.1.2">
+<h4><span class="header-section-number">3.7.1.2</span> Media de la Distribución Binomial</h4>
+<p>La media, promedio o esperanza matemática de la distribución binomial viene representada por un número, tal que si tomamos repetidas muestras de una variable binomial, en la medida en que se va incrementado el número de muestras el promedio de estos valores muestrales tiende a ese número en la medida en que se va incrementando el número de muestras. Lo dicho anteriormente se resume en el siguiente teorema.</p>
+<div class="theorem">
+<p><span id="thm:media-binomial" class="theorem"><strong>Teorema 3.5  (Media de la Distribución Binomial) </strong></span>Sea <span class="math inline">\(X\)</span> una variable aleatoria con distribución binomial. Entonces, la <em>media</em> de <span class="math inline">\(X\)</span> viene dada por:
+<span class="math display" id="eq:media-binomial">\[
+\begin{equation}
+E \left(X \right)= \mu = np.
+\tag{3.17}
+\end{equation}
+\]</span></p>
+</div>
+<div class="proof">
+<p><span id="media-binomial" class="proof"><em>Demostración</em> (Media de la Distribución Binomial). </span>Por las definiciones <a href="dist_disc.html#def:esperanza">3.7</a> y <a href="dist_disc.html#def:distribucion-binomial">3.10</a> la esperanza una variable <span class="math inline">\(X\)</span> distribución binomialmente es</p>
+<p><span class="math display">\[
+\begin{align*}
+E \left(X \right) =&amp;  \sum_{x=0}^{n } x\frac{n!}{x!\left ( n-x \right )!}p^{x}\left ( 1-p \right )^{n-x}\\
+=&amp; \sum_{x=1}^{n } x\frac{n!}{x!\left ( n-x \right )!}p^{x}\left ( 1-p \right )^{n-x}\\
+=&amp; \sum_{x=1}^{n } \frac{n!}{\left ( x-1 \right )!\left ( n-x \right )!}p^{x}\left ( 1-p \right )^{n-x},\\
+\end{align*}
+\]</span>
+en donde se ha escrito la suma desde uno hasta <span class="math inline">\(n\)</span>, dado que cuando <span class="math inline">\(x=0\)</span> el primer término es cero y se cancela la <span class="math inline">\(x\)</span> del numerador con la <span class="math inline">\(x\)</span> en <span class="math inline">\(x!\)</span>. Luego, factorizando <span class="math inline">\(n\)</span> y <span class="math inline">\(p\)</span>, se tiene:</p>
+<p><span class="math display">\[
+\begin{align*}
+E \left(X \right) =&amp;  np\sum_{x=1}^{n } \frac{\left ( n-1 \right )!}{\left ( x-1 \right )!\left ( n-x \right )!}p^{x-1}\left ( 1-p \right )^{n-x}.\\
+\end{align*}
+\]</span>
+Si <span class="math inline">\(y=x-1\)</span> y <span class="math inline">\(m=n-1\)</span>, entonces:</p>
+<p><span class="math display">\[
+\begin{align*}
+E \left(X \right) =&amp;  np\sum_{y=0}^{m } \frac{m!}{y!\left ( m-y \right )!}p^{y}\left ( 1-p \right )^{m-y}.\\
+\end{align*}
+\]</span>
+Pero <span class="math inline">\(p \left(y; m, p \right)= \left[m!/y!\left(m-y \right)! \right]p^{y}\left(1-p \right)^{m-y}\)</span> es la función de probabilidad de una variable aleatoria binomial <span class="math inline">\(Y\)</span> con parámetros <span class="math inline">\(m=n-1\)</span> y <span class="math inline">\(p\)</span>; de esta manera $_{y=0}^{m }p(y; m, p )=1 $, y la media de una variable aleatoria binomial es:
+<span class="math display">\[
+\begin{equation}
+E \left(X \right) = np.
+\end{equation}
+\]</span></p>
+</div>
+<p>Note de la ecuación anterior, que para un tamaño de muestra fijo <span class="math inline">\(n\)</span>, la media de la distribución binomial tiende a cero cuando <span class="math inline">\(p\)</span> tiende a cero; y tiende a <span class="math inline">\(n\)</span> cuando p tiende a uno. En otras palabras, la media de la distribución binomial disminuye cuando la probabilidad de éxito disminuye y aumenta cuando la probabilidad de éxito aumenta.</p>
+<div class="example">
+<p><span id="exm:ejemplo-media-distribucion-binomial" class="example"><strong>Ejemplo 3.9  (Media de la Distribución Binomial) </strong></span>Con respecto al el ejemplo <a href="dist_disc.html#exm:ejemplo-funcion-probabilidad-binomial">3.7</a>, determine el número de artículos defectuosos que se esperaría encontrar en una muestra de 15 artículos.</p>
+<p>De acuerdo con el teorema <a href="dist_disc.html#thm:media-binomial">3.5</a>, se esperaría encontrar
+<span class="math display">\[
+\begin{equation}
+E \left(X \right) = np=15 \cdot 0,05=0,75.
+\end{equation}
+\]</span>
+Note que el valor anterior no es un número entero, es decir, si se toma una muestra de 15 artículos no se pueden encontrar 0,75 artículos defectuosos. Recuerde que el valor esperado es un promedio, por lo que la interpretación correcta es que la media de <span class="math inline">\(X\)</span> es 0,75; es decir si se toman sucesivas muestras de 15 artículos del proceso se esperaría que la media del número de artículo defectuosos encontrados en las sucesivas muestras va a tender a 0,75.</p>
+<p>Ahora, si se toma una muestra de 100 artículos (<span class="math inline">\(n=100\)</span>) del proceso de producción, se esperaría encontrar
+<span class="math display">\[
+\begin{equation}
+E \left(X \right) = np=100 \cdot 0,05=5
+\end{equation}
+\]</span>
+5 artículos defectuosos en la muestra.</p>
+</div>
+</div>
+<div id="varianza-binomial" class="section level4" number="3.7.1.3">
+<h4><span class="header-section-number">3.7.1.3</span> Varianza de la Distribución Binomial</h4>
+<p>La varianza de una variable aleatoria binomial <span class="math inline">\(X\)</span> es un parámetro que indica que tan distante están los posibles valores que puede tomar esta variable, es decir, <span class="math inline">\(x=0, 1, 2, \dotsc, n\)</span> con respecto a la media de la variable <span class="math inline">\(\left(\mu=np \right)\)</span>. En tal sentido, la varianza de una variable binomial se describe en el siguiente teorema:</p>
+<div class="theorem">
+<p><span id="thm:varianza-binomial" class="theorem"><strong>Teorema 3.6  (Varianza de la Distribución Binomial) </strong></span>Sea <span class="math inline">\(X\)</span> una variable aleatoria con distribución binomial. Entonces, la <em>varianza</em> de <span class="math inline">\(X\)</span> viene dada por:
+<span class="math display" id="eq:media-binomial">\[
+\begin{equation}
+V \left(X \right)=\sigma^2 = np \left(1-p \right).
+\tag{3.17}
+\end{equation}
+\]</span></p>
+</div>
+<p>Note de la ecuación anterior que para un <span class="math inline">\(n\)</span> fijo, la gráfica de la varianza es una parábola cóncava hacia abajo. Por lo tanto, el vértice de la parábola será un máximo y se halla en <span class="math inline">\(p=1/2\)</span>. Es decir, la varianza es hace máxima cuando cuando <span class="math inline">\(p=1/2\)</span>. Por lo que, el máximo valor de la varianza será la cuarta parte del tamaño de la muestra.</p>
+<div class="proof">
+<p><span id="varianza-binomial" class="proof"><em>Demostración</em> (varianza de la Distribución Binomial). </span>De la <a href="dist_disc.html#eq:varianza2">(3.12)</a> se sabe que <span class="math inline">\(V \left(X \right) = E \left(X^2 \right) - \mu^2\)</span>. Como <span class="math inline">\(\mu=np\)</span>, solo faltaría calcular <span class="math inline">\(E \left(X^2 \right)\)</span>. Pero calcular este parámetro usando el teorema <a href="dist_disc.html#thm:esperanza-transformacion">3.1</a> y la definición <a href="dist_disc.html#def:distribucion-binomial">3.10</a> implica encontrar la convergencia de la siguiente expresión</p>
+<p><span class="math display">\[
+E \left(X^2 \right) =  \sum_{x=0}^{n } x^2\frac{n!}{x!\left ( n-x \right )!}p^{x}\left ( 1-p \right )^{n-x},
+\]</span>
+lo cual es imposible. En lugar de este camino, se eligirá un método alterno. La alternativa es escribir <span class="math inline">\(x^2\)</span> como:</p>
+<p><span class="math display">\[
+x^2= x \left(x-1 \right)+x;
+\]</span>
+de esta manera, por los teoremas <a href="dist_disc.html#thm:esperanza-transformacion">3.1</a> y <a href="dist_disc.html#thm:esperanza-suma-transformaciones">3.3</a>, se tiene:</p>
+<p><span class="math display" id="eq:varianza-alterna-binomial">\[
+\begin{equation}
+E \left(X^2 \right)= E \left[X \left(X-1 \right) \right]+E \left(X \right).
+\tag{3.18}
+\end{equation}
+\]</span>
+Dado que <span class="math inline">\(E \left(X \right)\)</span> ya se ha determinado, faltaría determinar <span class="math inline">\(E \left[x \left(x-1 \right) \right]\)</span>, que según el teorema <a href="dist_disc.html#thm:esperanza-transformacion">3.1</a>, es:</p>
+<p><span class="math display">\[
+\begin{align*}
+E \left[X \left(X-1 \right) \right] =&amp;  \sum_{x=0}^{n } x \left(x-1 \right)\frac{n!}{x!\left ( n-x \right )!}p^{x}\left ( 1-p \right )^{n-x}\\
+=&amp; \sum_{x=2}^{n } x \left(x-1 \right)\frac{n!}{x!\left ( n-x \right )!}p^{x}\left ( 1-p \right )^{n-x}\\
+=&amp; \sum_{x=1}^{n } \frac{n!}{\left ( x-2 \right )!\left ( n-x \right )!}p^{x}\left ( 1-p \right )^{n-x}\\
+=&amp; n \left(n-1 \right)p^2 \sum_{x=1}^{n } \frac{\left(n-2 \right)!}{\left ( x-2 \right )!\left ( n-x \right )!}p^{x-2}\left ( 1-p \right )^{n-x}.
+\end{align*}
+\]</span>
+Note que en los pasos previos se escribió la suma a partir de dos porque los dos primeros términos on cero, se canceló <span class="math inline">\(x \left(x-1 \right)\)</span>, y se factorizó <span class="math inline">\(n \left(n-1 \right)p^2\)</span>. Sea <span class="math inline">\(y=x-2\)</span> y <span class="math inline">\(m=n-2\)</span>; entonces:</p>
+<p><span class="math display">\[
+\begin{align*}
+E \left[X \left(X-1 \right) \right] =&amp;  n \left(n-1 \right)p^2\sum_{y=0}^{m } \frac{m!}{y!\left ( m-y \right )!}p^{y}\left ( 1-p \right )^{m-y}.\\
+\end{align*}
+\]</span>
+Pero <span class="math inline">\(p \left(y; m, p \right)= \left[m!/y!\left(m-y \right)! \right]p^{y}\left(1-p \right)^{m-y}\)</span> es la función de probabilidad de una variable aleatoria binomial <span class="math inline">\(Y\)</span> con parámetros <span class="math inline">\(m=n-2\)</span> y <span class="math inline">\(p\)</span>; de esta manera $_{y=0}^{m }p(y; m, p )=1 $. En consecuencia,
+<span class="math display">\[
+\begin{equation}
+E \left[X \left(X-1 \right) \right] = n \left(n-1 \right)p^2.
+\end{equation}
+\]</span></p>
+<p>De <a href="dist_disc.html#eq:varianza-alterna-binomial">(3.18)</a>
+<span class="math display">\[
+E \left(X^2 \right)=  n \left(n-1 \right)p^2+np.
+\]</span></p>
+<p>De esta maanera, la varianza de una variable aleatoria binomial, según la ecuación <a href="dist_disc.html#eq:varianza2">(3.12)</a> es:
+<span class="math display">\[
+\begin{align*}
+V(X)=&amp;n \left(n-1 \right)p^2+np-n^2p^2\\
+=&amp;np \left[ \left(n-1 \right)p + 1 - np \right]\\
+=&amp;np \left(1-p \right).
+\end{align*}
+\]</span></p>
+</div>
+<div class="example">
+<p><span id="exm:ejemplo-varianza-binomial" class="example"><strong>Ejemplo 3.10  (Varianza de la Distribución Binomial) </strong></span>Con respecto al ejemplo <a href="dist_disc.html#exm:ejemplo-funcion-probabilidad-binomial">3.7</a>, determine la varianza del número de artículos defectuosos encontardos en una muestra de 15 artículos tomados del proceso de producción.</p>
+<p>De acuerdo con el teorema <a href="dist_disc.html#thm:varianza-binomial">3.6</a>, la varianza de <span class="math inline">\(X\)</span> es:</p>
+<p><span class="math display">\[
+V(X)=np \left(1-p \right)=15 \cdot0,05 \left(1-0,05 \right)=0,7125.
+\]</span></p>
+</div>
+</div>
+<div id="funcion-generadora-momentos-binomial" class="section level4" number="3.7.1.4">
+<h4><span class="header-section-number">3.7.1.4</span> Función Genradora de Momentos de la Distribución Binomial</h4>
+<p>La función generadora de momentos es un método alternativo para determinar los momentos ordinarios de una distribución de probabilidad determinada, por medio del teorema <a href="dist_disc.html#thm:funcion-generadora-momentos">3.4</a>. En el caso de la distribución binomial, la función generadora de momentos se indica en el siguienete teorema:</p>
+<div class="theorem">
+<p><span id="thm:fgm-binomial" class="theorem"><strong>Teorema 3.7  (Varianza de la Distribución Binomial) </strong></span>La función generadora de momentos de la distribución binomial está dada por:
+<span class="math display" id="eq:fgm-binomial">\[
+\begin{equation}
+m_x \left(t \right)=\left[1+p \left(e^t-1 \right) \right].
+\tag{3.19}
+\end{equation}
+\]</span></p>
+</div>
+<div class="proof">
+<p><span id="fgm-binomial" class="proof"><em>Demostración</em> (Función Generadora de Momentos de la Distribución Binomial). </span>De la definiciones <a href="dist_disc.html#def:distribucion-binomial">3.10</a> y <a href="dist_disc.html#def:funcion-generadora-momentos">3.9</a>, se obtiene</p>
+<p><span class="math display">\[
+\begin{align*}
+m_x \left(t \right)=&amp;  \sum_{x=0}^{n } e^{tx}\frac{n!}{x!\left ( n-x \right )!}p^{x}\left ( 1-p \right )^{n-x}\\
+=&amp;  \sum_{x=0}^{n } \frac{n!}{x!\left ( n-x \right )!}(e^{t}p)^{x}\left ( 1-p \right )^{n-x}.\\
+\end{align*}
+\]</span>
+Por el binomio de Newton, se sabe que la última sumatoria es la expansión de la expresión <span class="math inline">\(\left[e^{t}p+ \left(1-p \right) \right]^n=\left[1+ p\left(e^t -1 \right) \right]^n\)</span>. En resumen,
+<span class="math display">\[
+\begin{align*}
+m_x \left(t \right)=\left[1+ p\left(e^t -1 \right) \right]^n.\\
+\end{align*}
+\]</span></p>
+</div>
+<p>Del teorema <a href="dist_disc.html#thm:funcion-generadora-momentos">3.4</a>, la media de la distribucón binomial es:
+<span class="math display">\[
+\begin{equation}
+\frac{\mathrm{d}m_{x}\left ( t \right )}{\mathrm{d}t} \left|\begin{matrix}
+ \\
+t=0\\
+\end{matrix}={\mu}^{&#39;}_1=\mu \right.
+\end{equation}
+\]</span>
+La primera derivada de la función generadora de omentos es</p>
+<p><span class="math display">\[
+\frac{\mathrm{d}m_{x}\left ( t \right )}{\mathrm{d}t}=npe^t \left[1+ p\left(e^t -1 \right) \right]^{n-1}.
+\]</span>
+Ahora, evaluando la primera derivada de la función generadora de momentos en <span class="math inline">\(t=0\)</span>, se obtiene la media de la distribución binomial, como sigue:
+<span class="math display">\[
+\begin{equation}
+\frac{\mathrm{d}m_{x}\left ( t \right )}{\mathrm{d}t} \left|\begin{matrix}
+ \\
+t=0\\
+\end{matrix}=\mu=npe^0 \left[1+ p\left(e^0 -1 \right) \right]^{n-1}=np. \right.
+\end{equation}
+\]</span>
+Note que este resultado es el mismo dado en el teorema <a href="dist_disc.html#thm:media-binomial">3.5</a>. Se deja al lector que halle la varianza de la distribución binomial usando el método de la función generadora de momentos.</p>
+</div>
 </div>
 <div id="distribuciones-binomial" class="section level3" number="3.7.2">
 <h3><span class="header-section-number">3.7.2</span> Distribuciones Hipergeométrica</h3>
