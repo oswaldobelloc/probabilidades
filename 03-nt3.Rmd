@@ -1000,7 +1000,7 @@ knitr::kable(
   ),
   align = c("ccc"),
   format.args = list(decimal.mark = ",", big.mark = "."),
-  caption = "\\label{tab2:distribucion-acumulada2}Distribución de probabilidad del número de artículos defectuosos en una muestra de 15 artículos",
+  caption = "\\label{tab2:distribucion-acumulada2}Función de probabilidad y función de distribución acumulativa de $X \\sim Bin \\left(n = 15, p= 0,05 \\right)$",
   escape = FALSE
 ) %>%
   kable_styling(
@@ -1100,7 +1100,7 @@ De la ecuación \@ref(eq:varianza2) se sabe que $V \left(X \right) = E \left(X^2
 $$
 E \left(X^2 \right) =  \sum_{x=0}^{n } x^2\frac{n!}{x!\left ( n-x \right )!}p^{x}\left ( 1-p \right )^{n-x},
 $$
-lo cual es imposible. En lugar de este camino, se eligirá un método alterno. La alternativa es escribir $x^2$ como:
+lo cual es imposible. En lugar de este camino, se elegirá un método alterno. La alternativa es escribir $x^2$ como:
 
 $$
 x^2= x \left(x-1 \right)+x;
@@ -1124,7 +1124,7 @@ E \left[X \left(X-1 \right) \right] =&  \sum_{x=0}^{n } x \left(x-1 \right)\frac
 =& n \left(n-1 \right)p^2 \sum_{x=1}^{n } \frac{\left(n-2 \right)!}{\left ( x-2 \right )!\left ( n-x \right )!}p^{x-2}\left ( 1-p \right )^{n-x}.
 \end{align*}
 $$
-Note que en los pasos previos se escribió la suma a partir de dos porque los dos primeros términos on cero, se canceló $x \left(x-1 \right)$, y se factorizó $n \left(n-1 \right)p^2$. Sea $y=x-2$ y $m=n-2$; entonces:
+Note que en los pasos previos se escribió la suma a partir de dos porque los dos primeros términos son cero, se canceló $x \left(x-1 \right)$, y se factorizó $n \left(n-1 \right)p^2$. Sea $y=x-2$ y $m=n-2$; entonces:
 
 $$
 \begin{align*}
@@ -1232,7 +1232,7 @@ p\left ( x;m,n, k \right )=\begin{cases}
 $$
 :::
 
-Los parámetros de la distribución hipergeométrica $m$, $n$ y $k$ definen una familia de distribuciones con función de probabilidad determinada por la ecuación \@ref(eq:funcion-probabilidad-hipergeometrica). En la figura \@ref(fig:grafico-distribucion-hipergeometrica) se muestran las gráficas de \@ref(eq:funcion-probabilidad-hipergeometrica) para distintas combinaciones de $m$, $n$ y $k$.
+Los parámetros de la distribución hipergeométrica $m$, $n$ y $k$ definen una familia de distribuciones con función de probabilidad determinada por la ecuación \@ref(eq:funcion-probabilidad-hipergeometrica). En la figura \@ref(fig:grafico-distribucion-hipergeometrica) se muestran las gráficas de la función de probabilidad hipergeométrica \@ref(eq:funcion-probabilidad-hipergeometrica) para distintas combinaciones de $m$, $n$ y $k$.
 
 La función `dhyper(x, m, n, k, log = FALSE)` de la distribución base de `r colorize("R", "blue")` permite evaluar la función de probabilidad de la distribución hipergeométrica dada por la ecuación \@ref(eq:funcion-probabilidad-hipergeometrica).
 
@@ -1315,7 +1315,7 @@ plot_ly(alpha = 0.5) %>%
 Se tiene un lote de 100 lamparas, de las cuales el 5\% están defectuosas. Si se toma una muestra aleatoria sin reemplazo de 10 de estas lamparas. Determine la probabilidad de que dos estén defectuosas.
 
 
-Dado que el lote de lamparas están particionadas en dos grupos, las defectuosas (característica de interés) y las no defectuosas. Además, la muestra se ha tomado del lote sin reemplazo. Si se define la variable $X$ como el número de artículos defectuosos encontrados en la muestra, por la definición \@ref(def:distribucion-hipergeometrica), $X$ tiene distribución hipergeométrica con parámetros $m = 100 \cdot0,05 = 5$, $n = 95$ y $k = 10 $, es decir, $X \sim H\left(m = 5 , n = 95, k = 10 \right)$. Por lo tanto, de acuerdo con la ecuación \@ref(eq:funcion-probabilidad-hipergeometrica), la probabilidad de encontrar dos lamparas defectuosas en la muestra es: 
+Dado que el lote de lamparas están particionadas en dos grupos, las defectuosas (característica de interés) y las no defectuosas. Además, la muestra se ha tomado del lote sin reemplazo. Si se define la variable $X$ como el número de artículos defectuosos encontrados en la muestra, por la definición \@ref(def:distribucion-hipergeometrica), $X$ tiene distribución hipergeométrica con parámetros $m = 100 \cdot0,05 = 5$, $n = 95$ y $k = 10$, es decir, $X \sim H\left(m = 5 , n = 95, k = 10 \right)$. Por lo tanto, de acuerdo con la ecuación \@ref(eq:funcion-probabilidad-hipergeometrica), la probabilidad de encontrar dos lamparas defectuosas en la muestra es: 
 
 $$
 P\left(X = 2 \right)=p\left ( x = 2;m = 100,n = 10, k =5 \right )=
@@ -1327,7 +1327,7 @@ En `r colorize("R", "blue")`, el resultado anterior se puede conseguir con el si
 dhyper(x = 2, m = 5, n = 95, k = 10, log = FALSE)
 ```
 
-La figura \@ref(fig:funcion-probabilidad-hipergeometrica) muestra la gráfica de la función de probabilidad del número de lamparas defectuosas en una muestra de tamaño 10 ($X$). La cual, como se sabe, tiene distribución hipergeométrica con parámetros $m = 5$, $n = 95$, $k = 10$. Es decir, $X \sim H \left(m = 5, n = 95, k = 10 \right)$. 
+La figura \@ref(fig:funcion-probabilidad-hipergeometrica) muestra la gráfica de la función de probabilidad del número de lamparas defectuosas en una muestra de tamaño 10 $\left(X \right)$. La cual, como se sabe, tiene distribución hipergeométrica con parámetros $m = 5$, $n = 95$, $k = 10$. Es decir, $X \sim H \left(m = 5, n = 95, k = 10 \right)$. 
 
 ```{r funcion-probabilidad-hipergeometrica, fig.cap = "Gráfica de la función de probabilidad hipergeométrica para $m = 5$, $n = 95$ y $k = 5$", class.source = "watch-out"}
 plot_ly(alpha = 0.5) %>%
@@ -1397,9 +1397,8 @@ La figura \@ref(fig:grafico-acumulativa-hipergeometrica) muestra la función de 
 
 La función `phyper(q, m, n, k, lower.tail = TRUE, log.p = FALSE)` de la distribución base de `r colorize("R", "blue")` permite evaluar la función de distribución acumulativa de probabilidad hipergeométrica dada por la ecuación \@ref(eq:funcion-acumulativa-hipergeometrica).
 
-####################################################
 
-```{r grafico-acumulativa-hipergeometrica, fig.cap = "Gráfica de la función de distribución acumulativa de probabilidad hipeergeométrica para $m = 10$ y $n = 90$ y $k = 5, 10, 15$", class.source = "watch-out"}
+```{r grafico-acumulativa-hipergeometrica, fig.cap = "Gráfica de la función de distribución acumulativa de probabilidad hipergeométrica para $m = 10$ y $n = 90$ y $k = 5, 10, 15$", class.source = "watch-out"}
 plot_ly(alpha = 0.5) %>%
   add_segments(
     x = ~c(first(x1) -3, x1), 
@@ -1517,7 +1516,7 @@ plot_ly(alpha = 0.5) %>%
 ```
 
 ::: {.example #ejemplo-distribucion-acumulada-hipergeometrica name="Función de Distribución Acumulativa de Probabilidad Hipergeométrica"}
-Suponga en el ejemplo \@ref(exm:ejemplo-funcion-probabilidad-hipergeometrica) que se desea determinar la probabilidad de que en una muestra aparezcan más de tres lamparas defectuosas.
+Suponga en el ejemplo \@ref(exm:ejemplo-funcion-probabilidad-hipergeometrica) que se desea determinar la probabilidad de que en una muestra aparezcan menos de dos lamparas defectuosas.
 
 La probabilidad de que en la muestra aparezcan menos de dos lamparas defectuosas es:
 
@@ -1592,7 +1591,7 @@ plot_ly(alpha = 0.5) %>%
   config(locale = "es")
 ```
 
-La tabla \@ref(tab:distribucion-hipergeometrica) muestra la función de probabilidad y la función de distribución acumulativa de probabilidad de una variable binomial con parámetros $n = 15$ y $p = 0,05$.
+La tabla \@ref(tab:distribucion-hipergeometrica) muestra la función de probabilidad y la función de distribución acumulativa de probabilidad de una variable hipergeométrica con parámetros $m = 5$, $n = 95$ y $k = 10$.
 
 ```{r distribucion-hipergeometrica, class.source="watch-out", class.source = "watch-out"}
 da_ej2 <- data.frame(
@@ -1615,7 +1614,7 @@ knitr::kable(
   ),
   align = c("ccc"),
   format.args = list(decimal.mark = ",", big.mark = "."),
-  caption = "\\label{tab2:distribucion-acumulada2}Distribución de probabilidad del número de lamparas defectuosos en una muestra sin reemplazo de 10 lamparas",
+  caption = "\\label{tab2:distribucion-acumulada2}Función de probabilidad y función de distribución acumulativa de $X \\sim H \\left(m = 5, n = 95, k= 10 \\right)$",
   escape = FALSE
 ) %>%
   kable_styling(
@@ -1628,9 +1627,9 @@ knitr::kable(
 
 #### Media de la Distribución Hipergeométrica {#media-hipergeometrica}
 
-La media, promedio o esperanza matemática de la distribución hipergeométrica es el número de objetos que se espera aparezcan una muestra de tamaño $k$, la cual ha sido extraída de una población que contiene $m$ objetos que poseen la característica de interés mientras que el resto $n$ no posee tal característica. De anera formar esto se expresa de la siguiente manera:
+La media, promedio o esperanza matemática de la distribución hipergeométrica es el número de objetos que se espera aparezcan una muestra de tamaño $k$, la cual ha sido extraída de una población que contiene $m$ objetos que poseen la característica de interés mientras que el resto $n$ no posee tal característica. De manera formal, esto se expresa de la siguiente manera:
 
-::: {#media-binomial .theorem name="Media de la Distribución Binomial"}
+::: {#media-hipergeometrica .theorem name="Media de la Distribución Hipergeoétrica"}
 Sea $X$ una variable aleatoria con distribución hipergeométrica. Entonces, la _media_ de $X$ viene dada por:
 $$
 \begin{equation}
@@ -1640,17 +1639,17 @@ E \left(X \right)= \mu = \frac{mk}{m+n}.
 $$
 :::
 
-::: {#media-hipergeometrica .proof name="Media de la Distribución Binomial"}
+::: {#media-hipergeometrica .proof name="Media de la Distribución Hipergeométrica"}
 Note que en la función de probabilidad de la distribución hipergeométrica, dada por la ecuación \@ref(eq:funcion-probabilidad-hipergeometrica), los valores mínimos y máximos del recorrido de la variable dependen de los parámetros $m$, $n$ y $k$. En tal sentido se hará una demostración parcial del teorema suponiendo que $n > k$ y $m > k$. Como consecuencia de estas suposiciones la función de probabilidad hipergeométrica estaría dada de la siguiente manera:
 
 $$
 p\left ( x;m,n, k \right )=\begin{cases}
 \frac{\binom{m}{x}\binom{n}{k-x}}{\binom{m+n}{k}} & \text{ si } x= 0, 1, 2, \dotsc, k \\
 0 & \text{ en cualquier otro caso }.
-(\#eq:funcion-probabilidad-hipergeometrica1)
+(\#eq:funcion-probabilidad-hipergeometrica2)
 \end{cases}
 $$
-Luego, por las definición de esperanza matemática \@ref(def:esperanza) y la función de probabilidad  hipergeométrica, que en ete caso se reduce a la ecuación \@ref(eq:funcion-probabilidad-hipergeometrica1), la esperanza de una variable $X$ con distribución hipergeométrica, bajo las condiciones dadas se obtiene como sigue
+Luego, por las definición de esperanza matemática \@ref(def:esperanza) y la función de probabilidad  hipergeométrica, que en ete caso se reduce a la ecuación \@ref(eq:funcion-probabilidad-hipergeometrica2), la esperanza de una variable $X$ con distribución hipergeométrica, bajo las condiciones dadas se obtiene como sigue
 
 $$
 \begin{align*}
@@ -1671,7 +1670,6 @@ E \left(X \right) =& \frac{m}{\frac{m+n}{k}}\sum_{x=1}^{k }  \frac{\binom{m-1}{x
 \end{align*}
 $$
 Si $r=k-1$, $s=m-1$ y $y=x-1$, entonces:
-
 $$
 \begin{align*}
 E \left(X \right) =& \frac{mk}{m+n}\sum_{y=0}^{r }  \frac{\binom{s}{y}\binom{n}{r-y}}{\binom{s+n}{r}}.\\
@@ -1704,28 +1702,30 @@ $$
 3 lamparas defectuosos en la muestra.
 :::
 
-#### Varianza de la Distribución Binomial {#varianza-binomial}
-La varianza de una variable aleatoria binomial $X$ es un parámetro que indica que tan distante están los posibles valores que puede tomar esta variable, es decir, $x=0, 1, 2, \dotsc, n$ con respecto a la media de la variable $\left(\mu=np \right)$. En tal sentido, la varianza de una variable binomial se describe en el siguiente teorema: 
+#### Varianza de la Distribución Hipergeométrica {#varianza-hipergoemetrica}
+La varianza de una variable aleatoria es una medida absoluta de la dispersión de esta. En el caso de que la variable aleatoria sea hipergeométrica, la medida de esa dispersión se expresa en siguiente teorema: 
 
-::: {#varianza-binomial .theorem name="Varianza de la Distribución Binomial"}
-Sea $X$ una variable aleatoria con distribución binomial. Entonces, la _varianza_ de $X$ viene dada por:
+::: {#varianza-hipergeometrica .theorem name="Varianza de la Distribución Hipergeométrica"}
+Sea $X$ una variable aleatoria con distribución hipergeométrica. Entonces, la _varianza_ de $X$ viene dada por:
 $$
 \begin{equation}
-V \left(X \right)=\sigma^2 = np \left(1-p \right).
-(\#eq:media-binomial)
+V \left(X \right)=\sigma^2 = \frac{mkn\left(m+n-k\right)}{\left(m+n \right)^2\left(m+n-1 \right) }.
+(\#eq:varianza-hipergeometrica)
 \end{equation}
 $$
 :::
 
-Note de la ecuación anterior que para un $n$ fijo, la gráfica de la varianza es una parábola cóncava hacia abajo. Por lo tanto, el vértice de la parábola será un máximo y se halla en $p=1/2$. Es decir, la varianza es hace máxima cuando cuando $p=1/2$. Por lo que, el máximo valor de la varianza será la cuarta parte del tamaño de la muestra. 
-
 ::: {#varianza-binomial .proof name="varianza de la Distribución Binomial"}
-De la \@ref(eq:varianza2) se sabe que $V \left(X \right) = E \left(X^2 \right) - \mu^2$. Como $\mu=np$, solo faltaría calcular $E \left(X^2 \right)$. Pero calcular este parámetro usando el teorema \@ref(thm:esperanza-transformacion) y la definición \@ref(def:distribucion-binomial) implica encontrar la convergencia de la siguiente expresión
+La demostración de este teorema, al igual que en el teorema de la media de la distribución hipergeométrica \@ref(thm:media-hipergeometrica), se hará asumiendo que $n > k$ y $m > k$. La demostración en los otros casos se deja como ejercicio al lector.
+
+De la ecución \@ref(eq:varianza2) se sabe que $V \left(X \right) = E \left(X^2 \right) - \mu^2$. Como $\mu=\frac{mk}{m+n}$, solo faltaría calcular $E \left(X^2 \right)$. Pero calcular este parámetro usando el teorema \@ref(thm:esperanza-transformacion) y la función de probabilidad, que para este caso está dada por la ecuación \@ref(eq:funcion-probabilidad-hipergeometrica2) implica encontrar la convergencia de la siguiente expresión
 
 $$
-E \left(X^2 \right) =  \sum_{x=0}^{n } x^2\frac{n!}{x!\left ( n-x \right )!}p^{x}\left ( 1-p \right )^{n-x},
+\begin{align*}
+E \left(X^2 \right) =&  \sum_{x=0}^{k } x^2\frac{\binom{m}{x}\binom{n}{k-x}}{\binom{m+n}{k}},\\
+\end{align*}
 $$
-lo cual es imposible. En lugar de este camino, se eligirá un método alterno. La alternativa es escribir $x^2$ como:
+lo cual es sumamente complicado, por decir lo menos. En lugar de este camino, se elegirá un método alterno. La alternativa es escribir $x^2$ como:
 
 $$
 x^2= x \left(x-1 \right)+x;
@@ -1743,114 +1743,99 @@ Dado que $E \left(X \right)$ ya se ha determinado, faltaría determinar $E \left
 
 $$
 \begin{align*}
-E \left[X \left(X-1 \right) \right] =&  \sum_{x=0}^{n } x \left(x-1 \right)\frac{n!}{x!\left ( n-x \right )!}p^{x}\left ( 1-p \right )^{n-x}\\
-=& \sum_{x=2}^{n } x \left(x-1 \right)\frac{n!}{x!\left ( n-x \right )!}p^{x}\left ( 1-p \right )^{n-x}\\
-=& \sum_{x=1}^{n } \frac{n!}{\left ( x-2 \right )!\left ( n-x \right )!}p^{x}\left ( 1-p \right )^{n-x}\\
-=& n \left(n-1 \right)p^2 \sum_{x=1}^{n } \frac{\left(n-2 \right)!}{\left ( x-2 \right )!\left ( n-x \right )!}p^{x-2}\left ( 1-p \right )^{n-x}.
+E \left[X \left(X-1 \right) \right] =&  \sum_{x=0}^{k } x \left(x-1 \right)\frac{\binom{m}{x}\binom{n}{k-x}}{\binom{m+n}{k}}\\
+=& \sum_{x=2}^{k } x \left(x-1 \right)\frac{\frac{m!}{x!\left ( m-x \right )!}\binom{n}{k-x}}{\binom{m+n}{k}}\\
+=& \sum_{x=2}^{k } x \left(x-1 \right)\frac{\frac{m\left(m-1 \right)\left(m-2 \right)!}{x\left(x-1 \right)\left(x-2 \right)!\left ( m-x \right )!}\binom{n}{k-x}}{\binom{m+n}{k}}.\\
 \end{align*}
 $$
-Note que en los pasos previos se escribió la suma a partir de dos porque los dos primeros términos on cero, se canceló $x \left(x-1 \right)$, y se factorizó $n \left(n-1 \right)p^2$. Sea $y=x-2$ y $m=n-2$; entonces:
-
+Por lo que, cancelando los factores $x\left(x-1 \right)$ , lo anterior se puede reescribir de la siguiente manera:
 $$
 \begin{align*}
-E \left[X \left(X-1 \right) \right] =&  n \left(n-1 \right)p^2\sum_{y=0}^{m } \frac{m!}{y!\left ( m-y \right )!}p^{y}\left ( 1-p \right )^{m-y}.\\
+E \left[X \left(X-1 \right) \right] =& \sum_{x=2}^{k } \frac{\frac{m\left(m-1 \right)\left(m-2 \right)!}{\left(x-2 \right)!\left ( m-x \right )!}\binom{n}{k-x}}{\binom{m+n}{k}}.\\
 \end{align*}
 $$
-Pero $p \left(y; m, p \right)= \left[m!/y!\left(m-y \right)! \right]p^{y}\left(1-p \right)^{m-y}$ es la función de probabilidad de una variable aleatoria binomial $Y$ con parámetros $m=n-2$ y $p$; de esta manera $\sum_{y=0}^{m }p\left(y; m, p \right)=1 $. En consecuencia, 
+Se puede demostrar de manera fácil que,
 $$
-\begin{equation}
-E \left[X \left(X-1 \right) \right] = n \left(n-1 \right)p^2.
-\end{equation}
+\binom{m+n}{k}=\left( \frac{m+n}{k} \right)\left( \frac{m+n-1}{k-1} \right)\binom{m+n-2}{k-2}.
 $$
-
-De \@ref(eq:varianza-alterna-binomial)
-$$
-E \left(X^2 \right)=  n \left(n-1 \right)p^2+np.
-$$
-
-De esta maanera, la varianza de una variable aleatoria binomial, según la ecuación \@ref(eq:varianza2) es:
+En consecuencia,
 $$
 \begin{align*}
-V(X)=&n \left(n-1 \right)p^2+np-n^2p^2\\
-=&np \left[ \left(n-1 \right)p + 1 - np \right]\\
-=&np \left(1-p \right).
+E \left[X \left(X-1 \right) \right] =& \sum_{x=2}^{k }\frac{\frac{m\left(m-1 \right)\left(m-2 \right)!}{\left(x-2 \right)!\left ( m-x \right )!}\binom{n}{k-x}}{\left( \frac{m+n}{k} \right)\left( \frac{m+n-1}{k-1} \right)\binom{m+n-2}{k-2}}.\\
+\end{align*}
+$$
+Luego, factorizando
+$$
+\frac{m\left(m-1 \right)}{\left( \frac{m+n}{k} \right)\left( \frac{m+n-1}{k-1} \right)},
+$$
+resulta
+$$
+\begin{align*}
+E \left[X \left(X-1 \right) \right] =& \frac{m\left(m-1 \right)}{\left( \frac{m+n}{k} \right)\left( \frac{m+n-1}{k-1} \right)}\sum_{x=2}^{k }\frac{\frac{\left(m-2 \right)!}{\left(x-2 \right)!\left ( m-x \right )!}\binom{n}{k-x}}{\binom{m+n-2}{k-2}}.\\
+\end{align*}
+$$
+Si $r=k-2$, $s=m-2$ y $y=x-2$, entonces:
+$$
+\begin{align*}
+E \left[X \left(X-1 \right) \right] =& \frac{m\left(m-1 \right)}{\left( \frac{m+n}{k} \right)\left( \frac{m+n-1}{k-1} \right)}\sum_{y=0}^{r }\frac{\frac{s!}{y!\left ( s-y \right )!}\binom{n}{r-y}}{\binom{s+n}{r}}.\\
+\end{align*}
+$$
+Como
+$$
+\binom{s}{y}=\frac{s!}{y! \left( s-y \right )!},
+$$
+Entonces,
+$$
+\begin{align*}
+E \left[X \left(X-1 \right) \right] =& \frac{m\left(m-1 \right)}{\left( \frac{m+n}{k} \right)\left( \frac{m+n-1}{k-1} \right)}\sum_{y=0}^{r }\frac{\binom{s}{y}\binom{n}{r-y}}{\binom{s+n}{r}}.\\
+\end{align*}
+$$
+
+Pero, 
+$$
+p \left(y; s, n, r\right)= \frac{\binom{s}{y}\binom{n}{r-y}}{\binom{s+n}{r}}
+$$ 
+
+es la función de probabilidad de una variable aleatoria hipergeométrica $Y$ con parámetros $s$, $n$ y $r$; de esta manera $\sum_{y=0}^{r }p\left(y; s, n, r \right)=1$. En consecuencia, 
+$$
+\begin{align*}
+E \left[X \left(X-1 \right) \right] =& \frac{m\left(m-1 \right)}{\left( \frac{m+n}{k} \right)\left( \frac{m+n-1}{k-1} \right)}\\
+=& \frac{mk\left(m-1 \right)\left(k-1 \right)}{\left(m+n \right)\left(m+n-1 \right)}\\
+\end{align*}
+$$
+
+De la ecuación \@ref(eq:varianza-alterna-binomial)
+$$
+E \left(X^2 \right)=  \frac{mk\left(m-1 \right)\left(k-1 \right)}{\left(m+n \right)\left(m+n-1 \right)}+\frac{mk}{m+n}.
+$$
+
+De esta manera, la varianza de una variable aleatoria binomial, según la ecuación \@ref(eq:varianza2) es:
+$$
+\begin{align*}
+V(X)=&\frac{mk\left(m-1 \right)\left(k-1 \right)}{\left(m+n \right)\left(m+n-1 \right)}+\frac{mk}{m+n}-\left(\frac{mk}{m+n} \right)^2\\
+=&\frac{mk\left(m+n \right)\left(m-1 \right)\left(k-1 \right)+mk\left(m+n \right)\left(m+n-1 \right)-m^2k^2\left(m+n-1 \right)}{\left(m+n \right)^2\left(m+n-1 \right)}\\
+=&\frac{km^2n+kmn^2-^2mn}{\left(m+n \right)^2\left(m+n-1 \right)}\\
+=&\frac{kmn\left(m+n-k \right)}{\left(m+n \right)^2\left(m+n-1 \right)}\\
 \end{align*}
 $$
 :::
 
 ::: {.example #ejemplo-varianza-binomial name="Varianza de la Distribución Binomial"}
-Con respecto al ejemplo \@ref(exm:ejemplo-funcion-probabilidad-binomial), determine la varianza del número de artículos defectuosos encontardos en una muestra de 15 artículos tomados del proceso de producción.
+Con respecto al ejemplo \@ref(exm:ejemplo-funcion-probabilidad-binomial), determine la varianza del número de lamparas defectuosas.
 
-De acuerdo con el teorema \@ref(thm:varianza-binomial), la varianza de $X$ es:
-
-$$
-V(X)=np \left(1-p \right)=15 \cdot0,05 \left(1-0,05 \right)=0,7125.
-$$
-:::
-
-#### Función Genradora de Momentos de la Distribución Binomial {#funcion-generadora-momentos-binomial}
-La función generadora de momentos es un método alternativo para determinar los momentos ordinarios de una distribución de probabilidad determinada, por medio del teorema \@ref(thm:funcion-generadora-momentos). En el caso de la distribución binomial, la función generadora de momentos se indica en el siguienete teorema: 
-
-::: {#fgm-binomial .theorem name="Varianza de la Distribución Binomial"}
-La función generadora de momentos de la distribución binomial está dada por:
-$$
-\begin{equation}
-m_x \left(t \right)=\left[1+p \left(e^t-1 \right) \right].
-(\#eq:fgm-binomial)
-\end{equation}
-$$
-:::
-
-::: {#fgm-binomial .proof name="Función Generadora de Momentos de la Distribución Binomial"}
-De la definiciones \@ref(def:distribucion-binomial) y \@ref(def:funcion-generadora-momentos), se obtiene
+De acuerdo con el teorema \@ref(thm:varianza-hipergeometrica), la varianza de $X$ es:
 
 $$
 \begin{align*}
-m_x \left(t \right)=&  \sum_{x=0}^{n } e^{tx}\frac{n!}{x!\left ( n-x \right )!}p^{x}\left ( 1-p \right )^{n-x}\\
-=&  \sum_{x=0}^{n } \frac{n!}{x!\left ( n-x \right )!}(e^{t}p)^{x}\left ( 1-p \right )^{n-x}.\\
-\end{align*}
-$$
-Por el binomio de Newton, se sabe que la última sumatoria es la expansión de la expresión $\left[e^{t}p+ \left(1-p \right) \right]^n=\left[1+ p\left(e^t -1 \right) \right]^n$. En resumen,
-$$
-\begin{align*}
-m_x \left(t \right)=\left[1+ p\left(e^t -1 \right) \right]^n.\\
+V(X)=&\frac{kmn\left(m+n-k \right)}{\left(m+n \right)^2\left(m+n-1 \right)}=\frac{10 \cdot 5 \cdot 95\left(5+95-10 \right)}{\left(5+95 \right)^2\left(5+95-1 \right)}\\
+=&\frac{171}{392} \approx0,4362.
 \end{align*}
 $$
 :::
 
-Del teorema \@ref(thm:funcion-generadora-momentos), la media de la distribucón binomial es:
-$$
-\begin{equation}
-\frac{\mathrm{d}m_{x}\left ( t \right )}{\mathrm{d}t} \left|\begin{matrix}
- \\
-t=0\\
-\end{matrix}={\mu}^{'}_1=\mu \right.
-\end{equation}
-$$
-La primera derivada de la función generadora de omentos es
-
-$$
-\frac{\mathrm{d}m_{x}\left ( t \right )}{\mathrm{d}t}=npe^t \left[1+ p\left(e^t -1 \right) \right]^{n-1}.
-$$
-Ahora, evaluando la primera derivada de la función generadora de momentos en $t=0$, se obtiene la media de la distribución binomial, como sigue:
-$$
-\begin{equation}
-\frac{\mathrm{d}m_{x}\left ( t \right )}{\mathrm{d}t} \left|\begin{matrix}
- \\
-t=0\\
-\end{matrix}=\mu=npe^0 \left[1+ p\left(e^0 -1 \right) \right]^{n-1}=np. \right.
-\end{equation}
-$$
-Note que este resultado es el mismo dado en el teorema \@ref(thm:media-binomial). Se deja al lector que halle la varianza de la distribución binomial usando el método de la función generadora de momentos. 
-
-##########################################
-
-
-
-
+Otra forma de obtener la media y la varianza es a través de la función generadora de momentos de la distribución hipergeométrica, pero dado las dificultades que implica la derivación de esta función para la distribución en cuestión, no se considerará en este libro.
 
 ### Distribuciones de Poisson {#distribuciones-poisson}
-
 
 
 

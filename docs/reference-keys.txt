@@ -216,8 +216,11 @@ fig:grafico-acumulativa-hipergeometrica
 exm:ejemplo-distribucion-acumulada-hipergeometrica
 fig:grafico-acumulativa-hipergeometrica2
 tab:distribucion-hipergeometrica
+thm:media-hipergeometrica
 eq:media-hipergeometrica
-eq:funcion-probabilidad-hipergeometrica1
+eq:funcion-probabilidad-hipergeometrica2
+thm:varianza-hipergeometrica
+eq:varianza-hipergeometrica
 nt1
 nt11
 nt12
@@ -305,4 +308,5 @@ funcion-generadora-momentos-binomial
 distribuciones-hipergeometrica
 distribucion-acumulada-hipergeometrica
 media-hipergeometrica
+varianza-hipergoemetrica
 distribuciones-poisson
