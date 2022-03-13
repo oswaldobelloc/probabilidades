@@ -190,6 +190,7 @@ def:distribucion-binomial
 eq:funcion-probabilidad-binomial
 fig:grafico-distribucion-binomial
 exm:ejemplo-funcion-probabilidad-binomial
+fig:funcion-probabilidad-binomial
 def:distribucion-acumulada-binomial
 eq:funcion-acumulativa-binomial
 fig:grafico-acumulativa-binomial
@@ -204,6 +205,19 @@ eq:varianza-alterna-binomial
 exm:ejemplo-varianza-binomial
 thm:fgm-binomial
 eq:fgm-binomial
+def:distribucion-hipergeometrica
+eq:funcion-probabilidad-hipergeometrica
+fig:grafico-distribucion-hipergeometrica
+exm:ejemplo-funcion-probabilidad-hipergeometrica
+fig:funcion-probabilidad-hipergeometrica
+def:distribucion-acumulada-hipergeometrica
+eq:funcion-acumulativa-hipergeometrica
+fig:grafico-acumulativa-hipergeometrica
+exm:ejemplo-distribucion-acumulada-hipergeometrica
+fig:grafico-acumulativa-hipergeometrica2
+tab:distribucion-hipergeometrica
+eq:media-hipergeometrica
+eq:funcion-probabilidad-hipergeometrica1
 nt1
 nt11
 nt12
@@ -288,5 +302,7 @@ distribucion-acumulada-binomial
 media-binomial
 varianza-binomial
 funcion-generadora-momentos-binomial
-distribuciones-binomial
+distribuciones-hipergeometrica
+distribucion-acumulada-hipergeometrica
+media-hipergeometrica
 distribuciones-poisson

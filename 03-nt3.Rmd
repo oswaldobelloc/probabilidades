@@ -652,7 +652,7 @@ p\left ( x;n,p \right )=\begin{cases}
 $$
 :::
 
-La figura \@ref(fig:grafico-distribucion-binomial) muestra la gráfica de la función de probabilidad binomial para $n=10$ y $p$ igual a 0,2; 0,5 y 0,8. Como se observa en esta gráfica la distribución binomial es asimétrica positiva para $p = 0,1$; simétrica para $ p = 0,5$ y asimétrica negativa para $p = 0,8$. De manera general, esta distribución de probabilidad es asimétrica positiva para $p < 0,5$, simétrica si $p = 0,5$ y asimétrica negativa si $p > 0,5$.
+La figura \@ref(fig:grafico-distribucion-binomial) muestra la gráfica de la función de probabilidad binomial para $n=10$ y $p = 0,2; 0,5; 0,8$. Como se observa en esta gráfica la distribución binomial es asimétrica positiva para $p = 0,1$; simétrica para $p = 0,5$ y asimétrica negativa para $p = 0,8$. De manera general, esta distribución de probabilidad es asimétrica positiva para $p < 0,5$, simétrica si $p = 0,5$ y asimétrica negativa si $p > 0,5$.
 
 ```{r grafico-distribucion-binomial, fig.cap = "Gráfica de la función de probabilidad binomial para $n = 10$ y $p = 0,2; 0,5; 0,8$", class.source = "watch-out"}
 plot_ly(alpha = 0.5) %>%
@@ -714,27 +714,76 @@ plot_ly(alpha = 0.5) %>%
   config(locale = "es")
 ```
 
-::: {.example #ejemplo-funcion-probabilidad-binomial name="Función de probabilidad binomial"}
+::: {.example #ejemplo-funcion-probabilidad-binomial name="Función de Probabilidad Binomial"}
 Todos los días se seleccionan, de manera aleatoria, 15 artículos de un proceso de producción con el propósito de vigilar la fracción de artículos defectuosos que produce el proceso. Con base en información pasada, la probabilidad de que el proceso produzca un artículo defectuoso es 0,05. Determine la probabilidad de que se encuentren dos artículos defectuosos en la muestra.
 
 Dado que $X$ representa el número de artículo defectuosos encontrados en la muestra de tamaño 15 ($n=15$) y que la probabilidad de encontrar un artículo defectuoso en la muestra es 0,05 ($p = 0,05$). Entonces, de acuerdo con la definición \@ref(def:distribucion-binomial), $X$ tiene distribución binomial con parámetros $n = 15$ y $p = 0,05$, es decir, $X \sim Bin\left(n = 15, p = 0,05 \right)$. Por lo tanto, de acuerdo con la ecuación \@ref(eq:funcion-probabilidad-binomial),
 
 $$
 P\left(X = 2 \right)=p\left ( x = 2;n = 15,p = 0,05 \right )=
-\binom{15}{2}\left(0,05 \right)^{2}\left ( 1- 0,05 \right )^{15-2} \approx 0,1348.
+\binom{15}{2}\left(0,05 \right)^{2}\left ( 1- 0,05 \right )^{15-2} \approx `r formato(dbinom(x = 2, size = 15, prob = 0.05, log = FALSE))`.
 $$
 La función `dbinom(x, size, prob, log = FALSE)` de la distribución base de `r colorize("R", "blue")` permite evaluar la función de probabilidad binomial dada por la ecuación \@ref(eq:funcion-probabilidad-binomial). El siguiente script permite obtener el resultado anterior.
 
 ```{r}
 dbinom(x = 2, size = 15, prob = 0.05, log = FALSE)
 ```
+
+La figura \@ref(fig:funcion-probabilidad-binomial) muestra la gráfica de la función de probabilidad del número de artículos defectuosos en una muestra de 15 artículos ($X$). La cual, como se sabe, tiene distribución binomial con parámetros $n = 15$ y $p = 0,05$. Es decir, $X \sim Bin \left(n = 15, p = 0,05 \right)$. 
+
+```{r funcion-probabilidad-binomial, fig.cap = "Gráfica de la función de probabilidad binomial para $n = 15$ y $p = 0,05$", class.source = "watch-out"}
+plot_ly(alpha = 0.5) %>%
+  add_segments(
+    x = 0:15, 
+    y = ~rep(x = 0, times = length(0:15)),
+    xend = 0:15, 
+    yend = ~dbinom(
+      x = 0:15, size = 15, prob = 0.05, log = FALSE
+    ), 
+    color = I("red"), 
+    showlegend = TRUE,
+    name = "n = 15, p = 0,05"
+  ) %>%
+  add_markers(
+    x = 0:15, 
+    y = ~dbinom(
+      x = 0:15, size = 15, prob = 0.05, log = FALSE
+    ), 
+    color = I("red"), showlegend = TRUE,
+    name = "n = 15, p = 0,05"
+  ) %>%  
+  layout(
+    xaxis = list(
+      title = "x", 
+      zeroline = F, 
+      showgrid = T,
+      showline = T, 
+      linewidth = 1, 
+      linecolor = 'black',
+      showticklabels = TRUE,
+      tickwidth = 0.5
+    ),
+    yaxis = list(
+      title = "p(x)",
+      showgrid = T,
+      showline = T, 
+      linewidth = 1, 
+      linecolor = 'black',
+      showticklabels = TRUE,
+      tickwidth = 0.5
+    ),
+    showlegend = TRUE
+  ) %>%
+  config(locale = "es")
+```
+
 :::
 
-#### Distribución Binomial {#distribucion-acumulada-binomial}
+#### Función de Distribución Acumulativa de Probabilidad Binomial {#distribucion-acumulada-binomial}
 
-La probabilidad de que una variable aleatoria binomial $X$ sea menor o igual que un valor específico $x$ o dicho de otra manera la probabilidad de encontrar a los más $x$ éxitos en los $n$ ensayos, o lo que es igual,la función de distribución acumulativa de probabilidad binomial, queda deterinada, de acuerdo con la definición \@ref(def:funcion-acumulativa-probabilidad) por:
+La probabilidad de que una variable aleatoria binomial $X$ sea menor o igual que un valor específico $x$ o dicho de otra manera la probabilidad de encontrar a los más $x$ éxitos en los $n$ ensayos, o lo que es igual,la función de distribución acumulativa de probabilidad binomial, queda determinada, de acuerdo con las definiciones \@ref(def:funcion-acumulativa-probabilidad) y \@ref(def:distribucion-binomial) por:
 
-::: {#distribucion-acumulada-binomial .definition name="Función Generadora de Momentos de Una Variable Aleatoria Discreta"}
+::: {#distribucion-acumulada-binomial .definition name="Función de Distribución Acumulativa de Probabilidad Binomial"}
 Sea $X$ una variable aleatoria con distribución binomial. Entonces, la _función de distribución acumulativa de probabilidad binomial_ viene dada por:
 $$
 F\left ( x;n,p \right )=\begin{cases}
@@ -746,7 +795,7 @@ F\left ( x;n,p \right )=\begin{cases}
 $$
 :::
 
-La figura \@ref(fig:grafico-distribucion-binomial) muestra la función de distribución acumulativa de probabilidad para una variable binomial con parámetros $n = 10$ y $p = 0,2; 0,5 \, \text{y} \, 0,8$. 
+La figura \@ref(fig:grafico-acumulativa-binomial) muestra la función de distribución acumulativa de probabilidad para una variable binomial con parámetros $n = 10$ y $p = 0,2; 0,5; 0,8$. 
 
 ```{r grafico-acumulativa-binomial, fig.cap = "Gráfica de la función de distribución acumulativa de probabilidad binomial para $n = 15$ y $p = 0,2;0,5;0,8$", class.source = "watch-out"}
 x <- c(-3, 0:10, 13)
@@ -855,7 +904,7 @@ plot_ly(x = x, y = Fx1, alpha = 0.5) %>%
 ```
 
 ::: {.example #ejemplo-distribucion-acumulada-binomial name="Función de Distribución Acumulativa de Probabilidad Binomial"}
-suponga en el ejemplo \@ref(exm:ejemplo-funcion-probabilidad-binomial) que la gerencia de control de calidad de la fábrica ha decidido detener la producción cada vez que en una muestra de 15 unidades tenga dos o más artículos defectuosos ¿Cuál es la probabilidad de que, en cualquier día, la se detenga?
+suponga en el ejemplo \@ref(exm:ejemplo-funcion-probabilidad-binomial) que la gerencia de control de calidad de la fábrica ha decidido detener la producción cada vez que en una muestra de 15 unidades tenga dos o más artículos defectuosos ¿Cuál es la probabilidad de que, en cualquier día, la producción se detenga?
 
 Dado que la probabilidad de que la producción se detenga es igual a la probabilidad de que $X$ sea igual o mayor que dos. De esta manera:
 
@@ -863,7 +912,8 @@ $$
 \begin{align*}
 P \left(X \geq 2 \right) =& 1 - P \left(X \leq 1
 \right)=  1 - F \left( x = 1;n = 15,p = 0,05 \right ) = 1 - \sum_{t=0}^{1 } \binom{15}{t} \left( 0,05 \right)^{t} \left( 1-0,05 \right )^{15-t}\\
-=& \binom{15}{0}\left(0,05 \right)^{0} \left( 1- 0,05 \right)^{15-0}+ \binom{15}{1}\left(0,05 \right)^{1} \left( 1- 0,05 \right)^{15-1}\\ \approx &  0.1709525.
+=& \binom{15}{0}\left(0,05 \right)^{0} \left( 1- 0,05 \right)^{15-0}+ \binom{15}{1}\left(0,05 \right)^{1} \left( 1- 0,05 \right)^{15-1}\\ \approx &  `r formato(1 - pbinom(q = 1, size = 15, prob = 0.05, lower.tail = TRUE, log.p = FALSE
+))`.
 \end{align*}
 $$
 
@@ -976,7 +1026,7 @@ $$
 :::
 
 ::: {#media-binomial .proof name="Media de la Distribución Binomial"}
-Por las definiciones \@ref(def:esperanza) y \@ref(def:distribucion-binomial) la esperanza una variable $X$ distribución binomialmente es
+Por las definiciones \@ref(def:esperanza) y \@ref(def:distribucion-binomial) la esperanza de una variable $X$ con distribución binomial es
 
 $$
 \begin{align*}
@@ -999,7 +1049,7 @@ $$
 E \left(X \right) =&  np\sum_{y=0}^{m } \frac{m!}{y!\left ( m-y \right )!}p^{y}\left ( 1-p \right )^{m-y}.\\
 \end{align*}
 $$
-Pero $p \left(y; m, p \right)= \left[m!/y!\left(m-y \right)! \right]p^{y}\left(1-p \right)^{m-y}$ es la función de probabilidad de una variable aleatoria binomial $Y$ con parámetros $m=n-1$ y $p$; de esta manera $\sum_{y=0}^{m }p\left(y; m, p \right)=1 $, y la media de una variable aleatoria binomial es:
+Pero $p \left(y; m, p \right)= \left[m!/y!\left(m-y \right)! \right]p^{y}\left(1-p \right)^{m-y}$ es la función de probabilidad de una variable aleatoria binomial $Y$ con parámetros $m=n-1$ y $p$; de esta manera $\sum_{y=0}^{m }p\left(y; m, p \right)=1$, y la media de una variable aleatoria binomial es:
 $$
 \begin{equation}
 E \left(X \right) = np.
@@ -1027,6 +1077,631 @@ E \left(X \right) = np=100 \cdot 0,05=5
 \end{equation}
 $$
 5 artículos defectuosos en la muestra.
+:::
+
+#### Varianza de la Distribución Binomial {#varianza-binomial}
+La varianza de una variable aleatoria binomial $X$ es un parámetro que indica que tan distante están los posibles valores que puede tomar esta variable, es decir, $x=0, 1, 2, \dotsc, n$ con respecto a la media de la variable $\left(\mu=np \right)$. En tal sentido, la varianza de una variable binomial se describe en el siguiente teorema: 
+
+::: {#varianza-binomial .theorem name="Varianza de la Distribución Binomial"}
+Sea $X$ una variable aleatoria con distribución binomial. Entonces, la _varianza_ de $X$ viene dada por:
+$$
+\begin{equation}
+V \left(X \right)=\sigma^2 = np \left(1-p \right).
+(\#eq:media-binomial)
+\end{equation}
+$$
+:::
+
+Note de la ecuación anterior que para un $n$ fijo, la gráfica de la varianza es una parábola cóncava hacia abajo. Por lo tanto, el vértice de la parábola será un máximo y se halla en $p=1/2$. Es decir, la varianza es hace máxima cuando cuando $p=1/2$. Por lo que, el máximo valor de la varianza será la cuarta parte del tamaño de la muestra. 
+
+::: {#varianza-binomial .proof name="varianza de la Distribución Binomial"}
+De la ecuación \@ref(eq:varianza2) se sabe que $V \left(X \right) = E \left(X^2 \right) - \mu^2$. Como $\mu=np$, solo faltaría calcular $E \left(X^2 \right)$. Pero calcular este parámetro usando el teorema \@ref(thm:esperanza-transformacion) y la definición \@ref(def:distribucion-binomial) implica encontrar la convergencia de la siguiente expresión
+
+$$
+E \left(X^2 \right) =  \sum_{x=0}^{n } x^2\frac{n!}{x!\left ( n-x \right )!}p^{x}\left ( 1-p \right )^{n-x},
+$$
+lo cual es imposible. En lugar de este camino, se eligirá un método alterno. La alternativa es escribir $x^2$ como:
+
+$$
+x^2= x \left(x-1 \right)+x;
+$$
+de esta manera, por los teoremas \@ref(thm:esperanza-transformacion) y \@ref(thm:esperanza-suma-transformaciones), se tiene:
+
+$$
+\begin{equation}
+E \left(X^2 \right)= E \left[X \left(X-1 \right) \right]+E \left(X \right).
+(\#eq:varianza-alterna-binomial)
+\end{equation}
+$$
+Dado que $E \left(X \right)$ ya se ha determinado, faltaría determinar $E \left[x \left(x-1 \right) \right]$, que según el teorema \@ref(thm:esperanza-transformacion), es:
+
+
+$$
+\begin{align*}
+E \left[X \left(X-1 \right) \right] =&  \sum_{x=0}^{n } x \left(x-1 \right)\frac{n!}{x!\left ( n-x \right )!}p^{x}\left ( 1-p \right )^{n-x}\\
+=& \sum_{x=2}^{n } x \left(x-1 \right)\frac{n!}{x!\left ( n-x \right )!}p^{x}\left ( 1-p \right )^{n-x}\\
+=& \sum_{x=1}^{n } \frac{n!}{\left ( x-2 \right )!\left ( n-x \right )!}p^{x}\left ( 1-p \right )^{n-x}\\
+=& n \left(n-1 \right)p^2 \sum_{x=1}^{n } \frac{\left(n-2 \right)!}{\left ( x-2 \right )!\left ( n-x \right )!}p^{x-2}\left ( 1-p \right )^{n-x}.
+\end{align*}
+$$
+Note que en los pasos previos se escribió la suma a partir de dos porque los dos primeros términos on cero, se canceló $x \left(x-1 \right)$, y se factorizó $n \left(n-1 \right)p^2$. Sea $y=x-2$ y $m=n-2$; entonces:
+
+$$
+\begin{align*}
+E \left[X \left(X-1 \right) \right] =&  n \left(n-1 \right)p^2\sum_{y=0}^{m } \frac{m!}{y!\left ( m-y \right )!}p^{y}\left ( 1-p \right )^{m-y}.\\
+\end{align*}
+$$
+Pero $p \left(y; m, p \right)= \left[m!/y!\left(m-y \right)! \right]p^{y}\left(1-p \right)^{m-y}$ es la función de probabilidad de una variable aleatoria binomial $Y$ con parámetros $m=n-2$ y $p$; de esta manera $\sum_{y=0}^{m }p\left(y; m, p \right)=1 $. En consecuencia, 
+$$
+\begin{equation}
+E \left[X \left(X-1 \right) \right] = n \left(n-1 \right)p^2.
+\end{equation}
+$$
+
+De la ecuación \@ref(eq:varianza-alterna-binomial)
+$$
+E \left(X^2 \right)=  n \left(n-1 \right)p^2+np.
+$$
+
+De esta manera, la varianza de una variable aleatoria binomial, según la ecuación \@ref(eq:varianza2), es:
+$$
+\begin{align*}
+V(X)=&n \left(n-1 \right)p^2+np-n^2p^2\\
+=&np \left[ \left(n-1 \right)p + 1 - np \right]\\
+=&np \left(1-p \right).
+\end{align*}
+$$
+:::
+
+::: {.example #ejemplo-varianza-binomial name="Varianza de la Distribución Binomial"}
+Con respecto al ejemplo \@ref(exm:ejemplo-funcion-probabilidad-binomial), determine la varianza del número de artículos defectuosos encontardos en una muestra de 15 artículos tomados del proceso de producción.
+
+De acuerdo con el teorema \@ref(thm:varianza-binomial), la varianza de $X$ es:
+
+$$
+V(X)=np \left(1-p \right)=15 \cdot0,05 \left(1-0,05 \right)=0,7125.
+$$
+:::
+
+#### Función Genradora de Momentos de la Distribución Binomial {#funcion-generadora-momentos-binomial}
+La función generadora de momentos es un método alternativo para determinar los momentos ordinarios de una distribución de probabilidad determinada, por medio del teorema \@ref(thm:funcion-generadora-momentos). En el caso de la distribución binomial, la función generadora de momentos se indica en el siguienete teorema: 
+
+::: {#fgm-binomial .theorem name="Varianza de la Distribución Binomial"}
+La función generadora de momentos de la distribución binomial está dada por:
+$$
+\begin{equation}
+m_x \left(t \right)=\left[1+p \left(e^t-1 \right) \right].
+(\#eq:fgm-binomial)
+\end{equation}
+$$
+:::
+
+::: {#fgm-binomial .proof name="Función Generadora de Momentos de la Distribución Binomial"}
+De la definiciones \@ref(def:distribucion-binomial) y \@ref(def:funcion-generadora-momentos), se obtiene
+
+$$
+\begin{align*}
+m_x \left(t \right)=&  \sum_{x=0}^{n } e^{tx}\frac{n!}{x!\left ( n-x \right )!}p^{x}\left ( 1-p \right )^{n-x}\\
+=&  \sum_{x=0}^{n } \frac{n!}{x!\left ( n-x \right )!}(e^{t}p)^{x}\left ( 1-p \right )^{n-x}.\\
+\end{align*}
+$$
+Por el binomio de Newton, se sabe que la última sumatoria es la expansión de la expresión $\left[e^{t}p+ \left(1-p \right) \right]^n=\left[1+ p\left(e^t -1 \right) \right]^n$. En resumen,
+$$
+\begin{align*}
+m_x \left(t \right)=\left[1+ p\left(e^t -1 \right) \right]^n.\\
+\end{align*}
+$$
+:::
+
+Del teorema \@ref(thm:funcion-generadora-momentos), la media de la distribucón binomial es:
+$$
+\begin{equation}
+\frac{\mathrm{d}m_{x}\left ( t \right )}{\mathrm{d}t} \left|\begin{matrix}
+ \\
+t=0\\
+\end{matrix}={\mu}^{'}_1=\mu \right.
+\end{equation}
+$$
+La primera derivada de la función generadora de omentos es
+
+$$
+\frac{\mathrm{d}m_{x}\left ( t \right )}{\mathrm{d}t}=npe^t \left[1+ p\left(e^t -1 \right) \right]^{n-1}.
+$$
+Ahora, evaluando la primera derivada de la función generadora de momentos en $t=0$, se obtiene la media de la distribución binomial, como sigue:
+$$
+\begin{equation}
+\frac{\mathrm{d}m_{x}\left ( t \right )}{\mathrm{d}t} \left|\begin{matrix}
+ \\
+t=0\\
+\end{matrix}=\mu=npe^0 \left[1+ p\left(e^0 -1 \right) \right]^{n-1}=np. \right.
+\end{equation}
+$$
+Note que este resultado es el mismo dado en el teorema \@ref(thm:media-binomial). Se deja al lector que halle la varianza de la distribución binomial usando el método de la función generadora de momentos. 
+
+
+### Distribuciones Hipergeométrica {#distribuciones-hipergeometrica}
+
+::: {#distribucion-hipergeometrica .definition name="Distribución Hipergeométrica"}
+Dada una población que consta de $m$ objetos que poseen una característica de interés y $n$ que no la poseen. Si se selecciona una muestra aleatoria sin reemplazo de tamaño $k$ de estos objetos. Entonces la variable aleatoria $X$ que representa el número objetos en la muestra que tienen la característica de interés tiene _distribución hipergeométrica_, y se escribe $X \sim H \left(m, n, k \right)$, si su función de probabilidad viene dada por:
+$$
+p\left ( x;m,n, k \right )=\begin{cases}
+\frac{\binom{m}{x}\binom{n}{k-x}}{\binom{m+n}{k}} & \text{ si } x= \mathrm{máx} \left\{0, k - n  \right\} \leq x \leq \mathrm{mín} \left\{k, m  \right\} \\
+0 & \text{ en cualquier otro caso }.
+(\#eq:funcion-probabilidad-hipergeometrica)
+\end{cases}
+$$
+:::
+
+Los parámetros de la distribución hipergeométrica $m$, $n$ y $k$ definen una familia de distribuciones con función de probabilidad determinada por la ecuación \@ref(eq:funcion-probabilidad-hipergeometrica). En la figura \@ref(fig:grafico-distribucion-hipergeometrica) se muestran las gráficas de \@ref(eq:funcion-probabilidad-hipergeometrica) para distintas combinaciones de $m$, $n$ y $k$.
+
+La función `dhyper(x, m, n, k, log = FALSE)` de la distribución base de `r colorize("R", "blue")` permite evaluar la función de probabilidad de la distribución hipergeométrica dada por la ecuación \@ref(eq:funcion-probabilidad-hipergeometrica).
+
+```{r grafico-distribucion-hipergeometrica, fig.cap = "Gráfica de la función de probabilidad hipergeométrica para distintos valores de  $m$, $n$ y $k$", class.source = "watch-out"}
+m1 <- 10
+n1 <- 90
+k1 <- 5
+x1 <- max(0, k1 - n1):min(k1, m1)
+px1 <- dhyper(x = x1, m = m1, n = n1, k = k1, log = FALSE)
+m2 <- 10
+n2 <- 90
+k2 <- 10
+x2 <- max(0, k2 - n2):min(k2, m2)
+px2 <- dhyper(x = x2, m = m2, n = n2, k = k2, log = FALSE)
+m3 <- 10
+n3 <- 90
+k3 <- 15
+x3 <- max(0, k3 - n3):min(k3, m3)
+px3 <- dhyper(x = x3, m = m3, n = n3, k = k3, log = FALSE)
+plot_ly(alpha = 0.5) %>%
+  add_segments(
+    x = x1, y = ~ rep(x = 0, times = length(x1)),
+    xend = x1, yend = ~px1,
+    color = I("red"), showlegend = TRUE,
+    name = "m = 10, n = 90, k = 5"
+  ) %>%
+  add_markers(
+    x = x1, y = ~px1,
+    color = I("red"), showlegend = TRUE,
+    name = "m = 10, n = 90, k = 5"
+  ) %>%
+  add_segments(
+    x = x2, y = ~ rep(x = 0, times = length(x2)),
+    xend = ~x2, yend = ~px2,
+    color = I("blue"), showlegend = TRUE,
+    name = "m = 10, n = 90, k = 10"
+  ) %>%
+  add_markers(
+    x = ~x2, y = ~px2,
+    color = I("blue"), showlegend = TRUE,
+    name = "m = 10, n = 90, k = 10"
+  ) %>%
+  add_segments(
+    x = ~x3, y = ~ rep(x = 0, times = length(x3)),
+    xend = ~x3, yend = ~px3,
+    color = I("green"), showlegend = TRUE,
+    name = "m = 10, n = 90, k = 15"
+  ) %>%
+  add_markers(
+    x = ~x3, y = ~px3,
+    color = I("green"), showlegend = TRUE,
+    name = "m = 10, n = 90, k = 15"
+  ) %>%
+  layout(
+    xaxis = list(
+      title = "x",
+      zeroline = F,
+      showgrid = T,
+      showline = T,
+      linewidth = 1,
+      linecolor = "black",
+      showticklabels = TRUE,
+      tickwidth = 0.5
+    ),
+    yaxis = list(
+      title = "p(x)",
+      showgrid = T,
+      showline = T,
+      linewidth = 1,
+      linecolor = "black",
+      showticklabels = TRUE,
+      tickwidth = 0.5
+    ),
+    showlegend = TRUE
+  ) %>%
+  config(locale = "es")
+```
+
+::: {.example #ejemplo-funcion-probabilidad-hipergeometrica name="Función de Probabilidad Hipergeométrica"}
+Se tiene un lote de 100 lamparas, de las cuales el 5\% están defectuosas. Si se toma una muestra aleatoria sin reemplazo de 10 de estas lamparas. Determine la probabilidad de que dos estén defectuosas.
+
+
+Dado que el lote de lamparas están particionadas en dos grupos, las defectuosas (característica de interés) y las no defectuosas. Además, la muestra se ha tomado del lote sin reemplazo. Si se define la variable $X$ como el número de artículos defectuosos encontrados en la muestra, por la definición \@ref(def:distribucion-hipergeometrica), $X$ tiene distribución hipergeométrica con parámetros $m = 100 \cdot0,05 = 5$, $n = 95$ y $k = 10 $, es decir, $X \sim H\left(m = 5 , n = 95, k = 10 \right)$. Por lo tanto, de acuerdo con la ecuación \@ref(eq:funcion-probabilidad-hipergeometrica), la probabilidad de encontrar dos lamparas defectuosas en la muestra es: 
+
+$$
+P\left(X = 2 \right)=p\left ( x = 2;m = 100,n = 10, k =5 \right )=
+\frac{\binom{5}{2}\binom{100-5}{10-2}}{\binom{100}{10}} \approx `r formato(dhyper(x = 2, m = 5, n = 95, k = 10, log = FALSE))`.
+$$
+En `r colorize("R", "blue")`, el resultado anterior se puede conseguir con el siguiente trozo de código.
+
+```{r}
+dhyper(x = 2, m = 5, n = 95, k = 10, log = FALSE)
+```
+
+La figura \@ref(fig:funcion-probabilidad-hipergeometrica) muestra la gráfica de la función de probabilidad del número de lamparas defectuosas en una muestra de tamaño 10 ($X$). La cual, como se sabe, tiene distribución hipergeométrica con parámetros $m = 5$, $n = 95$, $k = 10$. Es decir, $X \sim H \left(m = 5, n = 95, k = 10 \right)$. 
+
+```{r funcion-probabilidad-hipergeometrica, fig.cap = "Gráfica de la función de probabilidad hipergeométrica para $m = 5$, $n = 95$ y $k = 5$", class.source = "watch-out"}
+plot_ly(alpha = 0.5) %>%
+  add_segments(
+    x = 0:5, 
+    y = ~rep(x = 0, times = length(0:5)),
+    xend = 0:5, 
+    yend = ~dhyper(
+      x = 0:5, m = 5, n = 95, k = 10, log = FALSE
+    ), 
+    color = I("red"), 
+    showlegend = TRUE,
+    name = "m = 5, n = 95, k = 10"
+  ) %>%
+  add_markers(
+    x = 0:5, 
+    y = ~dhyper(
+      x = 0:5, m = 5, n = 95, k = 10, log = FALSE
+    ), 
+    color = I("red"), showlegend = TRUE,
+    name = "m = 5, n = 95, k = 10"
+  ) %>%  
+  layout(
+    xaxis = list(
+      title = "x", 
+      zeroline = F, 
+      showgrid = T,
+      showline = T, 
+      linewidth = 1, 
+      linecolor = 'black',
+      showticklabels = TRUE,
+      tickwidth = 0.5
+    ),
+    yaxis = list(
+      title = "p(x)",
+      showgrid = T,
+      showline = T, 
+      linewidth = 1, 
+      linecolor = 'black',
+      showticklabels = TRUE,
+      tickwidth = 0.5
+    ),
+    showlegend = TRUE
+  ) %>%
+  config(locale = "es")
+```
+:::
+
+#### Función de Distribución Acumulativa de Probabilidad Hipergeométrica {#distribucion-acumulada-hipergeometrica}
+
+La probabilidad de que en una muestra de tamaño $k$, la cual ha sido extraída sin remplazo de una población constituida por $m$ objetos que poseen una característica de interés y $n$ que no la poseen, a lo más $x$ objetos tengan la característica de interés representa la función de distribución acumulativa de una variable aleatoria con distribución hipergeométrica. Ésta función, de acuerdo con las definiciones  \@ref(def:funcion-acumulativa-probabilidad) y  \@ref(def:distribucion-hipergeometrica), se enuncia de la siguiente manera:
+
+::: {#distribucion-acumulada-hipergeometrica .definition name="Función de Distribución Acumulativa de Probabilidad Hipergeométrica"}
+Sea $X$ una variable aleatoria con distribución hipergeométrica. Entonces, la _función de distribución acumulativa de probabilidad hipergeométrica_ viene dada por:
+$$
+F\left ( x;n,p \right )=\begin{cases}
+0 & \text{ si } x < \mathrm{máx} \left\{0, k - n  \right\}\\
+ \sum_{t=\mathrm{máx} \left\{0, k - n  \right\}
+ }^{x } \frac{\binom{m}{t}\binom{n}{k-t}}{\binom{m+n}{k}} & \text{ si } x= \mathrm{máx} \left\{0, k - n  \right\} \leq x \leq \mathrm{mín} \left\{k, m  \right\}\\
+1 & \text{ si } x > \mathrm{mín} \left\{k, m  \right\}.
+(\#eq:funcion-acumulativa-hipergeometrica)
+\end{cases}
+$$
+:::
+
+La figura \@ref(fig:grafico-acumulativa-hipergeometrica) muestra la función de distribución acumulativa de probabilidad para una variable hipergeométrica para distintos valores de los parámetros $m$, $n$ y $k$.
+
+La función `phyper(q, m, n, k, lower.tail = TRUE, log.p = FALSE)` de la distribución base de `r colorize("R", "blue")` permite evaluar la función de distribución acumulativa de probabilidad hipergeométrica dada por la ecuación \@ref(eq:funcion-acumulativa-hipergeometrica).
+
+####################################################
+
+```{r grafico-acumulativa-hipergeometrica, fig.cap = "Gráfica de la función de distribución acumulativa de probabilidad hipeergeométrica para $m = 10$ y $n = 90$ y $k = 5, 10, 15$", class.source = "watch-out"}
+plot_ly(alpha = 0.5) %>%
+  add_segments(
+    x = ~c(first(x1) -3, x1), 
+    y = ~phyper(
+      c(first(x1) -3, x1), m = m1, n = n1, k = k1
+    ),
+    xend = ~c(x1, last(x1) + 3), 
+    yend = ~phyper(
+      c(first(x1) -3, x1), m = m1, n = n1, k = k1
+    ), 
+    color = I("red"),
+    name = "m = 10, n = 90, k = 5",
+    showlegend = TRUE
+  ) %>%
+  add_markers(
+    x = ~x1, 
+    y = ~phyper(x1, m = m1, n = n1, k = k1), 
+    color = I("red"),
+    name = "m = 10, n = 90, k = 5",
+    showlegend = TRUE
+  ) %>%
+  add_markers(
+    x = ~x1[-1], 
+    y = ~phyper(x1[-last(x1)], m = m1, n = n1, k = k1), 
+    color = I("red"),
+    marker = list(symbol = "circle-open"),
+    name = "m = 10, n = 90, k = 5",
+    showlegend = TRUE
+  )  %>%
+  add_segments(
+    x = ~c(first(x2) -3, x2), 
+    y = ~phyper(
+      c(first(x2) -3, x2), m = m2, n = n2, k = k2
+    ),
+    xend = ~c(x2, last(x2) + 3), 
+    yend = ~phyper(
+      c(first(x2) -3, x2), m = m2, n = n2, k = k2
+    ), 
+    color = I("blue"),
+    name = "m = 10, n = 90, k = 10",
+    showlegend = TRUE
+  ) %>%
+  add_markers(
+    x = ~x2, 
+    y = ~phyper(x2, m = m2, n = n2, k = k2), 
+    color = I("blue"),
+    name = "m = 10, n = 90, k = 10",
+    showlegend = TRUE
+  ) %>%
+  add_markers(
+    x = ~x2[-1], 
+    y = ~phyper(
+      x2[-last(x2)], m = m2, 
+      n = n2, k = k2
+    ), 
+    color = I("blue"),
+    marker = list(symbol = "circle-open"),
+    name = "m = 10, n = 90, k = 10",
+    showlegend = TRUE
+  )  %>%
+  add_segments(
+    x = ~c(first(x3) -3, x3), 
+    y = ~phyper(
+      c(first(x3) -3, x3), m = m3, n = n3, k = k3
+    ),
+    xend = ~c(x3, last(x3) + 3), 
+    yend = ~phyper(
+      c(first(x3) -3, x3), m = m3, n = n3, k = k3
+    ), 
+    color = I("green"),
+    name = "m = 10, n = 90, k = 15",
+    showlegend = TRUE
+  ) %>%
+  add_markers(
+    x = ~x3, 
+    y = ~phyper(x3, m = m3, n = n3, k = k3), 
+    color = I("green"),
+    name = "m = 10, n = 90, k = 15",
+    showlegend = TRUE
+  ) %>%
+  add_markers(
+    x = ~x3[-1], 
+    y = ~phyper(
+      x3[-last(x3)], m = m3, 
+      n = n3, k = k3
+    ), 
+    color = I("green"),
+    marker = list(symbol = "circle-open"),
+    name = "m = 10, n = 90, k = 15",
+    showlegend = TRUE
+  )  %>%
+  layout(
+    xaxis = list(
+      title = "x", 
+      zeroline = F, 
+      showgrid = T,
+      showline = T, 
+      linewidth = 1, 
+      linecolor = 'black',
+      showticklabels = TRUE,
+      tickwidth = 0.5
+    ),
+    yaxis = list(
+      title = "F(x)",
+      showgrid = T,
+      showline = T, 
+      linewidth = 1, 
+      linecolor = 'black',
+      showticklabels = TRUE,
+      tickwidth = 0.5
+    ),
+    showlegend = TRUE
+  ) %>%
+  config(locale = "es")
+```
+
+::: {.example #ejemplo-distribucion-acumulada-hipergeometrica name="Función de Distribución Acumulativa de Probabilidad Hipergeométrica"}
+Suponga en el ejemplo \@ref(exm:ejemplo-funcion-probabilidad-hipergeometrica) que se desea determinar la probabilidad de que en una muestra aparezcan más de tres lamparas defectuosas.
+
+La probabilidad de que en la muestra aparezcan menos de dos lamparas defectuosas es:
+
+$$
+\begin{align*}
+P \left(X < 2 \right) =& P \left(X \leq 1
+\right)=   F \left( x = 1;m = 5,n = 95, k = 10 \right) = \sum_{t=0
+ }^{x } \frac{\binom{5}{t}\binom{95}{5-t}}{\binom{5+95}{10}}\\
+=& \frac{\binom{5}{0}\binom{95}{5}}{\binom{100}{10}}+ \frac{\binom{5}{1}\binom{95}{4}}{\binom{100}{10}}\\ \approx &  `r formato(phyper(q = 1, m = 5, n = 95, k = 10, lower.tail = TRUE, log.p = FALSE))`.
+\end{align*}
+$$
+
+El siguiente script de `r colorize("R", "blue")` permite obtener el resultado anterior.
+
+```{r}
+phyper(
+  q = 1, m = 5, n = 95, k = 10, lower.tail = TRUE, log.p = FALSE
+)
+```
+:::
+
+La figura \@ref(fig:grafico-acumulativa-hipergeometrica2) muestra la gráfica de la función de distribución acumulativa del número de lamparas defectuosas en una muestra de tamaño 10 ($X$). La cual, como se sabe, tiene distribución hipergeométrica con parámetros $m = 5$, $n = 95$, $k = 10$. Es decir, $X \sim H \left(m = 5, n = 95, k = 10 \right)$. 
+
+```{r grafico-acumulativa-hipergeometrica2, fig.cap = "Gráfica de la función de distribución acumulativa de probabilidad hipergeométrica para $m = 5$, $n = 95$ y $k = 10$", class.source = "watch-out"}
+plot_ly(alpha = 0.5) %>%
+  add_segments(
+    x = ~c(-3, 0:5), 
+    y = ~phyper(c(-3, 0:5), m = 5, n = 95, k = 10),
+    xend = ~c(0:5, 8), 
+    yend = ~phyper(c(-3, 0:5), m = 5, n = 95, k = 10), 
+    color = I("red"),
+    name = "m = 5, n = 95, k = 10",
+    showlegend = TRUE
+  ) %>%
+  add_markers(
+    x = ~0:5, 
+    y = ~phyper(0:5, m = 5, n = 95, k = 10), 
+    color = I("red"),
+    name = "m = 5, n = 95, k = 10",
+    showlegend = TRUE
+  ) %>%
+  add_markers(
+    x = ~c(0:5)[-1], 
+    y = ~phyper(0:4, m = 5, n = 95, k = 10), 
+    color = I("black"),
+    marker = list(symbol = "circle-open"),
+    name = "m = 5, n = 95, k = 10",
+    showlegend = TRUE
+  )  %>%
+  layout(
+    xaxis = list(
+      title = "x", 
+      zeroline = F, 
+      showgrid = T,
+      showline = T, 
+      linewidth = 1, 
+      linecolor = 'black',
+      showticklabels = TRUE,
+      tickwidth = 0.5
+    ),
+    yaxis = list(
+      title = "F(x)",
+      showgrid = T,
+      showline = T, 
+      linewidth = 1, 
+      linecolor = 'black',
+      showticklabels = TRUE,
+      tickwidth = 0.5
+    ),
+    showlegend = TRUE
+  ) %>%
+  config(locale = "es")
+```
+
+La tabla \@ref(tab:distribucion-hipergeometrica) muestra la función de probabilidad y la función de distribución acumulativa de probabilidad de una variable binomial con parámetros $n = 15$ y $p = 0,05$.
+
+```{r distribucion-hipergeometrica, class.source="watch-out", class.source = "watch-out"}
+da_ej2 <- data.frame(
+  x = 0:5,
+  px = dhyper(x = 0:5, m = 5, n = 95, k = 10, log = FALSE),
+  Fx = phyper(
+    q = 0:5, m = 5, n = 95, k = 10, lower.tail = TRUE, 
+    log.p = FALSE
+  )
+) 
+knitr::kable(
+  da_ej2,
+  booktabs = TRUE,
+  row.names = TRUE,
+  digits = 4,
+  col.names = c(
+    "$X_i$", 
+    "$p\\left(x_i \\right)$", 
+    "$F\\left(x_i \\right)$"
+  ),
+  align = c("ccc"),
+  format.args = list(decimal.mark = ",", big.mark = "."),
+  caption = "\\label{tab2:distribucion-acumulada2}Distribución de probabilidad del número de lamparas defectuosos en una muestra sin reemplazo de 10 lamparas",
+  escape = FALSE
+) %>%
+  kable_styling(
+    bootstrap_options = "striped",
+    full_width = FALSE,
+    fixed_thead = T
+  ) %>%
+  kable_classic_2()
+```
+
+#### Media de la Distribución Hipergeométrica {#media-hipergeometrica}
+
+La media, promedio o esperanza matemática de la distribución hipergeométrica es el número de objetos que se espera aparezcan una muestra de tamaño $k$, la cual ha sido extraída de una población que contiene $m$ objetos que poseen la característica de interés mientras que el resto $n$ no posee tal característica. De anera formar esto se expresa de la siguiente manera:
+
+::: {#media-binomial .theorem name="Media de la Distribución Binomial"}
+Sea $X$ una variable aleatoria con distribución hipergeométrica. Entonces, la _media_ de $X$ viene dada por:
+$$
+\begin{equation}
+E \left(X \right)= \mu = \frac{mk}{m+n}.
+(\#eq:media-hipergeometrica)
+\end{equation}
+$$
+:::
+
+::: {#media-hipergeometrica .proof name="Media de la Distribución Binomial"}
+Note que en la función de probabilidad de la distribución hipergeométrica, dada por la ecuación \@ref(eq:funcion-probabilidad-hipergeometrica), los valores mínimos y máximos del recorrido de la variable dependen de los parámetros $m$, $n$ y $k$. En tal sentido se hará una demostración parcial del teorema suponiendo que $n > k$ y $m > k$. Como consecuencia de estas suposiciones la función de probabilidad hipergeométrica estaría dada de la siguiente manera:
+
+$$
+p\left ( x;m,n, k \right )=\begin{cases}
+\frac{\binom{m}{x}\binom{n}{k-x}}{\binom{m+n}{k}} & \text{ si } x= 0, 1, 2, \dotsc, k \\
+0 & \text{ en cualquier otro caso }.
+(\#eq:funcion-probabilidad-hipergeometrica1)
+\end{cases}
+$$
+Luego, por las definición de esperanza matemática \@ref(def:esperanza) y la función de probabilidad  hipergeométrica, que en ete caso se reduce a la ecuación \@ref(eq:funcion-probabilidad-hipergeometrica1), la esperanza de una variable $X$ con distribución hipergeométrica, bajo las condiciones dadas se obtiene como sigue
+
+$$
+\begin{align*}
+E \left(X \right) =&  \sum_{x=0}^{k } x\frac{\binom{m}{x}\binom{n}{k-x}}{\binom{m+n}{k}}\\
+=& \sum_{x=1}^{k } x \frac{\frac{m!}{x!\left ( m-x \right )!}\binom{n}{k-x}}{\binom{m+n}{k}}\\
+=& m\sum_{x=1}^{k }  \frac{\frac{(m-1)!}{(x-1)!\left ( m-x \right )!}\binom{n}{k-x}}{\binom{m+n}{k}}\\
+=& m\sum_{x=1}^{k }  \frac{\binom{m-1}{x-1}\binom{n}{k-x}}{\binom{m+n}{k}}\\
+\end{align*}
+$$
+Como puede demostrarse que:
+$$
+\binom{m+n}{k}=\frac{m+n}{k}\binom{m+n-1}{k-1}.
+$$
+Entonces,
+$$
+\begin{align*}
+E \left(X \right) =& \frac{m}{\frac{m+n}{k}}\sum_{x=1}^{k }  \frac{\binom{m-1}{x-1}\binom{n}{k-x}}{\binom{m+n-1}{k-1}}.\\
+\end{align*}
+$$
+Si $r=k-1$, $s=m-1$ y $y=x-1$, entonces:
+
+$$
+\begin{align*}
+E \left(X \right) =& \frac{mk}{m+n}\sum_{y=0}^{r }  \frac{\binom{s}{y}\binom{n}{r-y}}{\binom{s+n}{r}}.\\
+\end{align*}
+$$
+La suma es igual dado dado que es la suma de una función de probabilidad hipergeométrica con parámetros $s$, $n$ y $r$. Por lo que quea demostrado que,
+$$
+\begin{align*}
+E \left(X \right) =& \frac{mk}{m+n}.\\
+\end{align*}
+$$
+Esta demostración se ha realizado ajo las restricción de los parámetros expuesta al principio, se deja como ejercicio al estudiante demostrar para los demás casos.
+:::
+
+::: {.example #ejemplo-media-distribucion-binomial name="Media de la Distribución Binomial"}
+Con respecto al el ejemplo \@ref(exm:ejemplo-funcion-probabilidad-hipergeometrica), determine el número de lamparas defectuosas que se esperaría encontrar en una muestra de de 10 de estas lamparas.
+
+De acuerdo con el teorema \@ref(thm:media-hipergeométrica), se esperaría encontrar
+$$
+\begin{align*}
+E \left(X \right) =& \frac{mk}{m+n}=\frac{5 \cdot 10}{5+95}=0,5.\\
+\end{align*}
+$$
+Ahora, si se toma una muestra de 60 lamparas ($k=60$) del lote, se esperaría encontrar 
+$$
+\begin{align*}
+E \left(X \right) =& \frac{mk}{m+n}=\frac{5 \cdot 60}{5+95}=3.\\
+\end{align*}
+$$
+3 lamparas defectuosos en la muestra.
 :::
 
 #### Varianza de la Distribución Binomial {#varianza-binomial}
@@ -1168,19 +1843,10 @@ t=0\\
 $$
 Note que este resultado es el mismo dado en el teorema \@ref(thm:media-binomial). Se deja al lector que halle la varianza de la distribución binomial usando el método de la función generadora de momentos. 
 
+##########################################
 
-### Distribuciones Hipergeométrica {#distribuciones-hipergeometrica}
 
-::: {#distribucion-hipergeometrica .definition name="Distribución Hipergeométrica"}
-Sea $X$ una variable aleatoria que representa el número de éxitos en $n$ ensayos y $p$ la probabilidad de éxito en cualquiera de éstos. Se dice que $X$ tiene una _distribución binomial_ con parámetros $n$ y $p$, y se escribe $X\sim Bin\left ( n, p \right )$, con función de probabilidad.
-$$
-p\left ( x;n,p \right )=\begin{cases}
-\binom{n}{x}p^{x}\left ( 1-p \right )^{n-x} & \text{ si } x= 0, 1, 2, \dotsc, n;\: 0\leq p\leq 1 \text{ y }n \in \mathbb{N}\\
-0 & \text{ en cualquier otro caso }.
-(\#eq:funcion-probabilidad-binomial)
-\end{cases}
-$$
-:::
+
 
 
 ### Distribuciones de Poisson {#distribuciones-poisson}

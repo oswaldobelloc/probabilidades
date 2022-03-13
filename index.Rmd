@@ -64,7 +64,7 @@ colorize <- function(x, color) {
 formato <- function(x) {
   if (!is.numeric(x)) stop("La entrada debe ser numérica!")
   format(
-    round(x, digits = 4),
+    round(x, digits = 6),
     mode = "double",
     big.mark = ".",
     decimal.mark = ","
