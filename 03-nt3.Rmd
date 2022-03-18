@@ -624,14 +624,14 @@ $$
 
 En muchas situaciones cundo se trabaja con variables aleatorias se definen transformaciones lineales sobre estas variables. En tales casos, si se conoce la función generadora de momentos de estas variables se pueden obtener las funciones generadoras de momentos de esas transformaciones por medio del teorema que sigue:
 
-::: {#funcion-generadora-momentos .theorem}
+::: {#propiedades-funcion-generadora-momentos .theorem}
 Si $X$ es una variable aleatoria con función generadora de momentos $m_x \left(t \right)$. Entonces,
 $$
 \begin{align*}
 i)&\:m_{x+a}\left ( t \right )= E\left [ e^{\left ( x+a \right )t} \right ]=e^{at} \cdot m_{x}\left ( t \right )\\
 ii)&\: m_{bx}\left ( t \right )= E\left ( e^{bxt} \right )=m_{x}\left ( bt \right )\\
 iii)&\: m_{\frac{x+a}{b}} =E\left [ e^{\left ( \frac{x+a}{b} \right )t} \right ] =e^{\frac{a}{b}t} \cdot m_{x}\left ( \frac{t}{b} \right ).
-(\#eq:teorema-funcion-generadora-momentos)
+(\#eq:propiedades-teorema-funcion-generadora-momentos)
 \end{align*}
 $$
 :::
@@ -717,7 +717,7 @@ plot_ly(alpha = 0.5) %>%
 ::: {.example #ejemplo-funcion-probabilidad-binomial name="Función de Probabilidad Binomial"}
 Todos los días se seleccionan, de manera aleatoria, 15 artículos de un proceso de producción con el propósito de vigilar la fracción de artículos defectuosos que produce el proceso. Con base en información pasada, la probabilidad de que el proceso produzca un artículo defectuoso es 0,05. Determine la probabilidad de que se encuentren dos artículos defectuosos en la muestra.
 
-Dado que $X$ representa el número de artículo defectuosos encontrados en la muestra de tamaño 15 ($n=15$) y que la probabilidad de encontrar un artículo defectuoso en la muestra es 0,05 ($p = 0,05$). Entonces, de acuerdo con la definición \@ref(def:distribucion-binomial), $X$ tiene distribución binomial con parámetros $n = 15$ y $p = 0,05$, es decir, $X \sim Bin\left(n = 15, p = 0,05 \right)$. Por lo tanto, de acuerdo con la ecuación \@ref(eq:funcion-probabilidad-binomial),
+Dado que $X$ representa el número de artículo defectuosos encontrados en una muestra de tamaño 15 ($n=15$) y que la probabilidad de que cualquier artículo en la muestra sea defectuoso es constante e igual a 0,05 ($p = 0,05$). Entonces, de acuerdo con la definición \@ref(def:distribucion-binomial), $X$ tiene distribución binomial con parámetros $n = 15$ y $p = 0,05$, es decir, $X \sim Bin\left(n = 15, p = 0,05 \right)$. Por lo tanto, de acuerdo con la ecuación \@ref(eq:funcion-probabilidad-binomial),
 
 $$
 P\left(X = 2 \right)=p\left ( x = 2;n = 15,p = 0,05 \right )=
@@ -1087,7 +1087,7 @@ Sea $X$ una variable aleatoria con distribución binomial. Entonces, la _varianz
 $$
 \begin{equation}
 V \left(X \right)=\sigma^2 = np \left(1-p \right).
-(\#eq:media-binomial)
+(\#eq:varianza-binomial)
 \end{equation}
 $$
 :::
@@ -1166,7 +1166,7 @@ $$
 #### Función Genradora de Momentos de la Distribución Binomial {#funcion-generadora-momentos-binomial}
 La función generadora de momentos es un método alternativo para determinar los momentos ordinarios de una distribución de probabilidad determinada, por medio del teorema \@ref(thm:funcion-generadora-momentos). En el caso de la distribución binomial, la función generadora de momentos se indica en el siguienete teorema: 
 
-::: {#fgm-binomial .theorem name="Varianza de la Distribución Binomial"}
+::: {#fgm-binomial .theorem name="Función Generadora de Momentos de la Distribución Binomial"}
 La función generadora de momentos de la distribución binomial está dada por:
 $$
 \begin{equation}
@@ -1202,7 +1202,7 @@ t=0\\
 \end{matrix}={\mu}^{'}_1=\mu \right.
 \end{equation}
 $$
-La primera derivada de la función generadora de omentos es
+La primera derivada de la función generadora de momentos es
 
 $$
 \frac{\mathrm{d}m_{x}\left ( t \right )}{\mathrm{d}t}=npe^t \left[1+ p\left(e^t -1 \right) \right]^{n-1}.
@@ -1559,8 +1559,8 @@ plot_ly(alpha = 0.5) %>%
     showlegend = TRUE
   ) %>%
   add_markers(
-    x = ~c(0:5)[-1], 
-    y = ~phyper(0:4, m = 5, n = 95, k = 10), 
+    x = ~c(0:5), 
+    y = ~phyper(c(-3, 0:4), m = 5, n = 95, k = 10), 
     color = I("black"),
     marker = list(symbol = "circle-open"),
     name = "m = 5, n = 95, k = 10",
@@ -1627,7 +1627,7 @@ knitr::kable(
 
 #### Media de la Distribución Hipergeométrica {#media-hipergeometrica}
 
-La media, promedio o esperanza matemática de la distribución hipergeométrica es el número de objetos que se espera aparezcan una muestra de tamaño $k$, la cual ha sido extraída de una población que contiene $m$ objetos que poseen la característica de interés mientras que el resto $n$ no posee tal característica. De manera formal, esto se expresa de la siguiente manera:
+La media, promedio o esperanza matemática de la distribución hipergeométrica es el número de objetos con la característica de interés, que se espera, aparezcan en una muestra de tamaño $k$, la cual ha sido extraída de una población que contiene $m$ objetos que poseen la característica de interés mientras que el resto $n$ no posee tal característica. De manera formal, esto se expresa de la siguiente manera:
 
 ::: {#media-hipergeometrica .theorem name="Media de la Distribución Hipergeoétrica"}
 Sea $X$ una variable aleatoria con distribución hipergeométrica. Entonces, la _media_ de $X$ viene dada por:
@@ -1649,14 +1649,14 @@ p\left ( x;m,n, k \right )=\begin{cases}
 (\#eq:funcion-probabilidad-hipergeometrica2)
 \end{cases}
 $$
-Luego, por las definición de esperanza matemática \@ref(def:esperanza) y la función de probabilidad  hipergeométrica, que en ete caso se reduce a la ecuación \@ref(eq:funcion-probabilidad-hipergeometrica2), la esperanza de una variable $X$ con distribución hipergeométrica, bajo las condiciones dadas se obtiene como sigue
+Luego, por las definición de esperanza matemática \@ref(def:esperanza) y la función de probabilidad  hipergeométrica, que en ete caso se reduce a la ecuación \@ref(eq:funcion-probabilidad-hipergeometrica2), la esperanza de una variable $X$ con distribución hipergeométrica, bajo las condiciones dadas se obtiene como sigue.
 
 $$
 \begin{align*}
 E \left(X \right) =&  \sum_{x=0}^{k } x\frac{\binom{m}{x}\binom{n}{k-x}}{\binom{m+n}{k}}\\
 =& \sum_{x=1}^{k } x \frac{\frac{m!}{x!\left ( m-x \right )!}\binom{n}{k-x}}{\binom{m+n}{k}}\\
 =& m\sum_{x=1}^{k }  \frac{\frac{(m-1)!}{(x-1)!\left ( m-x \right )!}\binom{n}{k-x}}{\binom{m+n}{k}}\\
-=& m\sum_{x=1}^{k }  \frac{\binom{m-1}{x-1}\binom{n}{k-x}}{\binom{m+n}{k}}\\
+=& m\sum_{x=1}^{k }  \frac{\binom{m-1}{x-1}\binom{n}{k-x}}{\binom{m+n}{k}}.\\
 \end{align*}
 $$
 Como puede demostrarse que:
@@ -1684,10 +1684,10 @@ $$
 Esta demostración se ha realizado ajo las restricción de los parámetros expuesta al principio, se deja como ejercicio al estudiante demostrar para los demás casos.
 :::
 
-::: {.example #ejemplo-media-distribucion-binomial name="Media de la Distribución Binomial"}
+::: {.example #ejemplo-media-distribucion-hipergeometrical name="Media de la Distribución Binomial"}
 Con respecto al el ejemplo \@ref(exm:ejemplo-funcion-probabilidad-hipergeometrica), determine el número de lamparas defectuosas que se esperaría encontrar en una muestra de de 10 de estas lamparas.
 
-De acuerdo con el teorema \@ref(thm:media-hipergeométrica), se esperaría encontrar
+De acuerdo con el teorema \@ref(thm:media-hipergeometrica), se esperaría encontrar
 $$
 \begin{align*}
 E \left(X \right) =& \frac{mk}{m+n}=\frac{5 \cdot 10}{5+95}=0,5.\\
@@ -1699,7 +1699,7 @@ $$
 E \left(X \right) =& \frac{mk}{m+n}=\frac{5 \cdot 60}{5+95}=3.\\
 \end{align*}
 $$
-3 lamparas defectuosos en la muestra.
+lamparas defectuosos en la muestra.
 :::
 
 #### Varianza de la Distribución Hipergeométrica {#varianza-hipergoemetrica}
@@ -1715,7 +1715,7 @@ V \left(X \right)=\sigma^2 = \frac{mkn\left(m+n-k\right)}{\left(m+n \right)^2\le
 $$
 :::
 
-::: {#varianza-binomial .proof name="varianza de la Distribución Binomial"}
+::: {#varianza-binomial .proof name="varianza de la Distribución Hipergeométrica"}
 La demostración de este teorema, al igual que en el teorema de la media de la distribución hipergeométrica \@ref(thm:media-hipergeometrica), se hará asumiendo que $n > k$ y $m > k$. La demostración en los otros casos se deja como ejercicio al lector.
 
 De la ecución \@ref(eq:varianza2) se sabe que $V \left(X \right) = E \left(X^2 \right) - \mu^2$. Como $\mu=\frac{mk}{m+n}$, solo faltaría calcular $E \left(X^2 \right)$. Pero calcular este parámetro usando el teorema \@ref(thm:esperanza-transformacion) y la función de probabilidad, que para este caso está dada por la ecuación \@ref(eq:funcion-probabilidad-hipergeometrica2) implica encontrar la convergencia de la siguiente expresión
@@ -1795,7 +1795,6 @@ Pero,
 $$
 p \left(y; s, n, r\right)= \frac{\binom{s}{y}\binom{n}{r-y}}{\binom{s+n}{r}}
 $$ 
-
 es la función de probabilidad de una variable aleatoria hipergeométrica $Y$ con parámetros $s$, $n$ y $r$; de esta manera $\sum_{y=0}^{r }p\left(y; s, n, r \right)=1$. En consecuencia, 
 $$
 \begin{align*}
@@ -1803,12 +1802,10 @@ E \left[X \left(X-1 \right) \right] =& \frac{m\left(m-1 \right)}{\left( \frac{m+
 =& \frac{mk\left(m-1 \right)\left(k-1 \right)}{\left(m+n \right)\left(m+n-1 \right)}\\
 \end{align*}
 $$
-
 De la ecuación \@ref(eq:varianza-alterna-binomial)
 $$
 E \left(X^2 \right)=  \frac{mk\left(m-1 \right)\left(k-1 \right)}{\left(m+n \right)\left(m+n-1 \right)}+\frac{mk}{m+n}.
 $$
-
 De esta manera, la varianza de una variable aleatoria binomial, según la ecuación \@ref(eq:varianza2) es:
 $$
 \begin{align*}
@@ -1820,7 +1817,7 @@ V(X)=&\frac{mk\left(m-1 \right)\left(k-1 \right)}{\left(m+n \right)\left(m+n-1 \
 $$
 :::
 
-::: {.example #ejemplo-varianza-binomial name="Varianza de la Distribución Binomial"}
+::: {.example #ejemplo-varianza-binomial name="Varianza de la Distribución Hipergeométrica"}
 Con respecto al ejemplo \@ref(exm:ejemplo-funcion-probabilidad-binomial), determine la varianza del número de lamparas defectuosas.
 
 De acuerdo con el teorema \@ref(thm:varianza-hipergeometrica), la varianza de $X$ es:
@@ -1835,9 +1832,598 @@ $$
 
 Otra forma de obtener la media y la varianza es a través de la función generadora de momentos de la distribución hipergeométrica, pero dado las dificultades que implica la derivación de esta función para la distribución en cuestión, no se considerará en este libro.
 
-### Distribuciones de Poisson {#distribuciones-poisson}
+
+### Distribució de Poisson {#distribuciones-poisson}
+La distribución de Poisson debe su nombre a Simeón Denis Poisson, probabilista francés del siglo XIX quien fue el primero en describirla. Es una distribución discreta de probabilidad muy útil ya que se aplica para describir la ocurrencia de fenómenos que ocurren a una tasa constante en el tiempo o en el espacio. La presentación formal de esta distribución se probabilidad se describe en el siguiente teorema.
+
+::: {#distribucion-poisson .definition name="Distribución de Poisson"}
+Sea $X$ una variable aleatoria que representa el número de eventos aleatorios independientes que ocurren a una rapidez constante $\lambda$ sobre el tiempo o el espacio. Se dice entonces que una variable $X$ tiene distribución de Poisson con función de probabilidad
+$$
+p\left ( x;\lambda \right )=\begin{cases}
+\frac{e^{-\lambda}\lambda^x}{x!} & \text{ si } x= 0, 1, 2, \dotsc;\: \lambda>0 \\
+0 & \text{ en cualquier otro caso }.
+(\#eq:funcion-probabilidad-poisson)
+\end{cases}
+$$
+:::
+La función `dpois(x, lambda, log = FALSE)` de la distribución base de `r colorize("R", "blue")` permite evaluar la función de probabilidad de Poisson, dada en la ecuación \@ref(eq:funcion-probabilidad-poisson).   
+
+El parámetro $\lambda$ define una familia de distribuciones de probabilidad con una función de probabilidad determinada por la ecuación \@ref(eq:funcion-probabilidad-poisson). En la figura \@ref(fig:grafico-distribucion-poisson) se proporcionan algunas gráficas de la función de probabilidad de Poisson, para distintos valores de $\lambda=1, 5, 10$:
+
+```{r grafico-distribucion-poisson, fig.cap = "Gráfica de la función de probabilidad de Poisson para $\\lambda = 1, 5, 10$", class.source = "watch-out"}
+plot_ly(alpha = 0.5) %>%
+  add_segments(
+    x = ~c(0:20), 
+    y = ~rep(x = 0, times = 21),
+    xend = ~c(0:20), 
+    yend = ~dpois(x = 0:20, lambda = 1, log = FALSE), 
+    color = I("red"), 
+    showlegend = TRUE,
+    name = "lambda = 1"
+  ) %>%
+  add_markers(
+    x = ~c(0:20), 
+    y = ~dpois(x = 0:20, lambda = 1, log = FALSE), 
+    color = I("red"), 
+    showlegend = TRUE,
+    name = "lambda = 1"
+  ) %>%
+  add_segments(
+    x = ~c(0:20), 
+    y = ~rep(x = 0, times = 21),
+    xend = ~c(0:20), 
+    yend = ~dpois(x = 0:20, lambda = 5, log = FALSE), 
+    color = I("blue"), 
+    showlegend = TRUE,
+    name = "lambda = 5"
+  ) %>%
+  add_markers(
+    x = ~c(0:20), 
+    y = ~dpois(x = 0:20, lambda = 5, log = FALSE), 
+    color = I("blue"), 
+    showlegend = TRUE,
+    name = "lambda = 5"
+  ) %>%
+   add_segments(
+    x = ~c(0:20), 
+    y = ~rep(x = 0, times = 21),
+    xend = ~c(0:20), 
+    yend = ~dpois(x = 0:20, lambda = 10, log = FALSE), 
+    color = I("green"), 
+    showlegend = TRUE,
+    name = "lambda = 10"
+  ) %>%
+  add_markers(
+    x = ~c(0:20), 
+    y = ~dpois(x = 0:20, lambda = 10, log = FALSE), 
+    color = I("green"), 
+    showlegend = TRUE,
+    name = "lambda = 10"
+  ) %>% 
+  layout(
+    xaxis = list(
+      title = "x", 
+      zeroline = F, 
+      showgrid = T,
+      showline = T, 
+      linewidth = 1, 
+      linecolor = 'black',
+      showticklabels = TRUE,
+      tickwidth = 0.5
+    ),
+    yaxis = list(
+      title = "p(x)",
+      showgrid = T,
+      showline = T, 
+      linewidth = 1, 
+      linecolor = 'black',
+      showticklabels = TRUE,
+      tickwidth = 0.5
+    ),
+    showlegend = TRUE
+  ) %>%
+  config(locale = "es")
+```
+
+La distribución de Poisson es asimétrica negativa, es decir es muy raro que ocurran valores grandes de la variable, es decir, las probabilidades asociadas a estos eventos tiende a cero en la medida de que la variable tiende a infinito. Lo anterior mente expuesto se observa en la gráfica \@ref(fig:grafico-distribucion-poisson). También, se puede observar e esta gráfica que la distribución de Poisson tiende a ser simétrica en la medida que el parámetro $\lambda$ aumenta.
 
 
+::: {.example #ejemplo-funcion-probabilidad-poisson name="Función de Probabilidad de Poison"}
+después de una prueba de laboratorio muy rigorosa con cierto componente eléctrico, el fabricante determina que en promedio, sólo fallarán dos componentes antes de tener 1.000 horas de operación. Un comprador observa que son cinco los que fallan antes de las 1.000 horas. Si el número de componentes que fallan es una variable aleatoria de Poisson, ¿existe suficiente evidencia para dudar de la conclusión del fabricante?
+
+La duda estadística puede apoyarse en términos de la probabilidad. Si un evento debe o no ocurrir bajo ciertas condiciones, su ocurrencia se decide en términos de la probabilidad del evento bajo esas condiciones. Si la probabilidad de ocurrencia es pequeña y el evento ocurre, entonces se puede preguntar, con justificación, por las condiciones. Al mismo tiempo debe tenerse en mente que un valor de probabilidad pequeño no impide la ocurrencia del evento, a menos que este valor sea cero. En dicho caso, se tiene que $\lambda = 2$. Se supone que la frecuencia con que ocurren las fallas es constante e igual a dos cada mil hora o un promedio de 1/500 unidades por hora. La probabilidad de que fallen cinco componentes en mil horas es, según la ecuación \@ref(eq:funcion-probabilidad-poisson),
+
+$$
+P\left(X = 5 \right)=p\left ( x = 5;\lambda =2 \right )=\frac{e^{-2}\lambda^5}{5!}= \approx `r formato(dpois(x = 5, lambda = 2, log = FALSE))`.
+$$
+Dado que la probabilidad de que cinco componentes fallen en 1.000 horas es una probabilidad bastante pequeña, no se esperaría que esto ocurriera en la primera réplica del experimento, a menos que en realidad su probabilidad de ocurrencia fuera mucho mayor que la que se obtuvo, y esto solo es posible si la tasa de falla fuera mayor que la indicada. Dicho de otra manera, el resultado experimental obtenido aporta información para pensar que la tasa de falla es mayor de 2 por cada 1.000 horas.
+
+En `r colorize("R", "blue")`, el cálculo anterior se puede conseguir con el siguinte bloque de código.
+
+```{r}
+dpois(x = 5, lambda = 2, log = FALSE)
+```
+
+La figura \@ref(fig:funcion-probabilidad-poisson) muestra la gráfica de la función de probabilidad del número de unidades que fallan en un tiempo de 100 horas $\left(X \right)$. La cual, bajo las condiciones expuestas en el ejemplo, tiene distribución de Poisson con parámetros $\lambda = 2$. Es decir, $X \sim P \left(\lambda = 2\right)$. 
+
+```{r funcion-probabilidad-poisson, fig.cap = "Gráfica de la función de probabilidad binomial para $n = 15$ y $p = 0,05$", class.source = "watch-out"}
+plot_ly(alpha = 0.5) %>%
+  add_segments(
+    x = 0:10, 
+    y = ~rep(x = 0, times = length(0:10)),
+    xend = 0:10, 
+    yend = ~dpois(x = 0:10, lambda = 2, log = FALSE), 
+    color = I("red"), 
+    showlegend = TRUE,
+    name = "lambda = 2"
+  ) %>%
+  add_markers(
+    x = 0:10, 
+    y = ~dpois(x = 0:10, lambda = 2, log = FALSE), 
+    color = I("red"), 
+    showlegend = TRUE,
+    name = "lambda = 2"
+  ) %>%  
+  layout(
+    xaxis = list(
+      title = "x", 
+      zeroline = F, 
+      showgrid = T,
+      showline = T, 
+      linewidth = 1, 
+      linecolor = 'black',
+      showticklabels = TRUE,
+      tickwidth = 0.5
+    ),
+    yaxis = list(
+      title = "p(x)",
+      showgrid = T,
+      showline = T, 
+      linewidth = 1, 
+      linecolor = 'black',
+      showticklabels = TRUE,
+      tickwidth = 0.5
+    ),
+    showlegend = TRUE
+  ) %>%
+  config(locale = "es")
+```
+
+:::
+
+#### Función de Distribución Acumulativa de Probabilidad de Poisson {#distribucion-acumulada-poisson}
+De acuerdo con las definiciones \@ref(def:funcion-acumulativa-probabilidad) y \@ref(def:distribucion-poisson) la función de distribución acumulativa de probabilidad de una variable aleatoria con distribución de Poisson se formaliza en el siguiente teorema:
+
+::: {#distribucion-acumulada-binomial .definition name="Función de Distribución Acumulativa de Probabilidad Binomial"}
+Sea $X$ una variable aleatoria con distribución de Poisson. Entonces, la _función de distribución acumulativa de probabilidad de poisson_ viene dada por:
+$$
+F\left ( x;\lambda \right )=\begin{cases}
+0 & \text{ si } x < 0\\
+ e^{-\lambda}\sum_{t=0}^{x }\frac{\lambda^t}{t!} & \text{ si } x= 0, 1, 2, \dotsc;\: \lambda>0
+(\#eq:funcion-acumulativa-poisson)
+\end{cases}
+$$
+:::
+La función `ppois(q, lambda, lower.tail = TRUE, log.p = FALSE)` de la distribución base de `r colorize("R", "blue")` permite evaluar la función de distribución acumulativa de probabilidad de Poisson dada en la ecuación \@ref(eq:funcion-acumulativa-poisson).
 
 
+La figura \@ref(fig:grafico-acumulativa-poisson) muestra la función de distribución acumulativa de probabilidad para una variable Poisson con parámetros $\lambda = 1, 5, 10$. 
 
+```{r grafico-acumulativa-poisson, fig.cap = "Gráfica de la función de distribución acumulativa de probabilidad de Poisson para $\\lambda = 1, 5, 10$", class.source = "watch-out"}
+x <- c(-3, 0:20, 23)
+Fx1 <- ppois(
+  q = x, lambda = 1, lower.tail = TRUE, log.p = FALSE
+)
+Fx2 <- ppois(
+  q = x, lambda = 5, lower.tail = TRUE, log.p = FALSE
+)
+Fx3 <- ppois(
+  q = x, lambda = 10, lower.tail = TRUE, log.p = FALSE
+)
+plot_ly(x = x, y = Fx1, alpha = 0.5) %>%
+  add_segments(
+    x = ~ x[-length(x)],
+    y = ~ Fx1[-length(x)],
+    xend = ~ x[-1],
+    yend = ~ Fx1[-length(x)],
+    color = I("red"),
+    name = "lambda = 1",
+    showlegend = TRUE
+  ) %>%
+  add_markers(
+    x = ~ x[-c(1, length(x))],
+    y = ~ Fx1[-c(1, length(x))],
+    color = I("red"),
+    name = "Lambda = 1",
+    showlegend = TRUE
+  ) %>%
+  add_markers(
+    x = ~ x[-c(1, length(x))],
+    y = ~ Fx1[-c(length(x) - 1, length(x))],
+    color = I("red"),
+    marker = list(symbol = "circle-open"),
+    name = "lambda = 1",
+    showlegend = TRUE
+  ) %>%
+  add_segments(
+    x = ~ x[-length(x)],
+    y = ~ Fx2[-length(x)],
+    xend = ~ x[-1],
+    yend = ~ Fx2[-length(x)],
+    color = I("blue"),
+    name = "lambda = 5",
+    showlegend = TRUE
+  ) %>%
+  add_markers(
+    x = ~ x[-c(1, length(x))],
+    y = ~ Fx2[-c(1, length(x))],
+    color = I("blue"),
+    name = "Lambda = 5",
+    showlegend = TRUE
+  ) %>%
+  add_markers(
+    x = ~ x[-c(1, length(x))],
+    y = ~ Fx2[-c(length(x) - 1, length(x))],
+    color = I("blue"),
+    marker = list(symbol = "circle-open"),
+    name = "lambda = 5",
+    showlegend = TRUE
+  ) %>%
+  add_segments(
+    x = ~ x[-length(x)],
+    y = ~ Fx3[-length(x)],
+    xend = ~ x[-1],
+    yend = ~ Fx3[-length(x)],
+    color = I("green"),
+    name = "lambda = 10",
+    showlegend = TRUE
+  ) %>%
+  add_markers(
+    x = ~ x[-c(1, length(x))],
+    y = ~ Fx3[-c(1, length(x))],
+    color = I("green"),
+    name = "Lambda = 10",
+    showlegend = TRUE
+  ) %>%
+  add_markers(
+    x = ~ x[-c(1, length(x))],
+    y = ~ Fx3[-c(length(x) - 1, length(x))],
+    color = I("green"),
+    marker = list(symbol = "circle-open"),
+    name = "lambda = 10",
+    showlegend = TRUE
+  ) %>%
+  layout(
+    xaxis = list(
+      title = "x",
+      zeroline = F,
+      showgrid = T,
+      showline = T,
+      linewidth = 1,
+      linecolor = "black",
+      showticklabels = TRUE,
+      tickwidth = 0.5
+    ),
+    yaxis = list(
+      title = "F(x)",
+      showgrid = T,
+      showline = T,
+      linewidth = 1,
+      linecolor = "black",
+      showticklabels = TRUE,
+      tickwidth = 0.5
+    ),
+    showlegend = TRUE
+  ) %>%
+  config(locale = "es")
+```
+
+::: {.example #ejemplo-distribucion-acumulada-binomial name="Función de Distribución Acumulativa de Probabilidad de Poisson"}
+Determine en el ejemplo \@ref(exm:ejemplo-funcion-probabilidad-poisson) la probabilidad de que por lo menos fallen cinco componentes en 1.000 horas. 
+
+La probabilidad de que al menos cinco componentes fallen en 1.000 horas, según la función de distribución acumulativa de probabilidad de Poisson dada por la ecuación \@ref(eq:funcion-acumulativa-poisson) para $\lambda = 2$, es:
+
+$$
+\begin{align*}
+P \left(X \geq 5 \right) =& 1 - P \left(X \leq 4
+\right)=  1 - F \left( x = 4;\lambda =2 \right ) = 1 - e^{-\lambda}\sum_{t=0}^{4}\frac{2^t}{t!}\\
+=&1 - e^{-2}\left[ \frac{2^0}{0!} + \frac{2^1}{1!} + \frac{2^2}{2!} + \frac{2^3}{3!} + \frac{2^4}{4!} \right] \\
+=&1 - `r ppois(q = 4, lambda = 2, lower.tail = TRUE, log.p = FALSE)` \\
+\approx &  `r 1- ppois(q = 4, lambda = 2, lower.tail = TRUE, log.p = FALSE)`.
+\end{align*}
+$$
+En `r colorize("R", "blue")`, el resultado anterior se puede obtener con el siguiente script.
+
+```{r}
+1 - ppois(q = 4, lambda = 2, lower.tail = TRUE, log.p = FALSE)
+```
+:::
+
+La figura \@ref(fig:grafico-ejemplo-distribucion-acumulada-poisson) muestra la gráfica de la función de distribución acumulativa de probabilidad del número de componentes que fallan en 1.000 horas si la tasa de falla es de dos en ese intervalo de tiempo.
+
+```{r grafico-ejemplo-distribucion-acumulada-poisson, fig.cap = "Gráfica de la función de distribución acumulativa de probabilidad de Poisson para $\\lambda = 2$", class.source = "watch-out"}
+x <- c(-3, 0:10, 13)
+Fx  <- ppois(
+  q = x, lambda = 2, lower.tail = TRUE, log.p = FALSE
+)
+plot_ly(x = x, y = Fx1, alpha = 0.5) %>%
+  add_segments(
+    x = ~ x[-length(x)],
+    y = ~ Fx[-length(x)],
+    xend = ~ x[-1],
+    yend = ~ Fx[-length(x)],
+    color = I("red"),
+    name = "lambda = 2",
+    showlegend = TRUE
+  ) %>%
+  add_markers(
+    x = ~ x[-c(1, length(x))],
+    y = ~ Fx[-c(1, length(x))],
+    color = I("red"),
+    name = "Lambda = 2",
+    showlegend = TRUE
+  ) %>%
+  add_markers(
+    x = ~ x[-c(1, length(x))],
+    y = ~ Fx[-c(length(x) - 1, length(x))],
+    color = I("red"),
+    marker = list(symbol = "circle-open"),
+    name = "lambda = 1",
+    showlegend = TRUE
+  ) %>%
+  layout(
+    xaxis = list(
+      title = "x",
+      zeroline = F,
+      showgrid = T,
+      showline = T,
+      linewidth = 1,
+      linecolor = "black",
+      showticklabels = TRUE,
+      tickwidth = 0.5
+    ),
+    yaxis = list(
+      title = "F(x)",
+      showgrid = T,
+      showline = T,
+      linewidth = 1,
+      linecolor = "black",
+      showticklabels = TRUE,
+      tickwidth = 0.5
+    ),
+    showlegend = TRUE
+  ) %>%
+  config(locale = "es")
+```
+
+La tabla \@ref(tab:distribucion-acumulada4) muestra la función de probabilidad y la función de distribución acumulativa de probabilidad de una variable de Poisson con parámetro $\lambda = 2$.
+
+```{r distribucion-acumulada3, class.source="watch-out", class.source = "watch-out"}
+da_ej3 <- data.frame(
+  x = 0:10,
+  px = dpois(x = 0:10, lambda = 2, log = FALSE),
+  Fx = ppois(
+    q = 0:10, lambda = 2, lower.tail = TRUE, log.p = FALSE
+  )
+) 
+knitr::kable(
+  da_ej2,
+  booktabs = TRUE,
+  row.names = TRUE,
+  digits = 4,
+  col.names = c(
+    "$X_i$", 
+    "$p\\left(x_i \\right)$", 
+    "$F\\left(x_i \\right)$"
+  ),
+  align = c("ccc"),
+  format.args = list(decimal.mark = ",", big.mark = "."),
+  caption = "\\label{tab2:distribucion-acumulada2}Función de probabilidad y función de distribución acumulativa de $X \\sim P \\left( \\lambda = 2 \\right)$",
+  escape = FALSE
+) %>%
+  kable_styling(
+    bootstrap_options = "striped",
+    full_width = FALSE,
+    fixed_thead = T
+  ) %>%
+  kable_classic_2()
+```
+
+
+#### Media de la Distribución de Poisson {#media-poisson}
+
+La media, promedio o esperanza matemática de la distribución de Poisson representa el número de éxitos que se espera ocurran en una unidad de muestreo, entendiendo que esta unidad de muestreo puede ser cualquier medida de espacio o tiempo. El siguiente teorema describe la media de la distribución de Poisson.
+
+::: {#media-poisson .theorem name="Media de la Distribución poisson"}
+Sea $X$ una variable aleatoria con distribución de Poisson. Entonces, la _media_ de $X$ viene dada por:
+$$
+\begin{equation}
+E \left(X \right)= \mu = \lambda.
+(\#eq:media-poisson)
+\end{equation}
+$$
+:::
+
+::: {#media-poisson .proof name="Media de la Distribución de Poisson"}
+Por las definiciones \@ref(def:esperanza) y \@ref(def:distribucion-poisson) la esperanza de una variable $X$ con distribución de Poisson es
+
+$$
+\begin{align*}
+E \left(X \right) =&  \sum_{x=0}^{\infty } x\frac{e^{-\lambda}\lambda^x}{x!}\\
+=& \sum_{x=1}^{\infty } x\frac{e^{-\lambda}\lambda^x}{x \left(x-1 \right)!}\\
+=& \sum_{x=1}^{\infty } \frac{e^{-\lambda}\lambda^x}{ \left(x-1 \right)!},\\
+\end{align*}
+$$
+en donde se ha escrito la suma desde uno hasta $\infty$, dado que cuando $x=0$ el primer término es cero y se cancela la $x$ del numerador con la $x$ en $x!$. Luego, factorizando $\lambda$, se tiene:
+
+$$
+\begin{align*}
+E \left(X \right) =&\lambda   \sum_{x=1}^{\infty } \frac{e^{-\lambda}\lambda^{x-1}}{ \left(x-1 \right)!},\\
+\end{align*}
+$$
+
+Si $y=x-1$, entonces:
+
+$$
+\begin{align*}
+E \left(X \right) =&\lambda \sum_{y=0}^{\infty } \frac{e^{-\lambda}\lambda^{y}}{ y!},\\
+\end{align*}
+$$
+
+Pero $p \left(y; \lambda \right)= e^{-\lambda}\lambda^{y}/ y!$ es la función de probabilidad de una variable aleatoria binomial $Y$ con parámetro $\lambda$; de esta manera $\sum_{y=0}^{\infty}p\left(y; m, p \right)=1$, y la media de una variable aleatoria de Poisson es:
+$$
+\begin{equation}
+E \left(X \right) = \lambda.
+\end{equation}
+$$
+:::
+
+::: {.example #ejemplo-media-distribucion-poisson name="Media de la Distribución de Poisson"}
+Con respecto al el ejemplo \@ref(exm:ejemplo-funcion-probabilidad-poisson), determine el número de componentes que se esperaría fallen en un tiempo de 1.000 horas.
+
+De acuerdo con el teorema \@ref(thm:media-poisson), el número de componentes que se esperaría fallen es
+$$
+\begin{equation}
+E \left(X \right) = \lambda=2.
+\end{equation}
+$$
+:::
+
+#### Varianza de la Distribución de Poisson {#varianza-poisson}
+La varianza de una variable aleatoria de Poisson $X$ viene dada por el siguiente teorema: 
+
+::: {#varianza-binomial .theorem name="Varianza de la Distribución de Poisson"}
+Sea $X$ una variable aleatoria con distribución de Poisson. Entonces, la _varianza_ de $X$ viene dada por:
+$$
+\begin{equation}
+V \left(X \right)=\sigma^2 =\lambda.
+(\#eq:varianza-poisson)
+\end{equation}
+$$
+:::
+
+::: {#varianza-poisson .proof name="Varianza de la Distribución de Poisson"}
+De la ecuación \@ref(eq:varianza2) se sabe que $V \left(X \right) = E \left(X^2 \right) - \mu^2$. Como $\mu=\lambda$, solo faltaría calcular $E \left(X^2 \right)$. Pero calcular este parámetro usando el teorema \@ref(thm:esperanza-transformacion) y la definición \@ref(def:distribucion-poisson) implica encontrar la convergencia de la siguiente expresión
+
+$$
+E \left(X^2 \right) =  \sum_{x=0}^{\infty} x^2\frac{e^{-\lambda}\lambda^x}{x !},
+$$
+lo cual es imposible. En lugar de este camino, se elegirá un método alterno. La alternativa es escribir $x^2$ como:
+
+$$
+x^2= x \left(x-1 \right)+x;
+$$
+de esta manera, por los teoremas \@ref(thm:esperanza-transformacion) y \@ref(thm:esperanza-suma-transformaciones), se tiene:
+
+$$
+\begin{equation}
+E \left(X^2 \right)= E \left[X \left(X-1 \right) \right]+E \left(X \right).
+(\#eq:varianza-alterna-binomial)
+\end{equation}
+$$
+Dado que $E \left(X \right)$ ya se ha determinado, faltaría determinar $E \left[x \left(x-1 \right) \right]$, que según el teorema \@ref(thm:esperanza-transformacion), es:
+
+
+$$
+\begin{align*}
+E \left[X \left(X-1 \right) \right] =&  \sum_{x=0}^{\infty} x \left(x-1 \right)\frac{e^{-\lambda}\lambda^x}{x !}\\
+=& \sum_{x=2}^{n } x \left(x-1 \right)\frac{e^{-\lambda}\lambda^2\lambda^{x-2}}{x \left(x-1 \right)\left(x-2 \right) !}\\
+=& e^{-\lambda}\lambda^2 \sum_{x=2}^{n } \frac{\lambda^{x-2}}{\left(x-2 \right) !}\\.
+\end{align*}
+$$
+Note que en los pasos previos se escribió la suma a partir de dos porque los dos primeros términos son cero, se canceló $x \left(x-1 \right)$, y se factorizó $\lambda^2$. Ahora, sea $y=x-2$; entonces:
+
+$$
+\begin{align*}
+E \left[X \left(X-1 \right) \right] =&\lambda^2 \sum_{y=0}^{\infty} \frac{e^{-\lambda}\lambda^{y}}{y !}\\.
+\end{align*}
+$$
+Pero $p \left(y; \lambda \right)= e^{-\lambda}\lambda^{y}/ y!$ es la función de probabilidad de una variable aleatoria de Poisson $Y$ con parámetro $\lambda$; de esta manera $\sum_{y=0}^{\infty}p\left(y; m, p \right)=1$. Por lo tanto, 
+$$
+\begin{equation}
+E \left[X \left(X-1 \right) \right] =\lambda^2.
+\end{equation}
+$$
+
+De la ecuación \@ref(eq:varianza-alterna-binomial)
+$$
+E \left(X^2 \right)=  \lambda^2+\lambda.
+$$
+
+De esta manera, la varianza de una variable aleatoria de Poisson, según la ecuación \@ref(eq:varianza2), es:
+$$
+\begin{align*}
+V(X)=& \lambda^2+\lambda-\lambda^2\\
+=&\lambda.
+\end{align*}
+$$
+:::
+
+::: {.example #ejemplo-varianza-binomial name="Varianza de la Distribución Binomial"}
+Con respecto al ejemplo \@ref(exm:ejemplo-funcion-probabilidad-binomial), determine la varianza del número de componentes que fallan en dos horas.
+
+De acuerdo con el teorema \@ref(thm:varianza-poisson), la varianza de $X$ es:
+
+$$
+V(X)=\lambda=2.
+$$
+:::
+
+#### Función Genradora de Momentos de la Distribución de Poisson {#funcion-generadora-momentos-poisson}
+La función generadora de momentos de la distribución de Poisson se indica en el siguiente teorea: 
+
+::: {#fgm-poisson .theorem name="Función Generadora de Momentos de la Distribución de Poisson"}
+La función generadora de momentos de la distribución de Poisson se indica en el siguiente teorema:
+$$
+\begin{equation}
+m_x \left(t \right)=e^{\lambda\left(e^t -1\right)}.
+(\#eq:fgm-poisson)
+\end{equation}
+$$
+:::
+
+::: {#fgm-binomial .proof name="Función Generadora de Momentos de la Distribución de Poisson"}
+De la definiciones \@ref(def:distribucion-poisson) y \@ref(def:funcion-generadora-momentos), se obtiene
+
+$$
+\begin{align*}
+m_x \left(t \right)=&  \sum_{x=0}^{\infty} e^{tx}\frac{e^{-\lambda}\lambda^x}{x !}\\
+=& e^{-\lambda} \sum_{x=0}^{\infty} \frac{\left(\lambda e^t\right)^x}{x !}.\\
+\end{align*}
+$$
+Por el teorema de Maclaurin, 
+$$
+\sum_{x=0}^{\infty} \frac{\left(\lambda e^t\right)^x}{x !}=e^{\lambda e^t}.
+$$
+Entonces,
+$$
+\begin{align*}
+m_x \left(t \right)=& e^{-\lambda}e^{\lambda e^t}\\
+=& e^{\left[\lambda \left(e^t-1\right) \right]}.\\
+\end{align*}
+$$
+Del teorema \@ref(thm:funcion-generadora-momentos), la media de la distribución de Poisson es:
+$$
+\begin{equation}
+\frac{\mathrm{d}m_{x}\left ( t \right )}{\mathrm{d}t} \left|\begin{matrix}
+ \\
+t=0\\
+\end{matrix}={\mu}^{'}_1=\mu \right.
+\end{equation}
+$$
+
+Luego, la primera derivada de la función generadora de momentos de la distribución de Poisson evaluada en 0 determina la media 
+
+$$
+\frac{\mathrm{d}m_{x}\left ( t \right )}{\mathrm{d}t}=\lambda e^te^{\left[\lambda \left(e^t-1\right) \right]}.
+$$
+Ahora, evaluando la primera derivada de la función generadora de momentos en $t=0$, se obtiene la media de la distribución binomial, como sigue:
+$$
+\begin{equation}
+\frac{\mathrm{d}m_{x}\left ( t \right )}{\mathrm{d}t} \left|\begin{matrix}
+ \\
+t=0\\
+\end{matrix}=\mu=\lambda e^0e^{\left[\lambda \left(e^0-1\right) \right]}=\lambda. \right.
+\end{equation}
+$$
+Note que este resultado es el mismo dado en el teorema \@ref(thm:media-poisson). Se deja al lector que halle la varianza de la distribución de Poisson usando el método de la función generadora de momentos. 
