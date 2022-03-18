@@ -1421,8 +1421,10 @@ plot_ly(alpha = 0.5) %>%
     showlegend = TRUE
   ) %>%
   add_markers(
-    x = ~x1[-1], 
-    y = ~phyper(x1[-last(x1)], m = m1, n = n1, k = k1), 
+    x = ~x1, 
+    y = ~phyper(
+      c(first(x1) -3, x1[-last(x1)]), m = m1, n = n1, k = k1
+    ), 
     color = I("red"),
     marker = list(symbol = "circle-open"),
     name = "m = 10, n = 90, k = 5",
@@ -1449,10 +1451,9 @@ plot_ly(alpha = 0.5) %>%
     showlegend = TRUE
   ) %>%
   add_markers(
-    x = ~x2[-1], 
+    x = ~x2, 
     y = ~phyper(
-      x2[-last(x2)], m = m2, 
-      n = n2, k = k2
+      c(first(x2) -3, x2[-last(x1)]), m = m2, n = n2, k = k2
     ), 
     color = I("blue"),
     marker = list(symbol = "circle-open"),
@@ -1480,10 +1481,9 @@ plot_ly(alpha = 0.5) %>%
     showlegend = TRUE
   ) %>%
   add_markers(
-    x = ~x3[-1], 
+    x = ~x3, 
     y = ~phyper(
-      x3[-last(x3)], m = m3, 
-      n = n3, k = k3
+     c(first(x3) -3, x3[-last(x3)]), m = m3, n = n3, k = k3
     ), 
     color = I("green"),
     marker = list(symbol = "circle-open"),

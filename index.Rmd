@@ -2,7 +2,7 @@
 title: "Probabilidades"
 author:
   name: "Prof: Oswaldo Bello (oswaldobelloc@gmail.com)"
-  affiliation: "Universidade de Oriente, Venezuela"
+  affiliation: "Universidad de Oriente, Venezuela"
 date: "`r stringr::str_to_sentence(format(Sys.time(), '%A, %d de %B de %Y (%X)'), locale = 'es')`"
 header-includes:
    - \usepackage{amssymb}
