@@ -157,7 +157,7 @@ Un _diagrama de Venn_ es una representación en dibujo de conjuntos, donde estos
 
 La figura \@ref(fig:venn) ilustra por medio de diagramas de Venn  diferentes relaciones entre los conjuntos $A$ y $B$.
 
-```{r venn, fig.cap="Diagramas de Venn", class.source = "watch-out", class.output = "bg-warning"}
+```{r venn, fig.cap="Diagramas de Venn", out.width = '70%', class.source = "watch-out", class.output = "bg-warning"}
 knitr::include_graphics(path = "figuras/diagrama_venn.png")
 ```
 :::
@@ -177,7 +177,7 @@ Los subconjuntos de una partición se denominan _células_.
 La figura \@ref(fig:particion) muestra la partición de un conjunto rectangular $S$ de puntos, en cinco células, $A_1$, $A_2$, $A_3$, $A_4$, $A_5$.
 
 
-```{r particion, fig.cap="Diagrama de Venn de la partición de un conjunto rectangular $S$", class.source = "watch-out", class.output = "bg-warning"}
+```{r particion, fig.cap="Diagrama de Venn de la partición de un conjunto rectangular $S$", out.width = '70%', class.source = "watch-out", class.output = "bg-warning"}
 knitr::include_graphics(path = "figuras/particion.png")
 ```
 :::
@@ -195,7 +195,7 @@ $$A \cap B=\left\{x:x \in A  \:y\:  x \in B \right\}$$.
 La figura \@ref(fig:interseccion) muestra diagramas de Venn que ilustran la intersección de los conjunto $A$ y $B$.
 
 
-```{r interseccion, fig.cap="Diagrama de Venn para la intersección", class.source = "watch-out", class.output = "bg-warning"}
+```{r interseccion, fig.cap="Diagrama de Venn para la intersección", out.width = '70%', class.source = "watch-out", class.output = "bg-warning"}
 knitr::include_graphics(path = "figuras/interseccion.png")
 ```
 :::
@@ -288,7 +288,7 @@ $$A∪B=\left\{x:x \in A  \textit{ o }  x \in B\right\}.$$
 
 La figura \@ref(fig:union) muestra diagramas de Venn que ilustran la unión de los conjunto $A$ y $B$.
 
-```{r union, fig.cap="Diagrama de Venn para la Unión", class.source = "watch-out", class.output = "bg-warning"}
+```{r union, fig.cap="Diagrama de Venn para la Unión", out.width = '70%', class.source = "watch-out", class.output = "bg-warning"}
 knitr::include_graphics(path = "figuras/union.png")
 ```
 :::
@@ -356,7 +356,7 @@ Algunos textos representan el complemento de $A$ mediante $A'$ o $\bar{A}$.
 La figura \@ref(fig:complemento) muestra el diagramas de Venn para $A^c$. La zona coloreada en azul representa el conjunto $A^c$.
 
 
-```{r complemento, fig.cap="Diagrama de Venn para el complemento", class.source = "watch-out", class.output = "bg-warning"}
+```{r complemento, fig.cap="Diagrama de Venn para el complemento", out.width = '70%', class.source = "watch-out", class.output = "bg-warning"}
 knitr::include_graphics(path = "figuras/complemento.png")
 ```
 :::
@@ -420,7 +420,7 @@ El conjunto $A  \setminus  B$ se lee “$A$ menos $B$”. Algunos textos represe
 
 La figura \@ref(fig:diferencia) muestra el diagramas de Venn para $A  \setminus  B$.
 
-```{r diferencia, fig.cap="Diagrama de Venn para la diferencia", class.source = "watch-out", class.output = "bg-warning"}
+```{r diferencia, fig.cap="Diagrama de Venn para la diferencia", out.width = '70%', class.source = "watch-out", class.output = "bg-warning"}
 knitr::include_graphics(path = "figuras/diferencia.png")
 ```
 :::
@@ -478,7 +478,7 @@ Algunos textos representan $A \oplus B$ mediante $A \triangleright B$.
 
 La figura \@ref(fig:diferenciasimetrica) muestra el diagramas de Venn para $A \oplus B$. El Área coloreada representa el conjunto $A \oplus B$.
 
-```{r diferenciasimetrica, fig.cap="Diagrama de Venn para la diferencia simétrica", class.source = "watch-out", class.output = "bg-warning"}
+```{r diferenciasimetrica, fig.cap="Diagrama de Venn para la diferencia simétrica", out.width = '70%', class.source = "watch-out", class.output = "bg-warning"}
 knitr::include_graphics(path = "figuras/diferenciasimetrica.png")
 ```
 :::
@@ -990,7 +990,7 @@ P \left(A \setminus B \right)=P \left(A\right)-P\left(A \cap B \right).
 $$
 :::
 
-```{r regla-diferencia, fig.cap="Diegrama de Venn para la regla de la diferencia", class.source = "watch-out", class.output = "bg-warning"}
+```{r regla-diferencia, fig.cap="Diegrama de Venn para la regla de la diferencia", out.width = '70%', class.source = "watch-out", class.output = "bg-warning"}
 knitr::include_graphics(
   path = "figuras/regla_diferencia.png"
 )
@@ -1020,7 +1020,7 @@ P \left(A \cup B\right)&=P \left(A  \right)- P\left(A \cap B \right)+P\left( B \
 $$
 :::
 
-```{r regla-adicion, fig.cap="Diegrama de Venn para la regla de la adición", class.source = "watch-out", class.output = "bg-warning"}
+```{r regla-adicion, fig.cap="Diegrama de Venn para la regla de la adición", out.width = '70%', class.source = "watch-out", class.output = "bg-warning"}
 knitr::include_graphics(
   path = "figuras/regla_adicion.png"
 )
@@ -1092,7 +1092,7 @@ $$
 
 Como se ilustra en el diagrama de Venn en la figura \@ref(fig:probabilidad-condicional), $P \left( A \mid B \right)$ mide, en cierto sentido, la probabilidad relativa de $A$ con respecto al espacio reducido $B$.
 
-```{r probabilidad-condicional, fig.cap="Probabilidad Condicional", class.source = "watch-out", class.output = "bg-warning"}
+```{r probabilidad-condicional, fig.cap="Probabilidad Condicional", out.width = '70%', class.source = "watch-out", class.output = "bg-warning"}
 knitr::include_graphics(path = "figuras/probabilidad_condicional.png")
 ```
 
@@ -1448,7 +1448,7 @@ Suponga que un espacio muestral $S$ es la unión de los $k$ eventos mutuamente e
 $$
 E=E \cap S=E \cap \left(A{}_1 \cup A{}_2 \cup \cdots \cup A{_k}  \right)=\left(E \cap A{_1} \right) \cup \left(E \cap A{_2} \right) \cup \cdots \cup \left(E \cap A{_k} \right).
 $$
-```{r probabilidad-total, fig.cap="Diagrama de Ven para la  probabilidad total", class.source = "watch-out", class.output = "bg-warning"}
+```{r probabilidad-total, fig.cap="Diagrama de Ven para la  probabilidad total", out.width = '70%', class.source = "watch-out", class.output = "bg-warning"}
 knitr::include_graphics(path = "figuras/probabilidad_total.png")
 ```
 
@@ -1488,7 +1488,7 @@ Encuentre la probabilidad de que un artículo seleccionado aleatoriamente sea de
 
 (ref:ejemplo1-probabilidad-total) \@ref(exm:ejemplo1-probabilidad-total)
 
-```{r ejemplo1-probabilidad-total, fig.cap="Diegrama de Venn del ejemplo (ref:ejemplo1-probabilidad-total)", class.source = "watch-out", class.output = "bg-warning"}
+```{r ejemplo1-probabilidad-total, fig.cap="Diegrama de Venn del ejemplo (ref:ejemplo1-probabilidad-total)",out.width = '70%', class.source = "watch-out", class.output = "bg-warning"}
 knitr::include_graphics(path = "figuras/ejemplo1_probabilidad_total.png")
 ```
 

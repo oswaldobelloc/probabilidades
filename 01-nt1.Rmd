@@ -171,7 +171,7 @@ Sea:
 
 La figura \@ref(fig:arbol1) muestra el diagrama de árbol para las diferentes maneras en que se puede clasificar la podadora de césped.
 
-```{r arbol1, fig.cap="Diagrama de árbol para la clasificación de la podadora de césped", class.source = "watch-out", class.output = "bg-warning"}
+```{r arbol1, fig.cap="Diagrama de árbol para la clasificación de la podadora de césped", out.width = '70%', class.source = "watch-out", class.output = "bg-warning"}
 knitr::include_graphics(path = "figuras/diagrama_arbol.png")
 ```
 :::
@@ -180,7 +180,7 @@ knitr::include_graphics(path = "figuras/diagrama_arbol.png")
 Mario y Eduardo van a jugar un torneo de tenis. La primera persona que gane 2 juegos seguidos o quien gane un total de 3 juegos gana el torneo. Encuentre el número de formas como puede desarrollarse el torneo. 
 El diagrama de árbol que muestra los resultados posibles del torneo aparece en la figura \@ref(fig:arbol2).
 
-```{r arbol2, fig.cap="Diagrama de árbol para el número de formas como puede desarrollarse el torneo", class.source = "watch-out", class.output = "bg-warning"}
+```{r arbol2, fig.cap="Diagrama de árbol para el número de formas como puede desarrollarse el torneo", out.width = '70%', class.source = "watch-out", class.output = "bg-warning"}
 knitr::include_graphics(path = "figuras/diagrama_arbol2.png")
 ```
 :::

@@ -160,7 +160,9 @@ knitr::kable(
     full_width = FALSE,
     fixed_thead = T
   ) %>%
-  kable_classic_2()
+  kable_classic_2() %>% 
+  scroll_box(width = "100%", height = "400px")
+
    
 ```
 
@@ -353,7 +355,8 @@ knitr::kable(
     full_width = FALSE,
     fixed_thead = T
   ) %>%
-  kable_classic_2()
+  kable_classic_2() %>% 
+  scroll_box(width = "100%", height = "400px")
 ```
 
 Cuando se conoce la expresión que define la función de probabilidad, la cual, en este caso está dada por la ecuación \@ref(eq:funcion-probabilidad1), se puede determinar una expresión matemática que defina la función de distribución acumulativa de probabilidad. A continuación se ejecuta un procedimiento para hallar esta ecuación.
@@ -1008,7 +1011,8 @@ knitr::kable(
     full_width = FALSE,
     fixed_thead = T
   ) %>%
-  kable_classic_2()
+  kable_classic_2() %>% 
+  scroll_box(width = "100%", height = "400px")
 ```
 
 #### Media de la Distribución Binomial {#media-binomial}
@@ -1622,7 +1626,8 @@ knitr::kable(
     full_width = FALSE,
     fixed_thead = T
   ) %>%
-  kable_classic_2()
+  kable_classic_2() %>% 
+  scroll_box(width = "100%", height = "400px")
 ```
 
 #### Media de la Distribución Hipergeométrica {#media-hipergeometrica}
@@ -2226,7 +2231,8 @@ knitr::kable(
     full_width = FALSE,
     fixed_thead = T
   ) %>%
-  kable_classic_2()
+  kable_classic_2() %>% 
+  scroll_box(width = "100%", height = "400px")
 ```
 
 
