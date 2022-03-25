@@ -100,7 +100,7 @@ $$
 Por lo que, el Recorrido de $X$ es
 $R_X=\left\{2, 3, 4, 5, 6, 7, 8, 9 10, 11, 12 \right\}$, luego las probabilidades asociadas a cada $x_i$, es decir la función de probabilidad, se muestran en la tabla \@ref(tab:distribucion-probabilidad1). 
 
-```{r distribucion-probabilidad1, class.source="watch-out", class.source = "watch-out"}
+```{r distribucion-probabilidad1, class.source="watch-out", class.output = "bg-warning"}
 dp_ej1 <- data.frame(
   S = c(
     "$\\left(1, 1 \\right)$",
@@ -162,8 +162,6 @@ knitr::kable(
   ) %>%
   kable_classic_2() %>% 
   scroll_box(width = "100%", height = "400px")
-
-   
 ```
 
 :::
@@ -211,24 +209,46 @@ Como se puede notar, las probabilidades determinadas con esta ecuación se corre
 Una forma de visualizar de manera rápida las probabilidades asociadas a cada valor de la variable aleatoria es a través de una gráfica de líneas verticales que comienzan en cada valor de la variable $x_i$ y cuya altura está determinada por sus probabilidades $p\left (x_i  \right )$. El gráfico de la función de  probabilidad para la suma de las caras en el lanzamiento de los dos dados se muestra en la figura \@ref(fig:grafico-distribucion-probabilidad1).
 
 ```{r grafico-distribucion-probabilidad1, fig.cap = "Gráfica de la función de probabilidad de la suma de las caras de dos dados", class.source = "watch-out"}
-ggplot(
-  data = dp_ej1,
-  aes(x = xi, y = numero_ocurrencia / 36)
-) +
-  geom_segment(
-    aes(
-      x = xi, xend = xi, y = 0,
-      yend = numero_ocurrencia / 36
+plot_ly(data = dp_ej1, alpha = 0.5) %>%
+  add_segments(
+    x = ~xi, 
+    y = ~rep(x = 0, times = length(xi)),
+    xend = ~xi, 
+    yend = ~(numero_ocurrencia / 36), 
+    color = I("red"), 
+    showlegend = FALSE,
+    name = ""
+  ) %>%
+  add_markers(
+    x = ~xi, 
+    y = ~numero_ocurrencia / 36, 
+    color = I("red"), 
+    showlegend = FALSE,
+    name = ""
+  ) %>%  
+  layout(
+    xaxis = list(
+      title = TeX("\\text{Suma de las caras} \\left(x \\right)"), 
+      zeroline = F, 
+      showgrid = T,
+      showline = T, 
+      linewidth = 1, 
+      linecolor = 'black',
+      showticklabels = TRUE,
+      tickwidth = 0.5
     ),
-    color = "blue"
-  ) +
-  geom_point(
-    size = 3, color = "red"
-  ) +
-  scale_x_continuous(breaks = seq(2, 12, 1)) +
-  theme_classic() + 
-  xlab("Suma de las caras (X)") +
-  ylab("Función de probabilidad")
+    yaxis = list(
+      title = TeX("p \\left(x \\right)"),
+      showgrid = T,
+      showline = T, 
+      linewidth = 1, 
+      linecolor = 'black',
+      showticklabels = TRUE,
+      tickwidth = 0.5
+    ),
+    showlegend = FALSE
+  ) %>%
+  config(locale = "es", mathjax = "cdn")
 ```
 
 
@@ -287,7 +307,7 @@ $$
 
 Los resultados anteriores pueden resumirse en la tabla \@ref(tab:distribucion-acumulada1).
 
-```{r distribucion-acumulada1, class.source="watch-out", class.source = "watch-out"}
+```{r distribucion-acumulada1, class.source="watch-out", class.output = "bg-warning"}
 da_ej1 <- data.frame(
   S = c(
     "$\\left(1, 1 \\right)$",
@@ -360,6 +380,7 @@ knitr::kable(
 ```
 
 Cuando se conoce la expresión que define la función de probabilidad, la cual, en este caso está dada por la ecuación \@ref(eq:funcion-probabilidad1), se puede determinar una expresión matemática que defina la función de distribución acumulativa de probabilidad. A continuación se ejecuta un procedimiento para hallar esta ecuación.
+
 $$
 \begin{align*}
 F\left ( x \right )=\sum_{t=2}^{x}p\left ( x \right ) =\sum_{t=2}^{x}\frac{6-\left|7-x \right|}{36}. 
@@ -411,25 +432,56 @@ $$
 
 La figura \@ref(fig:grafico-distribucion-acumulada1) muestra la gráfica de la función de distribución acumulativa de la suma de las caras de los dados. Note que esta gráfica es escalonada. 
 
-```{r grafico-distribucion-acumulada1, fig.cap = "Gráfica de la función de distribución acumulativa de la suma de las caras de dos dados", class.source = "watch-out"}
-dp_ej1 <- dp_ej1 %>%
-  mutate(
-    F_xi = cumsum(numero_ocurrencia) / 36,
-    xi_end = c(3:12, NA),
-    F_xiend = F_xi
-  )
-ggplot(
-  dp_ej1, aes(
-    x = xi, y = F_xi, xend = xi_end, yend = F_xiend
-  )
-) +
-  geom_point() +
-  geom_point(aes(x = xi_end, y = F_xi), shape = 1) +
-  geom_segment(color = "blue") +
-  scale_x_continuous(breaks = seq(2, 12, 1)) +
-  theme_classic() +
-  xlab("Suma de las caras (X)") +
-  ylab("Función de distribución acumulativa")
+```{r grafico-distribucion-acumulada1, fig.cap = "Gráfica de la función de distribución acumulativa de la suma de las caras de dos dados", class.source = "watch-out", class.output = "bg-warning"}
+plot_ly(dp_ej1, alpha = 0.5) %>%
+  add_segments(
+    x = ~c(0, xi), 
+    y = ~cumsum((c(0, numero_ocurrencia / 36))),
+    xend = ~c(xi, 14), 
+    yend = ~cumsum((c(0, numero_ocurrencia / 36))), 
+    color = I("red"),
+    showlegend = FALSE,
+    name = ""
+  ) %>%
+  add_markers(
+    x = ~xi, 
+    y = ~cumsum(numero_ocurrencia / 36), 
+    color = I("red"),
+    showlegend = FALSE,
+    name = ""
+  ) %>%
+  add_markers(
+    x = ~xi[-1], 
+    y = ~cumsum(numero_ocurrencia / 36)[-11], 
+    color = I("red"),
+    marker = list(symbol = "circle-open"),
+    showlegend = FALSE,
+    name = ""
+  )  %>% 
+  layout(
+    xaxis = list(
+      title = TeX(
+        "\\text{Suma de las caras de los dados} \\left(X \\right)"
+      ), 
+      zeroline = F, 
+      showgrid = T,
+      showline = T, 
+      linewidth = 1, 
+      linecolor = 'black',
+      showticklabels = TRUE,
+      tickwidth = 0.5
+    ),
+    yaxis = list(
+      title = TeX("F\\left(x\\ right)"),
+      showline = T, 
+      linewidth = 1, 
+      linecolor = 'black',
+      showticklabels = TRUE,
+      tickwidth = 0.5
+    ),
+    showlegend = TRUE
+  ) %>%
+  config(locale = "es")
 ```
 
 ## Esperanza Mateática de Una Variable Aleatoria Discreta {#esperanza-matematica}
@@ -464,7 +516,6 @@ x <- 2:12
 p_x <- c(1:6,5:1) / 36
 (media <- sum(x * p_x))
 ```
-
 :::
 
 En muchos problemas de estadística no solo es de interés el valor esperado de la variable $X$, como se definió en \@ref(def:esperanza), sino también el valor esperado de alguna variable $Y$ que es una transformación de $X$, es decir $g\left(x \right)$. Por ejemplo, $y=g\left(x \right)=x^2$. En tal sentido, se establece el teorema siguiente:
@@ -663,38 +714,38 @@ plot_ly(alpha = 0.5) %>%
     x = ~c(0:10), y = ~rep(x = 0, times = 11),
     xend = ~c(0:10), yend = ~dbinom(0:10, 10, 0.2), 
     color = I("red"), showlegend = TRUE,
-    name = "n = 10, p = 0,2"
+    name = TeX("n = 10, p = 0,2")
   ) %>%
   add_markers(
     x = ~c(0:10), y = ~dbinom(0:10, 10, 0.2), 
     color = I("red"), showlegend = TRUE,
-    name = "n = 10, p = 0,2"
+    name = TeX("n = 10, p = 0,2")
   ) %>%
   add_segments(
     x = ~c(0:10), y = ~rep(x = 0, times = 11),
     xend = ~c(0:10), yend = ~dbinom(0:10, 10, 0.5), 
     color = I("blue"), showlegend = TRUE,
-    name = "n = 10, p = 0,5"
+    name = TeX("n = 10, p = 0,5")
   ) %>%
   add_markers(
     x = ~c(0:10), y = ~dbinom(0:10, 10, 0.5), 
     color = I("blue"), showlegend = TRUE,
-    name = "n = 10, p = 0,5"
+    name = TeX("n = 10, p = 0,5")
   ) %>%
   add_segments(
     x = ~c(0:10), y = ~rep(x = 0, times = 11),
     xend = ~c(0:10), yend = ~dbinom(0:10, 10, 0.8), 
     color = I("green"), showlegend = TRUE,
-    name = "n = 10, p = 0,8"
+    name = TeX("n = 10, p = 0,8")
   ) %>%
   add_markers(
     x = ~c(0:10), y = ~dbinom(0:10, 10, 0.8), 
     color = I("green"), showlegend = TRUE,
-    name = "n = 10, p = 0,8"
+    name = TeX("n = 10, p = 0,8")
   ) %>% 
   layout(
     xaxis = list(
-      title = "x", 
+      title = TeX("x"), 
       zeroline = F, 
       showgrid = T,
       showline = T, 
@@ -704,7 +755,7 @@ plot_ly(alpha = 0.5) %>%
       tickwidth = 0.5
     ),
     yaxis = list(
-      title = "p(x)",
+      title = TeX("p \\left(x; n, p\\right)"),
       showgrid = T,
       showline = T, 
       linewidth = 1, 
@@ -714,7 +765,7 @@ plot_ly(alpha = 0.5) %>%
     ),
     showlegend = TRUE
   ) %>%
-  config(locale = "es")
+  config(locale = "es", mathjax = "cdn")
 ```
 
 ::: {.example #ejemplo-funcion-probabilidad-binomial name="Función de Probabilidad Binomial"}
@@ -728,7 +779,7 @@ P\left(X = 2 \right)=p\left ( x = 2;n = 15,p = 0,05 \right )=
 $$
 La función `dbinom(x, size, prob, log = FALSE)` de la distribución base de `r colorize("R", "blue")` permite evaluar la función de probabilidad binomial dada por la ecuación \@ref(eq:funcion-probabilidad-binomial). El siguiente script permite obtener el resultado anterior.
 
-```{r}
+```{r ejemplo-funcion-probabilidad-binomial}
 dbinom(x = 2, size = 15, prob = 0.05, log = FALSE)
 ```
 
@@ -744,20 +795,20 @@ plot_ly(alpha = 0.5) %>%
       x = 0:15, size = 15, prob = 0.05, log = FALSE
     ), 
     color = I("red"), 
-    showlegend = TRUE,
-    name = "n = 15, p = 0,05"
+    showlegend = FALSE,
+    name = ""
   ) %>%
   add_markers(
     x = 0:15, 
     y = ~dbinom(
       x = 0:15, size = 15, prob = 0.05, log = FALSE
     ), 
-    color = I("red"), showlegend = TRUE,
-    name = "n = 15, p = 0,05"
+    color = I("red"), showlegend = FALSE,
+    name = ""
   ) %>%  
   layout(
     xaxis = list(
-      title = "x", 
+      title = TeX("x"), 
       zeroline = F, 
       showgrid = T,
       showline = T, 
@@ -767,7 +818,7 @@ plot_ly(alpha = 0.5) %>%
       tickwidth = 0.5
     ),
     yaxis = list(
-      title = "p(x)",
+      title = TeX("p \\left(x; n= 15, p = 0,05 \\right)"),
       showgrid = T,
       showline = T, 
       linewidth = 1, 
@@ -775,9 +826,9 @@ plot_ly(alpha = 0.5) %>%
       showticklabels = TRUE,
       tickwidth = 0.5
     ),
-    showlegend = TRUE
+    showlegend = FALSE
   ) %>%
-  config(locale = "es")
+  config(locale = "es", mathjax = "cdn")
 ```
 
 :::
@@ -815,14 +866,14 @@ plot_ly(x = x, y = Fx1, alpha = 0.5) %>%
     xend = ~x[2:13], 
     yend = ~Fx1[1:12], 
     color = I("red"),
-    name = "n = 10, p = 0,2",
+    name = TeX("n = 10, p = 0,2"),
     showlegend = TRUE
   ) %>%
   add_markers(
     x = ~x[2:12], 
     y = ~Fx1[2:12], 
     color = I("red"),
-    name = "n = 10, p = 0,2",
+    name = TeX("n = 10, p = 0,2"),
     showlegend = TRUE
   ) %>%
   add_markers(
@@ -830,7 +881,7 @@ plot_ly(x = x, y = Fx1, alpha = 0.5) %>%
     y = ~Fx1[1:11], 
     color = I("red"),
     marker = list(symbol = "circle-open"),
-    name = "n = 10, p = 0,2",
+    name = TeX("n = 10, p = 0,2"),
     showlegend = TRUE
   )  %>%
   add_segments(
@@ -839,14 +890,14 @@ plot_ly(x = x, y = Fx1, alpha = 0.5) %>%
     xend = ~x[2:13], 
     yend = ~Fx2[1:12], 
     color = I("blue"), 
-    name = "n = 10, p = 0,5",
+    name = TeX("n = 10, p = 0,5"),
     showlegend = TRUE
   ) %>%
   add_markers(
     x = ~x[2:12], 
     y = ~Fx2[2:12], 
     color = I("blue"),
-    name = "n = 10, p = 0,5",
+    name = TeX("n = 10, p = 0,5"),
     showlegend = TRUE
   ) %>%
   add_markers(
@@ -854,7 +905,7 @@ plot_ly(x = x, y = Fx1, alpha = 0.5) %>%
     y = ~Fx2[1:11], 
     color = I("blue"),
     marker = list(symbol = "circle-open"),
-    name = "n = 10, p = 0,5",
+    name = TeX("n = 10, p = 0,5"),
     showlegend = TRUE
   )  %>%
   add_segments(
@@ -863,14 +914,14 @@ plot_ly(x = x, y = Fx1, alpha = 0.5) %>%
     xend = ~x[2:13], 
     yend = ~Fx3[1:12], 
     color = I("green"),
-    name = "n = 10, p = 0,8",
+    name = TeX("n = 10, p = 0,8"),
     showlegend = TRUE
   ) %>%
   add_markers(
     x = ~x[2:12], 
     y = ~Fx3[2:12], 
     color = I("green"),
-    name = "n = 10, p = 0,8",
+    name = TeX("n = 10, p = 0,8"),
     showlegend = TRUE
   ) %>%
   add_markers(
@@ -878,12 +929,12 @@ plot_ly(x = x, y = Fx1, alpha = 0.5) %>%
     y = ~Fx3[1:11], 
     color = I("green"),
     marker = list(symbol = "circle-open"),
-    name = "n = 10, p = 0,8",
+    name = TeX("n = 10, p = 0,8"),
     showlegend = TRUE
   ) %>% 
   layout(
     xaxis = list(
-      title = "x", 
+      title = TeX("x"), 
       zeroline = F, 
       showgrid = T,
       showline = T, 
@@ -893,7 +944,7 @@ plot_ly(x = x, y = Fx1, alpha = 0.5) %>%
       tickwidth = 0.5
     ),
     yaxis = list(
-      title = "F(x)",
+      title = TeX("F\\left(x; n, p \\right)"),
       showgrid = T,
       showline = T, 
       linewidth = 1, 
@@ -903,7 +954,7 @@ plot_ly(x = x, y = Fx1, alpha = 0.5) %>%
     ),
     showlegend = TRUE
   ) %>%
-  config(locale = "es")
+  config(locale = "es", mathjax = "cdn")
 ```
 
 ::: {.example #ejemplo-distribucion-acumulada-binomial name="Función de Distribución Acumulativa de Probabilidad Binomial"}
@@ -922,7 +973,7 @@ $$
 
 La función `pbinom(q, size, prob, lower.tail = TRUE, log.p = FALSE)` de la distribución base de `r colorize("R", "blue")` permite evaluar la función de distribución acumulativa de probabilidad binomial dada por la ecuación \@ref(eq:funcion-acumulativa-binomial). El siguiente script permite obtener el resultado anterior.
 
-```{r}
+```{r ejemplo-distribucion-acumulada-binomial}
 1 - pbinom(
   q = 1, size = 15, prob = 0.05, lower.tail = TRUE, 
   log.p = FALSE
@@ -943,21 +994,21 @@ plot_ly(x = x, y = Fx, alpha = 0.5) %>%
     xend = ~x[2:18], 
     yend = ~Fx[1:17], 
     color = I("blue"),
-    name = "n = 15, p = 0,05",
+    name = TeX("n = 15, p = 0,05"),
     showlegend = TRUE
   ) %>%
   add_markers(
     x = ~x[2:17], 
     y = ~Fx[2:17], 
     color = I("red"),
-    name = "n = 15, p = 0,05"
+    name = TeX("n = 15, p = 0,05")
   ) %>%
   add_markers(
     x = ~x[2:17], 
     y = ~Fx[1:16], 
     color = I("red"),
     marker = list(symbol = "circle-open"),
-    name = "n = 15, p = 0,05"
+    name = TeX("n = 15, p = 0,05")
   )  %>% 
   layout(
     xaxis = list(
@@ -971,7 +1022,7 @@ plot_ly(x = x, y = Fx, alpha = 0.5) %>%
       tickwidth = 0.5
     ),
     yaxis = list(
-      title = "F(x)",
+      title = TeX("F\\left(x; n = 15, p = 0,05 \\right)"),
       showline = T, 
       linewidth = 1, 
       linecolor = 'black',
@@ -980,12 +1031,12 @@ plot_ly(x = x, y = Fx, alpha = 0.5) %>%
     ),
     showlegend = TRUE
   ) %>%
-  config(locale = "es")
+   config(locale = "es", mathjax = "cdn")
 ```
 
 La tabla \@ref(tab:distribucion-acumulada2) muestra la función de probabilidad y la función de distribución acumulativa de probabilidad de una variable binomial con parámetros $n = 15$ y $p = 0,05$.
 
-```{r distribucion-acumulada2, class.source="watch-out", class.source = "watch-out"}
+```{r distribucion-acumulada2, class.source="watch-out", class.output = "bg-warning"}
 da_ej2 <- data.frame(
   x = 0:15,
   px = dbinom(x = 0:15, size = 15, prob = 0.05),
@@ -1261,38 +1312,38 @@ plot_ly(alpha = 0.5) %>%
     x = x1, y = ~ rep(x = 0, times = length(x1)),
     xend = x1, yend = ~px1,
     color = I("red"), showlegend = TRUE,
-    name = "m = 10, n = 90, k = 5"
+    name = TeX("m = 10, n = 90, k = 5")
   ) %>%
   add_markers(
     x = x1, y = ~px1,
     color = I("red"), showlegend = TRUE,
-    name = "m = 10, n = 90, k = 5"
+    name = TeX("m = 10, n = 90, k = 5")
   ) %>%
   add_segments(
     x = x2, y = ~ rep(x = 0, times = length(x2)),
     xend = ~x2, yend = ~px2,
     color = I("blue"), showlegend = TRUE,
-    name = "m = 10, n = 90, k = 10"
+    name = TeX("m = 10, n = 90, k = 10")
   ) %>%
   add_markers(
     x = ~x2, y = ~px2,
     color = I("blue"), showlegend = TRUE,
-    name = "m = 10, n = 90, k = 10"
+    name = TeX("m = 10, n = 90, k = 10")
   ) %>%
   add_segments(
     x = ~x3, y = ~ rep(x = 0, times = length(x3)),
     xend = ~x3, yend = ~px3,
     color = I("green"), showlegend = TRUE,
-    name = "m = 10, n = 90, k = 15"
+    name = TeX("m = 10, n = 90, k = 15")
   ) %>%
   add_markers(
     x = ~x3, y = ~px3,
     color = I("green"), showlegend = TRUE,
-    name = "m = 10, n = 90, k = 15"
+    name = TeX("m = 10, n = 90, k = 15")
   ) %>%
   layout(
     xaxis = list(
-      title = "x",
+      title = TeX("x"),
       zeroline = F,
       showgrid = T,
       showline = T,
@@ -1302,7 +1353,7 @@ plot_ly(alpha = 0.5) %>%
       tickwidth = 0.5
     ),
     yaxis = list(
-      title = "p(x)",
+      title = TeX("p \\left(x; m, n, k \\right)"),
       showgrid = T,
       showline = T,
       linewidth = 1,
@@ -1312,7 +1363,7 @@ plot_ly(alpha = 0.5) %>%
     ),
     showlegend = TRUE
   ) %>%
-  config(locale = "es")
+  config(locale = "es", mathjax = "cdn")
 ```
 
 ::: {.example #ejemplo-funcion-probabilidad-hipergeometrica name="Función de Probabilidad Hipergeométrica"}
@@ -1327,7 +1378,7 @@ P\left(X = 2 \right)=p\left ( x = 2;m = 100,n = 10, k =5 \right )=
 $$
 En `r colorize("R", "blue")`, el resultado anterior se puede conseguir con el siguiente trozo de código.
 
-```{r}
+```{r ejemplo-funcion-probabilidad-hipergeometrica}
 dhyper(x = 2, m = 5, n = 95, k = 10, log = FALSE)
 ```
 
@@ -1344,7 +1395,7 @@ plot_ly(alpha = 0.5) %>%
     ), 
     color = I("red"), 
     showlegend = TRUE,
-    name = "m = 5, n = 95, k = 10"
+    name = TeX("m = 5, n = 95, k = 10")
   ) %>%
   add_markers(
     x = 0:5, 
@@ -1352,11 +1403,11 @@ plot_ly(alpha = 0.5) %>%
       x = 0:5, m = 5, n = 95, k = 10, log = FALSE
     ), 
     color = I("red"), showlegend = TRUE,
-    name = "m = 5, n = 95, k = 10"
+    name = TeX("m = 5, n = 95, k = 10")
   ) %>%  
   layout(
     xaxis = list(
-      title = "x", 
+      title = TeX("x"), 
       zeroline = F, 
       showgrid = T,
       showline = T, 
@@ -1366,7 +1417,9 @@ plot_ly(alpha = 0.5) %>%
       tickwidth = 0.5
     ),
     yaxis = list(
-      title = "p(x)",
+      title = TeX(
+        "p \\left(x; m = 5, n = 95, k =10 \\right)"
+      ),
       showgrid = T,
       showline = T, 
       linewidth = 1, 
@@ -1376,7 +1429,7 @@ plot_ly(alpha = 0.5) %>%
     ),
     showlegend = TRUE
   ) %>%
-  config(locale = "es")
+  config(locale = "es", mathjax = "cdn")
 ```
 :::
 
@@ -1414,14 +1467,14 @@ plot_ly(alpha = 0.5) %>%
       c(first(x1) -3, x1), m = m1, n = n1, k = k1
     ), 
     color = I("red"),
-    name = "m = 10, n = 90, k = 5",
+    name = TeX("m = 10, n = 90, k = 5"),
     showlegend = TRUE
   ) %>%
   add_markers(
     x = ~x1, 
     y = ~phyper(x1, m = m1, n = n1, k = k1), 
     color = I("red"),
-    name = "m = 10, n = 90, k = 5",
+    name = TeX("m = 10, n = 90, k = 5"),
     showlegend = TRUE
   ) %>%
   add_markers(
@@ -1431,7 +1484,7 @@ plot_ly(alpha = 0.5) %>%
     ), 
     color = I("red"),
     marker = list(symbol = "circle-open"),
-    name = "m = 10, n = 90, k = 5",
+    name = TeX("m = 10, n = 90, k = 5"),
     showlegend = TRUE
   )  %>%
   add_segments(
@@ -1444,14 +1497,14 @@ plot_ly(alpha = 0.5) %>%
       c(first(x2) -3, x2), m = m2, n = n2, k = k2
     ), 
     color = I("blue"),
-    name = "m = 10, n = 90, k = 10",
+    name = TeX("m = 10, n = 90, k = 10"),
     showlegend = TRUE
   ) %>%
   add_markers(
     x = ~x2, 
     y = ~phyper(x2, m = m2, n = n2, k = k2), 
     color = I("blue"),
-    name = "m = 10, n = 90, k = 10",
+    name = TeX("m = 10, n = 90, k = 10"),
     showlegend = TRUE
   ) %>%
   add_markers(
@@ -1461,7 +1514,7 @@ plot_ly(alpha = 0.5) %>%
     ), 
     color = I("blue"),
     marker = list(symbol = "circle-open"),
-    name = "m = 10, n = 90, k = 10",
+    name = TeX("m = 10, n = 90, k = 10"),
     showlegend = TRUE
   )  %>%
   add_segments(
@@ -1474,14 +1527,14 @@ plot_ly(alpha = 0.5) %>%
       c(first(x3) -3, x3), m = m3, n = n3, k = k3
     ), 
     color = I("green"),
-    name = "m = 10, n = 90, k = 15",
+    name = TeX("m = 10, n = 90, k = 15"),
     showlegend = TRUE
   ) %>%
   add_markers(
     x = ~x3, 
     y = ~phyper(x3, m = m3, n = n3, k = k3), 
     color = I("green"),
-    name = "m = 10, n = 90, k = 15",
+    name = TeX("m = 10, n = 90, k = 15"),
     showlegend = TRUE
   ) %>%
   add_markers(
@@ -1491,12 +1544,12 @@ plot_ly(alpha = 0.5) %>%
     ), 
     color = I("green"),
     marker = list(symbol = "circle-open"),
-    name = "m = 10, n = 90, k = 15",
+    name = TeX("m = 10, n = 90, k = 15"),
     showlegend = TRUE
   )  %>%
   layout(
     xaxis = list(
-      title = "x", 
+      title = TeX("x"), 
       zeroline = F, 
       showgrid = T,
       showline = T, 
@@ -1506,7 +1559,7 @@ plot_ly(alpha = 0.5) %>%
       tickwidth = 0.5
     ),
     yaxis = list(
-      title = "F(x)",
+      title = TeX("F \\left(x; m, n, k \\right)"),
       showgrid = T,
       showline = T, 
       linewidth = 1, 
@@ -1516,7 +1569,7 @@ plot_ly(alpha = 0.5) %>%
     ),
     showlegend = TRUE
   ) %>%
-  config(locale = "es")
+  config(locale = "es", mathjax = "cdn")
 ```
 
 ::: {.example #ejemplo-distribucion-acumulada-hipergeometrica name="Función de Distribución Acumulativa de Probabilidad Hipergeométrica"}
@@ -1535,7 +1588,7 @@ $$
 
 El siguiente script de `r colorize("R", "blue")` permite obtener el resultado anterior.
 
-```{r}
+```{r ejemplo-distribucion-acumulada-hipergeometrica}
 phyper(
   q = 1, m = 5, n = 95, k = 10, lower.tail = TRUE, log.p = FALSE
 )
@@ -1552,14 +1605,14 @@ plot_ly(alpha = 0.5) %>%
     xend = ~c(0:5, 8), 
     yend = ~phyper(c(-3, 0:5), m = 5, n = 95, k = 10), 
     color = I("red"),
-    name = "m = 5, n = 95, k = 10",
+    name = TeX("m = 5, n = 95, k = 10"),
     showlegend = TRUE
   ) %>%
   add_markers(
     x = ~0:5, 
     y = ~phyper(0:5, m = 5, n = 95, k = 10), 
     color = I("red"),
-    name = "m = 5, n = 95, k = 10",
+    name = TeX("m = 5, n = 95, k = 10"),
     showlegend = TRUE
   ) %>%
   add_markers(
@@ -1567,12 +1620,12 @@ plot_ly(alpha = 0.5) %>%
     y = ~phyper(c(-3, 0:4), m = 5, n = 95, k = 10), 
     color = I("black"),
     marker = list(symbol = "circle-open"),
-    name = "m = 5, n = 95, k = 10",
+    name = TeX("m = 5, n = 95, k = 10"),
     showlegend = TRUE
   )  %>%
   layout(
     xaxis = list(
-      title = "x", 
+      title = TeX("x"), 
       zeroline = F, 
       showgrid = T,
       showline = T, 
@@ -1582,7 +1635,9 @@ plot_ly(alpha = 0.5) %>%
       tickwidth = 0.5
     ),
     yaxis = list(
-      title = "F(x)",
+      title = TeX(
+        "F \\left(x; m = 5, n = 95, k = 10  \\right)"
+      ),
       showgrid = T,
       showline = T, 
       linewidth = 1, 
@@ -1592,12 +1647,12 @@ plot_ly(alpha = 0.5) %>%
     ),
     showlegend = TRUE
   ) %>%
-  config(locale = "es")
+  config(locale = "es", mathjax = "cdn")
 ```
 
 La tabla \@ref(tab:distribucion-hipergeometrica) muestra la función de probabilidad y la función de distribución acumulativa de probabilidad de una variable hipergeométrica con parámetros $m = 5$, $n = 95$ y $k = 10$.
 
-```{r distribucion-hipergeometrica, class.source="watch-out", class.source = "watch-out"}
+```{r distribucion-hipergeometrica, class.source="watch-out", class.source="watch-out", class.output = "bg-warning"}
 da_ej2 <- data.frame(
   x = 0:5,
   px = dhyper(x = 0:5, m = 5, n = 95, k = 10, log = FALSE),
@@ -1864,14 +1919,14 @@ plot_ly(alpha = 0.5) %>%
     yend = ~dpois(x = 0:20, lambda = 1, log = FALSE), 
     color = I("red"), 
     showlegend = TRUE,
-    name = "lambda = 1"
+    name = TeX("\\lambda = 1")
   ) %>%
   add_markers(
     x = ~c(0:20), 
     y = ~dpois(x = 0:20, lambda = 1, log = FALSE), 
     color = I("red"), 
     showlegend = TRUE,
-    name = "lambda = 1"
+    name = TeX("\\lambda = 1")
   ) %>%
   add_segments(
     x = ~c(0:20), 
@@ -1880,14 +1935,14 @@ plot_ly(alpha = 0.5) %>%
     yend = ~dpois(x = 0:20, lambda = 5, log = FALSE), 
     color = I("blue"), 
     showlegend = TRUE,
-    name = "lambda = 5"
+    name = TeX("\\lambda = 5")
   ) %>%
   add_markers(
     x = ~c(0:20), 
     y = ~dpois(x = 0:20, lambda = 5, log = FALSE), 
     color = I("blue"), 
     showlegend = TRUE,
-    name = "lambda = 5"
+    name = TeX("\\lambda = 5")
   ) %>%
    add_segments(
     x = ~c(0:20), 
@@ -1896,18 +1951,18 @@ plot_ly(alpha = 0.5) %>%
     yend = ~dpois(x = 0:20, lambda = 10, log = FALSE), 
     color = I("green"), 
     showlegend = TRUE,
-    name = "lambda = 10"
+    name = TeX("\\lambda = 10")
   ) %>%
   add_markers(
     x = ~c(0:20), 
     y = ~dpois(x = 0:20, lambda = 10, log = FALSE), 
     color = I("green"), 
     showlegend = TRUE,
-    name = "lambda = 10"
+    name = TeX("\\lambda = 10")
   ) %>% 
   layout(
     xaxis = list(
-      title = "x", 
+      title = TeX("x"), 
       zeroline = F, 
       showgrid = T,
       showline = T, 
@@ -1917,7 +1972,7 @@ plot_ly(alpha = 0.5) %>%
       tickwidth = 0.5
     ),
     yaxis = list(
-      title = "p(x)",
+      title = TeX("p \\left(x; \\lambda \\right)"),
       showgrid = T,
       showline = T, 
       linewidth = 1, 
@@ -1927,7 +1982,7 @@ plot_ly(alpha = 0.5) %>%
     ),
     showlegend = TRUE
   ) %>%
-  config(locale = "es")
+  config(locale = "es", mathjax = "cdn")
 ```
 
 La distribución de Poisson es asimétrica negativa, es decir es muy raro que ocurran valores grandes de la variable, es decir, las probabilidades asociadas a estos eventos tiende a cero en la medida de que la variable tiende a infinito. Lo anterior mente expuesto se observa en la gráfica \@ref(fig:grafico-distribucion-poisson). También, se puede observar e esta gráfica que la distribución de Poisson tiende a ser simétrica en la medida que el parámetro $\lambda$ aumenta.
@@ -1945,7 +2000,7 @@ Dado que la probabilidad de que cinco componentes fallen en 1.000 horas es una p
 
 En `r colorize("R", "blue")`, el cálculo anterior se puede conseguir con el siguinte bloque de código.
 
-```{r}
+```{r ejemplo-funcion-probabilidad-poisson}
 dpois(x = 5, lambda = 2, log = FALSE)
 ```
 
@@ -1960,18 +2015,18 @@ plot_ly(alpha = 0.5) %>%
     yend = ~dpois(x = 0:10, lambda = 2, log = FALSE), 
     color = I("red"), 
     showlegend = TRUE,
-    name = "lambda = 2"
+    name = TeX("\\lambda = 2")
   ) %>%
   add_markers(
     x = 0:10, 
     y = ~dpois(x = 0:10, lambda = 2, log = FALSE), 
     color = I("red"), 
     showlegend = TRUE,
-    name = "lambda = 2"
+    name = TeX("\\lambda = 2")
   ) %>%  
   layout(
     xaxis = list(
-      title = "x", 
+      title = TeX("x"), 
       zeroline = F, 
       showgrid = T,
       showline = T, 
@@ -1981,7 +2036,7 @@ plot_ly(alpha = 0.5) %>%
       tickwidth = 0.5
     ),
     yaxis = list(
-      title = "p(x)",
+      title = TeX("p \\left(x, \\lambda = 2 \\right)"),
       showgrid = T,
       showline = T, 
       linewidth = 1, 
@@ -1991,7 +2046,7 @@ plot_ly(alpha = 0.5) %>%
     ),
     showlegend = TRUE
   ) %>%
-  config(locale = "es")
+  config(locale = "es", mathjax = "cdn")
 ```
 
 :::
@@ -2032,14 +2087,14 @@ plot_ly(x = x, y = Fx1, alpha = 0.5) %>%
     xend = ~ x[-1],
     yend = ~ Fx1[-length(x)],
     color = I("red"),
-    name = "lambda = 1",
+    name = TeX("lambda = 1"),
     showlegend = TRUE
   ) %>%
   add_markers(
     x = ~ x[-c(1, length(x))],
     y = ~ Fx1[-c(1, length(x))],
     color = I("red"),
-    name = "Lambda = 1",
+    name = TeX("lambda = 1"),
     showlegend = TRUE
   ) %>%
   add_markers(
@@ -2047,7 +2102,7 @@ plot_ly(x = x, y = Fx1, alpha = 0.5) %>%
     y = ~ Fx1[-c(length(x) - 1, length(x))],
     color = I("red"),
     marker = list(symbol = "circle-open"),
-    name = "lambda = 1",
+    name = TeX("\\lambda = 1"),
     showlegend = TRUE
   ) %>%
   add_segments(
@@ -2056,14 +2111,14 @@ plot_ly(x = x, y = Fx1, alpha = 0.5) %>%
     xend = ~ x[-1],
     yend = ~ Fx2[-length(x)],
     color = I("blue"),
-    name = "lambda = 5",
+    name = TeX("\\lambda = 5"),
     showlegend = TRUE
   ) %>%
   add_markers(
     x = ~ x[-c(1, length(x))],
     y = ~ Fx2[-c(1, length(x))],
     color = I("blue"),
-    name = "Lambda = 5",
+    name = TeX("\\lambda = 5"),
     showlegend = TRUE
   ) %>%
   add_markers(
@@ -2071,7 +2126,7 @@ plot_ly(x = x, y = Fx1, alpha = 0.5) %>%
     y = ~ Fx2[-c(length(x) - 1, length(x))],
     color = I("blue"),
     marker = list(symbol = "circle-open"),
-    name = "lambda = 5",
+    name = TeX("\\lambda = 5"),
     showlegend = TRUE
   ) %>%
   add_segments(
@@ -2080,14 +2135,14 @@ plot_ly(x = x, y = Fx1, alpha = 0.5) %>%
     xend = ~ x[-1],
     yend = ~ Fx3[-length(x)],
     color = I("green"),
-    name = "lambda = 10",
+    name = TeX("\\lambda = 10"),
     showlegend = TRUE
   ) %>%
   add_markers(
     x = ~ x[-c(1, length(x))],
     y = ~ Fx3[-c(1, length(x))],
     color = I("green"),
-    name = "Lambda = 10",
+    name = TeX("\\lambda = 10"),
     showlegend = TRUE
   ) %>%
   add_markers(
@@ -2095,12 +2150,12 @@ plot_ly(x = x, y = Fx1, alpha = 0.5) %>%
     y = ~ Fx3[-c(length(x) - 1, length(x))],
     color = I("green"),
     marker = list(symbol = "circle-open"),
-    name = "lambda = 10",
+    name = TeX("\\lambda = 10"),
     showlegend = TRUE
   ) %>%
   layout(
     xaxis = list(
-      title = "x",
+      title = TeX("x"),
       zeroline = F,
       showgrid = T,
       showline = T,
@@ -2110,7 +2165,7 @@ plot_ly(x = x, y = Fx1, alpha = 0.5) %>%
       tickwidth = 0.5
     ),
     yaxis = list(
-      title = "F(x)",
+      title = TeX("F \\left(x; \\lambda \\right)"),
       showgrid = T,
       showline = T,
       linewidth = 1,
@@ -2120,7 +2175,7 @@ plot_ly(x = x, y = Fx1, alpha = 0.5) %>%
     ),
     showlegend = TRUE
   ) %>%
-  config(locale = "es")
+  config(locale = "es", mathjax = "cdn")
 ```
 
 ::: {.example #ejemplo-distribucion-acumulada-binomial name="Función de Distribución Acumulativa de Probabilidad de Poisson"}
@@ -2139,7 +2194,7 @@ P \left(X \geq 5 \right) =& 1 - P \left(X \leq 4
 $$
 En `r colorize("R", "blue")`, el resultado anterior se puede obtener con el siguiente script.
 
-```{r}
+```{r ejemplo-distribucion-acumulada-poisson}
 1 - ppois(q = 4, lambda = 2, lower.tail = TRUE, log.p = FALSE)
 ```
 :::
@@ -2158,14 +2213,14 @@ plot_ly(x = x, y = Fx1, alpha = 0.5) %>%
     xend = ~ x[-1],
     yend = ~ Fx[-length(x)],
     color = I("red"),
-    name = "lambda = 2",
+    name = TeX("\\lambda = 2"),
     showlegend = TRUE
   ) %>%
   add_markers(
     x = ~ x[-c(1, length(x))],
     y = ~ Fx[-c(1, length(x))],
     color = I("red"),
-    name = "Lambda = 2",
+    name = TeX("\\lambda = 2"),
     showlegend = TRUE
   ) %>%
   add_markers(
@@ -2173,12 +2228,12 @@ plot_ly(x = x, y = Fx1, alpha = 0.5) %>%
     y = ~ Fx[-c(length(x) - 1, length(x))],
     color = I("red"),
     marker = list(symbol = "circle-open"),
-    name = "lambda = 1",
+    name = TeX("\\lambda = 2"),
     showlegend = TRUE
   ) %>%
   layout(
     xaxis = list(
-      title = "x",
+      title = TeX("x"),
       zeroline = F,
       showgrid = T,
       showline = T,
@@ -2188,7 +2243,7 @@ plot_ly(x = x, y = Fx1, alpha = 0.5) %>%
       tickwidth = 0.5
     ),
     yaxis = list(
-      title = "F(x)",
+      title = TeX("F \\left(x; \\lambda = 2 \\right)"),
       showgrid = T,
       showline = T,
       linewidth = 1,
@@ -2198,7 +2253,7 @@ plot_ly(x = x, y = Fx1, alpha = 0.5) %>%
     ),
     showlegend = TRUE
   ) %>%
-  config(locale = "es")
+  config(locale = "es", mathjax = "cdn")
 ```
 
 La tabla \@ref(tab:distribucion-acumulada4) muestra la función de probabilidad y la función de distribución acumulativa de probabilidad de una variable de Poisson con parámetro $\lambda = 2$.

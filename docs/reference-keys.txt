@@ -32,6 +32,8 @@ exm:ejemp2-ccr
 def:variacion
 def:variacion-sr
 eq:variacion-sr
+exm:ejemp1-vsr
+exm:ejemp2-vsr
 def:variacion-cr
 eq:variacion-cr
 exm:ejemp1-vcr

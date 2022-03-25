@@ -52,7 +52,7 @@ Supongamos que planeamos un viaje y debemos decidir entre transportarnos por aut
 
 El resultado anterior puede conseguirse, mediante el siguiente script.
 
-```{r}
+```{r ejemp1-princadit}
 n1 <- 3
 n2 <- 2
 n3 <- 1
@@ -69,7 +69,7 @@ formas para escoger una de las novelas.
 
 El siguiente fragmento de código, muestra el cálculo anterior.
 
-```{r}
+```{r ejemp2-princadit}
 n1 <- 3
 n2 <- 5
 n3 <- 4
@@ -93,7 +93,7 @@ Un artículo manufacturado debe pasar por tres controles. En cada uno de ellos s
 
 En `r colorize("R", "blue")`, este resultado puede ser obtenido con el siguiente script.
 
-```{r}
+```{r ejemp1-princmult}
 n1 <- 3
 n2 <- 4
 n3 <- 4
@@ -108,7 +108,7 @@ Juan puede armar la computadora de $n{}_1 \, n{}_2 \, n{}_3 \, n{}_4 = 2 \cdot 4
 
 El siguiente trozo de código, muestra el resultado anterior. 
 
-```{r}
+```{r ejemp2-princmult}
 n1 <- 2
 n2 <- 4
 n3 <- 3
@@ -134,7 +134,7 @@ Como los dos casos no pueden ocurrir al mismo tiempo, por el principio aditivo, 
 
 El resultado anterior puede obtenerse en `r colorize("R", "blue")` con el siguiente bloque de código.
 
-```{r}
+```{r ejemp3-princmult}
 n11 <- 1
 n12 <- 5
 n13 <- 4
@@ -237,7 +237,7 @@ urnsamples(
 
 La función `permutations` del paquete `gtools` también lista estas permutaciones, como se muestra en el siguiente código.
 
-```{r}
+```{r ejemp1-psr-list2}
 gtools::permutations(
   n = 3, r = 3, 
   v = c("a", "b", "c"), set = T,
@@ -390,7 +390,7 @@ $$
 
 El cálculo del número de permutaciones, en este ejemplo, se puede conseguir con el siguiente script.
 
-```{r}
+```{r ejemp2-pcr}
 paste(
   "El número de permutaciones con repeticiones es ",
   PR(n = 4, k = c(2, 2))
@@ -455,7 +455,7 @@ $$
 
 La función `nsamp` del paquete `prob`, también ejecuta el cálculo anterior. Como se muestra en el siguiente bloque de código.
 
-```{r}
+```{r ejemp1-csr}
 c1 <- nsamp(n = 12, k = 3, replace = F, ordered = F)
 paste("Se pueden formar", c1,"delegaciones")
 ```
@@ -473,7 +473,7 @@ maneras.
 
 Usando la función `nsamp`, al igual que en el ejemplo \@ref(exm:ejemp1-csr), el resultado anterior puede ser obtenido con el siguiente script.
 
-```{r}
+```{r ejemp2-csr}
 c2 <- nsamp(n = 5, k = 2, replace = F, ordered = F)
 paste("Los anillos se pueden colocar de", c2,"maneras")
 ```
@@ -489,7 +489,7 @@ urnsamples(
 
 El resultado anterior, también se puede obtener con la función `combinations` del paquete `gtools`.
 
-```{r}
+```{r ejemp2-csr-list2}
 combinations(
   n = 5, r = 2, v = 1:5, set = T, repeats.allowed = F
 )
@@ -521,7 +521,7 @@ $$
 
 La función `nsamp` del paquete `prob`, también ejecuta el cálculo anterior. Como se muestra en el siguiente bloque de código.
 
-```{r}
+```{r ejemp1-ccr}
 c1 <- nsamp(n = 4, k = 10, replace = T, ordered = F)
 paste("Pueden resultar", c1,"nacionalidades distintas")
 ```
@@ -540,14 +540,14 @@ $$
 
 Haciendo uso de la función `nsamp` del paquete `prob`, el resultado anterior puede ser replicado con el siguiente script.
 
-```{r}
+```{r ejemp2-ccr}
 c1 <- nsamp(n = 7, k = 2, replace = T, ordered = F)
 paste("Pueden resultar", c1,"nacionalidades distintas")
 ```
 
 Las piezas del dominó se pueden listar con el siguiente script.
 
-```{r}
+```{r ejemp2-ccr-lista}
 combinations(
   n = 7, r = 2, v = 0:6, set = T, repeats.allowed = T
 )
@@ -555,7 +555,7 @@ combinations(
 
 Igual resultado se consigue con el siguiente fragmento de código.
 
-```{r ejemp2-ccr-list, class.source = "watch-out", class.output = "bg-warning"}
+```{r ejemp2-ccr-list2, class.source = "watch-out", class.output = "bg-warning"}
 urnsamples(
   0:6,
   size = 2, replace = T, ordered = F
@@ -580,7 +580,7 @@ V_{n,r}=\frac{n!}{\left( n-r\right)!}=n\,(n-1)\,(n-2)\cdots(n-r+1),\:con\: r\leq
 $$
 :::
 
-::: {.example #ejemp1-csr name="Variación Sin Repetición"}
+::: {.example #ejemp1-vsr name="Variación Sin Repetición"}
 En un año se otorgarán tres premios (a la investigación, la enseñanza y el servicio) en un grupo de 25 estudiantes de posgrado del departamento de estadística. Si cada estudiante puede recibir un premio como máximo, ¿cuántas selecciones posibles habría?
 
 Como los premios son distinguibles, se trata de un problema de variación. Por lo tanto, aplicando la ecuación \@ref(eq:variacion-sr), el número total de posibilidades es
@@ -590,23 +590,23 @@ V_{25,3}=\frac{25!}{\left( 25-3\right)!}=25\,(24)\,(23)=`r formato(nsamp(n = 25,
 $$
 Con la función `nsamp` del paquete `prob`, este resultado se obtiene con el siguiente trozo de código.  
 
-```{r}
+```{r ejemp1-vsr}
 c1 <- nsamp(n = 25, k = 3, replace = F, ordered = T)
 paste("Se pueden hacer", formato(c1),"selecciones")
 ```
 :::
 
-::: {.example #ejemp2-csr name="Variación Sin Repetición"}
+::: {.example #ejemp2-vsr name="Variación Sin Repetición"}
 ¿De cuántas maneras se pueden colocar dos anillos diferentes en la misma mano, de modo que no estén en el mismo dedo?
 
-Dado que los anillos son diferentes, en contraposición con el ejemplo \@ref(exm:ejemp2-csr), el orden en que se coloquen en los dedo hace diferencia, por lo tanto se trata de un caso de *variación sin repetición*. Por lo tanto, el número de formas diferentes en que se pueden colocar los anillos en dos dedos diferentes de la mano, según la ecuación \@ref(eq:variacion-sr) es:
+Dado que los anillos son diferentes, en contraposición con el ejemplo \@ref(exm:ejemp2-csr), el orden en que se coloquen en los dedos hace diferencia, por lo tanto se trata de un caso de *variación sin repetición*. Por lo tanto, el número de formas diferentes en que se pueden colocar los anillos en dos dedos diferentes de la mano, según la ecuación \@ref(eq:variacion-sr) es:
 
 $$
 V_{5,2}=\frac{5!}{\left( 5-3\right)!}=\frac{5!}{ 2!}=5\,(4)=`r formato(nsamp(n = 5, k = 2, replace = F, ordered = T))`.
 $$
 Este resultado, se puede obtener con el siguiente script.
 
-```{r}
+```{r ejemp2-vsr}
 c2 <- nsamp(n = 5, k = 2, replace = F, ordered = T)
 paste("Los anillos se pueden colocar de", c2,"maneras")
 ```
@@ -622,7 +622,7 @@ urnsamples(
 
 El resultado anterior, también se puede obtener con la función `permutations` del paquete `gtools`.
 
-```{r}
+```{r ejemp2-vsr-list2}
 permutations(
   n = 5, r = 2, v = 1:5, set = TRUE, repeats.allowed = FALSE
 )
@@ -661,14 +661,14 @@ $$
 
 La función `nsamp` del paquete `prob` ejecuta el cálculo anterior, por medio del siguiente bloque de código.
 
-```{r}
+```{r ejemp1-vcr}
 c1 <- nsamp(n = 4, k = 2, replace = T, ordered = T)
 paste("Se pueden formar", formato(c1),"arreglos")
 ```
 
 La lista de arreglos, usando `r colorize("R", "blue")`, se puede obtener con la siguiente instrucción.
 
-```{r}
+```{r ejemp1-vcr-lista}
 urnsamples(
   c("a", "b", "c", "d"), size = 2, 
   replace = T, ordered = T

@@ -89,5 +89,43 @@ plot(euler(c(P = 15, M = 20, "P&M" = 10)),
      labels = list(font = 4), quantities = TRUE)
 
 
+## Gráfica función de probabilidad ggplot2
+ggplot(
+  data = dp_ej1,
+  aes(x = xi, y = numero_ocurrencia / 36)
+) +
+  geom_segment(
+    aes(
+      x = xi, xend = xi, y = 0,
+      yend = numero_ocurrencia / 36
+    ),
+    color = "blue"
+  ) +
+  geom_point(
+    size = 3, color = "red"
+  ) +
+  scale_x_continuous(breaks = seq(2, 12, 1)) +
+  theme_classic() + 
+  xlab("Suma de las caras (X)") +
+  ylab("Función de probabilidad")
 
+## Gráfica de función de distribución acumulativa de probabilidad
+dp_ej1 <- dp_ej1 %>%
+  mutate(
+    F_xi = cumsum(numero_ocurrencia) / 36,
+    xi_end = c(3:12, NA),
+    F_xiend = F_xi
+  )
+ggplot(
+  dp_ej1, aes(
+    x = xi, y = F_xi, xend = xi_end, yend = F_xiend
+  )
+) +
+  geom_point() +
+  geom_point(aes(x = xi_end, y = F_xi), shape = 1) +
+  geom_segment(color = "blue") +
+  scale_x_continuous(breaks = seq(2, 12, 1)) +
+  theme_classic() +
+  xlab("Suma de las caras (X)") +
+  ylab("Función de distribución acumulativa")
 

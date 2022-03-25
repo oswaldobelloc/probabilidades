@@ -21,9 +21,9 @@ github-repo: oswaldobelloc/probabilidades
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(
-  echo = TRUE, error = FALSE, warning = FALSE, message = FALSE,
-  strip.white = FALSE, tidy = "styler", results = "hold",
-  strip.white = FALSE,  comment = "#>",
+  echo = TRUE, error = FALSE, warning = FALSE, 
+  message = FALSE, strip.white = FALSE, tidy = "styler",
+  results = "hold", comment = "#>",
   tidy.opts = list(blank = FALSE, width.cutoff = 60)
 )
 ```
