@@ -1,6 +1,4 @@
-
-
-# Disribuciones Discretas de Probabilidades {#dist_disc}
+# Disribuciones Discretas de Probabilidad {#dist_disc}
 
 El siguiente bloque de código permite instalar y cargar los paquetes de `r colorize("R", "blue")` que se usaran en esta sección.
 
@@ -17,11 +15,13 @@ package.check <- lapply(packages, FUN = function(x) {
 })
 ```
 
+
 ## Variable Aleatoria {#variable-aleatoria}
 
 ::: {#variable-aleatoria .definition name="Variable Aleatoria"} 
 Sea un experimento aleatorio $\varepsilon$ y $S$ el espacio muestral asociado con el experimento. Una función $X$ que asigna a cada uno de los elementos $s$ de $S$, un número real $X \left(s \right)$, se llama _variable aleatoria_.
 :::
+
 
 ### Recorrido de una Variable Aleatoria {#recorrido}
 
@@ -39,6 +39,7 @@ Ahora, sobre este espacio muestra se define la variable aleatoria $X$ como sigue
 En este ejemplo $R_X =0,1,2$.
 :::
 
+
 ### Variable Aleatoria Discreta {#variable-discreta}
 
 ::: {#variable-discreta .definition name="Variable Aleatoria Discreta"}
@@ -55,6 +56,7 @@ Si sobre este espacio muestral se define la variable aleatoria $X=\textrm{númer
 Con respecto al ejemplo \@ref(exm:variable-discreta), la variable aleatoria $X=\textrm{el número de caras obtenidas en los dos lanzamientos}$ es discreta ya que esta toma solo cuatro valores, $R_X =\left\{0, 1, 2 \right\}$. Es decir, el recorrido de $X$ es finito.
 :::
 
+
 ### Variable Aleatoria Continua {#variable-continua}
 
 ::: {#variable-continua .definition name="Variable Aleatoria Continua"}
@@ -69,6 +71,7 @@ R_X=\left[ 0,r\right]=\left\{x:0\le x \le r \right\}.
 $$
 Aquí, $X$ es una variable aleatoria continua.
 :::
+
 
 ## Función de Probabilidad {#funcion-probabilidad}
 
@@ -136,13 +139,17 @@ dp_ej1 <- data.frame(
   numero_ocurrencia = c(1:6, 5:1)
 ) %>%
   mutate(
-    p_xi = c(
-      "$\\frac{1}{36}$", "$\\frac{2}{36}$",
-      "$\\frac{3}{36}$", "$\\frac{4}{36}$",
-      "$\\frac{5}{36}$", "$\\frac{6}{36}$",
-      "$\\frac{5}{36}$", "$\\frac{4}{36}$",
-      "$\\frac{3}{36}$", "$\\frac{2}{36}$",
-      "$\\frac{1}{36}$"
+    p_xi = paste0(
+      "$\\frac{", numero_ocurrencia, "}{36}", "\\approx ",
+      format(
+        round(
+          x = numero_ocurrencia / 36,
+          digits = 4
+        ),
+        mode = "double",
+        big.mark = ".",
+        decimal.mark = ","
+      ), "$"
     )
   )
 knitr::kable(
@@ -168,7 +175,7 @@ knitr::kable(
 
 Como se oberva en la tabla \@ref(tab:distribucion-probabilidad1) $p\left ( x_i \right )$ es una auténtica función de probabilidad dado que se cumplen las dos condiciones requeridas en la definición \@ref(def:funcion-probabilidad). Es decir,
 $$
-i) \: p \left(x_i \right) \ge 0,\, para \: i= 1, 2, \dotsc 11; y
+i) \: p \left(x_i \right) \ge 0,\, para \: i= 1, 2, \dotsc, 11; y
 $$
 
 $$
@@ -182,7 +189,7 @@ $$
 En algunos casos es posible expresar la función de probabilidad a través de una expresión matemática dada en términos de la variable aleatoria. En este caso, la función de probabilidad queda determinada por la siguiente expresión:
 $$
 p\left ( x \right )= \begin{cases}
-\frac{6-\left|x-7 \right|}{36} & \text{si } x= 2, 3, \cdots ,12\\
+\frac{6-\left|x-7 \right|}{36} & \text{si } x= 2, 3, \dotsc ,12\\
 0 & \text{en otros casos }.
 (\#eq:funcion-probabilidad1)
 \end{cases}
@@ -253,6 +260,7 @@ plot_ly(data = dp_ej1, alpha = 0.5) %>%
 
 
 ## Función de Distribución Acumulativa de Probabilidad {#funcion-distribucion}
+
 Existen muchos problemas en los que es necesario calcular la probabilidad de que el valor observado de una variable aleatoria $X$ sea menor o igual que algún número real $x$. Al escribir $F \left(x \right) = P \left(X \leq x \right)$ para cualquier número real $x$, se define $F \left(x \right)$ como la función de distribución acumulativa de probabilidad de la variable aleatoria $X$. De manera formal, la función de distribución acumulativa de probabilidad se define de la siguiente manera:
 
 ::: {#funcion-acumulativa-probabilidad .definition name="Función de Distribución Acumulativa de Probabilidad"}
@@ -264,6 +272,7 @@ F\left ( x \right )=P\left ( X \leq x \right )=\sum_{t=x_1}^{x} p\left ( t \righ
 \end{equation}
 $$
 :::
+
 
 ### Propiedades de la Función de Distribución Acumulativa de Probabilidad {#propiedades-funcion-distribucion}
 
@@ -308,60 +317,24 @@ $$
 Los resultados anteriores pueden resumirse en la tabla \@ref(tab:distribucion-acumulada1).
 
 ```{r distribucion-acumulada1, class.source="watch-out", class.output = "bg-warning"}
-da_ej1 <- data.frame(
-  S = c(
-    "$\\left(1, 1 \\right)$",
-    "$\\left(1, 2 \\right), \\left(2, 1
-        \\right)$",
-    "$\\left(1, 3 \\right), \\left(2, 2
-        \\right), \\left(3, 1 \\right)$",
-    "$\\left(1, 4 \\right), \\left(2, 3
-        \\right), \\left(3, 2 \\right),
-        \\left(4, 1 \\right)$",
-    "$\\left(1, 5\\right), \\left(2, 4
-        \\right), \\left(3, 3 \\right), 
-        \\left(4, 2 \\right),\\left(5,
-        1\\right)$",
-    "$\\left(1, 6\\right), \\left(2, 5
-        \\right), \\left(3, 4 \\right), 
-        \\left(4, 3 \\right),\\left(5,
-        2\\right),\\left(6, 1\\right)$",
-    "$\\left(2, 6\\right), \\left(3, 5
-        \\right), \\left(4, 4 \\right), 
-        \\left(5, 3 \\right),\\left(6,
-        2\\right)$",
-    "$\\left(3, 6 \\right), \\left(4, 5
-        \\right), \\left(5, 4 \\right),
-        \\left(6, 3 \\right)$",
-    "$\\left(4, 6 \\right), \\left(5, 5
-        \\right), \\left(6, 4 \\right)$",
-    "$\\left(5, 6 \\right), \\left(6, 5
-        \\right)$",
-    "$\\left(6, 6 \\right)$"
-  ),
-  xi = 2:12,
-  numero_ocurrencia = c(1:6, 5:1)
-) %>%
+dp_ej1 <- dp_ej1 %>% 
   mutate(
-    p_xi = c(
-      "$\\frac{1}{36}$", "$\\frac{2}{36}$",
-      "$\\frac{3}{36}$", "$\\frac{4}{36}$",
-      "$\\frac{5}{36}$", "$\\frac{6}{36}$",
-      "$\\frac{5}{36}$", "$\\frac{4}{36}$",
-      "$\\frac{3}{36}$", "$\\frac{2}{36}$",
-      "$\\frac{1}{36}$"
-    ),
-    F_xi = c(
-      "$\\frac{1}{36}$", "$\\frac{3}{36}$",
-      "$\\frac{6}{36}$", "$\\frac{10}{36}$",
-      "$\\frac{15}{36}$", "$\\frac{21}{36}$",
-      "$\\frac{26}{36}$", "$\\frac{30}{36}$",
-      "$\\frac{33}{36}$", "$\\frac{35}{36}$",
-      "$\\frac{36}{36}$"
-      )
+    F_xi = paste0(
+      "$\\frac{", cumsum(numero_ocurrencia), "}{36}",
+      "\\approx ",
+      format(
+        round(
+          x = cumsum(numero_ocurrencia / 36),
+          digits = 4
+        ),
+        mode = "double",
+        big.mark = ".",
+        decimal.mark = ","
+      ), "$"
+    )
   )
 knitr::kable(
-  da_ej1,
+  dp_ej1,
   booktabs = TRUE,
   row.names = TRUE,
   col.names = c("Espacio Muestral", "$x_i$", "Número de ocurrencia", "$p\\left(x_i \\right)$", "$F\\left(x_i \\right)$"),
@@ -377,6 +350,7 @@ knitr::kable(
   ) %>%
   kable_classic_2() %>% 
   scroll_box(width = "100%", height = "400px")
+
 ```
 
 Cuando se conoce la expresión que define la función de probabilidad, la cual, en este caso está dada por la ecuación \@ref(eq:funcion-probabilidad1), se puede determinar una expresión matemática que defina la función de distribución acumulativa de probabilidad. A continuación se ejecuta un procedimiento para hallar esta ecuación.
@@ -436,9 +410,9 @@ La figura \@ref(fig:grafico-distribucion-acumulada1) muestra la gráfica de la f
 plot_ly(dp_ej1, alpha = 0.5) %>%
   add_segments(
     x = ~c(0, xi), 
-    y = ~cumsum((c(0, numero_ocurrencia / 36))),
+    y = ~cumsum(c(0, numero_ocurrencia / 36)),
     xend = ~c(xi, 14), 
-    yend = ~cumsum((c(0, numero_ocurrencia / 36))), 
+    yend = ~cumsum(c(0, numero_ocurrencia / 36)), 
     color = I("red"),
     showlegend = FALSE,
     name = ""
@@ -451,8 +425,8 @@ plot_ly(dp_ej1, alpha = 0.5) %>%
     name = ""
   ) %>%
   add_markers(
-    x = ~xi[-1], 
-    y = ~cumsum(numero_ocurrencia / 36)[-11], 
+    x = ~xi, 
+    y = ~cumsum(c(0, numero_ocurrencia[-11] / 36)), 
     color = I("red"),
     marker = list(symbol = "circle-open"),
     showlegend = FALSE,
@@ -462,7 +436,9 @@ plot_ly(dp_ej1, alpha = 0.5) %>%
     xaxis = list(
       title = TeX(
         "\\text{Suma de las caras de los dados} \\left(X \\right)"
-      ), 
+      ),
+      scaleanchor = "xi",
+      scaleratio = 1,
       zeroline = F, 
       showgrid = T,
       showline = T, 
@@ -472,17 +448,18 @@ plot_ly(dp_ej1, alpha = 0.5) %>%
       tickwidth = 0.5
     ),
     yaxis = list(
-      title = TeX("F\\left(x\\ right)"),
+      title = TeX("F\\left(x \\right)"),
       showline = T, 
       linewidth = 1, 
       linecolor = 'black',
       showticklabels = TRUE,
       tickwidth = 0.5
     ),
-    showlegend = TRUE
+    showlegend = FALSE
   ) %>%
-  config(locale = "es")
+   config(locale = "es", mathjax = "cdn")
 ```
+
 
 ## Esperanza Mateática de Una Variable Aleatoria Discreta {#esperanza-matematica}
 
@@ -649,6 +626,7 @@ El valor de la varianza y la desviación estándar obtenidos anteriormente se pu
 ```
 :::
 
+
 ## Función Generadora de Momentos de Una Variable Aleatoria Discreta {#funcion-generadora-momentos}
 
 ::: {#funcion-generadora-momentos .definition name="Función Generadora de Momentos de Una Variable Aleatoria Discreta"}
@@ -690,8 +668,11 @@ iii)&\: m_{\frac{x+a}{b}} =E\left [ e^{\left ( \frac{x+a}{b} \right )t} \right ]
 $$
 :::
 
+
 ## Distribuciones de Probabilidad Notables {#distribuciones-notables}
+
 En esta sección se definen algunas distribuciones de probabilidad de gran importancia por sus múltiples aplicaciones en la descripción de fenómenos que ocurren en la vida diaria, tales como: la _distribución binomial_, la _distribución hipergeométrica_ y la _distribución de Poisson_.
+
 
 ### Distribución Binomial {#distribucion-binomial}
 
@@ -832,6 +813,7 @@ plot_ly(alpha = 0.5) %>%
 ```
 
 :::
+
 
 #### Función de Distribución Acumulativa de Probabilidad Binomial {#distribucion-acumulada-binomial}
 
@@ -1012,7 +994,7 @@ plot_ly(x = x, y = Fx, alpha = 0.5) %>%
   )  %>% 
   layout(
     xaxis = list(
-      title = "x", 
+      title = TeX("x"), 
       zeroline = F, 
       showgrid = T,
       showline = T, 
@@ -1065,6 +1047,7 @@ knitr::kable(
   kable_classic_2() %>% 
   scroll_box(width = "100%", height = "400px")
 ```
+
 
 #### Media de la Distribución Binomial {#media-binomial}
 
@@ -1134,7 +1117,9 @@ $$
 5 artículos defectuosos en la muestra.
 :::
 
+
 #### Varianza de la Distribución Binomial {#varianza-binomial}
+
 La varianza de una variable aleatoria binomial $X$ es un parámetro que indica que tan distante están los posibles valores que puede tomar esta variable, es decir, $x=0, 1, 2, \dotsc, n$ con respecto a la media de la variable $\left(\mu=np \right)$. En tal sentido, la varianza de una variable binomial se describe en el siguiente teorema: 
 
 ::: {#varianza-binomial .theorem name="Varianza de la Distribución Binomial"}
@@ -1218,7 +1203,9 @@ V(X)=np \left(1-p \right)=15 \cdot0,05 \left(1-0,05 \right)=0,7125.
 $$
 :::
 
+
 #### Función Genradora de Momentos de la Distribución Binomial {#funcion-generadora-momentos-binomial}
+
 La función generadora de momentos es un método alternativo para determinar los momentos ordinarios de una distribución de probabilidad determinada, por medio del teorema \@ref(thm:funcion-generadora-momentos). En el caso de la distribución binomial, la función generadora de momentos se indica en el siguienete teorema: 
 
 ::: {#fgm-binomial .theorem name="Función Generadora de Momentos de la Distribución Binomial"}
@@ -1432,6 +1419,7 @@ plot_ly(alpha = 0.5) %>%
   config(locale = "es", mathjax = "cdn")
 ```
 :::
+
 
 #### Función de Distribución Acumulativa de Probabilidad Hipergeométrica {#distribucion-acumulada-hipergeometrica}
 
@@ -1685,6 +1673,7 @@ knitr::kable(
   scroll_box(width = "100%", height = "400px")
 ```
 
+
 #### Media de la Distribución Hipergeométrica {#media-hipergeometrica}
 
 La media, promedio o esperanza matemática de la distribución hipergeométrica es el número de objetos con la característica de interés, que se espera, aparezcan en una muestra de tamaño $k$, la cual ha sido extraída de una población que contiene $m$ objetos que poseen la característica de interés mientras que el resto $n$ no posee tal característica. De manera formal, esto se expresa de la siguiente manera:
@@ -1762,7 +1751,9 @@ $$
 lamparas defectuosos en la muestra.
 :::
 
+
 #### Varianza de la Distribución Hipergeométrica {#varianza-hipergoemetrica}
+
 La varianza de una variable aleatoria es una medida absoluta de la dispersión de esta. En el caso de que la variable aleatoria sea hipergeométrica, la medida de esa dispersión se expresa en siguiente teorema: 
 
 ::: {#varianza-hipergeometrica .theorem name="Varianza de la Distribución Hipergeométrica"}
@@ -1894,6 +1885,7 @@ Otra forma de obtener la media y la varianza es a través de la función generad
 
 
 ### Distribució de Poisson {#distribuciones-poisson}
+
 La distribución de Poisson debe su nombre a Simeón Denis Poisson, probabilista francés del siglo XIX quien fue el primero en describirla. Es una distribución discreta de probabilidad muy útil ya que se aplica para describir la ocurrencia de fenómenos que ocurren a una tasa constante en el tiempo o en el espacio. La presentación formal de esta distribución se probabilidad se describe en el siguiente teorema.
 
 ::: {#distribucion-poisson .definition name="Distribución de Poisson"}
@@ -1991,7 +1983,7 @@ La distribución de Poisson es asimétrica negativa, es decir es muy raro que oc
 ::: {.example #ejemplo-funcion-probabilidad-poisson name="Función de Probabilidad de Poison"}
 después de una prueba de laboratorio muy rigorosa con cierto componente eléctrico, el fabricante determina que en promedio, sólo fallarán dos componentes antes de tener 1.000 horas de operación. Un comprador observa que son cinco los que fallan antes de las 1.000 horas. Si el número de componentes que fallan es una variable aleatoria de Poisson, ¿existe suficiente evidencia para dudar de la conclusión del fabricante?
 
-La duda estadística puede apoyarse en términos de la probabilidad. Si un evento debe o no ocurrir bajo ciertas condiciones, su ocurrencia se decide en términos de la probabilidad del evento bajo esas condiciones. Si la probabilidad de ocurrencia es pequeña y el evento ocurre, entonces se puede preguntar, con justificación, por las condiciones. Al mismo tiempo debe tenerse en mente que un valor de probabilidad pequeño no impide la ocurrencia del evento, a menos que este valor sea cero. En dicho caso, se tiene que $\lambda = 2$. Se supone que la frecuencia con que ocurren las fallas es constante e igual a dos cada mil hora o un promedio de 1/500 unidades por hora. La probabilidad de que fallen cinco componentes en mil horas es, según la ecuación \@ref(eq:funcion-probabilidad-poisson),
+La duda estadística puede apoyarse en términos de la probabilidad. Si un evento debe o no ocurrir bajo ciertas condiciones, su ocurrencia se decide en términos de la probabilidad del evento bajo esas condiciones. Si la probabilidad de ocurrencia es pequeña y el evento ocurre, entonces se puede preguntar, con justificación, por las condiciones. Al mismo tiempo debe tenerse en mente que un valor de probabilidad pequeño no impide la ocurrencia del evento, a menos que este valor sea cero. En dicho caso, se tiene que $\lambda = 2$. Se supone que la frecuencia con que ocurren las fallas es constante e igual a dos cada mil hora o un promedio de $1/500$ unidades por hora. La probabilidad de que fallen cinco componentes en mil horas es, según la ecuación \@ref(eq:funcion-probabilidad-poisson),
 
 $$
 P\left(X = 5 \right)=p\left ( x = 5;\lambda =2 \right )=\frac{e^{-2}\lambda^5}{5!}= \approx `r formato(dpois(x = 5, lambda = 2, log = FALSE))`.
@@ -2036,7 +2028,7 @@ plot_ly(alpha = 0.5) %>%
       tickwidth = 0.5
     ),
     yaxis = list(
-      title = TeX("p \\left(x, \\lambda = 2 \\right)"),
+      title = TeX("p \\left(x; \\lambda = 2 \\right)"),
       showgrid = T,
       showline = T, 
       linewidth = 1, 
@@ -2051,7 +2043,9 @@ plot_ly(alpha = 0.5) %>%
 
 :::
 
+
 #### Función de Distribución Acumulativa de Probabilidad de Poisson {#distribucion-acumulada-poisson}
+
 De acuerdo con las definiciones \@ref(def:funcion-acumulativa-probabilidad) y \@ref(def:distribucion-poisson) la función de distribución acumulativa de probabilidad de una variable aleatoria con distribución de Poisson se formaliza en el siguiente teorema:
 
 ::: {#distribucion-acumulada-binomial .definition name="Función de Distribución Acumulativa de Probabilidad Binomial"}
@@ -2350,10 +2344,12 @@ E \left(X \right) = \lambda=2.
 $$
 :::
 
+
 #### Varianza de la Distribución de Poisson {#varianza-poisson}
+
 La varianza de una variable aleatoria de Poisson $X$ viene dada por el siguiente teorema: 
 
-::: {#varianza-binomial .theorem name="Varianza de la Distribución de Poisson"}
+::: {#varianza-poisson .theorem name="Varianza de la Distribución de Poisson"}
 Sea $X$ una variable aleatoria con distribución de Poisson. Entonces, la _varianza_ de $X$ viene dada por:
 $$
 \begin{equation}
@@ -2420,7 +2416,7 @@ V(X)=& \lambda^2+\lambda-\lambda^2\\
 $$
 :::
 
-::: {.example #ejemplo-varianza-binomial name="Varianza de la Distribución Binomial"}
+::: {.example #ejemplo-varianza-binomial name="Varianza de la Distribución de Poisson"}
 Con respecto al ejemplo \@ref(exm:ejemplo-funcion-probabilidad-binomial), determine la varianza del número de componentes que fallan en dos horas.
 
 De acuerdo con el teorema \@ref(thm:varianza-poisson), la varianza de $X$ es:
@@ -2430,7 +2426,9 @@ V(X)=\lambda=2.
 $$
 :::
 
+
 #### Función Genradora de Momentos de la Distribución de Poisson {#funcion-generadora-momentos-poisson}
+
 La función generadora de momentos de la distribución de Poisson se indica en el siguiente teorea: 
 
 ::: {#fgm-poisson .theorem name="Función Generadora de Momentos de la Distribución de Poisson"}

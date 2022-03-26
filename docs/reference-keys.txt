@@ -238,6 +238,7 @@ tab:distribucion-acumulada3
 thm:media-poisson
 eq:media-poisson
 exm:ejemplo-media-distribucion-poisson
+thm:varianza-poisson
 eq:varianza-poisson
 thm:fgm-poisson
 eq:fgm-poisson

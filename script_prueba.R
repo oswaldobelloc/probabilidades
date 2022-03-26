@@ -129,3 +129,74 @@ ggplot(
   xlab("Suma de las caras (X)") +
   ylab("Función de distribución acumulativa")
 
+## Distribución de Probabilidad del Ejemplo 1
+da_ej1 <- data.frame(
+  S = c(
+    "$\\left(1, 1 \\right)$",
+    "$\\left(1, 2 \\right), \\left(2, 1
+        \\right)$",
+    "$\\left(1, 3 \\right), \\left(2, 2
+        \\right), \\left(3, 1 \\right)$",
+    "$\\left(1, 4 \\right), \\left(2, 3
+        \\right), \\left(3, 2 \\right),
+        \\left(4, 1 \\right)$",
+    "$\\left(1, 5\\right), \\left(2, 4
+        \\right), \\left(3, 3 \\right), 
+        \\left(4, 2 \\right),\\left(5,
+        1\\right)$",
+    "$\\left(1, 6\\right), \\left(2, 5
+        \\right), \\left(3, 4 \\right), 
+        \\left(4, 3 \\right),\\left(5,
+        2\\right),\\left(6, 1\\right)$",
+    "$\\left(2, 6\\right), \\left(3, 5
+        \\right), \\left(4, 4 \\right), 
+        \\left(5, 3 \\right),\\left(6,
+        2\\right)$",
+    "$\\left(3, 6 \\right), \\left(4, 5
+        \\right), \\left(5, 4 \\right),
+        \\left(6, 3 \\right)$",
+    "$\\left(4, 6 \\right), \\left(5, 5
+        \\right), \\left(6, 4 \\right)$",
+    "$\\left(5, 6 \\right), \\left(6, 5
+        \\right)$",
+    "$\\left(6, 6 \\right)$"
+  ),
+  xi = 2:12,
+  numero_ocurrencia = c(1:6, 5:1)
+) %>%
+  mutate(
+    p_xi = c(
+      "$\\frac{1}{36}$", "$\\frac{2}{36}$",
+      "$\\frac{3}{36}$", "$\\frac{4}{36}$",
+      "$\\frac{5}{36}$", "$\\frac{6}{36}$",
+      "$\\frac{5}{36}$", "$\\frac{4}{36}$",
+      "$\\frac{3}{36}$", "$\\frac{2}{36}$",
+      "$\\frac{1}{36}$"
+    ),
+    F_xi = c(
+      "$\\frac{1}{36}$", "$\\frac{3}{36}$",
+      "$\\frac{6}{36}$", "$\\frac{10}{36}$",
+      "$\\frac{15}{36}$", "$\\frac{21}{36}$",
+      "$\\frac{26}{36}$", "$\\frac{30}{36}$",
+      "$\\frac{33}{36}$", "$\\frac{35}{36}$",
+      "$\\frac{36}{36}$"
+    )
+  )
+knitr::kable(
+  da_ej1,
+  booktabs = TRUE,
+  row.names = TRUE,
+  col.names = c("Espacio Muestral", "$x_i$", "Número de ocurrencia", "$p\\left(x_i \\right)$", "$F\\left(x_i \\right)$"),
+  align = c("lccc"),
+  format.args = list(decimal.mark = ",", big.mark = "."),
+  caption = "\\label{tab2:distribucion-acumulada1}Función de distribución acumulativa de la suma de las caras de dos dados",
+  escape = FALSE
+) %>%
+  kable_styling(
+    bootstrap_options = "striped",
+    full_width = FALSE,
+    fixed_thead = T
+  ) %>%
+  kable_classic_2() %>% 
+  scroll_box(width = "100%", height = "400px")
+

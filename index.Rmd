@@ -62,7 +62,7 @@ colorize <- function(x, color) {
 ```{r echo = FALSE}
 # función para dar formato a número
 formato <- function(x) {
-  if (!is.numeric(x)) stop("La entrada debe ser numérica!")
+  if (!is.numeric(x)) stop("¡La entrada debe ser numérica!")
   format(
     round(x, digits = 6),
     mode = "double",
