@@ -160,6 +160,7 @@ def:funcion-probabilidad
 eq:funcion-probabilidad
 exm:funcion-probabilidad1
 tab:distribucion-probabilidad1
+tab:distribucion-probabilidad1-ursample
 eq:funcion-probabilidad1
 fig:grafico-distribucion-probabilidad1
 def:funcion-acumulativa-probabilidad

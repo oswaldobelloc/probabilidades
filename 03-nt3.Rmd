@@ -4,8 +4,8 @@ El siguiente bloque de código permite instalar y cargar los paquetes de `r colo
 
 ```{r cargar-paquetes-nt3, class.source = "watch-out"}
 packages <- c(
-  "ggplot2", "ggstatsplot", "tidyverse",
-  "kableExtra", "plotly"
+  "ggstatsplot", "tidyverse", "kableExtra", "plotly",
+  "prob", "magrittr"
 )
 package.check <- lapply(packages, FUN = function(x) {
   if (!require(x, character.only = TRUE)) {
@@ -167,10 +167,64 @@ knitr::kable(
     full_width = FALSE,
     fixed_thead = T
   ) %>%
-  kable_classic_2() %>% 
+  kable_classic_2() %>%
   scroll_box(width = "100%", height = "400px")
 ```
 
+El siguiente trozo de código de `r colorize("R", "blue")` permite replicar la tabla \@ref(tab:distribucion-probabilidad1), usando la función `urnsample` del paquete `prob`. Note que en este chunk, a diferencia del anterior, las columnas han sido creadas de manera automáticas. Lo que hace que este código sea más autorreproducible que el anterior. 
+
+```{r distribucion-probabilidad1-ursample, class.source="watch-out", class.output = "bg-warning"}
+dp <- data.frame(
+  urnsamples(
+    x = 1:6, size = 2, replace = T, ordered = T
+  ) %>%
+    dplyr::transmute(
+      em = paste0("$\\left(", X2, ",", X1, " \\right)$"),
+      xi = X1 + X2
+    )
+)
+dp_urnsample <- data.frame(
+  em = dp %>% split(.$xi) %>% map("em") %>%
+    map_chr(str_c, collapse = "") %>%
+    str_replace_all(pattern = "\\$\\$", replacement = ",  ")
+) %>%
+  dplyr::bind_cols(
+    as.data.frame(
+      table(dp$xi)
+    )
+  ) %>%
+  dplyr::mutate(
+    p_xi = paste0(
+      "$\\frac{", Freq, "}{", sum(Freq), "}", "\\approx ",
+      format(
+        round(
+          x = Freq / sum(Freq),
+          digits = 4
+        ),
+        mode = "double",
+        big.mark = ".",
+        decimal.mark = ","
+      ), "$"
+    )
+  )
+knitr::kable(
+  dp_urnsample,
+  booktabs = TRUE,
+  row.names = TRUE,
+  col.names = c("Espacio Muestral", "$x_i$", "Número de ocurrencia", "$p\\left(x_i \\right)$"),
+  align = c("lccc"),
+  format.args = list(decimal.mark = ",", big.mark = "."),
+  caption = "\\label{tab2:distribucion-probabilidad1}Distribución de probabilidad de la suma de las caras de dos dados (usando la función `ursample` del paquete `prob`)",
+  escape = FALSE
+) %>%
+  kable_styling(
+    bootstrap_options = "striped",
+    full_width = FALSE,
+    fixed_thead = T
+  ) %>%
+  kable_classic_2() %>%
+  scroll_box(width = "100%", height = "400px")
+```
 :::
 
 Como se oberva en la tabla \@ref(tab:distribucion-probabilidad1) $p\left ( x_i \right )$ es una auténtica función de probabilidad dado que se cumplen las dos condiciones requeridas en la definición \@ref(def:funcion-probabilidad). Es decir,
@@ -279,18 +333,18 @@ $$
 Dentro de las propiedades más importantes de la función de distribución acumulativa de probabilidad se pueden mencionar las siguientes:
 $$
 \begin{align*}
-i)& \: 0 \leq F\left ( x \right ) \leq 1 \:\: \textrm{par cualquier}\:x; \\
-ii)& \:\displaystyle \lim_{x \to - \infty }F\left ( x \right )=0;\\
-iii)& \:\displaystyle \lim_{x \to  \infty }F\left ( x \right )=1;\\
-iv)& \: F\left ( x_{j} \right ) \geq F\left ( x_{i} \right ) \:\: \textrm{si} \: x_{i} \leq x_{j};\\
-v)& \: F\left ( x_{i} \right ) = F\left ( x_{i-1} \right ) + p\left ( x_{i} \right );\\
-vi)& \: P\left ( X > x_{i} \right ) = 1 - F\left ( x_{i} \right ); \\
-vii)& \: P\left ( X <  x_{i} \right ) = F\left ( x_{i-1} \right ); \\
-viii)& \: P\left ( X \geq  x_{i} \right ) = 1 - F\left ( x_{i-1} \right ); \\
-ix)& \: P\left ( X=x_{i} \right )=p \left(x_{i} \right)=F\left ( x_{i} \right )-F\left ( x_{i-1} \right ); \\
-x)& \: P\left ( x_{i} \leq X \leq x_{j} \right )=F\left ( x_{j} \right )-F\left ( x_{i-1} \right ) \: \textrm{si} \: x_{i} \leq x_{j};\\
-xi)& \: P\left ( x_{i} <  X \leq x_{j} \right )=F\left ( x_{j} \right )-F\left ( x_{i} \right ) \: \textrm{si} \: x_{i} \leq x_{j};\\ 
-xii)& \: P\left ( x_{i} \leq   X <  x_{j} \right )=F\left ( x_{j-1} \right )-F\left ( x_{i-1} \right ) \: \textrm{si} \: x_{i} \leq x_{j};\\
+i)& \: 0 \leq F\left ( x \right ) \leq 1 \:\: \textrm{par cualquier}\:x, \\
+ii)& \:\displaystyle \lim_{x \to - \infty }F\left ( x \right )=0,\\
+iii)& \:\displaystyle \lim_{x \to  \infty }F\left ( x \right )=1,\\
+iv)& \: F\left ( x_{j} \right ) \geq F\left ( x_{i} \right ) \:\: \textrm{si} \: x_{i} \leq x_{j},\\
+v)& \: F\left ( x_{i} \right ) = F\left ( x_{i-1} \right ) + p\left ( x_{i} \right ),\\
+vi)& \: P\left ( X > x_{i} \right ) = 1 - F\left ( x_{i} \right ), \\
+vii)& \: P\left ( X <  x_{i} \right ) = F\left ( x_{i-1} \right ), \\
+viii)& \: P\left ( X \geq  x_{i} \right ) = 1 - F\left ( x_{i-1} \right ), \\
+ix)& \: P\left ( X=x_{i} \right )=p \left(x_{i} \right)=F\left ( x_{i} \right )-F\left ( x_{i-1} \right ), \\
+x)& \: P\left ( x_{i} \leq X \leq x_{j} \right )=F\left ( x_{j} \right )-F\left ( x_{i-1} \right ) \: \textrm{si} \: x_{i} \leq x_{j},\\
+xi)& \: P\left ( x_{i} <  X \leq x_{j} \right )=F\left ( x_{j} \right )-F\left ( x_{i} \right ) \: \textrm{si} \: x_{i} \leq x_{j},\\ 
+xii)& \: P\left ( x_{i} \leq   X <  x_{j} \right )=F\left ( x_{j-1} \right )-F\left ( x_{i-1} \right ) \: \textrm{si} \: x_{i} \leq x_{j},\\
 xiii)& \: P\left ( x_{i} <   X <  x_{j} \right )=F\left ( x_{j-1} \right )-F\left ( x_{i} \right ) \: \textrm{si} \: x_{i} \leq x_{j}.\\
 \end{align*}
 $$
@@ -399,7 +453,7 @@ $$
 Se puede verificar que los valores de $F\left ( x \right )$  dados en la tabla \@ref(tab:distribucion-acumulada1) se corresponden con los que se obtienen con la ecuación \@ref(eq:funcion-dictribucion1). Por ejemplo:
 $$
 \begin{align*}
-a)& \: F\left ( 7 \right )=\frac{1}{72}7\left ( 7-1 \right )=\frac{42}{72}=\frac{42}{72}\\
+a)& \: F\left ( 7 \right )=\frac{1}{72}7\left ( 7-1 \right )=\frac{42}{72}=\frac{21}{36}\\
 b)& \: F\left ( 10 \right )=\frac{42}{72}+\frac{1}{72}\left ( 10-7 \right )\left ( 18-10\right)=\frac{42}{72}+\frac{24}{72}=\frac{66}{72}=\frac{33}{36}.
 \end{align*}
 $$
@@ -2386,14 +2440,14 @@ $$
 \begin{align*}
 E \left[X \left(X-1 \right) \right] =&  \sum_{x=0}^{\infty} x \left(x-1 \right)\frac{e^{-\lambda}\lambda^x}{x !}\\
 =& \sum_{x=2}^{n } x \left(x-1 \right)\frac{e^{-\lambda}\lambda^2\lambda^{x-2}}{x \left(x-1 \right)\left(x-2 \right) !}\\
-=& e^{-\lambda}\lambda^2 \sum_{x=2}^{n } \frac{\lambda^{x-2}}{\left(x-2 \right) !}\\.
+=& e^{-\lambda}\lambda^2 \sum_{x=2}^{n } \frac{\lambda^{x-2}}{\left(x-2 \right) !}.\\
 \end{align*}
 $$
 Note que en los pasos previos se escribió la suma a partir de dos porque los dos primeros términos son cero, se canceló $x \left(x-1 \right)$, y se factorizó $\lambda^2$. Ahora, sea $y=x-2$; entonces:
 
 $$
 \begin{align*}
-E \left[X \left(X-1 \right) \right] =&\lambda^2 \sum_{y=0}^{\infty} \frac{e^{-\lambda}\lambda^{y}}{y !}\\.
+E \left[X \left(X-1 \right) \right] =&\lambda^2 \sum_{y=0}^{\infty} \frac{e^{-\lambda}\lambda^{y}}{y !}.\\
 \end{align*}
 $$
 Pero $p \left(y; \lambda \right)= e^{-\lambda}\lambda^{y}/ y!$ es la función de probabilidad de una variable aleatoria de Poisson $Y$ con parámetro $\lambda$; de esta manera $\sum_{y=0}^{\infty}p\left(y; m, p \right)=1$. Por lo tanto, 
@@ -2468,7 +2522,7 @@ $$
 \frac{\mathrm{d}m_{x}\left ( t \right )}{\mathrm{d}t} \left|\begin{matrix}
  \\
 t=0\\
-\end{matrix}={\mu}^{'}_1=\mu \right.
+\end{matrix}={\mu}^{'}_1=\mu .\right.
 \end{equation}
 $$
 
@@ -2477,7 +2531,7 @@ Luego, la primera derivada de la función generadora de momentos de la distribuc
 $$
 \frac{\mathrm{d}m_{x}\left ( t \right )}{\mathrm{d}t}=\lambda e^te^{\left[\lambda \left(e^t-1\right) \right]}.
 $$
-Ahora, evaluando la primera derivada de la función generadora de momentos en $t=0$, se obtiene la media de la distribución binomial, como sigue:
+Ahora, evaluando la primera derivada de la función generadora de momentos en $t=0$, se obtiene la media de la distribución de Poisson, como sigue:
 $$
 \begin{equation}
 \frac{\mathrm{d}m_{x}\left ( t \right )}{\mathrm{d}t} \left|\begin{matrix}
@@ -2486,4 +2540,4 @@ t=0\\
 \end{matrix}=\mu=\lambda e^0e^{\left[\lambda \left(e^0-1\right) \right]}=\lambda. \right.
 \end{equation}
 $$
-Note que este resultado es el mismo dado en el teorema \@ref(thm:media-poisson). Se deja al lector que halle la varianza de la distribución de Poisson usando el método de la función generadora de momentos. 
+Note que este resultado es el mismo dado en el teorema \@ref(thm:media-poisson). Se deja como ejercicio al lector, hallar la varianza de la distribución de Poisson usando el método de la función generadora de momentos. 
