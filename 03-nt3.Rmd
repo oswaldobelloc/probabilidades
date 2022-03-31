@@ -170,6 +170,7 @@ knitr::kable(
   kable_classic_2() %>%
   scroll_box(width = "100%", height = "400px")
 ```
+<br>
 
 El siguiente trozo de código de `r colorize("R", "blue")` permite replicar la tabla \@ref(tab:distribucion-probabilidad1), usando la función `urnsample` del paquete `prob`. Note que en este chunk, a diferencia del anterior, las columnas han sido creadas de manera automáticas. Lo que hace que este código sea más autorreproducible que el anterior. 
 
@@ -225,6 +226,7 @@ knitr::kable(
   kable_classic_2() %>%
   scroll_box(width = "100%", height = "400px")
 ```
+<br>
 :::
 
 Como se oberva en la tabla \@ref(tab:distribucion-probabilidad1) $p\left ( x_i \right )$ es una auténtica función de probabilidad dado que se cumplen las dos condiciones requeridas en la definición \@ref(def:funcion-probabilidad). Es decir,
@@ -405,8 +407,8 @@ knitr::kable(
   ) %>%
   kable_classic_2() %>% 
   scroll_box(width = "100%", height = "400px")
-
 ```
+<br>
 
 Cuando se conoce la expresión que define la función de probabilidad, la cual, en este caso está dada por la ecuación \@ref(eq:funcion-probabilidad1), se puede determinar una expresión matemática que defina la función de distribución acumulativa de probabilidad. A continuación se ejecuta un procedimiento para hallar esta ecuación.
 
@@ -1102,7 +1104,7 @@ knitr::kable(
   kable_classic_2() %>% 
   scroll_box(width = "100%", height = "400px")
 ```
-
+<br>
 
 #### Media de la Distribución Binomial {#media-binomial}
 
@@ -1187,7 +1189,7 @@ V \left(X \right)=\sigma^2 = np \left(1-p \right).
 $$
 :::
 
-Note de la ecuación anterior que para un $n$ fijo, la gráfica de la varianza es una parábola cóncava hacia abajo. Por lo tanto, el vértice de la parábola será un máximo y se halla en $p=1/2$. Es decir, la varianza es hace máxima cuando cuando $p=1/2$. Por lo que, el máximo valor de la varianza será la cuarta parte del tamaño de la muestra. 
+Note de la ecuación anterior, que para un $n$ fijo, la gráfica de la varianza se una parábola cóncava hacia abajo. Por lo tanto, el vértice de la parábola será un máximo y se halla en $p=1/2$. Es decir, la varianza es hace máxima cuando cuando $p=1/2$. Por lo que, el máximo valor de la varianza será la cuarta parte del tamaño de la muestra. 
 
 ::: {#varianza-binomial .proof name="varianza de la Distribución Binomial"}
 De la ecuación \@ref(eq:varianza2) se sabe que $V \left(X \right) = E \left(X^2 \right) - \mu^2$. Como $\mu=np$, solo faltaría calcular $E \left(X^2 \right)$. Pero calcular este parámetro usando el teorema \@ref(thm:esperanza-transformacion) y la definición \@ref(def:distribucion-binomial) implica encontrar la convergencia de la siguiente expresión
@@ -1316,7 +1318,7 @@ $$
 Note que este resultado es el mismo dado en el teorema \@ref(thm:media-binomial). Se deja al lector que halle la varianza de la distribución binomial usando el método de la función generadora de momentos. 
 
 
-### Distribuciones Hipergeométrica {#distribuciones-hipergeometrica}
+### Distribuciones Hipergeométrica {#distribucion-hipergeometrica}
 
 ::: {#distribucion-hipergeometrica .definition name="Distribución Hipergeométrica"}
 Dada una población que consta de $m$ objetos que poseen una característica de interés y $n$ que no la poseen. Si se selecciona una muestra aleatoria sin reemplazo de tamaño $k$ de estos objetos. Entonces la variable aleatoria $X$ que representa el número objetos en la muestra que tienen la característica de interés tiene _distribución hipergeométrica_, y se escribe $X \sim H \left(m, n, k \right)$, si su función de probabilidad viene dada por:
@@ -1727,7 +1729,7 @@ knitr::kable(
   kable_classic_2() %>% 
   scroll_box(width = "100%", height = "400px")
 ```
-
+<br>
 
 #### Media de la Distribución Hipergeométrica {#media-hipergeometrica}
 
@@ -2338,7 +2340,7 @@ knitr::kable(
   kable_classic_2() %>% 
   scroll_box(width = "100%", height = "400px")
 ```
-
+<br>
 
 #### Media de la Distribución de Poisson {#media-poisson}
 

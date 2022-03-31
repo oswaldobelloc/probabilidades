@@ -327,7 +327,7 @@ distribucion-acumulada-binomial
 media-binomial
 varianza-binomial
 funcion-generadora-momentos-binomial
-distribuciones-hipergeometrica
+distribucion-hipergeometrica
 distribucion-acumulada-hipergeometrica
 media-hipergeometrica
 varianza-hipergoemetrica
