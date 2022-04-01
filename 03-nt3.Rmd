@@ -1919,7 +1919,7 @@ $$
 \begin{align*}
 V(X)=&\frac{mk\left(m-1 \right)\left(k-1 \right)}{\left(m+n \right)\left(m+n-1 \right)}+\frac{mk}{m+n}-\left(\frac{mk}{m+n} \right)^2\\
 =&\frac{mk\left(m+n \right)\left(m-1 \right)\left(k-1 \right)+mk\left(m+n \right)\left(m+n-1 \right)-m^2k^2\left(m+n-1 \right)}{\left(m+n \right)^2\left(m+n-1 \right)}\\
-=&\frac{km^2n+kmn^2-^2mn}{\left(m+n \right)^2\left(m+n-1 \right)}
+=&\frac{km^2n+kmn^2-k^2mn}{\left(m+n \right)^2\left(m+n-1 \right)}
 =\frac{kmn\left(m+n-k \right)}{\left(m+n \right)^2\left(m+n-1 \right)}\\
 \end{align*}
 $$
