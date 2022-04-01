@@ -570,7 +570,7 @@ En algunos casos el calculo de esperanzas matemáticas se simplifican mediante e
 Si $X$ es una variable aleatoria discreta con función de probabilidad $p\left(x \right)$ y sean $a$ y $b$ constantes. Entonces,
 $$
 \begin{equation}
-E \left( ax+b \right)=a.E \left( x \right)+b.
+E \left( ax+b \right)=a  E \left( x \right)+b.
 (\#eq:esperanza-transformacion-lineal)
 \end{equation}
 $$
@@ -582,7 +582,7 @@ Note que si se hace $a=0$ en el teorema \@ref(thm:esperanza-transformacion) se o
 Si $X$ es una variable aleatoria discreta con función de probabilidad $p\left(x \right)$ y $a$ una constantes. Entonces,
 $$
 \begin{equation}
-E \left( ax \right) = aE \left( x \right).
+E \left( ax \right) = a E \left( x \right).
 (\#eq:corolario1)
 \end{equation}
 $$
@@ -1004,8 +1004,8 @@ Dado que la probabilidad de que la producción se detenga es igual a la probabil
 $$
 \begin{align*}
 P \left(X \geq 2 \right) =& 1 - P \left(X \leq 1
-\right)=  1 - F \left( x = 1;n = 15,p = 0,05 \right ) = 1 - \sum_{t=0}^{1 } \binom{15}{t} \left( 0,05 \right)^{t} \left( 1-0,05 \right )^{15-t}\\
-=& \binom{15}{0}\left(0,05 \right)^{0} \left( 1- 0,05 \right)^{15-0}+ \binom{15}{1}\left(0,05 \right)^{1} \left( 1- 0,05 \right)^{15-1}\\ \approx &  `r formato(1 - pbinom(q = 1, size = 15, prob = 0.05, lower.tail = TRUE, log.p = FALSE
+\right)=  1 - F \left( x = 1;n = 15,p = 0,05 \right )\\ =&  1 - \sum_{t=0}^{1 } \binom{15}{t} \left( 0,05 \right)^{t} \left( 1-0,05 \right )^{15-t}\\
+=& 1- \left[ \binom{15}{0}\left(0,05 \right)^{0} \left( 1- 0,05 \right)^{15-0}+ \binom{15}{1}\left(0,05 \right)^{1} \left( 1- 0,05 \right)^{15-1} \right] \\ \approx &  `r formato(1 - pbinom(q = 1, size = 15, prob = 0.05, lower.tail = TRUE, log.p = FALSE
 ))`.
 \end{align*}
 $$
@@ -1324,7 +1324,7 @@ Note que este resultado es el mismo dado en el teorema \@ref(thm:media-binomial)
 Dada una población que consta de $m$ objetos que poseen una característica de interés y $n$ que no la poseen. Si se selecciona una muestra aleatoria sin reemplazo de tamaño $k$ de estos objetos. Entonces la variable aleatoria $X$ que representa el número objetos en la muestra que tienen la característica de interés tiene _distribución hipergeométrica_, y se escribe $X \sim H \left(m, n, k \right)$, si su función de probabilidad viene dada por:
 $$
 p\left ( x;m,n, k \right )=\begin{cases}
-\frac{\binom{m}{x}\binom{n}{k-x}}{\binom{m+n}{k}} & \text{ si } x= \mathrm{máx} \left\{0, k - n  \right\} \leq x \leq \mathrm{mín} \left\{k, m  \right\} \\
+\frac{\binom{m}{x}\binom{n}{k-x}}{\binom{m+n}{k}} & \text{ si }  \mathrm{máx} \left\{0, k - n  \right\} \leq x \leq \mathrm{mín} \left\{k, m  \right\} \\
 0 & \text{ en cualquier otro caso }.
 (\#eq:funcion-probabilidad-hipergeometrica)
 \end{cases}
@@ -1488,7 +1488,7 @@ $$
 F\left ( x;n,p \right )=\begin{cases}
 0 & \text{ si } x < \mathrm{máx} \left\{0, k - n  \right\}\\
  \sum_{t=\mathrm{máx} \left\{0, k - n  \right\}
- }^{x } \frac{\binom{m}{t}\binom{n}{k-t}}{\binom{m+n}{k}} & \text{ si } x= \mathrm{máx} \left\{0, k - n  \right\} \leq x \leq \mathrm{mín} \left\{k, m  \right\}\\
+ }^{x } \frac{\binom{m}{t}\binom{n}{k-t}}{\binom{m+n}{k}} & \text{ si }  \mathrm{máx} \left\{0, k - n  \right\} \leq x \leq \mathrm{mín} \left\{k, m  \right\}\\
 1 & \text{ si } x > \mathrm{mín} \left\{k, m  \right\}.
 (\#eq:funcion-acumulativa-hipergeometrica)
 \end{cases}
@@ -1625,9 +1625,9 @@ La probabilidad de que en la muestra aparezcan menos de dos lamparas defectuosas
 $$
 \begin{align*}
 P \left(X < 2 \right) =& P \left(X \leq 1
-\right)=   F \left( x = 1;m = 5,n = 95, k = 10 \right) = \sum_{t=0
- }^{x } \frac{\binom{5}{t}\binom{95}{5-t}}{\binom{5+95}{10}}\\
-=& \frac{\binom{5}{0}\binom{95}{5}}{\binom{100}{10}}+ \frac{\binom{5}{1}\binom{95}{4}}{\binom{100}{10}}\\ \approx &  `r formato(phyper(q = 1, m = 5, n = 95, k = 10, lower.tail = TRUE, log.p = FALSE))`.
+\right)=   F \left( x = 1;m = 5,n = 95, k = 10 \right)\\ =& \sum_{t=0
+ }^{x } \frac{\binom{5}{t}\binom{95}{5-t}}{\binom{5+95}{10}}
+= \frac{\binom{5}{0}\binom{95}{5}}{\binom{100}{10}}+ \frac{\binom{5}{1}\binom{95}{4}}{\binom{100}{10}}\\ \approx &  `r formato(phyper(q = 1, m = 5, n = 95, k = 10, lower.tail = TRUE, log.p = FALSE))`.
 \end{align*}
 $$
 
@@ -1759,10 +1759,10 @@ Luego, por las definición de esperanza matemática \@ref(def:esperanza) y la fu
 
 $$
 \begin{align*}
-E \left(X \right) =&  \sum_{x=0}^{k } x\frac{\binom{m}{x}\binom{n}{k-x}}{\binom{m+n}{k}}\\
-=& \sum_{x=1}^{k } x \frac{\frac{m!}{x!\left ( m-x \right )!}\binom{n}{k-x}}{\binom{m+n}{k}}\\
-=& m\sum_{x=1}^{k }  \frac{\frac{(m-1)!}{(x-1)!\left ( m-x \right )!}\binom{n}{k-x}}{\binom{m+n}{k}}\\
-=& m\sum_{x=1}^{k }  \frac{\binom{m-1}{x-1}\binom{n}{k-x}}{\binom{m+n}{k}}.\\
+E \left(X \right) =&  \sum_{x=0}^{k } x\frac{\binom{m}{x}\binom{n}{k-x}}{\binom{m+n}{k}}
+= \sum_{x=1}^{k } x \frac{\frac{m!}{x!\left ( m-x \right )!}\binom{n}{k-x}}{\binom{m+n}{k}}\\
+=& m\sum_{x=1}^{k }  \frac{\frac{(m-1)!}{(x-1)!\left ( m-x \right )!}\binom{n}{k-x}}{\binom{m+n}{k}}
+= m\sum_{x=1}^{k }  \frac{\binom{m-1}{x-1}\binom{n}{k-x}}{\binom{m+n}{k}}.\\
 \end{align*}
 $$
 Como puede demostrarse que:
@@ -1906,8 +1906,8 @@ $$
 es la función de probabilidad de una variable aleatoria hipergeométrica $Y$ con parámetros $s$, $n$ y $r$; de esta manera $\sum_{y=0}^{r }p\left(y; s, n, r \right)=1$. En consecuencia, 
 $$
 \begin{align*}
-E \left[X \left(X-1 \right) \right] =& \frac{m\left(m-1 \right)}{\left( \frac{m+n}{k} \right)\left( \frac{m+n-1}{k-1} \right)}\\
-=& \frac{mk\left(m-1 \right)\left(k-1 \right)}{\left(m+n \right)\left(m+n-1 \right)}\\
+E \left[X \left(X-1 \right) \right] = \frac{m\left(m-1 \right)}{\left( \frac{m+n}{k} \right)\left( \frac{m+n-1}{k-1} \right)}
+=\frac{mk\left(m-1 \right)\left(k-1 \right)}{\left(m+n \right)\left(m+n-1 \right)}\\
 \end{align*}
 $$
 De la ecuación \@ref(eq:varianza-alterna-binomial)
@@ -1919,8 +1919,8 @@ $$
 \begin{align*}
 V(X)=&\frac{mk\left(m-1 \right)\left(k-1 \right)}{\left(m+n \right)\left(m+n-1 \right)}+\frac{mk}{m+n}-\left(\frac{mk}{m+n} \right)^2\\
 =&\frac{mk\left(m+n \right)\left(m-1 \right)\left(k-1 \right)+mk\left(m+n \right)\left(m+n-1 \right)-m^2k^2\left(m+n-1 \right)}{\left(m+n \right)^2\left(m+n-1 \right)}\\
-=&\frac{km^2n+kmn^2-^2mn}{\left(m+n \right)^2\left(m+n-1 \right)}\\
-=&\frac{kmn\left(m+n-k \right)}{\left(m+n \right)^2\left(m+n-1 \right)}\\
+=&\frac{km^2n+kmn^2-^2mn}{\left(m+n \right)^2\left(m+n-1 \right)}
+=\frac{kmn\left(m+n-k \right)}{\left(m+n \right)^2\left(m+n-1 \right)}\\
 \end{align*}
 $$
 :::
