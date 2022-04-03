@@ -1228,7 +1228,7 @@ $$
 E \left[X \left(X-1 \right) \right] =&  n \left(n-1 \right)p^2\sum_{y=0}^{m } \frac{m!}{y!\left ( m-y \right )!}p^{y}\left ( 1-p \right )^{m-y}.\\
 \end{align*}
 $$
-Pero $p \left(y; m, p \right)= \left[m!/y!\left(m-y \right)! \right]p^{y}\left(1-p \right)^{m-y}$ es la función de probabilidad de una variable aleatoria binomial $Y$ con parámetros $m=n-2$ y $p$; de esta manera $\sum_{y=0}^{m }p\left(y; m, p \right)=1 $. En consecuencia, 
+Pero $p \left(y; m, p \right)= \left[m!/y!\left(m-y \right)! \right]p^{y}\left(1-p \right)^{m-y}$ es la función de probabilidad de una variable aleatoria binomial $Y$ con parámetros $m=n-2$ y $p$; de esta manera $\sum_{y=0}^{m }p\left(y; m, p \right)=1$. En consecuencia, 
 $$
 \begin{equation}
 E \left[X \left(X-1 \right) \right] = n \left(n-1 \right)p^2.
@@ -1324,7 +1324,7 @@ Note que este resultado es el mismo dado en el teorema \@ref(thm:media-binomial)
 Dada una población que consta de $m$ objetos que poseen una característica de interés y $n$ que no la poseen. Si se selecciona una muestra aleatoria sin reemplazo de tamaño $k$ de estos objetos. Entonces la variable aleatoria $X$ que representa el número objetos en la muestra que tienen la característica de interés tiene _distribución hipergeométrica_, y se escribe $X \sim H \left(m, n, k \right)$, si su función de probabilidad viene dada por:
 $$
 p\left ( x;m,n, k \right )=\begin{cases}
-\frac{\binom{m}{x}\binom{n}{k-x}}{\binom{m+n}{k}} & \text{ si }  \mathrm{máx} \left\{0, k - n  \right\} \leq x \leq \mathrm{mín} \left\{k, m  \right\} \\
+\frac{\binom{m}{x}\binom{n}{k-x}}{\binom{m+n}{k}} & \text{ si }  \mathrm{máx} \left\{0, k - n  \right\} \leq x \leq \mathrm{mín} \left\{k, m  \right\} \:y \: m,n,k  \in \mathbb{N}   \\
 0 & \text{ en cualquier otro caso }.
 (\#eq:funcion-probabilidad-hipergeometrica)
 \end{cases}
@@ -1488,7 +1488,7 @@ $$
 F\left ( x;n,p \right )=\begin{cases}
 0 & \text{ si } x < \mathrm{máx} \left\{0, k - n  \right\}\\
  \sum_{t=\mathrm{máx} \left\{0, k - n  \right\}
- }^{x } \frac{\binom{m}{t}\binom{n}{k-t}}{\binom{m+n}{k}} & \text{ si }  \mathrm{máx} \left\{0, k - n  \right\} \leq x \leq \mathrm{mín} \left\{k, m  \right\}\\
+ }^{x } \frac{\binom{m}{t}\binom{n}{k-t}}{\binom{m+n}{k}} & \text{ si }  \mathrm{máx} \left\{0, k - n  \right\} \leq x \leq \mathrm{mín} \left\{k, m  \right\} \:y \: m,n,k  \in \mathbb{N}   \\
 1 & \text{ si } x > \mathrm{mín} \left\{k, m  \right\}.
 (\#eq:funcion-acumulativa-hipergeometrica)
 \end{cases}
@@ -1750,7 +1750,7 @@ Note que en la función de probabilidad de la distribución hipergeométrica, da
 
 $$
 p\left ( x;m,n, k \right )=\begin{cases}
-\frac{\binom{m}{x}\binom{n}{k-x}}{\binom{m+n}{k}} & \text{ si } x= 0, 1, 2, \dotsc, k \\
+\frac{\binom{m}{x}\binom{n}{k-x}}{\binom{m+n}{k}} & \text{ si } x= 0, 1, 2, \dotsc, k \:y \: m,n,k  \in \mathbb{N}  \\
 0 & \text{ en cualquier otro caso }.
 (\#eq:funcion-probabilidad-hipergeometrica2)
 \end{cases}
@@ -2110,7 +2110,7 @@ Sea $X$ una variable aleatoria con distribución de Poisson. Entonces, la _funci
 $$
 F\left ( x;\lambda \right )=\begin{cases}
 0 & \text{ si } x < 0\\
- e^{-\lambda}\sum_{t=0}^{x }\frac{\lambda^t}{t!} & \text{ si } x= 0, 1, 2, \dotsc;\: \lambda>0
+ e^{-\lambda}\sum_{t=0}^{x }\frac{\lambda^t}{t!} & \text{ si } x= 0, 1, 2, \dotsc ;\: \lambda>0
 (\#eq:funcion-acumulativa-poisson)
 \end{cases}
 $$
