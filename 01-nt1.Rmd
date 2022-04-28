@@ -296,7 +296,7 @@ nsamp(n = 12, k = 12, replace = FALSE, ordered = TRUE)
 ### Permutación Con Repetición {#nt132}
 
 ::: {.definition #permutacion-cr name="Permutación Con Repetición"}
-Dados $n$ objetos, de los cuales $n_1$ son de una clase, $n_2$ de una segunda clase, $\dotsc$ y $n_k$ de una $k$-ésima clase; entonces el número de permutaciones distintas que se pueden formar con éstos n objetos viene dada por:
+Dados $n$ objetos, de los cuales $n_1$ son de una clase, $n_2$ de una segunda clase, $\dotsc$ y $n_k$ de una $k$-ésima clase; entonces el número de permutaciones distintas que se pueden formar con éstos $n$ objetos viene dada por:
 
 $$
 \begin{equation}

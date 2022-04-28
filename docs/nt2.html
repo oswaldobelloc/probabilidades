@@ -194,7 +194,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.1.2" data-path="nt2.html"><a href="nt2.html#nt212"><i class="fa fa-check"></i><b>2.1.2</b> Subconjunto</a></li>
 <li class="chapter" data-level="2.1.3" data-path="nt2.html"><a href="nt2.html#nt213"><i class="fa fa-check"></i><b>2.1.3</b> Conjuntos Iguales</a></li>
 <li class="chapter" data-level="2.1.4" data-path="nt2.html"><a href="nt2.html#nt214"><i class="fa fa-check"></i><b>2.1.4</b> Conjuntos Universal</a></li>
-<li class="chapter" data-level="2.1.5" data-path="nt2.html"><a href="nt2.html#nt215"><i class="fa fa-check"></i><b>2.1.5</b> Conjuntos Vacio o Conjunto Nulo</a></li>
+<li class="chapter" data-level="2.1.5" data-path="nt2.html"><a href="nt2.html#nt215"><i class="fa fa-check"></i><b>2.1.5</b> Conjunto Vacio o Conjunto Nulo</a></li>
 <li class="chapter" data-level="2.1.6" data-path="nt2.html"><a href="nt2.html#nt216"><i class="fa fa-check"></i><b>2.1.6</b> Conjuntos Disyuntos o Mutuamente Excluyentes o Ajenos</a></li>
 <li class="chapter" data-level="2.1.7" data-path="nt2.html"><a href="nt2.html#nt217"><i class="fa fa-check"></i><b>2.1.7</b> Conjunto Solapados o Traslapados</a></li>
 <li class="chapter" data-level="2.1.8" data-path="nt2.html"><a href="nt2.html#nt218"><i class="fa fa-check"></i><b>2.1.8</b> Diagrama de Venn</a></li>
@@ -355,7 +355,7 @@ Esto implica que si cualquier elemento <span class="math inline">\(a \in A\)</sp
 </div>
 </div>
 <div id="nt215" class="section level3" number="2.1.5">
-<h3><span class="header-section-number">2.1.5</span> Conjuntos Vacio o Conjunto Nulo</h3>
+<h3><span class="header-section-number">2.1.5</span> Conjunto Vacio o Conjunto Nulo</h3>
 <div class="definition">
 <p><span id="def:conjvacio" class="definition"><strong>Definición 2.10  (Conjunto Vacio) </strong></span>Un conjunto vacío es aquel que no tiene elementos y se representa por <span class="math inline">\(\emptyset\)</span>.</p>
 <p>Por ejemplo, el conjunto <span class="math inline">\(S=\left\{x:x \textit{ es un entero positivo},x^2=3 \right\}\)</span> es un <em>conjunto vacío</em>, puesto que ningún entero positivo tiene la propiedad requerida.</p>
@@ -606,7 +606,7 @@ Determine el complemento de A <span class="math inline">\(\left(A^c \right)\)</s
 <p><span id="def:diferencia" class="definition"><strong>Definición 2.17  (Diferencia) </strong></span>El complemento relativo de un conjunto <span class="math inline">\(B\)</span> con respecto a un conjunto <span class="math inline">\(A\)</span>, o, simplemente, la diferencia entre <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span>, representado por <span class="math inline">\(A \setminus B\)</span>, es el conjunto de elementos que pertenecen a <span class="math inline">\(A\)</span> pero que no pertenecen a <span class="math inline">\(B\)</span>, es decir,
 <span class="math display">\[A  \setminus  B=\left\{x:x \in A,x \notin B \right\}.\]</span>
 El conjunto <span class="math inline">\(A \setminus B\)</span> se lee “<span class="math inline">\(A\)</span> menos <span class="math inline">\(B\)</span>”. Algunos textos representan <span class="math inline">\(A \setminus B\)</span> mediante <span class="math inline">\(A-B\)</span> o <span class="math inline">\(A \sim B\)</span>.</p>
-<p>La figura <a href="nt2.html#fig:diferencia">2.8</a> muestra el diagramas de Venn para <span class="math inline">\(A \setminus B\)</span>.</p>
+<p>La figura <a href="nt2.html#fig:diferencia">2.8</a> muestra el diagramas de Venn para <span class="math inline">\(A \setminus B\)</span> y <span class="math inline">\(B \setminus A\)</span>.</p>
 <div class="sourceCode" id="cb87"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb87-1"><a href="nt2.html#cb87-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="at">path =</span> <span class="st">&quot;figuras/diferencia.png&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:diferencia"></span>
 <img src="figuras/diferencia.png" alt="Diagrama de Venn para la diferencia" width="70%" />
@@ -773,7 +773,7 @@ n \left[ \left(A \cup B \cup C \right) \setminus A \oplus B \oplus C \right] = \
 <span class="math display" id="eq:tamaño-conjuntog">\[
 \begin{align*}
 n \left[ \left(A \oplus B \oplus C \right) \setminus \left(A \cap B \cap C \right) \right] = \:\: &amp; n\left(A \right)+n \left(B \right)+n \left(C \right)-2n \left(A \cap B \right)-2n \left(A \cap C \right)\\
-&amp;-2n \left(B \cap C \right)+n \left(A \cap B \cap C \right),
+&amp;-2n \left(B \cap C \right)+n \left(A \cap B \cap C \right).
 \tag{2.8}
 \end{align*}
 \]</span></p></li>
@@ -828,9 +828,9 @@ n \left(M \oplus P \right) &amp; = n\left (M \right ) + n\left( P \right ) - 2n\
 <span id="cb95-4"><a href="nt2.html#cb95-4" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
 <span id="cb95-5"><a href="nt2.html#cb95-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> <span class="st">&quot;#F4FAFE&quot;</span>, <span class="at">high =</span> <span class="st">&quot;#4981BF&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:ej1-cardinal"></span>
-<img src="_main_files/figure-html/ej1-cardinal-1.png" alt="Diagrama de Venn del Ejemplo \@ref(exm:ej1-cardinal)" width="672" />
+<img src="_main_files/figure-html/ej1-cardinal-1.png" alt="Diagrama de Venn del ejemplo \@ref(exm:ej1-cardinal)" width="672" />
 <p class="caption">
-Figura 2.10: Diagrama de Venn del Ejemplo <a href="nt2.html#exm:ej1-cardinal">2.8</a>
+Figura 2.10: Diagrama de Venn del ejemplo <a href="nt2.html#exm:ej1-cardinal">2.8</a>
 </p>
 </div>
 </div>
@@ -888,9 +888,9 @@ n \left( \left(I \cup F \cup A \right)^c \right) &amp; = n \left( \mathbb{U} \ri
 <span id="cb96-22"><a href="nt2.html#cb96-22" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb96-23"><a href="nt2.html#cb96-23" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.draw</span>(ej2_car)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:ej2-cardinal"></span>
-<img src="_main_files/figure-html/ej2-cardinal-1.png" alt="Diagrama de Venn del Ejemplo \@ref(exm:ej2-cardinal)" width="672" />
+<img src="_main_files/figure-html/ej2-cardinal-1.png" alt="Diagrama de Venn del ejemplo \@ref(exm:ej2-cardinal)" width="672" />
 <p class="caption">
-Figura 2.11: Diagrama de Venn del Ejemplo <a href="nt2.html#exm:ej2-cardinal">2.9</a>
+Figura 2.11: Diagrama de Venn del ejemplo <a href="nt2.html#exm:ej2-cardinal">2.9</a>
 </p>
 </div>
 </div>
@@ -1234,22 +1234,22 @@ P \left( A \mid B \right)=\frac{P \left( A \cap B \right)}{P \left( B \right)}.
 \end{equation}
 \]</span></p>
 </div>
-<p>Como se ilustra en el diagrama de Venn en la figura <a href="nt2.html#fig:probabilidad-condicional">2.14</a>, <span class="math inline">\(P \left( A \mid B \right)\)</span> mide, en cierto sentido, la probabilidad relativa de <span class="math inline">\(A\)</span> con respecto al espacio reducido <span class="math inline">\(B\)</span>.</p>
+<p>Como se ilustra en el diagrama de Venn dado en la figura <a href="nt2.html#fig:probabilidad-condicional">2.14</a>, <span class="math inline">\(P \left( A \mid B \right)\)</span> mide, en cierto sentido, la probabilidad relativa de <span class="math inline">\(A\)</span> con respecto al espacio reducido <span class="math inline">\(B\)</span>.</p>
 <div class="sourceCode" id="cb99"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb99-1"><a href="nt2.html#cb99-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="at">path =</span> <span class="st">&quot;figuras/probabilidad_condicional.png&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:probabilidad-condicional"></span>
-<img src="figuras/probabilidad_condicional.png" alt="Probabilidad Condicional" width="70%" />
+<img src="figuras/probabilidad_condicional.png" alt="Probabilidad condicional de $A$ dado $B$" width="70%" />
 <p class="caption">
-Figura 2.14: Probabilidad Condicional
+Figura 2.14: Probabilidad condicional de <span class="math inline">\(A\)</span> dado <span class="math inline">\(B\)</span>
 </p>
 </div>
-<p>Ahora, suponga que <span class="math inline">\(S\)</span> es un espacio equiprobable y sea <span class="math inline">\(n\left(A\right)\)</span> el número de elementos en el evento <span class="math inline">\(A\)</span>. Entonces,</p>
+<p>Ahora, suponga que <span class="math inline">\(S\)</span> es un espacio equiprobable. Por la definición <a href="nt2.html#def:probabilidadclasica">2.32</a></p>
 <p><span class="math display">\[
 P \left( A \cap B \right)=\frac{n\left(A \cap B \right)}{n\left(S \right)} \; y \; P \left( B \right)=\frac{n\left( B \right)}{n\left(S \right)}.
 \]</span></p>
 <p>Luego, sustituyendo en la ecuación <a href="nt2.html#eq:probabilidad-condicional">(2.18)</a> se obtiene que:
 <span class="math display" id="eq:probabilidad-condicional2">\[
 \begin{equation}
-P \left( A \cap B \right)=\frac{n\left(A \cap B \right)}{n\left(B \right)}.
+P \left( A \mid B \right)=\frac{n\left(A \cap B \right)}{n\left(B \right)}.
 \tag{2.19}
 \end{equation}
 \]</span></p>
@@ -2006,9 +2006,9 @@ P \left(E \right)=\sum_{i=1}^{k}P\left ( A{}_i \right ) \cdot P\left ( E \mid A{
 
 <div class="sourceCode" id="cb102"><pre class="sourceCode r watch-out"><code class="sourceCode r"><span id="cb102-1"><a href="nt2.html#cb102-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="at">path =</span> <span class="st">&quot;figuras/ejemplo1_probabilidad_total.png&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:ejemplo1-probabilidad-total"></span>
-<img src="figuras/ejemplo1_probabilidad_total.png" alt="Diegrama de Venn del ejemplo 2.14" width="70%" />
+<img src="figuras/ejemplo1_probabilidad_total.png" alt="Diagrama de árbol del ejemplo 2.14" width="70%" />
 <p class="caption">
-Figura 2.16: Diegrama de Venn del ejemplo <a href="nt2.html#exm:ejemplo1-probabilidad-total">2.14</a>
+Figura 2.16: Diagrama de árbol del ejemplo <a href="nt2.html#exm:ejemplo1-probabilidad-total">2.14</a>
 </p>
 </div>
 <p>Sea el evento <span class="math inline">\(D: \{ \textrm{el artículo seleccionado es defectuoso} \}\)</span> . Entonces, por la ley de la probabilidad total <a href="nt2.html#thm:probabilidad-total">2.13</a> y de acuerdo con la figura <a href="nt2.html#fig:ejemplo1-probabilidad-total">2.16</a>, se obtiene que
